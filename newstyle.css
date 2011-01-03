@@ -1,0 +1,540 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+/**************** Style for index ***********************/
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+    .moduletable_menu h3,
+    .moduletable_text h3,
+    .moduletable h3,
+    #gk-popup h3,
+    #gk-mainnav .level0>li>a,
+	.itemRelated h3, 
+	.itemAuthorLatest h3
+	{
+		font-family: Arial,Helvetica,sans-serif,DroidSans;
+	}
+
+	.gk_is_text h4,
+	.moduletable.bigtitle h3 {
+		font-family: Arial,Helvetica,sans-serif,LeagueGothic;
+	}
+
+.main { width: 1002px; margin: 0 auto; }
+/*********************************************/
+h3{
+text-indent:7px;
+}
+.hidden{
+display:none;
+}
+#left{
+background:#dedede;
+width: 279px;
+margin-bottom:5px;
+border-top: 1px solid #dedede;
+float:left;
+}
+/*Log in*/
+#login{
+//background: #f1f1f1;
+padding:8px;
+border-bottom:2px dashed #dedede;
+}
+#login label{
+
+width:28%;
+margin-right: 5px;
+}
+#login .text{
+width:69%;
+}
+#login .line{
+	width:100%;
+	height:1em;
+	margin-bottom: 1em;
+}
+/*search*/
+#search .search_content
+{
+	//background: #f1f1f1;
+	padding:8px;	
+}
+#search label{
+	float:left;
+	width:28%;
+	margin-right:5px;
+}
+#search .text{
+	width:69%;
+}
+#search .mintext{
+	width:30%;
+}
+#search .line{
+	width:100%;
+	height:1.5em;
+	margin-bottom:1em;
+}
+
+/*Danh muc phong*/
+
+#danhmuc a{
+text-decoration:none;
+font-size:14px;
+}
+#danhmuc a:hover{
+text-decoration:underline;
+}
+#danhmuc label{
+	float:left;
+	width:55%;
+	margin-right:5px;
+}
+}
+#danhmuc.line{
+	width:100%;
+	height:1.5em;
+	margin-bottom:1.5em;
+}
+
+
+/*Noi dung chinh o giua */
+#mainContent{
+	margin-left:290px;
+	text-align:justify;
+background: #f1f1f1;
+padding: 0 7px;
+min-height:566px;
+border:1px solid #DEDEDE;
+}
+#mainContent h2{
+   margin:15px 0;
+   text-indent: 10px;
+}
+#mainContent label{
+float:left;
+	width:28%;
+}
+#mainContent .line{
+	width:100%;
+	margin-bottom:1em;
+overflow:auto;
+}
+.line .text,select{
+	width:25%;
+float:left;	
+
+}
+input, select{
+border:1px solid black;
+}
+.mintext{
+border:1px solid #aaaaaa;
+}
+#mainContent .button{
+	width:20%;
+	text-align:center;
+	margin-left:170px;
+	font-weight: bold;
+	margin-bottom:1.2em;
+}
+
+.clear {
+ clear:both;
+}
+.headerline{
+ font-size:2.5em;
+color:#ca5433;
+}
+#mainContent .checkbox{
+margin-left:28%;
+}
+.checkbox li{
+margin-bottom:.5em;
+}
+input[type="submit"] {
+background:url("images/button.png") repeat scroll left bottom transparent;
+border:medium none;
+color:#5976A4;
+font:200 0.9em Arial;
+height:31px;
+margin:7px 15% 10px;
+padding:0 0 4px;
+width:101px;
+}
+
+/*panel cua phan tim kiem*/
+#panel{
+	margin-left:285px;
+	margin-bottom:1em;
+}
+
+/* table Result */
+.tblResult{
+width:100%;
+border:1px solid #dedede;
+}
+
+.tblResult td{
+vertical-align:top;
+padding:5px;
+text-align:justify;
+}
+.tblResult td img{
+padding:5px;
+}
+
+.tblResult .price{
+width:41px;
+text-align:center;
+}
+/*******************************************/
+ul.site-nav ul.children{
+display:none;
+float:left;
+position:absolute;
+left:45px;
+top:23px;
+}
+ul.site-nav ul.children li{
+background:none;
+}
+ul.site-nav li:hover ul{
+display:block;
+}
+/******** steps ************/
+.steps{
+background: #CCFFFF;
+height:3em;
+border: 1px solid #DEDEDE;
+}
+.steps .nonactive{
+float:left;
+margin:1em 6%;
+font-size:1em;
+}
+.steps .active{
+float:left;
+font-weight:bold;
+margin:1em 8%;
+font-size:1.1em;
+}
+/************footer****************/
+.footer{
+background:#00CC33;
+height:3em 8%;
+margin:10px auto;
+}
+.choose{
+width:70px;
+}
+.choose input{
+float:left;
+width:100%;
+text-align:center;
+margin:0;
+border:1px solid #d1d1d1;
+}
+
+/*******************Hieu ung error**/  
+#commentForm { width: 500px; }
+#commentForm label { width: 250px; }
+#commentForm label.error, #commentForm input.submit { margin-left: 253px; }
+#signupForm { width: 670px; }
+ label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+color:red;
+font-style:italic;
+}
+#newsletter_topics label.error {
+	display: none;
+	margin-left: 103px;
+}
+/************ Error *************/
+div.error { display: none; }
+input {	border: 1px solid black; }
+input.checkbox { border: none }
+input:focus { border: 1px dotted black; }
+input.error, select.error { border: 1px dotted red; }
+/************* Carousel **************/
+#carousel1{
+width:100%; 
+height:400px;
+overflow:scroll;
+}
+/*Hieu ung xoay*/
+.cloudcarousel{
+	width:150px;
+	height:100px;
+border:1px solid #aaaaaa;
+}
+#titleText{
+font-size:1.5em;
+text-indent:7px;
+font-weight:bold;
+}
+#altText{
+text-indent:7px;
+margin-bottom:10px;
+}
+
+img{
+border:1px solid #AAAAAA;
+}
+
+dl{
+margin-top:5px;
+overflow:hidden;
+}
+dd.image{
+float:left;
+margin:12px 7px;
+}
+dl dd b{
+margin-top:10;
+line-height:1.5em;
+}
+dd input[type="submit"]{
+padding:0;
+margin:5px 0;
+}
+dt{
+float:right;
+width:53%;
+margin-top:4px;
+font-size:1.7em;
+color:#aadd56;
+font-weight:bold;
+line-height:1.5em;
+}
+dd{
+text-indent:7px;
+margin:5px 0;
+}
+
+.gioithieu{
+text-indent:20px;
+text-align:justify;
+margin:0 5px;
+}
+
+#roomInfo{
+width:500px;
+margin:0 auto;
+min-height:160px;
+background:#f1f1f1;
+-moz-border-radius:5px;
+}
+img.detail{
+width:300px;
+height:200px;
+}
+#thongtinthe , #thongtinkhach, #thongtincanthiet {
+position:relative;
+}
+#thongtinthe h2, #thongtinkhach h2, #thongtincanthiet h2{
+background: #d1d1d1;
+color:#34aa23;
+padding:5px;
+margin-bottom:10px;
+-moz-border-radius:5px;
+}
+#thongtinthe a.slide, #thongtinkhach a.slide, #thongtincanthiet a.slide{
+position:absolute;
+top:-6px;
+right:10px;
+text-indent:-9999px;
+background:url(images/30.png);
+width:48px;
+height:48px;
+}
+#thongtinthe #theForm, #thongtinkhach #khachForm,#thongtincanthiet #theCanthiet{
+display:none;
+position:relative;
+margin:0 15px;
+}
+#thongtinkhach p{
+color:#0000CC;
+font-weight:bold;
+}
+#showloaiphong ul li img{
+width:150px;
+height:100px;
+}
+.welcome{
+margin:10px 5px;
+text-indent:2px;
+}
+.roomType p{
+text-align:center;
+margin: 5px 0;
+color:#0f2c5d;
+font-weight:bold;
+}
+/************ class loai phong*/
+.loaiphong{
+width: 100%;
+/*overflow:auto;*/
+border-bottom:1px dashed #aaaaaa;
+margin:5px auto;
+float:left;
+}
+
+.loaiphong a:hover{
+text-decoration:underline;
+}
+.loaiphong ul{
+list-style:none;
+width:100%;
+float:left;
+}
+.loaiphong ul li{
+width:155px;
+height:105px;
+display:inline;
+margin:6px;
+float:left;
+position:relative;
+}
+.loaiphong ul li img{
+-ms-interpolation-mode: bicubic; /* IE Fix for Bicubic Scaling */
+/*border: 1px solid #ddd;*/
+background: #f0f0f0;
+padding:5px;
+position:absolute;
+left:0;top:0;
+}
+.loaiphong ul li img.hover {
+	background:url(images/thumb_bg1.png) no-repeat center center;  /* Image used as background on hover effect*/
+	border: none; /* Get rid of border on hover */
+}
+.loaiphong .more{
+float:right;
+margin:5px 20px;
+background:none;
+text-decoration:none;
+font-weight:bold;
+width:110px;
+text-align:center;
+}
+/***********************************chi tiet dat phong***************/
+.chitiet{
+list-style:none;
+width:100%;
+padding:5px auto;
+float:left;
+}
+/************View hinh anh goc nhin*/
+.view{
+width: 100%;
+/*overflow:auto;*/
+border-bottom:1px dashed #aaaaaa;
+margin:5px auto;
+float:left;
+}
+.view h2{
+text-transform:none;
+}
+.view ul{
+list-style:none;
+width:100%;
+padding:5px auto;
+float:left;
+}
+.view ul li{
+width:160px;
+height:110px;
+display:inline;
+margin:0;
+padding:5px;
+float:left;
+position:relative;
+}
+.view ul li img{
+background: #f0f0f0;
+padding:5px;
+position:absolute;
+left:0;top:0;
+width:150px;
+height:100px;
+}
+/**** form dang nhap ****/
+#dialog label{
+float:left;
+width:135px;
+}
+#dialog .row{
+margin-bottom:7px;
+}
+#dialog .row input[type="text"],input[type="password"]{
+width:180px;
+}
+#dialog{
+font-size:0.9em;
+font-family:Verdana;
+}
+#dialog a{
+color:#89B700;
+font-weight:bold;
+text-decoration:none;
+}
+#dialog a:hover{
+text-decoration:underline;
+}
+/********* dat phong Form ***********/
+
+#signupForm label{
+float:left;
+width:28%;
+}
+#signupForm .line{
+	width:100%;
+	margin-bottom:5px;
+overflow:hidden;
+}
+
+#signupForm .button{
+	width:20%;
+	text-align:center;
+	margin-left:170px;
+	font-weight: bold;
+	margin-bottom:1.2em;
+}
+
+#signupForm .checkbox{
+margin-left:28%;
+}
+#signupForm ul {
+  clear:none;
+}
+input[type="submit"] {
+background:url("images/button.png") repeat scroll left bottom transparent;
+border:medium none;
+color:#5976A4;
+font:200 0.9em Arial;
+height:31px;
+margin:7px 15% 10px;
+padding:0 0 4px;
+width:101px;
+}
+
+#ui-dialog-title-datphongForm{
+   text-indent: 20px; 
+   letter-spacing: 5px;
+   font-weight:bold;
+}
+
+.ui-widget {
+    font-family: Arial,sans-serif;
+    font-size: .9em;
+}
+.payment{
+margin: 0 5px 0 30px;
+}

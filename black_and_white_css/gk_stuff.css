@@ -1,0 +1,215 @@
+/*
+#------------------------------------------------------------------------
+# Black & White - October2010 (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+/* 
+ * News Show Pro GK4
+ */
+.nsp { position:relative; }
+.nsp_main { overflow:hidden; }
+/* interface */
+
+.nsp_bottom_interface,
+.nsp_top_interface { overflow:hidden; width:auto; margin: 0 0 8px; }
+.nsp_bottom_interface { margin:0; padding-top:6px; }
+.nsp_bottom_interface div,
+.nsp_top_interface div { float:right; }
+/* pagination */
+
+.nsp_bottom_interface .pagination li,
+.nsp_top_interface .pagination li,
+.nsp_bottom_interface .pagination li.active,
+.nsp_top_interface .pagination li.active { float:left; border:none !important; width:12px; height:11px; background:transparent url('../black_and_white_images/nsp_interface.png') no-repeat 50% 0!important; text-indent: -999em!important; margin:5px 0 0 5px; cursor:pointer; padding:0 !important; }
+.nsp_bottom_interface .pagination li:hover,
+.nsp_bottom_interface .pagination li.active,
+.nsp_top_interface .pagination li:hover,
+.nsp_top_interface .pagination li.active { background-position: 50% -11px!important; cursor:pointer; }
+.nsp_top_interface .pagination,
+.nsp_bottom_interface .pagination { border:none !important; float:left; width:auto; padding:0 16px 0 0 !important; list-style-type:none; margin:0; }
+.nsp_bottom_interface .counter,
+.nsp_top_interface .counter { padding:0 3px !important; font-size:9px; font-size:90%; font-weight:normal !important; height:14px; line-height:14px; background:#888; color:#fff !important; cursor:pointer; float:left; margin:0 0 0 16px !important; }
+.nsp_bottom_interface .counter span,
+.nsp_top_interface .counter span { color:#ffffff !important; }
+/* buttons: prev & next */
+
+.nsp_bottom_interface .prev,
+.nsp_top_interface .prev,
+.nsp_bottom_interface .next,
+.nsp_top_interface .next { background: transparent url('../black_and_white_images/nsp_interface.png') no-repeat 0 -62px; float:left; border:none !important; height:20px; width:20px; margin:0 0 0 4px; cursor:pointer; text-indent:-999em; padding:0 !important; }
+.nsp_bottom_interface .prev:hover,
+.nsp_top_interface .prev:hover { background-position: 0 -82px }
+.nsp_bottom_interface .next,
+.nsp_top_interface .next { background-position: 0 -22px }
+.nsp_bottom_interface .next:hover,
+.nsp_top_interface .next:hover { background-position: 0 -42px }
+/* article layout*/
+
+.nsp_arts { overflow:hidden; }
+.nsp_art div { overflow:hidden; padding:0 10px; }
+.nsp_art h4.nsp_header cufon { padding-bottom:4px; }
+.nsp_art h4.nsp_header { margin-bottom:6px; font-size:100%; }
+.nsp_art p.nsp_text { float:none; }
+.nsp_art p.nsp_info { font-size:85%; margin:6px 0; }
+.nsp_art .tleft { text-align:left; }
+.nsp_art .tright { text-align:right; }
+.nsp_art .tcenter { text-align:center; }
+.nsp_art .tjustify { text-align:justify; }
+.nsp_art .fleft { float:left; }
+.nsp_art .fright { float:right; }
+.nsp_art .fnone { clear:both; width:100%; float:none; }
+.nsp_art { float:left; }
+.readon_class.left,
+.readon_class.right,
+.readon_class.center { clear:both; }
+.readon_class.left { float:left; }
+.readon_class.right { float:right; }
+.readon_class.center { display:inline; float:none; }
+.nsp_links ul li h4 a { }
+.nsp_links ul li h4 { font-size:100%; line-height:130%; }
+.nsp_links ul li p { margin:0; font-size:11px; line-height: 180% }
+.nsp_links ul li { margin:0; padding:6px 0 3px; height:auto; border-bottom:none; }
+.nsp_links ul { padding:0; margin:0; list-style-type:none; clear:none!important; }
+.nsp_arts.left { float:right; }
+.nsp_links_wrap.left { float:left; }
+.nsp_arts.right { float:left; }
+.nsp_links_wrap.right { float:right; }
+.nsp_main .unvisible { height:1px; left:-10000px; overflow:hidden; position:absolute; top:auto; width:1px; }
+.nsp_avatar { margin-bottom:-5px; }
+.nsp_image { border:1px solid #dadada; padding:6px; }
+a:hover .nsp_image { border:1px solid #d7d7d7; background: #edece7 }
+.nsp_art .readon { margin-top: 6px; }
+a.nsp_comments { background: transparent url('../black_and_white_images/style1/icon_comments.png') no-repeat 0 1px; padding-left: 20px; }
+.nsp_k2store_price { font-family:Georgia,"Times New Roman",Times,serif;font-size:18px; line-height: 22px;font-style:italic;font-weight:normal; color: #C03131; margin: 0 0 0 12px}
+/* suffix: nsp (dedicated for interface)*/
+
+.moduletable.nsp { position: relative; }
+.nsp .nsp_top_interface { position: absolute; right: 18px; top: 9px; }
+.nsp .nsp_top_interface .pagination li,
+.nsp .nsp_top_interface .pagination li.active,
+.nsp .nsp_top_interface .prev,
+.nsp .nsp_top_interface .next { background-image: url('../black_and_white_images/nsp_interface_suffix-nsp.png ') !important; }
+.border1 .nsp_top_interface .pagination li,
+.border1 .nsp_top_interface .pagination li.active,
+.border1 .nsp_top_interface .prev,
+.border1 .nsp_top_interface .next,
+.border2 .nsp_top_interface .pagination li,
+.border2 .nsp_top_interface .pagination li.active,
+.border2 .nsp_top_interface .prev,
+.border2 .nsp_top_interface .next,
+.border3 .nsp_top_interface .pagination li,
+.border3 .nsp_top_interface .pagination li.active,
+.border3 .nsp_top_interface .prev,
+.border3 .nsp_top_interface .next,
+.border4 .nsp_top_interface .pagination li,
+.border4 .nsp_top_interface .pagination li.active,
+.border4 .nsp_top_interface .prev,
+.border4 .nsp_top_interface .next { background-image: url('../black_and_white_images/nsp_interface.png ') !important; }
+/* 
+ * Image Show
+ */
+ 
+.gk_is_wrapper-template { position:relative; width:auto; float:left; overflow:hidden; }
+.gk_is_wrapper-template .gk_is_slides { position:relative; overflow:hidden; }
+.gk_is_wrapper-template .gk_is_slide { position:absolute; left:0; top:0; }
+.slide-links .gk_is_slide,
+.slide-links .gk_is_stripe { cursor:pointer; }
+.gk_is_wrapper-template .gk_is_text_data { /*unvisible*/ display:none; }
+.gk_is_wrapper-template .gk_is_preloader { position:absolute; z-index:128; top:0; left:0; background:#fff url('../black_and_white_images/loader.gif') no-repeat center center; width:100%; height:100%; text-indent:-999em; }
+.gk_is_text { position: absolute; z-index:100; background: transparent url('../black_and_white_images/gk_is_bg.png') repeat 0 0; }
+.gk_is_text h4 { padding:20px 15px 15px; font-size:28px; line-height: 28px; font-family: Georgia, "Times New Roman", Times, serif !important; font-weight: normal; font-style: italic }
+.gk_is_text h4 a { color: #373737; }
+.gk_is_text h4 a span { color: #999 }
+.gk_is_text h4 a:hover { color: #858585; }
+.gk_is_text p { padding:0 15px 15px 15px; }
+.gk_is_text .readon { border:none; background:transparent url('../black_and_white_images/gk_is_readon.png') no-repeat center center; text-indent:-999em; display:inline-block; float:none; }
+.gk_is_text .readon:hover { background:transparent url('../black_and_white_images/gk_is_readon.png') no-repeat center center; }
+.gk_is_stripe { position: absolute; top: 0; float: left; height: 100%; z-index: 99; }
+.gk_is_pagination { position:absolute; z-index:101; list-style-type:none; }
+.gk_is_pagination li { width:auto; cursor:pointer; float:left; margin-right:15px; border:none!important; color:#fff; font-size:20px; }
+.gk_is_pagination li.active { color:#ddd; }
+
+
+/*
+ *	K2 Store
+ */
+ 
+.k2store_item_price { font-family:Georgia, "Times New Roman", Times, serif; font-size:24px; line-height:24px; font-style:italic; font-weight:normal; margin: 20px 0 }
+.k2store_item_price .k2store_item_price_value { color: #c03131; font-size: 32px; }
+.moduletable_content #container { background:  none; margin:0; padding: 0; width: auto; }
+.moduletable_content table#cart { border-collapse: collapse; border-spacing:0 2px; margin-bottom: 1em; width: 100%; }
+.moduletable_content table#cart tr { border: 1px solid #e5e5e5; background: #f9f9f9 }
+.moduletable_content table#cart tr td { padding: 8px 5px; }
+.moduletable_content table#cart #total_price { font-weight: bold; color: #c03131; }
+table#cart .quantity input { text-align: center; }
+table#cart tr.odd td { background: #f9f9f9; }
+table.k2store_orders { border: 1px solid #ccc; font-weight: bold; }
+table.k2store_orders th { background: #006b68; color: #fff; text-align: left; white-space: nowrap; }
+tr.k2store_table_footer td { border-top: 1px solid #ccc; }
+
+/* Restriction */
+
+.color1 .moduletable_content #container { background:  none; margin:0; padding: 0; width: auto; }
+.color1 .moduletable_content table#cart tr { border: 1px solid #333; border-bottom: 1px solid #474747; }
+.color1 .moduletable_content table#cart tr td { background: #3a3a3a }
+.color1 .moduletable_content table#cart #total_price,
+.color1 .moduletable_content table#cart .extended_price { color: #fff; font-weight: bold }
+.color2 .moduletable_content table#cart tr { border: 1px solid #d2d2cb; border-bottom: 1px solid #f3f3ec; }
+.color2 .moduletable_content table#cart tr td { background: #d9d9d1 }
+.color2 .moduletable_content table#cart #total_price { color: #666; font-weight: bold }
+/* Checkout 
+---------------------------------------------------*/ 
+
+table#cart th { background:#efeee9 !important; color: #666 !important; font-family:Georgia, "Times New Roman", Times, serif; font-size:19px; line-height:32px; font-style:italic; font-weight:normal; text-align: left; white-space: nowrap; }
+table#cart th,
+table#cart td { padding:5px 10px; }
+table#cart tr { border-bottom: 1px dotted #dadada; }
+table#cart tr td { padding: 8px 0 }
+#total_price_td,
+#sbox-content #total_price { font-size: 18px; font-family:Georgia, "Times New Roman", Times, serif; font-size:24px; line-height:48px; font-style:italic; font-weight:normal; color: #c03131; }
+#container > h3 { color:#373636; font-size:250%; line-height:110%; margin:0 0 30px; padding:20px 0 0; }
+/* Login 
+---------------------------------------------------*/
+
+.k2storeLogin,
+.k2storeNewusers,
+.k2storeGuests { clear: both; background: none; padding-bottom: 20px; margin: 20px 0 80px; height: 160px }
+.k2storeNewusers,
+.k2storeGuests { margin-bottom: 20px; }
+.k2storeLogin .componentheading,
+.k2storeNewusers .componentheading,
+.k2storeGuests .componentheading { font-family:Georgia, "Times New Roman", Times, serif; font-size: 24px; line-height:32px; font-style:italic; font-weight:normal; }
+.k2storeLogin ul li { list-style-type: none; margin: 0 20px 0 0; float: left }
+.rememberMe { float: left; clear: both; width: 14%; margin: 20px 0 40px }
+.rememberMe .inputbox { margin-top: 4px }
+.k2storeLogin ul.loginLinks { float: left; margin: 20px 0 40px; clear: none }
+.k2storeLogin ul.loginLinks li { padding: 0 }
+.k2storeLogin .button { float: none; margin-top: 10px }
+.k2storeUserLogin .inputbox,
+.k2storeUserPassword .inputbox { border: 1px solid #ddd; padding: 8px; width: 96%; margin-bottom: 20px; }
+.k2storeUserLogin { float: none; width: 40%; margin: 0 0 10px; height: 60px }
+.k2storeUserPassword { float: none; width: 40%; height: 60px }
+.k2storeNewusers .button,
+.k2storeGuests .button { float: none; margin: 20px 0 0; }
+#k2store_order_item table.orderDetailTable td,
+#k2store_order_item table.orderDetailTable th { text-align: center; }
+#k2store_order_item table.orderDetailTable td.k2store_total { text-align: right; }
+/* My Cart 
+---------------------------------------------------*/
+
+.mycart { overflow: hidden; border-top: 1px dotted #dadada; border-bottom: 1px dotted #dadada; padding: 8px; margin: 6px 0 0; background: #F3F2ED}
+.mycart label {float: left; margin: 0 12px 0 0}
+.mycart input[type="submit"], .mycart input[type="button"] { margin: 4px 0 0 12px;}
