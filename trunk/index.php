@@ -326,7 +326,7 @@ jQuery.noConflict();
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=1');?>"><img src="images/phongsangtrong1.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=2');?>"><img src="images/phongsangtrong2.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=3');?>"><img src="images/phongsangtrong3.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phong4.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phongsangtrong4.jpg"/></a></li>
 					</ul>
 					
 					<a href="#" class="more">Xem thêm...</a>
@@ -338,7 +338,7 @@ jQuery.noConflict();
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=5');?>"><img src="images/phongcaocap2.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=6');?>"><img src="images/phongcaocap2.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=7');?>"><img src="images/phongcaocap3.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=8');?>"><img src="images/phong 8.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=8');?>"><img src="images/phongcaocap8.jpg"/></a></li>
 					</ul>
 					<a href="#" class="more">Xem thêm...</a>
 					<div class="clear"></div>
@@ -346,7 +346,7 @@ jQuery.noConflict();
 				<div class="loaiphong">
 					<h3>Loại C: 800$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phong4.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phongsangtrong4.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=10');?>"><img src="images/phong 10.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=11');?>"><img src="images/phong 11.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=12');?>"><img src="images/phong 12.jpg"/></a></li>
