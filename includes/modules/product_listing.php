@@ -12,7 +12,7 @@
 ?>
 
 <?php 
-  $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS, 'r.room_type');
+  $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS, 'rt.room_type_categories');
 
   if ( ($listing_split->number_of_rows > 0) && ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '2') ) ) {
 ?>
@@ -32,7 +32,7 @@
       case 'PRODUCT_LIST_PRICE':
         $lc_text = 'Giá';
         $lc_align = 'center';
-        break;      
+        break;       
       case 'PRODUCT_LIST_BUY_NOW':
         $lc_text = 'Đặt phòng';
         $lc_align = 'center';
@@ -65,29 +65,29 @@
         switch ($column_list[$col]) {        
           case 'PRODUCT_LIST_NAME':
             $lc_align = '';
-            if (isset($HTTP_GET_VARS['room_type'])) {
-            $p_name = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_image=' . $listing['room_image']) . '">' . $listing['room_name'] . '</a>';
+            if (isset($HTTP_GET_VARS['room_type_categories'])) {
+            $p_name = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_image=' . $listing['room_type_image']) . '">' . $listing['room_type_name'] . '</a>';
             } else {
-            $p_name = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_image=' . $listing['room_image']) . '">' . $listing['room_name'] . '</a>';
+            $p_name = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_image=' . $listing['room_type_image']) . '">' . $listing['room_type_name'] . '</a>';
             }
             break;        
           case 'PRODUCT_LIST_PRICE':
             $lc_align = 'center';
             if (tep_not_null($listing['specials_new_products_price'])) {
-           $p_price = $lc_text = '<s>' .  $currencies->display_price($listing['room_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</s>&nbsp; <span class="productSpecialPrice">' . $currencies->display_price($listing['specials_new_products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</span>';
+           $p_price = $lc_text = '<s>' .  $currencies->display_price($listing['room_type_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</s>&nbsp; <span class="productSpecialPrice">' . $currencies->display_price($listing['specials_new_products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</span>';
             } else {
-           $p_price = $lc_text = '<span class="productSpecialPrice">' . $currencies->display_price($listing['room_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</span>';
+           $p_price = $lc_text = '<span class="productSpecialPrice">' . $currencies->display_price($listing['room_type_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</span>';
             }
             break;         
           case 'PRODUCT_LIST_IMAGE':
           	  $lc_align = 'center';
-     	   if (isset($HTTP_GET_VARS['room_type'])) {
-              $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_id=' . $listing['room_id'] ) .  '">' .tep_image(DIR_WS_IMAGES . $listing['room_image'], $listing['room_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
+     	   if (isset($HTTP_GET_VARS['room_type_categories'])) {
+              $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_id=' . $listing['room_type_id'] ) .  '">' .tep_image(DIR_WS_IMAGES . $listing['room_type_image'], $listing['room_type_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
              // $lc_text = '<a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['room_image'], $listing['room_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';                         
             } else {
-             $lc_text = '<a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') ) . '">' . tep_image(DIR_WS_IMAGES . $listing['room_image'], $listing['room_id'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';             
+             $lc_text = '<a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') ) . '">' . tep_image(DIR_WS_IMAGES . $listing['room_type_image'], $listing['room_type_id'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';             
             }
-             break;
+             break;       
           case 'PRODUCT_LIST_BUY_NOW':
             $lc_align = 'center';
             $lc_text = '<a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=buy_now&products_id=' . $listing['products_id']) . '">' . tep_image_button('button_buy_now.gif', IMAGE_BUTTON_BUY_NOW) . '</a>&nbsp;';

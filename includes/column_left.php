@@ -42,17 +42,17 @@
 	
     	<!--******************************************************loai phong**********-->
      <div id="danhmuc" class="moduletable color2">
-		<h3>DANH MỤC PHÒNG </h3>
+		<h3>DANH Má»¤C PHÃ’NG </h3>
         <div class="moduletable_content">
             <div class="k2CategoriesListBlock  color2" id="k2ModuleBox47">
 	           <ul class="level0">
-                <li><a href=""><span>Phòng  hội ngộ ( 5)</span></a>
+                <li><a href=""><span>Phòng Hội Nghị ( 5)</span></a>
                     <ul class="level1">
                         <li><a href=""><span>Living Room design (5)</span></a></li>
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type=1');?>"><span>Loại phòng A ( 20)</span></a></li>
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type=2');?>"><span>Loại phòng B ( 25)</span></a></li>
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type=3');?>"><span>Loại phòng C ( 40)</span></a></li>
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type=4');?>"><span>Loại phòng D ( 15)</span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=1');?>"><span>Phòng Sang Trọng ( 20)</span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=2');?>"><span>Phòng Cao Cấp ( 25)</span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=3');?>"><span>Phòng Gia Đình ( 40)</span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=4');?>"><span>Phòng Hội Nghị ( 15)</span></a></li>
                     </ul>
                 </li>
                </ul>
@@ -60,23 +60,23 @@
         </div>
 		<!--
 <div class="line">
-			<label>Phòng  h?i  ngh? ( 5) </label>
+			<label>PhÃ²ng  h?i  ngh? ( 5) </label>
 		</div>
         
 		<div class="line">
-			<label>Lo?i  phòng  A ( 20) </label>
+			<label>Lo?i  phÃ²ng  A ( 20) </label>
 		</div>
         
 		<div class="line">
-			<label>Lo?i  phòng  B ( 25)</label>
+			<label>Lo?i  phÃ²ng  B ( 25)</label>
 		</div>
         
 		<div class="line">
-			<label>Lo?i  phòng  C ( 40)</label>
+			<label>Lo?i  phÃ²ng  C ( 40)</label>
 		</div>
         
         <div class="line">
-			<label>Lo?i  phòng  D ( 15)</label>
+			<label>Lo?i  phÃ²ng  D ( 15)</label>
 		</div>
 
         <div class="clear"></div>
