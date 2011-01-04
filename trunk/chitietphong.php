@@ -158,12 +158,13 @@ jQuery.noConflict();
 		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>
 		<div id="mainContent">
 		<?php 
-			if (isset($HTTP_GET_VARS['room_id'])){
-	   		$listing_sql1 = "select  room_description,room_price,room_image from " . room .  "  where room_id= '" . (int)$HTTP_GET_VARS['room_id'] . "' ";
+			if (isset($HTTP_GET_VARS['room_type_id'])){
+	   		$listing_sql1 = "select  room_type_description,room_type_price,room_type_image from " . room_type .  "  where room_type_id= '" . (int)$HTTP_GET_VARS['room_type_id'] . "' ";
 	  	    }
 	  	    $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);
-	      	$listing_query1 = tep_db_query($listing_split1->sql_query);
-	        $listing1 = tep_db_fetch_array($listing_query1);
+      		$listing_query1 = tep_db_query($listing_split1->sql_query);
+	        $listing1 = tep_db_fetch_array($listing_query1);     
+	         
 //			$image=images.'/'.$HTTP_GET_VARS['room_image'];
 //			$description=$HTTP_GET_VARS['room_description'];	
 //			$price='$'.$HTTP_GET_VARS['room_price'];
@@ -180,7 +181,7 @@ jQuery.noConflict();
         <div class="itemHeader">
         <?php
 		echo tep_customer_greeting(); 
-        echo "\r\n customer :".$_SESSION['customer_id'];
+        //echo "\r\n customer :".$_SESSION['customer_id'];
 		 ?>
             <h2 class="itemTitle">A1</h2>
         </div>
@@ -198,7 +199,7 @@ jQuery.noConflict();
             <div class="itemImageBlock">
 		      <span class="itemImage">
     		  	<a title="Click to preview image" href="http://localhost/Khotel/media/k2/items/cache/4965657af186b9092c7a96976ffe881c_XL.jpg" class="modal">
-		  		  <img style="width: 600px; height: 400px;" alt="A1" src="<?php echo images.'/'.$listing1['room_image'];?>"/>
+		  		  <img style="width: 600px; height: 400px;" alt="A1" src="<?php echo images.'/'.$listing1['room_type_image'];?>"/>
                 </a>
               </span>
             </div>
@@ -211,12 +212,12 @@ jQuery.noConflict();
 <!--				Á và các món ăn đặc sản Việt Nam. Hồ bơi ngoài trời, phòng tập thể dục-->
 <!--				sẽ giúp bạn thư giãn sau những giây phút làm việc căng thẳng mệt mỏi. -->
 <!--				CenDeluxe Hotel được đánh giá là khách sạn 5 sao đầu tiên tại Phú Yên.</p>              -->
-				<?php echo $listing1['room_description'];?>;
+				<?php echo $listing1['room_type_description'];?>;
                 </div>            
         </div>				
                 <div class="k2store_item_price">
                     <span class="item_price_label">Giá phòng : </span>
-                    <span class="k2store_item_price_value">&nbsp;<?php echo '$'.$listing1['room_price'] ;?> </span>                    
+                    <span class="k2store_item_price_value">&nbsp;<?php echo '$'.$listing1['room_type_price'] ;?> </span>                    
                 </div>
                 <input type="submit" value="Đặt phòng" onclick="javascript:showDatphongForm();" />
 				<div class="view">
@@ -252,7 +253,7 @@ jQuery.noConflict();
                 			</div>
                 			<div class="line">
                 			<label for="email">&#272;&#7883;a ch&#7881; email </label>
-                			<input id="email" value="<?php echo $listing['customers_email_address'];?>"  type="text" class="text" name="email"/>
+                			<input id="email" value="<?php echo $listing['customers_email_address'];?>" readonly type="text" class="text" name="email"/>
                 			</div>
                 			<div class="line">
                 			<label for="diachi"> &#272;&#7883;a ch&#7881;  </label>

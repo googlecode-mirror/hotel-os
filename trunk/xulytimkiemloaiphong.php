@@ -5,7 +5,8 @@
   if(isset($HTTP_GET_VARS['room_type'])){
 	   $define_list = array('PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
 	                         'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,                         
-	                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,                                   
+	                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,
+	   						'PRODUCT_LIST_MANUFACTURER' => PRODUCT_LIST_MANUFACTURER,	                                   
 	                         'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
 	
 	    asort($define_list);

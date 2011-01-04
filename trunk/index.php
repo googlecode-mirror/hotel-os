@@ -278,14 +278,14 @@ jQuery.noConflict();
 		<div id="mainContent">
 		<?php
 		echo tep_customer_greeting(); 
-        echo "\r\n customer :".$_SESSION['customer_id'];
+       // echo "\r\n customer :".$_SESSION['customer_id'];
 		 ?>
 		<?php 
-		if(isset($HTTP_GET_VARS['room_type'])){
+		if(isset($HTTP_GET_VARS['room_type_categories'])){
 			// include(DIR_WS_MODULES . FILENAME_SEARCH_TYPE_ROOM);
 			 $define_list = array('PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
 	                         'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,                         
-	                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,                                   
+	                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,   			 				                                  
 	                         'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
 	
 	    asort($define_list);
@@ -298,23 +298,22 @@ jQuery.noConflict();
 	    for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
 	      switch ($column_list[$i]) {
 	        case 'PRODUCT_LIST_IMAGE':
-	          $select_column_list .= 'r.room_image, ';
+	          $select_column_list .= 'rt.room_type_image, ';
 	          break;
 	        case 'PRODUCT_LIST_NAME':
-	          $select_column_list .= 'r.room_name, ';
+	          $select_column_list .= 'rt.room_type_name, ';
 	          break;        
 	      }
 	    }	    
-	    if (isset($HTTP_GET_VARS['room_type'])){
-	   	$listing_sql = "select  " . $select_column_list . " r.room_id, r.room_description,r.room_price, r.room_image from " . room .  " r where r.room_type= '" . (int)$HTTP_GET_VARS['room_type'] . "' ";
+	    if (isset($HTTP_GET_VARS['room_type_categories'])){
+	   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt where rt.room_type_categories= '" . (int)$HTTP_GET_VARS['room_type_categories'] . "' ";
 	    }
 	    else {
-	   	$listing_sql = "select  " . $select_column_list . " r.room_id, r.room_name, r.room_description,r.room_price, r.room_image from " . room .  " r ";
+	   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt ";
 	    }
-//	     $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS);
-//	      $listing_query = tep_db_query($listing_split->sql_query);
-//	      $listing = tep_db_fetch_array($listing_query);
-//	    echo $listing['room_description'];
+		?>
+		<h6> Khách hàng : <?php echo $customer_first_name;?> </h6>
+		<?php 
 	    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 	  
 		}
 		else { ?>	
@@ -327,7 +326,7 @@ jQuery.noConflict();
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=1');?>"><img src="images/phong1.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=2');?>"><img src="images/phong2.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=3');?>"><img src="images/phong3.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=4');?>"><img src="images/phong4.jpeg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=4');?>"><img src="images/phong4.jpg"/></a></li>
 					</ul>
 					
 					<a href="#" class="more">Xem thêm...</a>
@@ -347,7 +346,7 @@ jQuery.noConflict();
 				<div class="loaiphong">
 					<h3>Loại C: 800$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phong4.jpeg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phong4.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=10');?>"><img src="images/phong 10.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=11');?>"><img src="images/phong 11.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=12');?>"><img src="images/phong 12.jpg"/></a></li>
