@@ -323,10 +323,10 @@ jQuery.noConflict();
 				<div class="loaiphong">
 					<h3>Loại A( phòng hội nghị): 1500$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=1');?>"><img src="images/phong1.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=2');?>"><img src="images/phong2.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=3');?>"><img src="images/phong3.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=4');?>"><img src="images/phong4.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=1');?>"><img src="images/phongsangtrong1.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=2');?>"><img src="images/phongsangtrong2.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=3');?>"><img src="images/phongsangtrong3.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phong4.jpg"/></a></li>
 					</ul>
 					
 					<a href="#" class="more">Xem thêm...</a>
@@ -335,9 +335,9 @@ jQuery.noConflict();
 				<div class="loaiphong">
 					<h3>Loại B: 1200$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=5');?>"><img src="images/phong5.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=6');?>"><img src="images/phong6.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=7');?>"><img src="images/phong7.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=5');?>"><img src="images/phongcaocap2.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=6');?>"><img src="images/phongcaocap2.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=7');?>"><img src="images/phongcaocap3.jpg"/></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=8');?>"><img src="images/phong 8.jpg"/></a></li>
 					</ul>
 					<a href="#" class="more">Xem thêm...</a>
