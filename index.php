@@ -317,6 +317,25 @@ jQuery.noConflict();
 	    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 	  
 		}
 		else { ?>	
+		<?php
+		//Lấy số phòng còn trống của mỗi loại của ngày hiện tại
+		$datecurent=date("Y-m-d"); 
+		//echo $datecurent; 			
+		$listing_sql2="select * from  status_room  where  status_room_dayofyear ='".$datecurent."'";		
+		$listing_split2 = new splitPageResults($listing_sql2, MAX_DISPLAY_SEARCH_RESULTS);
+	    $listing_query2 = tep_db_query($listing_split2->sql_query);
+	    $listing2 = tep_db_fetch_array($listing_query2);
+	   // echo $listing2['status_room_number_room_type_luxury1']; 
+	    //Lấy sluong fong
+	    function getroomtype($a){
+	    	$listing_sql2="select * from  room_type  where  room_type_id ='".$a."'";		
+		$listing_split2 = new splitPageResults($listing_sql2, MAX_DISPLAY_SEARCH_RESULTS);
+	    $listing_query2 = tep_db_query($listing_split2->sql_query);
+	    $listing2 = tep_db_fetch_array($listing_query2);
+	    return $listing2[room_type_count];
+	    }
+	    echo getroomtype($listing2['status_room_number_room_type_luxury1']);
+		?>
 			<h3 class="welcome">Chào mừng quý khách đã đến với hệ thống Booking online của khách sạn chúng tôi. Đến với khách sạn quý khách sẽ bắt gặp thái độ phục vụ chuyên nghiệp, nhanh chóng. Kính chúc các bạn có kỳ nghỉ 	thoải mái ở khách sạn chúng tôi.</h3>
 			<div id="showloaiphong">
 				<p>Hiện tại khách sạn cung cấp một số loại phòng sau: </p>
