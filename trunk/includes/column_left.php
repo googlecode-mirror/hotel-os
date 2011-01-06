@@ -42,13 +42,12 @@
 	
     	<!--******************************************************loai phong**********-->
      <div id="danhmuc" class="moduletable color2">
-		<h3>DANH Má»¤C PHÃ’NG </h3>
+		<h3>DANH MỤC LOẠI PHÒNG </h3>
         <div class="moduletable_content">
             <div class="k2CategoriesListBlock  color2" id="k2ModuleBox47">
 	           <ul class="level0">
-                <li><a href=""><span>Phòng Hội Nghị ( 5)</span></a>
-                    <ul class="level1">
-                        <li><a href=""><span>Living Room design (5)</span></a></li>
+                <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>"><span>Nhóm loại phòng</span></a>
+                    <ul class="level1">                        
                         <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=1');?>"><span>Phòng Sang Trọng ( 20)</span></a></li>
                         <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=2');?>"><span>Phòng Cao Cấp ( 25)</span></a></li>
                         <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=3');?>"><span>Phòng Gia Đình ( 40)</span></a></li>
