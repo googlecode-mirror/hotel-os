@@ -300,14 +300,16 @@
 
 // navigation history
   if (tep_session_is_registered('navigation')) {
-    if (PHP_VERSION < 4) {
-      $broken_navigation = $navigation;
-      $navigation = new navigationHistory;
-      $navigation->unserialize($broken_navigation);
-    }
+        if (PHP_VERSION < 4) {
+          $broken_navigation = $navigation;
+          $navigation = new navigationHistory;
+          $navigation->unserialize($broken_navigation);
+        } else {
+          $navigation = new navigationHistory;
+        }
   } else {
-    tep_session_register('navigation');
-    $navigation = new navigationHistory;
+        tep_session_register('navigation');
+        $navigation = new navigationHistory;
   }
   $navigation->add_current_page();
 
