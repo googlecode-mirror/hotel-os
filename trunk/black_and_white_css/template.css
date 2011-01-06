@@ -79,7 +79,7 @@ div.logo p { font-size:11px; font-family:Verdana, sans-serif; line-height:12px; 
 
 #gk-top a { color: #858585; font-size: 12px; }
 #gk-top a:hover { color: #858585; text-decoration:underline; }
-.gk-search { display: block; float: right; margin: 45px 0 0 16px; }
+.gk-search { display: block; float: right; margin: 54px 0 0 16px; }
 #btn_login,
 #btn_twitter,
 #btn_fb { cursor:pointer; display:block; float:right; width:21px; height:21px; border:none; text-indent:-10000px; text-align:left; background:transparent url('images/social_icons.png') no-repeat -4px 0; margin: 55px 0 0 6px!important; }

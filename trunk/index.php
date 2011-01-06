@@ -92,15 +92,15 @@ window.addEvent("domready", function() {
  });
  });
 });
-var K2RatingURL = 'http://localhost/Khotel/';
+var K2RatingURL = '<?php echo HTTPS_SERVER.DIR_WS_HTTP_CATALOG ?>';
  </script>
 <!--[if IE 8.0]><link rel="stylesheet" href="http://localhost/Khotel/templates/gk_blackandwhite/css/ie8.css" type="text/css" /><![endif]-->
 <!--[if IE 7.0]><link rel="stylesheet" href="http://localhost/Khotel/templates/gk_blackandwhite/css/ie.css" type="text/css" /><![endif]-->
 <!--[if IE 7.0]><style>.clearfix { display: inline-block; } /* IE7xhtml*/</style><![endif]-->
 
 <script type="text/javascript">
-var siteurl='http://localhost/Temp_NuTrang/';
-var tmplurl='http://localhost/Khotel/templates/gk_blackandwhite';
+var siteurl='<?php echo HTTPS_SERVER.DIR_WS_HTTP_CATALOG ?>';
+var tmplurl='templates/gk_blackandwhite';
 </script>
 
 <script src="js/jquery-1.4.2.min.js"></script>
@@ -115,9 +115,9 @@ jQuery.noConflict();
 <script src="js/MyScript.js"></script>
 
 
-<link href="http://localhost/Khotel/templates/gk_blackandwhite/css/menu/mega.css" rel="stylesheet" type="text/css" /><script src="http://localhost/Khotel/templates/gk_blackandwhite/js/menu/mega.js" language="javascript" type="text/javascript"></script>
+<link href="templates/gk_blackandwhite/css/menu/mega.css" rel="stylesheet" type="text/css" /><script src="templates/gk_blackandwhite/js/menu/mega.js" language="javascript" type="text/javascript"></script>
 
-<link href="http://localhost/Khotel/templates/gk_blackandwhite/fonts/DroidSans/stylesheet.css" rel="stylesheet" type="text/css" /><link href="http://localhost/Khotel/templates/gk_blackandwhite/fonts/League_Gothic/stylesheet.css" rel="stylesheet" type="text/css" />
+<link href="templates/gk_blackandwhite/fonts/DroidSans/stylesheet.css" rel="stylesheet" type="text/css" /><link href="templates/gk_blackandwhite/fonts/League_Gothic/stylesheet.css" rel="stylesheet" type="text/css" />
 <style type="text/css">	
 
 	body {
@@ -170,15 +170,15 @@ jQuery.noConflict();
          <div id="gk_is-newsimage1" class="gk_is_wrapper gk_is_wrapper-template slide-links">
             	<div class="gk_is_preloader">Loading...</div>
             	<div class="gk_is_slides" style="width: 978px;height: 362px;">
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/175244front2.jpg</span>
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/630481img1.jpg</span>
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/285113img2.jpg</span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/175244front2.jpg' ); ?></span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/630481img1.jpg' ); ?></span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/285113img2.jpg' ); ?></span>
             
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/484496slide5.jpg</span>
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/916235slide6.jpg</span>
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/750852slide3.jpg</span>
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/797216slide8.jpg</span>
-            								<span class="gk_is_slide">http://localhost/Temp_NuTrang/black_and_white_images/664703bedroom.jpg</span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/484496slide5.jpg' ); ?></span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/916235slide6.jpg' ); ?></span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/750852slide3.jpg' ); ?></span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/797216slide8.jpg' ); ?></span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/664703bedroom.jppg' ); ?></span>
             			
             	</div>
             
