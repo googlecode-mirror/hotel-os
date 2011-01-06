@@ -84,7 +84,7 @@ window.addEvent("domready", function() {
 		});
 	});
 });
-var K2RatingURL = 'http://localhost/Khotel/';
+var K2RatingURL = 'http://kyo00710.byethost16.com/Temp_NuTrang/';
   </script>
 
 
@@ -95,8 +95,8 @@ var K2RatingURL = 'http://localhost/Khotel/';
 <!--[if IE 7.0]><style>.clearfix { display: inline-block; } /* IE7xhtml*/</style><![endif]-->
 
 <script type="text/javascript">
-var siteurl='http://localhost/Temp_NuTrang/';
-var tmplurl='http://localhost/Khotel/templates/gk_blackandwhite';
+var siteurl='http://kyo00710.byethost16.com/Temp_NuTrang/';
+var tmplurl='http://kyo00710.byethost16.com/Temp_NuTrang/templates/gk_blackandwhite';
 </script>
 
 <script src="js/jquery-1.4.2.min.js"></script>
@@ -111,10 +111,8 @@ jQuery.noConflict();
 <script src="js/MyScript.js"></script>
 
 
-
-<link href="http://localhost/Khotel/templates/gk_blackandwhite/css/menu/mega.css" rel="stylesheet" type="text/css" /><script src="http://localhost/Khotel/templates/gk_blackandwhite/js/menu/mega.js" language="javascript" type="text/javascript"></script>
-
-<link href="http://localhost/Khotel/templates/gk_blackandwhite/fonts/DroidSans/stylesheet.css" rel="stylesheet" type="text/css" /><link href="http://localhost/Khotel/templates/gk_blackandwhite/fonts/League_Gothic/stylesheet.css" rel="stylesheet" type="text/css" />
+<link href="templates/gk_blackandwhite/css/menu/mega.css" rel="stylesheet" type="text/css" /><script src="templates/gk_blackandwhite/js/menu/mega.js" language="javascript" type="text/javascript"></script>
+<link href="templates/gk_blackandwhite/fonts/DroidSans/stylesheet.css" rel="stylesheet" type="text/css" /><link href="templates/gk_blackandwhite/fonts/League_Gothic/stylesheet.css" rel="stylesheet" type="text/css" />
 <style type="text/css">	
 
 /*	body {

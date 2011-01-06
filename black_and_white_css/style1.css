@@ -101,7 +101,7 @@ div.mod_latestnews ul li, div.mod_mostread ul li { background: transparent url('
 
 /* joomla.css */
 input, select, textarea, .inputbox { background:#fff; border: 1px solid #e5e5e5; color: #666; }
-#mod_search_searchword { background:#fff url('../black_and_white_images/style1/search_icon.png') no-repeat 140px 10px; border:1px solid #DFDED1; color:#9B9B91; }
+#mod_search_searchword { background:#fff url('../black_and_white_images/style1/search_icon.png') no-repeat 140px 10px; border:1px solid #DFDED1; color:#9B9B91;  height: 22px; width: 170px; }
 .adminform button, #adminForm button, .button, a.readon, input[type="submit"], input[type="button"], .text .gk_is_text_block p a { border: 1px solid #9b9886; color:#fff; background:#a8a592; }
 .adminform button:hover, .adminform button:focus, #adminForm button:hover, #adminForm button:focus, .button:hover, .button:focus, a.readon:hover, a.readon:focus, input[type="submit"]:hover, input[type="submit"]:focus, input[type="button"]:hover, input[type="button"]:focus, .text .gk_is_text_block p a:hover, .text .gk_is_text_block p a:focus { background: #373636; border-color: #222; }
 .componentheading, h2.page_title { color: #373636; border-bottom: 1px solid #e5e5e5; }
