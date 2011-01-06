@@ -298,7 +298,7 @@
     }
   }
 
-// navigation history
+//  navigation history
   if (tep_session_is_registered('navigation')) {
         if (PHP_VERSION < 4) {
           $broken_navigation = $navigation;
