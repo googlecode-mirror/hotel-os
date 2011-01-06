@@ -1,0 +1,41 @@
+/*
+#------------------------------------------------------------------------
+# Black & White - October2010 (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+* { font-family: Arial, Verdana, sans-serif; font-size: 12px; }
+html,
+body { height:100%; color:#aaa; }
+body { line-height:1.9; background:#e8e7df url('../../images/style1/bg.jpg') repeat 0 0; min-height:100%; margin:0; padding:0; color:#666!important; }
+a { color: #858585; text-decoration:none; }
+a:hover, a:active, a:focus { color: #858585; text-decoration:underline; }
+/* containers */
+#bg-wrap { background: transparent url('../../images/stripes.png') repeat-x 0 0; }
+.top { min-height:90px; margin:0 auto; width:1002px; }
+.top div { background:transparent url('../../images/logo_bg.png') no-repeat 0 0; border-top: 8px solid #1d1d1d; float:left; height:69px; padding:0; width:210px; }
+
+#frame { width: 1002px; margin: 0 auto; padding-bottom:175px; }
+#errorboxbody { width:400px; margin:0 auto; }
+
+
+h1,
+h2 { line-height: 100px; font-size: 100px; margin: 20px auto; border-bottom: none; text-align:center; }
+h2 { font-size: 30px; margin: 0 0 20px; line-height: 40px; }
+p.admincontact { border: none!important; }
+ul { list-style-type: square; padding: 0 0 0 36px; }
+ol { padding: 0; list-style-position: inside; }
+ol li,
+ ol li strong { font-size: 13px !important; line-height: 120%; font-weight: normal }
+#techinfo { text-align:center; }

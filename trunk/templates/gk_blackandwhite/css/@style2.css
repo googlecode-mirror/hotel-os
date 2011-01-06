@@ -1,0 +1,119 @@
+/*
+#------------------------------------------------------------------------
+# Black & White - October2010 (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+/* Style 1 */
+
+/* template.css */
+a:hover,
+a:active,
+a:focus { color: #b87900; }
+#bg-wrap { background: transparent url('../images/style2/bg_image.jpg') no-repeat center 0; }
+.gk-menu ul.level0 div.childcontent ul li:hover,
+.gk-menu ul.level0 div.childcontent ul li:hover>a { color: #b87900; }
+.gk-menu ul.level0 div.childcontent div.group-title .menu-title { color:#534c4b; }
+.color > h3 { background: #534c4b; }
+.border2.moduletable { border: 4px solid #b87900}
+.border2 > h3 { color: #b87900; }
+/* joomla.css */
+.adminform button,
+#adminForm button,
+.button,
+a.readon,
+input[type="submit"],
+input[type="button"],
+.text .gk_is_text_block p a { border: 1px solid #2d2625; background:transparent url('../images/style2/btn.png') repeat-x 0 0; }
+.adminform button:hover,
+.adminform button:focus,
+#adminForm button:hover,
+#adminForm button:focus,
+.button:hover,
+.button:focus,
+a.readon:hover,
+a.readon:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="button"]:focus,
+.text .gk_is_text_block p a:hover,
+.text .gk_is_text_block p a:focus { color: #fff!important; }
+ul.pagination li:hover { background:transparent url('../images/style2/btn.png') repeat 0 bottom; }
+.article-meta a.comments { color: #534c4b }
+.tool-title { background:#534c4b; }
+.sectiontableheader a:hover { color: #534c4b; }
+.results h4 a {color: #534c4b}
+.gk-bottom .mod_banners .footer a { color: #534c4b; }
+.moduletable_menu ul.menu li { background:transparent url('../images/style2/arrow.png') no-repeat 18px 17px; }
+.moduletable_menu ul.menu li.active>a { color:#534c4b;  }
+/* gk_stuff.css */
+#popup_login ul li { background: transparent url('../images/style2/arrow.png') no-repeat 0 center; }
+#comments .comment-anchor, #comments .comment-author  { color: #b87900; }
+.comments-form-message-error, .comments-form-message-info { background: #534c4b;}
+.tabcolor1 ul.gk_tab_ul-style1 li { background: #000; border-right: 1px solid #282828 !important; border-bottom: 1px solid #000; }
+.tabcolor2 ul.gk_tab_ul-style1 li { background: #b87900; border-right: 1px solid #cb8500 !important; border-bottom: 1px solid #b87900; }
+.tabcolor3 ul.gk_tab_ul-style1 li { background: #534C4B; border-right: 1px solid #6a6463 !important; border-bottom: 1px solid #534C4B; }
+ul.gk_tab_ul-style1 li:hover,
+ul.gk_tab_ul-style1 li.active { background: #fafafa; border-bottom: 1px solid #fafafa; border-right: 1px solid #d8d8d8 !important; color: #000 }
+.gk_is_text a.readon { background: transparent url('../images/style2/gk_is_button.png') no-repeat 50% 0; }
+/* k2.css */
+.latestItemHeader .latestItemTitle a:hover,
+.genericItemHeader .genericItemTitle a:hover,
+.userItemHeader .userItemTitle a:hover,
+.catItemHeader .catItemTitle a:hover { color:#b87900; }
+.itemToolbar .itemAuthor a { color: #b87900; }
+.latestItemTagsBlock ul.latestItemTags li a,
+.userItemTagsBlock ul.userItemTags li a,
+.catItemTagsBlock ul.catItemTags li a,
+.itemTagsBlock ul.itemTags li a { color:#534c4b; }
+.itemComments ul.itemCommentsList li span.commentAuthorName { color: #b87900 }
+.latestItemReadMore a.k2ReadMore,
+.userItemReadMore a.k2ReadMore,
+.catItemReadMore a.k2ReadMore { color: #534c4b}
+.k2LatestCommentsBlock ul li span.lcUsername { color:#534c4b; }
+.k2ItemsBlock ul li a.moduleItemReadMore { color: #534c4b; }
+.k2TagCloudBlock a:hover { background: #534c4b; }
+/* typo.css */
+.gk_blockTextLeft, .gk_blockTextRight, .gk_blockTextCenter { color:#534c4b; }
+pre, .gk_code1 { border-left:3px solid #534c4b !important; }
+.gk_code2 { border-top:3px solid #534c4b; border-bottom:3px solid #534c4b; }
+.gk_code3 { border-top:1px solid #534c4b; border-bottom:1px solid #534c4b; }
+.gk_code3 h4 { background:#fff; color:#534c4b; text-align: center }
+blockquote div.gk_blockquote1 { background:transparent url(../images/style2/typography/open1.png) no-repeat left bottom; }
+blockquote div.gk_blockquote1 div { background:transparent url(../images/style2/typography/close1.png) no-repeat right top; }
+blockquote div.gk_blockquote2 { background:transparent url(../images/style2/typography/open1.png) no-repeat left top; }
+blockquote div.gk_blockquote2 div { background:transparent url(../images/style2/typography/close1.png) no-repeat right top; }
+blockquote div.gk_blockquote3 { background:transparent url(../images/style2/typography/open2.png) no-repeat left bottom; }
+blockquote div.gk_blockquote3 div { background:transparent url(../images/style2/typography/close2.png) no-repeat right top; }
+blockquote div.gk_blockquote4 { background:transparent url(../images/style2/typography/open2.png) no-repeat left top; }
+blockquote div.gk_blockquote4 div { background:transparent url(../images/style2/typography/close2.png) no-repeat right top; }
+div.gk_legend4 h4:first-child, div.gk_legend6 h4:first-child { border:solid 1px #534c4b; }
+div.gk_legend1, div.gk_legend6 { border:solid 1px #534c4b; }
+div.gk_legend2, div.gk_legend4 { border-top:solid 1px #534c4b; border-bottom:solid 1px #534c4b; }
+.gk_highlight-3 { background: #534c4b; }
+span.gk_clear-1 { border-top:1px solid #534c4b; border-bottom:1px solid #534c4b; }
+span.gk_color { color: #534c4b; }
+span.gk_color-1 { background: #534c4b; }
+span.gk_color-4 { border: 1px solid #534c4b; }
+ul.gk_circle1 { list-style-image:url(../images/style2/typography/bullet3ul.png) !important; }
+ul.gk_bullet1 { list-style-image:url(../images/style2/typography/bullet_ol_1_dark.png) !important; }
+ul.gk_bullet2 { list-style-image:url(../images/style2/typography/bullet1ul.png) !important; }
+ul.gk_bullet3 { list-style-image:url(../images/style2/typography/bullet2ul.png) !important; }
+ul.gk_bullet4 { list-style-image:url(../images/style2/typography/bullet_ol_1_color.png) !important; }
+ul.gk_square2 { list-style-image:url(../images/style2/typography/bullet_squ1_dark.png) !important; }
+ul.gk_square3 { list-style-image:url(../images/style2/typography/bullet_squ1_color.png) !important; }
+div.gk_number1 span { background:transparent url(../images/style2/typography/bullet_ol_2.png) no-repeat center center; }
+div.gk_number2 span { background:transparent url(../images/style2/typography/bullet_ol_2_color.png) no-repeat center center; }

@@ -1,0 +1,54 @@
+/*
+#------------------------------------------------------------------------
+# Black & White - October2010 (for Joomla 1.5)
+#
+# Copyright (C) 2007-2010 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com   
+#------------------------------------------------------------------------ 
+# Based on T3 Framework
+#------------------------------------------------------------------------
+# Copyright (C) 2004-2009 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - GNU/GPL, http://www.gnu.org/copyleft/gpl.html
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites: http://www.joomlart.com - http://www.joomlancers.com
+#------------------------------------------------------------------------
+*/
+
+.tools_size_btn, #btn_login, #btn_twitter, #btn_fb { opacity: 0.6; }
+.tools_size_btn:hover, #btn_login:hover, #btn_twitter:hover, #btn_fb:hover { opacity: 1.0; }
+
+.moduletable > h3,
+.moduletable_text > h3,
+.moduletable_menu > h3,
+#gk-nav #gk-mainnav .level0>li>a,
+#gk-nav #gk-mainnav .level0>li>span { text-shadow: 0 0 3px #000; }
+.border1 > h3,
+.border2 > h3,
+.border3 > h3,
+.border4 > h3,
+.moduletable.color2 > h3,
+.gk-bottom .moduletable>h3,
+.gk-bottom .moduletable_menu>h3,
+.gk-bottom .moduletable_text>h3 { text-shadow: 0 0 3px #999; }
+
+.moduletable.bigtitle h3,
+.moduletable.smalltitle h3, 
+.moduletable.light1 h3, 
+.moduletable.light2 h3,
+.moduletable.light3 h3 { text-shadow: none}
+
+.gk-menu ul.level0 div.childcontent a { text-shadow: 1px 1px 1px #78735d; }
+
+
+
+#t3_logo { opacity: 0.5; }
+#t3_logo:hover { opacity: 1.0; }
+
+#gk-popup { box-shadow:inset 0 -5px 15px #080808; -moz-box-shadow:inset 0 -5px 15px #080808; -webkit-box-shadow:inset 0 -5px 15px #080808; }
+
+.latestItemTagsBlock ul.latestItemTags li,
+.userItemTagsBlock ul.userItemTags li,
+.catItemTagsBlock ul.catItemTags li,
+.itemTagsBlock ul.itemTags li { -moz-border-radius: 9px; -webkit-border-radius: 9px; border-radius: 9px;}

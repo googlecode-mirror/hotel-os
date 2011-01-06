@@ -1,0 +1,10 @@
+<p>Fixed problem with popups in IE8</p>
+<p>Changes in template options code structure</p>
+<p>Quickstart updated with new News Show Pro GK4 v.2.0</p>
+
+Changed files:<br /><br />
+- templateDetails.xml<br />
+- css/ie8.css<br />
+
+Added files/directories:<br /><br />
+- admin/
