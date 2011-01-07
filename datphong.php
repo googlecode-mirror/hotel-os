@@ -138,6 +138,12 @@ jQuery.noConflict();
 		<div id="mainContent">
 		      <h2 style="text-align: center;">THÔNG TIN ĐĂNG KÝ ĐẶT PHÒNG</h2>
            <div id="datphongForm" title="THÔNG TIN ĐẶT PHÒNG">
+           <!--check chọn người đặt phòng-->
+           <?php ?>
+           <input id="setMyself" type="radio" name="setRoom" class="payment" value="0"/>Đặt phòng cho chính bạn
+           <input id="setFor" type="radio" name="setRoom" class="payment" value="1"/>Đặt phòng cho người khác
+           
+           
                 <form id="signupForm" method="post" action="xulydangky.php">
                 	<div id="thongtinkhach">
                             <div class="line">
@@ -181,8 +187,8 @@ jQuery.noConflict();
                             
                             <div class="line">
                             <p>Phương thức thanh toán</p>                			
-                			<input id="cash" type="radio" name="payment" class="payment" value="cash"/>Tiền mặt
-                            <input id="card" type="radio" name="payment" class="payment" value="card"/>Thẻ tín dụng
+                			<input id="cash" type="radio" name="payment" class="payment" value="0"/>Tiền mặt
+                            <input id="card" type="radio" name="payment" class="payment" value="1"/>Thẻ tín dụng
                 			</div>
                 	</div>
                 	<div id="thongtinthe" class="hidden">                		

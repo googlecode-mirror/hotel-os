@@ -60,7 +60,7 @@ define('BOX_HEADING_CONFIGURATION', 'Quản lý khách sạn');
 define('BOX_CONFIGURATION_MYSTORE', 'My Store');
 define('BOX_CONFIGURATION_LOGGING', 'Logging');
 define('BOX_CONFIGURATION_CACHE', 'Cache');
-define('BOX_CONFIGURATION_ADMINISTRATORS', 'Bộ phận quản lý');
+define('BOX_CONFIGURATION_ADMINISTRATORS', 'Chủ khách sạn');
 
 // modules box text in includes/boxes/modules.php
 define('BOX_HEADING_MODULES', 'Modules');

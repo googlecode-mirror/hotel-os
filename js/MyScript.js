@@ -223,8 +223,8 @@ function showDatphongForm(){
 
 var lastBodyThe='';
 jQuery(document).ready(function($){
-    $("input:radio").change(function(){
-       if($("input:radio:checked").val()=='0'){
+    $("input:radio[name=payment]").change(function(){        
+       if($("input:radio[name=payment]:checked").val()=='0'){
         lastBodyThe = $("#thongtinthe").html();
         $("#thongtinthe").html("Xin quý khách vui lòng liên hệ phòng tiếp tân của chúng tôi để rõ hơn chi tiết");        
        }else if(lastBodyThe.length > 0){

@@ -342,10 +342,10 @@ jQuery.noConflict();
 				<div class="loaiphong">
 					<h3>Loại A( phòng hội nghị): 1500$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=1');?>"><img src="images/phongsangtrong1.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=2');?>"><img src="images/phongsangtrong2.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=3');?>"><img src="images/phongsangtrong3.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phongsangtrong4.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=1');?>"><img src="images/phongsangtrong1.jpg"/><span>Price:$1500</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=2');?>"><img src="images/phongsangtrong2.jpg"/><span>Price:$1500</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=3');?>"><img src="images/phongsangtrong3.jpg"/><span>Price:$1500</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phongsangtrong4.jpg"/><span>Price:$1500</span></a></li>
 					</ul>
 					
 					<a href="#" class="more">Xem thêm...</a>
@@ -354,10 +354,10 @@ jQuery.noConflict();
 				<div class="loaiphong">
 					<h3>Loại B: 1200$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=5');?>"><img src="images/phongcaocap2.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=6');?>"><img src="images/phongcaocap2.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=7');?>"><img src="images/phongcaocap3.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=8');?>"><img src="images/phongcaocap8.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=5');?>"><img src="images/phongcaocap2.jpg"/><span>Price:$1200</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=6');?>"><img src="images/phongcaocap2.jpg"/><span>Price:$1200</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=7');?>"><img src="images/phongcaocap3.jpg"/><span>Price:$1200</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=8');?>"><img src="images/phongcaocap8.jpg"/><span>Price:$1200</span></a></li>
 					</ul>
 					<a href="#" class="more">Xem thêm...</a>
 					<div class="clear"></div>
@@ -365,20 +365,20 @@ jQuery.noConflict();
 				<div class="loaiphong">
 					<h3>Loại C: 800$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phongsangtrong4.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=10');?>"><img src="images/phong 10.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=11');?>"><img src="images/phong 11.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=12');?>"><img src="images/phong 12.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phongsangtrong4.jpg"/><span>Price:$800</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=10');?>"><img src="images/phong 10.jpg"/><span>Price:$800</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=11');?>"><img src="images/phong 11.jpg"/><span>Price:$800</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=12');?>"><img src="images/phong 12.jpg"/><span>Price:$800</span></a></li>
 					</ul>
 					<a href="#" class="more">Xem thêm...</a>
 				</div>
 				<div class="loaiphong">
 					<h3>Loại D: 400$ <input type="submit" value="Đặt phòng"/></h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=13');?>"><img src="images/phong 16.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=14');?>"><img src="images/phong 13.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=15');?>"><img src="images/phong 14.jpg"/></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=16');?>"><img src="images/phong 15.jpg"/></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=13');?>"><img src="images/phong 16.jpg"/><span>Price:$400</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=14');?>"><img src="images/phong 13.jpg"/><span>Price:$400</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=15');?>"><img src="images/phong 14.jpg"/><span>Price:$400</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=16');?>"><img src="images/phong 15.jpg"/><span>Price:$400</span></a></li>
 					</ul>
 					<a href="#" class="more">Xem thêm...</a>
 				</div>

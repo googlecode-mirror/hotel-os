@@ -68,6 +68,7 @@ width:69%;
 	float:left;
 	width:28%;
 	margin-right:5px;
+line-height:25px;
 }
 #search .text{
 	width:69%;
@@ -397,12 +398,18 @@ float:left;
 }
 .loaiphong ul li{
 width:155px;
-height:105px;
+height:125px;
 display:inline;
 margin:6px;
 float:left;
 position:relative;
 }
+.loaiphong ul li span{
+bottom:-105px;
+position:relative;
+left:40px;
+}
+
 .loaiphong ul li img{
 -ms-interpolation-mode: bicubic; /* IE Fix for Bicubic Scaling */
 /*border: 1px solid #ddd;*/

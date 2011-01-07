@@ -24,17 +24,11 @@
     			<label>Ng&agrave;y &#273;i </label>
     			<input type='text' class='text'/>
     		</div>
-    		<div>
-    			<label>Ph&ograve;ng</label>
-    			<label>Ng&#432;&#7901;i l&#7899;n </label>
-    			<label>Tr&#7867; em </label>
+    		<div class="line">
+    			<label>Loại Ph&ograve;ng</label>
+                <input type='text' class='text'/>
     		</div>
-    		<div>
-    			<input type='text' class='mintext'/>
-    			<input type='text' class='mintext'/>
-    			<input type='text' class='mintext'/>
-    		</div>
-    		<input  type="submit" value="T&igrave;m ki&#7871;m"/>
+    		<input  type="submit" value="T&igrave;m ki&#7871;m" style="margin: 10px 0 0 0;"/>
         </div>
 		
         <div class="clear"></div>
@@ -57,29 +51,7 @@
                </ul>
             </div>
         </div>
-		<!--
-<div class="line">
-			<label>PhÃ²ng  h?i  ngh? ( 5) </label>
-		</div>
-        
-		<div class="line">
-			<label>Lo?i  phÃ²ng  A ( 20) </label>
-		</div>
-        
-		<div class="line">
-			<label>Lo?i  phÃ²ng  B ( 25)</label>
-		</div>
-        
-		<div class="line">
-			<label>Lo?i  phÃ²ng  C ( 40)</label>
-		</div>
-        
-        <div class="line">
-			<label>Lo?i  phÃ²ng  D ( 15)</label>
-		</div>
 
-        <div class="clear"></div>
--->
 	</div>
     
 </div>
