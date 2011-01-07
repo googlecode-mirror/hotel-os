@@ -245,6 +245,12 @@ jQuery.noConflict();
            <div id="datphongForm" title="THÔNG TIN ĐẶT PHÒNG" class="hidden">
                 <form id="signupForm" method="post" action="xulydatphong.php">
                 	<div id="thongtinkhach">
+                    
+                    <!--check chọn người đặt phòng-->
+                       <?php ?>
+                       <input id="setMyself" type="radio" name="setRoom" class="payment" value="0"/>Đặt phòng cho chính bạn
+                       <input id="setFor" type="radio" name="setRoom" class="payment" value="1"/>Đặt phòng cho người khác
+           
                             <div class="line">
                 			<label for="hoten"> Họ tên KH </label>
                 			<input id="hoten" value="<?php echo $customer_first_name;?>" type="text" class="text" name="name" />
