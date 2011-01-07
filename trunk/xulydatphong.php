@@ -32,7 +32,9 @@
 		                      'booking_form_account_id' => $accuont_id,
 		                      'booking_form_payment_methods_id' =>  $payment,
 		                      'booking_form_number_room' =>  $numberroom);
+	  
 	  tep_db_perform(booking_form, $sql_data_array);
+	  $booking_form_id= tep_db_insert_id();   
 	  echo "Thanh cong";
   }
    catch ( Exception $e){
