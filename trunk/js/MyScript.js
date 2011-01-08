@@ -213,8 +213,7 @@ function showDatphongForm(){
            jQuery("#datphongForm").removeClass('hidden');
     jQuery("#datphongForm").dialog({
         modal:true,
-        width:600,
-        position:[400,-100],
+        width:460,
         zIndex:1000,
         resizable:false
         

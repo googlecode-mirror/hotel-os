@@ -18,6 +18,7 @@ require('includes/application_top.php');
 	
 ?>	<html>
 		<head>			
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	 <link rel="stylesheet" href="style.css" />
 	</head>
 		<body>
@@ -37,7 +38,7 @@ require('includes/application_top.php');
 	if($ok == 2)
 	{
 		echo "<form action=cart.php method=post>";
-		echo count($_SESSION['cart_room']);
+	//	echo count($_SESSION['cart_room']);
 	    foreach($_SESSION['cart_room'] as $key=>$value)
 	    {
 	    	$item[]=$key;

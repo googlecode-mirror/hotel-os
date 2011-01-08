@@ -124,12 +124,22 @@ jQuery.noConflict();
 
 </head>
 <body id="bd" class="fs3 FF">
-<div id="main">
-    <?php require(DIR_WS_INCLUDES . 'header_top.php'); ?>
-	<!-- header //-->
+
+    <?php require(DIR_WS_INCLUDES . 'popup.php'); ?>
+
+<div id="bg-wrap">
+	<!-- header top //--><?php require(DIR_WS_INCLUDES . 'header_top.php'); ?>
+	<!-- header top_eof //-->
+    <div id="gk-wrapper-content" class="main"> 
+        <div id="gk-wrapper-content2">
+
+	        <a name="Top" id="top"></a> 
+            
+            <!-- header -->
 	<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
+            <!-- end header -->
 	<!-- header_eof //-->
-	<div id="content">
+	<div id="gk-container">
 		<!-- left_navigation //-->
 		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
 		<!-- left_navigation_eof //-->
@@ -218,7 +228,8 @@ jQuery.noConflict();
                 		<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="success.php">
                 </form>
             </div>
-            <div class="clear"></div>
+            <div class="clear"></div> </div>
+            </div>
 		</div>
 	</div>
 	<!-- footer //-->

@@ -84,7 +84,7 @@ window.addEvent("domready", function() {
 		});
 	});
 });
-var K2RatingURL = 'http://kyo00710.byethost16.com/Temp_NuTrang/';
+var K2RatingURL = '<?php echo HTTPS_SERVER.DIR_WS_HTTP_CATALOG ?>';
   </script>
 
 
@@ -95,8 +95,8 @@ var K2RatingURL = 'http://kyo00710.byethost16.com/Temp_NuTrang/';
 <!--[if IE 7.0]><style>.clearfix { display: inline-block; } /* IE7xhtml*/</style><![endif]-->
 
 <script type="text/javascript">
-var siteurl='http://kyo00710.byethost16.com/Temp_NuTrang/';
-var tmplurl='http://kyo00710.byethost16.com/Temp_NuTrang/templates/gk_blackandwhite';
+var siteurl='<?php echo HTTPS_SERVER.DIR_WS_HTTP_CATALOG ?>';
+var tmplurl='templates/gk_blackandwhite';
 </script>
 
 <script src="js/jquery-1.4.2.min.js"></script>
@@ -143,12 +143,21 @@ jQuery.noConflict();
 
 </head>
 <body id="bd" class="fs3 FF">
-<div id="main">
-    <?php require(DIR_WS_INCLUDES . 'header_top.php'); ?>
-	<!-- header //-->
-	<?php require(DIR_WS_INCLUDES . 'header.php'); ?>
+
+<?php require(DIR_WS_INCLUDES . 'popup.php'); ?>
+<div id="bg-wrap">
+	<!-- header top //--><?php require(DIR_WS_INCLUDES . 'header_top.php'); ?>
+	<!-- header top_eof //-->
+    <div id="gk-wrapper-content" class="main"> 
+        <div id="gk-wrapper-content2">
+
+	        <a name="Top" id="top"></a> 
+            
+            <!-- header -->
+            <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
+            <!-- end header -->
 	<!-- header_eof //-->
-	<div id="content">
+	<div id="gk-container">
 		<!-- left_navigation //-->
 		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
 		<!-- left_navigation_eof //-->
@@ -202,14 +211,7 @@ jQuery.noConflict();
               </span>
             </div>
                 <div class="itemIntroText">
-                    <p class="gioithieu"><b>Giới thiệu: </b>
-<!--				Tọa lạc tại khu tập trung các công ty, dịch vụ, giải trí , -->
-<!--				nhà hàng khách sạn nổi tiếng tại Thành phố Tuy Hòa – Phú Yên. -->
-<!--				Khách sạn có 1 khu vực giải trí tuyệt đẹp có thể quan sát toàn-->
-<!--				bộ thành phố Tuy Hòa. Với 4 nhà hàng chuyên phục vụ các món ăn Âu,-->
-<!--				Á và các món ăn đặc sản Việt Nam. Hồ bơi ngoài trời, phòng tập thể dục-->
-<!--				sẽ giúp bạn thư giãn sau những giây phút làm việc căng thẳng mệt mỏi. -->
-<!--				CenDeluxe Hotel được đánh giá là khách sạn 5 sao đầu tiên tại Phú Yên.</p>              -->
+                    <p class="gioithieu"><b>Giới thiệu: </b></p>
 				<?php echo $listing1['room_type_description'];?>;
                 </div>            
         </div>				
@@ -227,47 +229,13 @@ jQuery.noConflict();
 							<li><a href="#"><img src="images/phong 8.jpg"/></a></li>
 					</ul>
 				</div>
-				
-<!--
-<div class="view">
-					<h3>Các phòng cùng lo?i</h3>
-					<ul> 
-							<li><a href="#"><img src="images/phong 5.jpg"/></a></li>
-							<li><a href="#"><img src="images/phong 6.jpg"/></a></li>
-							<li><a href="#"><img src="images/phong 7.jpg"/></a></li>
-							<li><a href="#"><img src="images/phong 8.jpg"/></a></li>
-					</ul>
-				</div>
--->
-
 			<div class="clear"></div>
             
            <div id="datphongForm" title="THÔNG TIN ĐẶT PHÒNG" class="hidden">
+           
+           <p style="font-weight: bold;">Xin vui lòng chọn ngày đến và đi của bạn.</p>
                 <form id="signupForm" method="post" action="xulydatphong.php">
                 	<div id="thongtinkhach">
-                    
-                    <!--check chọn người đặt phòng-->
-                       <?php ?>
-                       <input id="setMyself" type="radio" name="setRoom" class="payment" value="0"/>Đặt phòng cho chính bạn
-                       <input id="setFor" type="radio" name="setRoom" class="payment" value="1"/>Đặt phòng cho người khác
-           
-                            <div class="line">
-                			<label for="hoten"> Họ tên KH </label>
-                			<input id="hoten" value="<?php echo $customer_first_name;?>" type="text" class="text" name="name" />
-                			</div>
-                			<div class="line">
-                			<label for="email">&#272;&#7883;a ch&#7881; email </label>
-                			<input id="email" value="<?php echo $listing['customers_email_address'];?>" readonly type="text" class="text" name="email"/>
-                			</div>
-                			<div class="line">
-                			<label for="diachi"> &#272;&#7883;a ch&#7881;  </label>
-                			<input id="diachi" value="<?php echo $listing['customers_lastname'];?>"  type="text" class="text" name="address"/>
-                			</div>      
-                			<div class="line">
-                			<label for="dienthoai">&#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c </label>
-                			<input id="dienthoai" value="<?php echo $listing['customers_telephone'];?>"  type="text" class="text" name="telephone"/>
-                			</div>
-                            
                             <div class="line">
                 			<label for="dateden"> Ngày đến  </label>
                 			<input id="dateden" type="text" class="text" name="dateden"/>
@@ -276,65 +244,18 @@ jQuery.noConflict();
                 			<label for="datedi"> Ngày đi  </label>
                 			<input id="datedi" type="text" class="text" name="datedi"/>
                 			</div>
-                            
-                         <!--
-     
-                            <div class="line">
-                			<label for="slphong"> S? lu?ng phòng  </label>
-                			<input id="slphong" type="text" class="text" name="slphong"/>
-                			</div>
-
-                            
--->
-                            <div class="line">
-                			<label for="nguoilon"> Số người lớn  </label>
-                			<input id="nguoilon" type="text" class="text" name="nguoilon"/>
-                			</div>
-                             
-                             <div class="line">
-                			<label for="treem"> Số trẻ em  </label>
-                			<input id="treem" type="text" class="text" name="treem"/>
-                			</div>
-                            
-                            <div class="line">
-                            <p>Phương thức thanh toán</p>                			
-                			<input id="cash" type="radio" name="payment" class="payment" value="0"/>Tiền mặt
-                            <input id="card" type="radio" name="payment" class="payment" value="1"/>Thẻ tín dụng
-                			</div>
-                	</div>
-                	<div id="thongtinthe" class="hidden">                		
-                			<div class="line">
-                			<label for="tenchuthe"> T&ecirc;n Ch&#7911; Th&#7867; </label>
-                			<input id="tenchuthe" type="text" class="text" name="tenchuthe"/>
-                			</div>
-                			
-                			<div class="line">
-                			<label> Lo&#7841;i th&#7867; </label>
-                			<select name="s" size="1"	>
-                			<option value="1" selected="selected">Mater Card</option>		
-                			<option value="2"> Visa Card</option>                			
-                			</select>
-                			</div>
-                			<div class="line">
-                			
-                			<label for="sothe">  S&#7889; th&#7867; </label>
-                			<input id="sothe" type="text" class="text" name="sothe"/>
-                			</div>
-                			<div> 			
-                			   <INPUT TYPE="checkbox" NAME="checkbox" VALUE="checkbox"> 
-                			   T&ocirc;i ch&#7845;p nh&#7853;n v&#7899;i c&aacute;c &#273;i&#7873;u kho&#7843;n tr&ecirc;n
-                			</div>
-                		
-                	</div>
-                		<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="success.php">
+                   </div>
+                   <input type="submit" value="Chấp nhận" onclick="success.php">
                 </form>
             </div>
 		</div>
 	</div>
+ </div>
+ </div>
 	<!-- footer //-->
 	<?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
 	<!-- footer_eof //-->
-</div>
+ </div>
 </body>
 
 <?php require(DIR_WS_INCLUDES . 'application_bottom.php'); ?>
