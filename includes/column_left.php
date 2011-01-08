@@ -26,7 +26,16 @@
     		</div>
     		<div class="line">
     			<label>Loại Ph&ograve;ng</label>
-                <input type='text' class='text'/>
+                <select id="cb_loaiphong" class='text'>
+                    <option value="0">Phòng sang trọng</option>
+                    <option value="1">Phòng cao cấp</option>
+                    <option value="2">Phòng gia đình</option>
+                    <option value="3">Phòng hội nghị</option>
+                </select>
+    		</div>
+            <div class="line">
+    			<label>SL phòng </label>
+    			<input type='text' class='text'/>
     		</div>
     		<input  type="submit" value="T&igrave;m ki&#7871;m" style="margin: 10px 0 0 0;"/>
         </div>

@@ -12,7 +12,7 @@ require('includes/application_top.php');
 	else
 	{
 		//echo $id;		
-	  unset($_SESSION['cart_room'][$id]);
+	  unset($_SESSION['cart_room'][intval($id)]);
 	 //echo "gfgf";
 	}
 	//header("location:cart.php");
