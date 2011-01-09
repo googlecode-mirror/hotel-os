@@ -231,8 +231,7 @@ jQuery(document).ready(function($){
        }
        $("#thongtinthe").removeClass("hidden");
     });
-    
-    if($("#signupForm").html() == null) return;
+   if($("#signupForm").html() == null) return;
     $("#signupForm").validate({
         rules:{
             hoten   : "required",
@@ -288,5 +287,8 @@ jQuery(document).ready(function($){
                 digits:"Số thẻ gồm các chữ số từ 1-9"
             } 
         }
-    });
+    }); 
+    
 });
+
+/*************************** cart **********************************/

@@ -173,7 +173,7 @@ tr.k2store_table_footer td { border-top: 1px solid #ccc; }
 /* Checkout 
 ---------------------------------------------------*/ 
 
-table#cart th { background:#efeee9 !important; color: #666 !important; font-family:Georgia, "Times New Roman", Times, serif; font-size:19px; line-height:32px; font-style:italic; font-weight:normal; text-align: left; white-space: nowrap; }
+table#cart th { background:#efeee9 !important; color: #666 !important; font-family:Arial, Helvetica, "Times New Roman", Times, serif; font-size:19px; line-height:32px; font-style:italic; font-weight:normal; text-align: left; white-space: nowrap; }
 table#cart th,
 table#cart td { padding:5px 10px; }
 table#cart tr { border-bottom: 1px dotted #dadada; }
