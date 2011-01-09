@@ -1,0 +1,6 @@
+table#cart td p{
+text-indent:1em;
+}
+input[type="button"] .cart_button{
+    margin: 10px 15px 0 5px;
+}
