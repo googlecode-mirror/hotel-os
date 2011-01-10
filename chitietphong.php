@@ -235,7 +235,7 @@ jQuery.noConflict();
            
            <p style="font-weight: bold;margin: 7px 0;">Xin vui lòng chọn ngày đến và đi của bạn.</p>
                 
-            <form id="signupForm" class="cart_form" method="post" action="newcart.php">
+            <form id="signupForm" class="cart_form" method="post" action="addcart.php?room_type_id=<?php echo (int)$HTTP_GET_VARS['room_type_id'];?>">
 
                 	<div id="thongtinkhach">
                             <div class="line">
