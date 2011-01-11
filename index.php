@@ -314,15 +314,17 @@ jQuery.noConflict();
 		?>
 		<h6> Khách hàng : <?php echo $customer_first_name;?> </h6>
 		<?php 
-	    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 	
+	    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 
+	    $roomnum=2;	
 //		function testsearch($dayto,$daygo,$countday,$room_type_id){
 //				$room_dayto=getroomofdate($dayto);
 //				$room_daygo=getroomofdate($daygo);
 //				while ($listing = tep_db_fetch_array($listing_query)) {
-//					if(getroomtype($listing['room_type_id'],$listing[""])){
-//					
+//					if(getroomtype($listing['room_type_id'],$listing2['room_type_id'])){
+//						
 //					}
 //				}  
+//		}
 		}
 		else { ?>	
 		<?php

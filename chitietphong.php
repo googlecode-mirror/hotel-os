@@ -235,22 +235,21 @@ jQuery.noConflict();
            
            <p style="font-weight: bold;margin: 7px 0;">Xin vui lòng chọn ngày đến và đi của bạn.</p>
                 
-            <form id="signupForm" class="cart_form" method="post" action="addcart.php?room_type_id=<?php echo (int)$HTTP_GET_VARS['room_type_id'];?>">
+            <form id="signupForm" class="cart_form" method="post" action="<?php echo tep_href_link('addcart.php','room_type_id='.$HTTP_GET_VARS['room_type_id']);?>">
 
                 	<div id="thongtinkhach">
                             <div class="line">
                 			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="dateden"/>
+                			<input id="dateden" type="text" class="text" name="datede"/>
                 			</div> 
                             <div class="line">
                 			<label for="datedi"> Ngày đi  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
+                			<input id="datedi" type="text" class="text" name="dated"/>
                 			</div>
-                   </div>
-                   <input type="submit" value="Chấp nhận">
-               
+                   </div>                          
+                   
+                   <input type="submit" value="Chấp nhận">               
  </form>
-
                     <!--
 <div class="mycart">
 					<form id="cart_form" class="cart_form" action="index.php?option=com_k2store&view=mycart&format=ajax&order_code=$item->id" method="post">

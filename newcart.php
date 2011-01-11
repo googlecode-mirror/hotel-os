@@ -66,7 +66,7 @@
                   echo "<p align=right>  ". number_format($_SESSION['cart_room'][$row[room_type_id]]*$row[room_type_price],3) ." VND</p>";
                   echo "</td>";
                   echo "</tr>";
-                  $total+=$_SESSION['cart_room'][$row[room_type_id]]*$row[room_type_price];
+                  $total +=intval($_SESSION['cart_room'][$row[room_type_id]])*$row[room_type_price];
             }
              ?>
             <tr>

@@ -47,6 +47,7 @@
   define('FILENAME_PRIVACY', 'privacy.php');
   define('FILENAME_PRODUCT_INFO', 'product_info.php');
   define('FILENAME_PRODUCT_LISTING', 'product_listing.php');
+  define('FILENAME_PRODUCT_LISTING2', 'product_listing2.php');
   define('FILENAME_SEARCH_TYPE_ROOM','xulytimkiemloaiphong.php');
   define('FILENAME_PRODUCT_REVIEWS', 'product_reviews.php');
   define('FILENAME_PRODUCT_REVIEWS_INFO', 'product_reviews_info.php');
