@@ -96,7 +96,7 @@
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="pageHeading"><?php echo 'Danh sách Quản lý' ?></td>
+            <td class="pageHeading"><?php echo HEADING_TITLE ?></td>
             <td class="pageHeading" align="right"><?php echo tep_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
           </tr>
         </table></td>
@@ -110,6 +110,7 @@
                 <td class="dataTableHeadingContent" align="right"><?php echo 'Hành động' ?>&nbsp;</td>
               </tr>
 <?php
+
   $admins_query = tep_db_query("select id, user_name from " . TABLE_MANAGERS . " order by user_name");
   while ($admins = tep_db_fetch_array($admins_query)) {
     if ((!isset($HTTP_GET_VARS['aID']) || (isset($HTTP_GET_VARS['aID']) && ($HTTP_GET_VARS['aID'] == $admins['id']))) && !isset($aInfo) && (substr($action, 0, 3) != 'new')) {
@@ -123,6 +124,9 @@
     }
 ?>
                 <td class="dataTableContent"><?php echo $admins['user_name']; ?></td>
+                <td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
+                
+                 <td class="dataTableContent"><?php echo $admins['user_name']; ?></td>
                 <td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php

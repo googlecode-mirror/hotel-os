@@ -240,31 +240,17 @@ jQuery.noConflict();
                 	<div id="thongtinkhach">
                             <div class="line">
                 			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="datede"/>
+                			<input id="dateden" type="text" class="text" name="dateden"/>
                 			</div> 
                             <div class="line">
                 			<label for="datedi"> Ngày đi  </label>
-                			<input id="datedi" type="text" class="text" name="dated"/>
+                			<input id="datedi" type="text" class="text" name="datedi"/>
                 			</div>
                    </div>                          
-                   
+                   <input type="hidden" id="test" value="2356">
                    <input type="submit" value="Chấp nhận">               
  </form>
-                    <!--
-<div class="mycart">
-					<form id="cart_form" class="cart_form" action="index.php?option=com_k2store&view=mycart&format=ajax&order_code=$item->id" method="post">
-					<input type="hidden" name="option" value="com_k2store" />
-					<input type="hidden" name="task" value="cartaction" />
-					<input type="hidden" name="Itemid" value="$Itemid" />
-					<input type="hidden" id="order_code" name="order_code" value="$item->id" />
-					<label><b> $item->title : </b> <input class="center" type="text" id="quantity" name="quantity" value="1" size="3" /></label>
-					<label><b> $currency </b> $item_price </label>
-					<input type="submit" name="submit" value="$add_to_cart_text" />
-					
-					<input type="button" value="$checkout_text " onclick="window.location = '$link'"/>
-					</form>
-					</div>
--->
+            
             </div>
 		</div>
 	</div>

@@ -397,7 +397,7 @@ jQuery.noConflict();
 			<div id="showloaiphong">
 				<p>Hiện tại khách sạn cung cấp một số loại phòng sau: </p>
 				<div class="loaiphong">
-					<h3>Loại A( phòng hội nghị): 1500$ <input type="submit" value="Đặt phòng"/></h3>
+					<h3>Phòng sang trọng</h3>
 					<ul> 
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=1');?>"><img src="images/phongsangtrong1.jpg"/><span>Price:$1500</span><br><span>Phòng còn trống:<?php echo getroomtype(1,$listing2['1']); ?></span></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=2');?>"><img src="images/phongsangtrong2.jpg"/><span>Price:$1500</span><br><span>Phòng còn trống:<?php echo getroomtype(2,$listing2['2']); ?></span></a></li>
@@ -409,7 +409,7 @@ jQuery.noConflict();
 					<div class="clear"></div>
 				</div>
 				<div class="loaiphong">
-					<h3>Loại B: 1200$ <input type="submit" value="Đặt phòng"/></h3>
+					<h3>Phòng cao cấp</h3>
 					<ul> 
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=5');?>"><img src="images/phongcaocap2.jpg"/><span>Price:$1200</span><br><span>Phòng còn trống:<?php echo getroomtype(4,$listing2['4']); ?></span></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=6');?>"><img src="images/phongcaocap2.jpg"/><span>Price:$1200</span><br><span>Phòng còn trống:<?php echo getroomtype(5,$listing2['5']); ?></span></a></li>
@@ -420,7 +420,7 @@ jQuery.noConflict();
 					<div class="clear"></div>
 				</div>
 				<div class="loaiphong">
-					<h3>Loại C: 800$ <input type="submit" value="Đặt phòng"/></h3>
+					<h3>Phòng gia đình</h3>
 					<ul> 
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phongsangtrong4.jpg"/><span>Price:$800</span><br><span>Phòng còn trống:<?php echo getroomtype(7,$listing2['7']); ?></span></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=10');?>"><img src="images/phong 10.jpg"/><span>Price:$800</span><br><span>Phòng còn trống:<?php echo getroomtype(8,$listing2['8']); ?></span></a></li>
@@ -430,7 +430,7 @@ jQuery.noConflict();
 					<a href="#" class="more">Xem thêm...</a>
 				</div>
 				<div class="loaiphong">
-					<h3>Loại D: 400$ <input type="submit" value="Đặt phòng"/></h3>
+					<h3>Phòng hội nghị</h3>
 					<ul> 
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=13');?>"><img src="images/phong 16.jpg"/><span>Price:$400</span><br><span>Phòng còn trống:<?php echo getroomtype(9,$listing2['9']); ?></span></a></li>
 						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=14');?>"><img src="images/phong 13.jpg"/><span>Price:$400</span><br><span>Phòng còn trống:<?php echo getroomtype(10,$listing2['10']); ?></span></a></li>
