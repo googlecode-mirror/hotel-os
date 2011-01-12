@@ -41,4 +41,9 @@
 	    	 echo 'Exception caught: ',  $e->getMessage(), "\n";
 	    	
 	    }
+foreach($_SESSION['cart_room'] as $key=>$value){
+	if($key!=null and $value!=NULL){
+		
+	}
+}	    
 ?>

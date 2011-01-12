@@ -13,6 +13,7 @@
 ?>
 <div id="left">
 		<!--****************************************************************Tim kiem-->
+ <form id="Form_search" class="search_form" method="post" action="<?php echo tep_href_link('index.php','flag_search=1');?>">		
 	<div id="search" class="moduletable color2">
 		<h3>T&Igrave;M KI&#7870;M </h3>
         <div class="search_content">
@@ -26,23 +27,23 @@
     		</div>
     		<div class="line">
     			<label>Loại Ph&ograve;ng</label>
-                <select id="cb_loaiphong" class='text'>
-                    <option value="0">Phòng sang trọng</option>
-                    <option value="1">Phòng cao cấp</option>
-                    <option value="2">Phòng gia đình</option>
-                    <option value="3">Phòng hội nghị</option>
+                <select id="cb_loaiphong" class='text' name="cb_loaiphong">
+                    <option value="1">Phòng sang trọng</option>
+                    <option value="2">Phòng cao cấp</option>
+                    <option value="3">Phòng gia đình</option>
+                    <option value="4">Phòng hội nghị</option>
                 </select>
     		</div>
             <div class="line">
     			<label>SL phòng </label>
-    			<input type='text' class='text'/>
+    			<input type='text' class='text' name="numroom" id="numroom"/>
     		</div>
     		<input  type="submit" value="T&igrave;m ki&#7871;m" style="margin: 10px 0 0 0;"/>
         </div>
 		
         <div class="clear"></div>
 	</div>
-	
+	</form>
     	<!--******************************************************loai phong**********-->
      <div id="danhmuc" class="moduletable color2">
 		<h3>DANH MỤC LOẠI PHÒNG </h3>

@@ -79,9 +79,12 @@
             </tr>            
         </table>
          </form>
-        <form id="userForm" name="userForm" method="get" action="index.php?option=com_k2store">
-                    <input type="button" style="margin: 10px 15px 0 10px;" value="Thanh toán"/>
+        <form id="userForm" name="userForm" method="get" action="xulydatphong.php">
+                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Thanh toán"/>                
+                  
+        </form>
+        <form id="userForm" name="userForm" method="get" action="index.php">                    
                 
-                    <input type="button" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"/>
+                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"/>
         </form>
     </div>
