@@ -1,3 +1,16 @@
+
+function  getDateObj(str){
+    var arr = str.split('-');
+    var obj = new Date();
+    obj.setFullYear(arr[0],arr[1]-1,arr[2]);
+    return obj;
+}
+
+function getDaySubstract(date1, date2){
+    var milisecs = date1 - date2;
+    var days = milisecs/(1000*60*60*24);  //(star*secs*mins*hours)
+    return parseInt(days);
+}
 window.addEvent('domready', function() {
         
 			//var container = 'miniK2StoreCart';
@@ -13,24 +26,17 @@ window.addEvent('domready', function() {
                     if(!jQuery("#signupForm").valid())
                         return false;
                     jQuery("#datphongForm").dialog('close');
-                    //jQuery('#datphongForm').addClass('hidden');
-                    //alert('run');
-		            //var quantity = this.quantity.value;
-		            var url = this.action;//+'&quantity='+quantity+'&Itemid='+this.Itemid.value;
-		            //var murl = 'index.php?option=com_k2store&view=mycart&format=ajaxmini';
+                    
+                    var dateden = getDateObj(jQuery('#dateden').val());
+                    var datedi = getDateObj(jQuery('#datedi').val());
+                    
+                    var songayo = getDaySubstract(datedi,dateden);
+		            
+		            var url = this.action+"&stay_dates="+songayo;
+                    alert(url);		            
                     SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:30% 45%;" />');
                     setTimeout('ajaxPage("'+url+'" )',3000);
-                   // new Ajax(url,{
-//						 method:"post",
-//						 onSuccess: function(response){
-//							SqueezeBox.applyContent(response);
-//							//if ($(container))	{
-////							doMiniCart();
-////							}
-//						 }
-//					
-//					}).request();
-					
+                   
 		         });
 		         
 		      });
