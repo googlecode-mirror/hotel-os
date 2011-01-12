@@ -277,57 +277,12 @@ jQuery.noConflict();
 		<?php /*require(DIR_WS_INCLUDES . 'mainContent_index.php'); */?>
 		<div id="mainContent">
 		<?php
-		echo tep_customer_greeting(); 
-       // echo "\r\n customer :".$_SESSION['customer_id'];
-		 ?>
-		<?php 
-		if(isset($HTTP_GET_VARS['room_type_categories'])){			
-			// include(DIR_WS_MODULES . FILENAME_SEARCH_TYPE_ROOM);
-			 $define_list = array('PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
-	                         'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,                         
-	                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,   			 				                                  
-	                         'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
-	
-	    asort($define_list);
-	      $column_list = array();
-	    reset($define_list);
-	    while (list($key, $value) = each($define_list)) {
-	      if ($value > 0) $column_list[] = $key;
-	    }
-	    $select_column_list = '';	
-	    for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
-	      switch ($column_list[$i]) {
-	        case 'PRODUCT_LIST_IMAGE':
-	          $select_column_list .= 'rt.room_type_image, ';
-	          break;
-	        case 'PRODUCT_LIST_NAME':
-	          $select_column_list .= 'rt.room_type_name, ';
-	          break;        
-	      }
-	    }	    
-	    if (isset($HTTP_GET_VARS['room_type_categories'])){
-	   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt where rt.room_type_categories= '" . (int)$HTTP_GET_VARS['room_type_categories'] . "' ";
-	    }
-	    else {
-	   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt ";
-	    }
-		?>
-		<h6> Khách hàng : <?php echo $customer_first_name;?> </h6>
-		<?php 
-	    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 
-	    $roomnum=2;	
-//		function testsearch($dayto,$daygo,$countday,$room_type_id){
-//				$room_dayto=getroomofdate($dayto);
-//				$room_daygo=getroomofdate($daygo);
-//				while ($listing = tep_db_fetch_array($listing_query)) {
-//					if(getroomtype($listing['room_type_id'],$listing2['room_type_id'])){
-//						
-//					}
-//				}  
-//		}
+		$flag=0;
+		if(isset($HTTP_GET_VARS['flag_search'])){
+			$flag=1;
 		}
-		else { ?>	
-		<?php
+		//echo $flag;
+		//echo tep_customer_greeting();
 		//Lấy số phòng còn trống của mỗi loại của ngày hiện tại
 		$datecurent=date("Y-m-d"); 
 		function getroomofdate($day){			
@@ -339,18 +294,104 @@ jQuery.noConflict();
 		    return $listing2;
 		}
 		$listing2=getroomofdate($datecurent);
-//		echo $datecurent;
-//	   echo $listing2['status_room_number_room_type_luxury1']; 
-	    //Lấy sluong fong
-	    function getroomtype($a,$b){
+		//kiểm tra số fong còn trống  
+		function getroomtype($a,$b){
 	    	$listing_sql="select * from  room_type  where  room_type_id ='".$a."'";		
 		$listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS);
 	    $listing_query = tep_db_query($listing_split->sql_query);
 	    $listing = tep_db_fetch_array($listing_query);
 	    $temp=$listing[room_type_count]-$b;	  
 	    return $temp;
-	    }
-	   
+		} 
+       // echo "\r\n customer :".$_SESSION['customer_id'];
+		 ?>
+		<?php 
+		if($flag==1){
+			$room_type_categories=$_POST["cb_loaiphong"];
+			$room_number=tep_db_prepare_input($HTTP_POST_VARS["numroom"]);
+			//echo "loai fong   ".$room_type_categories."so fong  ".$room_number;
+			 $define_list = array('PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
+		                         'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,                         
+		                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,   			 				                                  
+		                         'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
+		
+		    asort($define_list);
+		      $column_list = array();
+		    reset($define_list);
+		    while (list($key, $value) = each($define_list)) {
+		      if ($value > 0) $column_list[] = $key;
+		    }
+		    $select_column_list = '';	
+		    for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
+		      switch ($column_list[$i]) {
+		        case 'PRODUCT_LIST_IMAGE':
+		          $select_column_list .= 'rt.room_type_image, ';
+		          break;
+		        case 'PRODUCT_LIST_NAME':
+		          $select_column_list .= 'rt.room_type_name, ';
+		          break;        
+		      }		     
+	    }	    
+	    if (isset($room_type_categories)){
+		   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt where rt.room_type_categories= '" . $room_type_categories . "' ";
+		    }
+		else {
+		   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt ";
+		    }
+	   include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING2);      
+	}		
+	if(isset($HTTP_GET_VARS['room_type_categories'])){			
+				// include(DIR_WS_MODULES . FILENAME_SEARCH_TYPE_ROOM);
+		 $define_list = array('PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
+		                         'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,                         
+		                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,   			 				                                  
+		                         'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
+		
+		    asort($define_list);
+		      $column_list = array();
+		    reset($define_list);
+		    while (list($key, $value) = each($define_list)) {
+		      if ($value > 0) $column_list[] = $key;
+		    }
+		    $select_column_list = '';	
+		    for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
+		      switch ($column_list[$i]) {
+		        case 'PRODUCT_LIST_IMAGE':
+		          $select_column_list .= 'rt.room_type_image, ';
+		          break;
+		        case 'PRODUCT_LIST_NAME':
+		          $select_column_list .= 'rt.room_type_name, ';
+		          break;        
+		      }
+		    }	    
+		    if (isset($HTTP_GET_VARS['room_type_categories'])){
+		   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt where rt.room_type_categories= '" . (int)$HTTP_GET_VARS['room_type_categories'] . "' ";
+		    }
+		    else {
+		   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt ";
+		    }
+			?>
+			<h6> Khách hàng : <?php echo $customer_first_name;?> </h6>
+			<?php
+			
+		    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 
+		    $roomnum=2;	
+	//		function testsearch($dayto,$daygo,$countday,$room_type_id){
+	//				$room_dayto=getroomofdate($dayto);
+	//				$room_daygo=getroomofdate($daygo);
+	//				while ($listing = tep_db_fetch_array($listing_query)) {
+	//					if(getroomtype($listing['room_type_id'],$listing2['room_type_id'])){
+	//						
+	//					}
+	//				}  
+	//		}
+		}
+	else if($flag==0) { ?>	
+		<?php
+		
+		
+//		echo $datecurent;
+//	   echo $listing2['status_room_number_room_type_luxury1']; 	  
 		?>
 			<h3 class="welcome">Chào mừng quý khách đã đến với hệ thống Booking online của khách sạn chúng tôi. Đến với khách sạn quý khách sẽ bắt gặp thái độ phục vụ chuyên nghiệp, nhanh chóng. Kính chúc các bạn có kỳ nghỉ 	thoải mái ở khách sạn chúng tôi.</h3>
 			<div id="showloaiphong">
@@ -425,7 +466,7 @@ jQuery.noConflict();
 					</li>
 				 </ul>-->
 			 </div>
-			<?php }?>  
+			 <?php }?>
              <div id="showphongDiv" class="hidden">
                  <p id="showphongHeader"></p>
                 <div id="showphong">
