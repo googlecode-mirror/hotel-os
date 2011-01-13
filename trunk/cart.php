@@ -1,95 +1,101 @@
 <?php
-require('includes/application_top.php');
-//	if(isset($_POST['submit']))
-//	{
-//		foreach($_POST['qty'] as $key=>$value)
-//		{
-//	  		if( ($value == 0) and (is_numeric($value)))
-//	  		{
-//	  			 unset ($_SESSION['cart_room'][$key]);
-//	  		}
-//	  		elseif(($value > 0) and (is_numeric($value)))
-//	  		{
-//	   			$_SESSION['cart_room'][$key]=$value;
-//	  		}	
-//		}
-//	 header("location:cart.php");
-//	}
-	
-?>	<html>
-		<head>			
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	 <link rel="stylesheet" href="style.css" />
-	</head>
-		<body>
-			
-<?php
+    require('includes/application_top.php');
 	$ok=1;
 	if(isset($_SESSION['cart_room']))
 	{
-		foreach($_SESSION['cart_room'] as $k => $v)
+	    $_SESSION['temp']=$_SESSION['cart_room'];   
+	    echo count($_SESSION['cart_room']);	    
+		foreach($_SESSION['cart_room'] as $cartItems)
 		{
-			if(isset($k))
-			{
+			
+			if(isset($cartItems['roomtypeId']))
+			{	
+				echo $cartItems['roomtypeId'];			
 				$ok=2;
 			}
 		}
 	}
+    //echo count($_SESSION['temp']);
 	if($ok == 2)
 	{
-		echo "<form action=cart.php method=post>";
-	//	echo count($_SESSION['cart_room']);
-	    foreach($_SESSION['cart_room'] as $key=>$value)
+		echo "<form action=newcart.php method=post>";
+		//echo count($_SESSION['cart_room']);
+	    foreach($_SESSION['cart_room'] as $cartItems)
 	    {
-	    	$item[]=$key;
+	    	$item[]=$cartItems['roomtypeId'];
+	    	//echo $item."    ";
 	    }
-	    $str=implode(",",$item);	  
-	   session_start();
-	   $listing_sql1="select * from room_type where room_type_id in ($str)";	 
-	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);
-       $listing_query1 = tep_db_query($listing_split1->sql_query);	        
-       ?>
-<table width="50%" cellpadding="0" cellspacing="0" border="1">
-	<tr>
-	<td>Tên Loại Phòng</td>
-	<td>Giá</td>
-	<td>số Lượng</td>
-	<td>Thành Tiền</td>
-	<td>Hủy Loại này</td>	
-	</tr>
-<?php 		
-	   while($row=tep_db_fetch_array($listing_query1))
-	   {
-	   	  echo "<tr>";
-		  // echo "<div class=pro>";
-		  echo "<td>$row[room_type_name]</td>";
-		  echo "<td>  ".number_format($row[room_type_price],3)." VND</td>";
-		  echo "<td><p align=center>So Luong: <input type=text name=qty[$row[room_type_id]] size=5 value={$_SESSION['cart_room'][$row[room_type_id]]}> </td> ";		  
-		  echo "<td><p align=right>  ". number_format($_SESSION['cart_room'][$row[room_type_id]]*$row[room_type_price],3) ." VND</p></td>";
-		  echo '<td><a href="'. tep_href_link("delcart.php",'room_type_id= '. $row['room_type_id']).'">Hủy</a></td>';		  
-		  // echo "</div>";
-		  echo "</tr>";
-		   $total+=$_SESSION['cart_room'][$row[room_type_id]]*$row[room_type_price];
-   
-	   }
-	   ?>
-	   	
-</table>
-	   <?php 
-	   echo "<div class=pro align=center>";
-	   echo "<b>Tong tien cho cac mon hang: <font color=red>". number_format($total,3)." VND</font></b>";
-	   echo "</div>";
-	   echo "<input type='submit' name=submit value='Cap Nhat Gio Hang'>";
-	   echo "<div class=pro align=center>";
-	   echo "<b><a href=index.php>Mua Sach Tiep</a> - '<a href=delcart.php?room_type_id=0>Xoa Bo Gio Hang</a>'</b>";
-	   echo "</div>";
-	}
-	else
-	{
-		echo "<div class=pro>";
-	    echo '<p align=center>Ban khong co mon hang nao trong gio hang<br /><a href=index.php>Buy Ebook</a></p>';
-	    echo "</div>";
-	}
+	 //   echo "item   :".$item;
+	   $str=implode(",",$item);	 
+	 //  echo "mang     ".$str; 
+	   session_start();      
+	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
+	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
+       $listing_query1 = tep_db_query($listing_split1->sql_query);
+     
+    }       
 ?>
-	</body>
-	</html>
+
+    <div id="container">
+        <h3>DANH MỤC PHÒNG ĐẶT</h3>
+        <table id="cart" style="margin-bottom: 20px;">
+            <tr>
+                <th width="10%">
+                    Tên loại phòng
+                </th>
+                <th width="10%">
+                    Số ngày ở
+                </th>
+                <th width="10%">
+                    Gía phòng
+                </th>
+                <th width="10%">
+                    Tổng tiền
+                </th>
+            </tr>
+            <?php
+           while($row=tep_db_fetch_array($listing_query1)){
+           	foreach($_SESSION['cart_room'] as $cartItems){
+           		if($cartItems['roomtypeId'] == $row[room_type_id]){
+           		  echo "<tr>";
+                  echo  '<td width="10%">';
+                  echo   " <p>$row[room_type_name]</p>";
+                  echo  "</td>";
+                  echo  "<td width='10%'>";
+                  echo    " <p>".$cartItems['qty']."</p>";
+                 // echo "<p align=center> <input type=text name=qty[$row[room_type_id]] size=5 value={$_SESSION['cart_room'][$row[room_type_id]]}>  ";
+                  echo  "</td>";
+                  echo '<td width="10%">';
+                 // echo     "<p>120.000VND</p>";
+                  echo " <p>$row[room_type_price]</p>";
+                  echo "</td>";
+                  echo '<td width="10%">';
+                 // echo    "<p>120.000VND</p>";
+                  echo "<p align=right>  ". number_format($cartItems['qty']*$row[room_type_price],3) ." VND</p>";
+                  echo "</td>";
+                  echo "</tr>";
+                  $total +=intval($cartItems['qty'])*$row[room_type_price];
+           		}
+           	}
+                 
+            }
+             ?>
+            <tr>
+                <td width="10%" align="right" colspan="3">
+                    <p>Tổng tiền</p>
+                </td>
+                <td id="total_price">
+                    <p>&nbsp;<?php echo number_format($total,3); ?></p>
+                </td>
+            </tr>            
+        </table>
+         </form>
+        <form id="userForm" name="userForm" method="get" action="xulydatphong.php">
+                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Thanh toán"/>                
+                  
+        </form>
+        <form id="userForm" name="userForm" method="get" action="index.php">                    
+                
+                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"/>
+        </form>
+    </div>

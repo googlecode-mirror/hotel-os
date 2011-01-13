@@ -55,10 +55,7 @@
     $listing_query = tep_db_query($listing_split->sql_query);
     while ($listing = tep_db_fetch_array($listing_query)) {
       $rows++;
-        $room_type_id=$listing['room_type_id'];
-//      echo "   ".$listing2[$room_type_id];  
-//      echo "     ".getroomtype($listing['room_type_id'],$listing2['room_type_id']);
-    
+      $room_type_id=$listing['room_type_id'];    
       if(getroomtype($listing['room_type_id'],$listing2[$room_type_id])>=(int)$room_number){
       	
       if (($rows/2) == floor($rows/2)) {
