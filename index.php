@@ -307,6 +307,7 @@ jQuery.noConflict();
 		 ?>
 		<?php 
 		if($flag==1){
+			if(isset($_POST["cb_loaiphong"])){
 			$room_type_categories=$_POST["cb_loaiphong"];
 			$room_number=tep_db_prepare_input($HTTP_POST_VARS["numroom"]);
 			//echo "loai fong   ".$room_type_categories."so fong  ".$room_number;
@@ -330,7 +331,8 @@ jQuery.noConflict();
 		        case 'PRODUCT_LIST_NAME':
 		          $select_column_list .= 'rt.room_type_name, ';
 		          break;        
-		      }		     
+		      }		  
+		    }   
 	    }	    
 	    if (isset($room_type_categories)){
 		   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt where rt.room_type_categories= '" . $room_type_categories . "' ";
