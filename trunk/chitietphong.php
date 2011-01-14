@@ -240,11 +240,11 @@ jQuery.noConflict();
                 	<div id="thongtinkhach">
                             <div class="line">
                 			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="dateden"/>
+                			<input id="dateden" type="text" class="text" name="datede"/>
                 			</div> 
                             <div class="line">
                 			<label for="datedi"> Ngày đi  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
+                			<input id="datedi" type="text" class="text" name="dated"/>
                 			</div>
                    </div>                          
                    <input type="hidden" id="test" value="2356">

@@ -14,7 +14,7 @@
 
 <?php 
   $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS, 'rt.room_type_categories');
-
+	$flag1=0;	
   if ( ($listing_split->number_of_rows > 0) && ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '2') ) ) {
 ?>
 <?php
@@ -55,18 +55,19 @@
     $listing_query = tep_db_query($listing_split->sql_query);
     while ($listing = tep_db_fetch_array($listing_query)) {
       $rows++;
-      $room_type_id=$listing['room_type_id'];    
-      if(getroomtype($listing['room_type_id'],$listing2[$room_type_id])>=(int)$room_number){
-      	
+      $room_type_id=$listing['room_type_id'];  
+      //if(getroomtype($listing['room_type_id'],$listing2[$room_type_id])>=(int)$room_number){
+      if(testAllDay($room_type_id, $room_number, $dayto, $daygo)==1){	
       if (($rows/2) == floor($rows/2)) {
         $list_box_contents[] = array('params' => 'class="productListing-even"');
       } else {
         $list_box_contents[] = array('params' => 'class="productListing-odd"');
-      }
-
+      }	 
       $cur_row = sizeof($list_box_contents) - 1;
       for ($col=0, $n=sizeof($column_list); $col<$n; $col++) {
         $lc_align = '';   
+         $flag1=1;
+       
         switch ($column_list[$col]) {        
           case 'PRODUCT_LIST_NAME':
             $lc_align = '';
@@ -90,7 +91,7 @@
               $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_id=' . $listing['room_type_id'] ) .  '">' .tep_image(DIR_WS_IMAGES . $listing['room_type_image'], $listing['room_type_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
              // $lc_text = '<a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['room_image'], $listing['room_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';                         
             } else {
-             $lc_text = '<a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') ) . '">' . tep_image(DIR_WS_IMAGES . $listing['room_type_image'], $listing['room_type_id'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';             
+            $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_id=' . $listing['room_type_id'] ) .  '">' .tep_image(DIR_WS_IMAGES . $listing['room_type_image'], $listing['room_type_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';             
             }
              break;       
           case 'PRODUCT_LIST_BUY_NOW':
@@ -105,19 +106,14 @@
                                                'text'  => $lc_text); 
 
  }
-    }
+     }
     }
      new productListingBox($list_box_contents);
-  } else {
-    $list_box_contents = array();
-
-    $list_box_contents[0] = array('params' => 'class="productListing-odd"');
-    $list_box_contents[0][] = array('params' => 'class="productListing-data"',
-                                   'text' => TEXT_NO_PRODUCTS);
-
-    new productListingBox($list_box_contents);
   }
-  if ( ($listing_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3')) ) {
+  if($flag1==0){    	
+   echo "Không có phòng thỏa điều kiện tìm kiếm!";
+  }
+  if ( ($listing_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3'))&& $flag1==1 ) {
 ?>
 
 <?php echo tep_draw_result_bottom(); ?>
