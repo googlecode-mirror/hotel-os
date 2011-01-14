@@ -5,9 +5,7 @@ require('includes/application_top.php');
     //$_SESSION['cart_room'];
 	$id=$HTTP_GET_VARS['room_type_id'];
     echo "TEST ".$HTTP_GET_VARS['stay_dates'];
-	$dayto= tep_db_prepare_input($HTTP_POST_VARS['datede']);
-	$daygo= tep_db_prepare_input($HTTP_POST_VARS['dated']);
-	echo $dayto."     ".$daygo;
+	
 	function duration_vip($duration)
         {
             $time = $duration;
@@ -48,6 +46,6 @@ require('includes/application_top.php');
 	//echo $_SESSION['cart_room'][$id];
 	//echo $id;
 	//header("location:cart.php");
-	//tep_redirect(tep_href_link("newcart.php"));	
+	tep_redirect(tep_href_link("newcart.php"));	
 	exit();	
 ?>

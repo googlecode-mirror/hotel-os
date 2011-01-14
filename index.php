@@ -297,13 +297,52 @@ jQuery.noConflict();
 		//kiểm tra số fong còn trống  
 		function getroomtype($a,$b){
 	    	$listing_sql="select * from  room_type  where  room_type_id ='".$a."'";		
-		$listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS);
-	    $listing_query = tep_db_query($listing_split->sql_query);
-	    $listing = tep_db_fetch_array($listing_query);
-	    $temp=$listing[room_type_count]-$b;	  
+			$listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS);
+		    $listing_query = tep_db_query($listing_split->sql_query);
+		    $listing = tep_db_fetch_array($listing_query);
+		    $temp=$listing[room_type_count]-$b;	  
 	    return $temp;
 		} 
+//		function getTypeRoomOfCategories($idCategories){
+//			$listing_sql="select * from  room_type  where  room_type_categories ='".$idCategories."'";					
+//			$listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS);
+//		    $listing_query = tep_db_query($listing_split->sql_query);
+//		    mysql_num_rows($listing_query);
+//		    //$listing = tep_db_fetch_array($listing_query);
+//		    return  mysql_num_rows($listing_query);
+//		}
        // echo "\r\n customer :".$_SESSION['customer_id'];
+       // list($year,$month,$day)=split('[-]', $datecurent);
+       // echo $year."-".$month."-".$day;
+        $day+=1;
+        $tomorrow  = date($year."-".$month."-".$day);
+       // echo $tomorrow;
+        $dayto=date("2011-1-4");
+		$daygo=date("2011-1-11");
+		function NumDayStay($dayto,$daygo){
+			list($year,$month,$day)=split('[-]', $dayto);			
+			list($year2,$month2,$day2)=split('[-]', $daygo);
+			$to=mktime(0,0,0,$month,$day,$year);
+			$go=mktime(0,0,0,$month2,$day2,$year2);
+			$temp=$go-$to;
+			$daynum=$temp/(24*60*60);
+			return $daynum;
+		}
+        function testAllDay($roomID,$roomNumber,$dayto,$daygo){
+        	$n=NumDayStay($dayto, $daygo); 
+        	$flag=1;
+        	list($year,$month,$day)=split('[-]', $dayto);
+        	for($i=0;$i<$n;$i++){        		
+        		$daytest=date($year."-".$month."-".$day); 
+        		$day +=1;         			
+	        	$listtemp=getroomofdate($daytest);	        	
+	        	if(getroomtype($roomID, $listtemp[$roomID])<$roomNumber){
+	        		$flag=0;
+	        	}
+        	}
+        	return $flag;	
+        }
+      
 		 ?>
 		<?php 
 		if($flag==1){
@@ -333,10 +372,13 @@ jQuery.noConflict();
 		          break;        
 		      }		  
 		    }   
-	    }	    
+	    }
+	   
 	    if (isset($room_type_categories)){
 		   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt where rt.room_type_categories= '" . $room_type_categories . "' ";
+		   	
 		    }
+		   
 		else {
 		   	$listing_sql = "select  " . $select_column_list . " rt.room_type_id, rt.room_type_description,rt.room_type_price, rt.room_type_image from " . room_type .  " rt ";
 		    }
