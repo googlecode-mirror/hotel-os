@@ -16,34 +16,44 @@
   $action = (isset($HTTP_GET_VARS['action']) ? $HTTP_GET_VARS['action'] : '');
 
   if (tep_not_null($action)) {
+
     switch ($action) {
       case 'process':
         $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
         $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
 
-        $check_query = tep_db_query("select id, user_name, user_password from " . TABLE_ADMINISTRATORS . " where user_name = '" . tep_db_input($username) . "'");
+        $check_query = tep_db_query("select id, user_name, user_password, role from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($username) . "'");
 
         if (tep_db_num_rows($check_query) == 1) {
           $check = tep_db_fetch_array($check_query);
+#checking password and role : if password correct and role = 0 => owner : create owner session
+          if (tep_validate_password($password, $check['user_password']))
+          {
 
-          if (tep_validate_password($password, $check['user_password'])) {
-            tep_session_register('admin');
+            if(intval($check['role'])==0){
 
-            $admin = array('id' => $check['id'],
+                tep_session_register('owner');
+                //$owner = array('id' => $check['id'],
+//                           'username' => $check['user_name']);
+               $owner= array('id' => $check['id'],
                            'username' => $check['user_name']);
+            }else{
 
+                tep_session_register('manager');
+                $manager = array('id' => $check['id'],
+                           'username' => $check['user_name']);
+            }
             if (tep_session_is_registered('redirect_origin')) {
               $page = $redirect_origin['page'];
               $get_string = '';
-
               if (function_exists('http_build_query')) {
                 $get_string = http_build_query($redirect_origin['get']);
               }
-
               tep_session_unregister('redirect_origin');
-
+            echo tep_href_link($page, $get_string);
               tep_redirect(tep_href_link($page, $get_string));
             } else {
+
               tep_redirect(tep_href_link(FILENAME_DEFAULT));
             }
           }
@@ -55,19 +65,26 @@
 
       case 'logoff':
         tep_session_unregister('selected_box');
-        tep_session_unregister('admin');
+        echo 'log off';
+        if(tep_session_is_registered('owner')){
+            tep_session_unregister('owner');
+            echo 'log off owner';
+        }            
+        if(tep_session_is_registered('manager')){
+            tep_session_unregister('manager');
+            echo 'log off manager';   
+        }        
         tep_redirect(tep_href_link(FILENAME_DEFAULT));
-
         break;
 
       case 'create':
-        $check_query = tep_db_query("select id from " . TABLE_ADMINISTRATORS . " limit 1");
+        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " limit 1");
 
         if (tep_db_num_rows($check_query) == 0) {
           $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
           $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
 
-          tep_db_query('insert into ' . TABLE_ADMINISTRATORS . ' (user_name, user_password) values ("' . $username . '", "' . tep_encrypt_password($password) . '")');
+          tep_db_query('insert into ' . TABLE_MANAGERS . ' (user_name, user_password) values ("' . $username . '", "' . tep_encrypt_password($password) . '")');
         }
 
         tep_redirect(tep_href_link(FILENAME_LOGIN));
@@ -87,7 +104,7 @@
     }
   }
 
-  $admins_check_query = tep_db_query("select id from " . TABLE_ADMINISTRATORS . " limit 1");
+  $admins_check_query = tep_db_query("select id from " . TABLE_MANAGERS . " limit 1");
   if (tep_db_num_rows($admins_check_query) < 1) {
     $messageStack->add(TEXT_CREATE_FIRST_ADMINISTRATOR, 'warning');
   }

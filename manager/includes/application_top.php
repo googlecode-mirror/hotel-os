@@ -80,7 +80,7 @@
 
 // check to see if php implemented session management functions - if not, include php3/php4 compatible session class
   if (!function_exists('session_start')) {
-    define('PHP_SESSION_NAME', 'osCAdminID');
+    define('PHP_SESSION_NAME', 'osCManagerID');
     define('PHP_SESSION_PATH', '/');
     define('PHP_SESSION_SAVE_PATH', SESSION_WRITE_DIRECTORY);
 
@@ -91,7 +91,7 @@
   require(DIR_WS_FUNCTIONS . 'sessions.php');
 
 // set the session name and save path
-  tep_session_name('osCAdminID');
+  tep_session_name('osCManagerID');
   tep_session_save_path(SESSION_WRITE_DIRECTORY);
 
 // set the session cookie parameters
@@ -129,30 +129,33 @@
     $languages_id = $lng->language['id'];
   }
 
-// redirect to login page if administrator is not yet logged in
-  if (!tep_session_is_registered('admin')) {
+// redirect to manager if manager not yet logged in
+    if (!tep_session_is_registered('owner')&&!tep_session_is_registered('manager')) {
     $redirect = false;
 
     $current_page = basename($PHP_SELF);
 
+
     if ($current_page != FILENAME_LOGIN) {
+       
       if (!tep_session_is_registered('redirect_origin')) {
         tep_session_register('redirect_origin');
 
         $redirect_origin = array('page' => $current_page,
                                  'get' => $HTTP_GET_VARS);
+                               
       }
 
       $redirect = true;
     }
 
     if ($redirect == true) {
-      tep_redirect(tep_href_link(FILENAME_LOGIN));
+
+     tep_redirect(tep_href_link(FILENAME_LOGIN));
     }
 
     unset($redirect);
   }
-
 // include the language translations
   require(DIR_WS_LANGUAGES . $language . '.php');
   $current_page = basename($PHP_SELF);

@@ -43,10 +43,10 @@ define('CHARSET', 'UTF-8');
 define('TITLE', 'Online Booking System Manager ');
 
 // header text in includes/header.php
-define('HEADER_TITLE_TOP', 'Administration');
+define('HEADER_TITLE_TOP', 'Manager');
 define('HEADER_TITLE_SUPPORT_SITE', 'Support Site');
 define('HEADER_TITLE_ONLINE_CATALOG', 'Online Catalog');
-define('HEADER_TITLE_ADMINISTRATION', 'Administration');
+define('HEADER_TITLE_ADMINISTRATION', 'Manager');
 
 // text for gender
 define('MALE', 'Male');

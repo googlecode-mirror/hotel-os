@@ -26,7 +26,7 @@
   define('DIR_FS_CATALOG_LANGUAGES', DIR_FS_CATALOG . 'includes/languages/');
   define('DIR_FS_CATALOG_IMAGES', DIR_FS_CATALOG . 'images/');
   define('DIR_FS_CATALOG_MODULES', DIR_FS_CATALOG . 'includes/modules/');
-  define('DIR_FS_BACKUP', DIR_FS_ADMIN . 'backups/');
+  define('DIR_FS_BACKUP', DIR_FS_MANAGER . 'backups/');
 
   define('DB_SERVER', 'localhost');
   define('DB_SERVER_USERNAME', 'quangha');
