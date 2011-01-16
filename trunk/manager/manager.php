@@ -38,11 +38,11 @@
         $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
         $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
 
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($admin['username']) . "'");
+        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($manager['username']) . "'");
         $check = tep_db_fetch_array($check_query);
 
-        if ($admin['id'] == $check['id']) {
-          $admin['username'] = $username;
+        if ($manager['id'] == $check['id']) {
+          $manager['username'] = $username;
         }
 
         tep_db_query("update " . TABLE_MANAGERS . " set user_name = '" . tep_db_input($username) . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");
@@ -56,7 +56,7 @@
       case 'deleteconfirm':
         $id = tep_db_prepare_input($HTTP_GET_VARS['aID']);
 
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($admin['username']) . "'");
+        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($manager['username']) . "'");
         $check = tep_db_fetch_array($check_query);
 
         if ($id == $check['id']) {
@@ -126,9 +126,7 @@
                 <td class="dataTableContent"><?php echo $admins['user_name']; ?></td>
                 <td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
                 
-                 <td class="dataTableContent"><?php echo $admins['user_name']; ?></td>
-                <td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
-              </tr>
+               </tr>
 <?php
   }
 ?>
