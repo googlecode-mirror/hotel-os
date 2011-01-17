@@ -18,7 +18,7 @@ window.addEvent('domready', function() {
 //				doMiniCart();
 //			}
 			      
-		     SqueezeBox.initialize({});
+		     SqueezeBox.initialize({size: {x: 700, y: 400}});
 		      $$('.cart_form').each(function(el) {
 		         el.addEvent('submit', function(e) {
 		            new Event(e).stop();
@@ -32,9 +32,9 @@ window.addEvent('domready', function() {
                     
                     var songayo = getDaySubstract(datedi,dateden);
 		            
-		            var url = this.action+"&stay_dates="+songayo;
-                    alert(url);		            
-                    SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:30% 45%;" />');
+		            var url = this.action+"&stay_dates="+songayo+"&comingdate="+dateden;
+           	     
+                    SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
                     setTimeout('ajaxPage("'+url+'" )',3000);
                    
 		         });

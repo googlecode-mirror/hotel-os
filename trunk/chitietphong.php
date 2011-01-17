@@ -235,7 +235,7 @@ jQuery.noConflict();
            
            <p style="font-weight: bold;margin: 7px 0;">Xin vui lòng chọn ngày đến và đi của bạn.</p>
                 
-            <form id="signupForm" class="cart_form" method="post" action="<?php echo tep_href_link('addcart.php','room_type_id='.$HTTP_GET_VARS['room_type_id']);?>">
+            <form id="signupForm" class="cart_form" method="post" action="<?php echo tep_href_link('addcartnew.php','room_type_id='.$HTTP_GET_VARS['room_type_id']);?>">
 
                 	<div id="thongtinkhach">
                             <div class="line">

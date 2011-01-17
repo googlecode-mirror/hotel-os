@@ -4,34 +4,10 @@ require('includes/application_top.php');
 	session_register('cart_room');
     //$_SESSION['cart_room'];
 	$id=$HTTP_GET_VARS['room_type_id'];
-    echo "TEST ".$HTTP_GET_VARS['stay_dates'];
-	
-	function duration_vip($duration)
-        {
-            $time = $duration;
-            $day = floor($time/(3600*24));
-            $hour = floor(($time%(3600*24))/(3600));
-            $minute = floor(($time%(3600))/(60));
-            if($minute!=0)
-            {
-                $time = $minute.'';
-            }
-            else
-            {
-                $time='';
-            }  
-            if($hour!=0)
-            {
-                $time = $hour.'h'.$time;
-            }
-            if($day!=0)
-            {
-                $time = $day.' ngày '.$time;
-            }
-            return $time;
-        }
-	$daynum=duration_vip((daygo-dayto));	
-	echo $daynum;	
+    $songayo = $HTTP_GET_VARS['stay_dates'];
+	$ngayden = $HTTP_GET_VARS['comingdate'];
+    //echo "so ngay o ".$songayo. " ; ngayden ".gmdate('m/d/Y','Mon Jan 17 2011 14:53:45 GMT 0700');	
+		
 	$array=$_SESSION['cart_room'];	
 	if(isset($_SESSION['cart_room'][$id]))
 	{
@@ -46,6 +22,7 @@ require('includes/application_top.php');
 	//echo $_SESSION['cart_room'][$id];
 	//echo $id;
 	//header("location:cart.php");
-	tep_redirect(tep_href_link("newcart.php"));	
+    //echo tep_href_link("newcart.php","stay_dates=".$songayo);
+	tep_redirect(tep_href_link("newcart.php","stay_dates=".$songayo."&comingdate=".$ngayden));	
 	exit();	
 ?>

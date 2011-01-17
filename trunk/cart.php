@@ -39,14 +39,20 @@
     <div id="container">
         <h3>DANH MỤC PHÒNG ĐẶT</h3>
         <table id="cart" style="margin-bottom: 20px;">
-            <tr>
+           <tr>
                 <th width="10%">
                     Tên loại phòng
                 </th>
-                <th width="10%">
+                <th class='center' width="10%">
+                    Ngày đến
+                </th>
+                <th class='center' width="10%">
+                    Số phòng
+                </th>
+                <th class='center' width="10%">
                     Số ngày ở
                 </th>
-                <th width="10%">
+                <th class='center' width="10%">
                     Gía phòng
                 </th>
                 <th width="10%">
@@ -57,11 +63,17 @@
            while($row=tep_db_fetch_array($listing_query1)){
            	foreach($_SESSION['cart_room'] as $cartItems){
            		if($cartItems['roomtypeId'] == $row[room_type_id]){
-           		  echo "<tr>";
+           		 echo "<tr>";
                   echo  '<td width="10%">';
                   echo   " <p>$row[room_type_name]</p>";
                   echo  "</td>";
-                  echo  "<td width='10%'>";
+                  echo  '<td class="center" width="10%">';
+                  echo   " <p>".$HTTP_GET_VARS['comingdate']."</p>";
+                  echo  "</td>";
+                  echo  '<td class="center" width="10%">';
+                  echo   " <p>".$HTTP_GET_VARS['stay_dates']."</p>";
+                  echo  "</td>";
+                  echo  "<td class=\"center\" width='10%'>";
                   echo    " <p>".$cartItems['qty']."</p>";
                  // echo "<p align=center> <input type=text name=qty[$row[room_type_id]] size=5 value={$_SESSION['cart_room'][$row[room_type_id]]}>  ";
                   echo  "</td>";
@@ -96,6 +108,7 @@
         </form>
         <form id="userForm" name="userForm" method="get" action="index.php">                    
                 
-                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"/>
+                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"
+                        onclick="javascript:window.href='<?php echo tep_href_link('index.php')?>';"/>
         </form>
     </div>

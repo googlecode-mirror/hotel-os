@@ -86,8 +86,8 @@ div.mod_latestnews ul li, div.mod_mostread ul li { background: transparent url('
 .moduletable.color1 a { color: #dedccf }
 .moduletable.color1 a:hover { color: #fff }
 .moduletable.color1 ul li, .moduletable_text.color1 ul li, .moduletable_menu.color1 ul li { border-color: #5d5d5d }
-.moduletable.color2 > h3 { background: #b7b7ae; border-bottom: 1px solid #b7b6a9; color: #53534e }
-.moduletable.color2 .moduletable_content { background: #e9e9e1; color: #7b7b7b; border-color: #e0dfd5 }
+.moduletable.color2 > h3 { background: url(../black_and_white_images/nav.png); border-bottom: 1px solid #b7b6a9; color: #53534e }
+.moduletable.color2 .moduletable_content { background: #c8f6a9; color: #7b7b7b; border-color: #e0dfd5 }
 .moduletable.color2 a { color: #53534e }
 .moduletable.color2 a:hover { color: #7b7b7b }
 .moduletable.color2 ul li, .moduletable_text.color2 ul li, .moduletable_menu.color2 ul li { border-color: #c1c1bb }

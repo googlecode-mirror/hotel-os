@@ -37,10 +37,16 @@
                 <th width="10%">
                     Tên loại phòng
                 </th>
-                <th width="10%">
+                <th class='center' width="10%">
+                    Ngày đến
+                </th>
+                <th class='center' width="10%">
+                    Số phòng
+                </th>
+                <th class='center' width="10%">
                     Số ngày ở
                 </th>
-                <th width="10%">
+                <th class='center' width="10%">
                     Gía phòng
                 </th>
                 <th width="10%">
@@ -53,11 +59,17 @@
                   echo  '<td width="10%">';
                   echo   " <p>$row[room_type_name]</p>";
                   echo  "</td>";
-                  echo  "<td width='10%'>";
+                  echo  '<td class="center" width="10%">';
+                  echo   " <p>".$HTTP_GET_VARS['comingdate']."</p>";
+                  echo  "</td>";
+                  echo  '<td class="center" width="10%">';
+                  echo   " <p>".$HTTP_GET_VARS['stay_dates']."</p>";
+                  echo  "</td>";
+                  echo  "<td class=\"center\" width='10%'>";
                   echo    " <p>".$_SESSION['cart_room'][$row[room_type_id]]."</p>";
                  // echo "<p align=center> <input type=text name=qty[$row[room_type_id]] size=5 value={$_SESSION['cart_room'][$row[room_type_id]]}>  ";
                   echo  "</td>";
-                  echo '<td width="10%">';
+                  echo '<td class="center" width="10%">';
                  // echo     "<p>120.000VND</p>";
                   echo " <p>$row[room_type_price]</p>";
                   echo "</td>";

@@ -23,9 +23,9 @@
     <td class="headerBarContent" align="right">
     <?php 
         if(tep_session_is_registered('owner')){
-            echo 'Logged in as: ' . $owner['username']  . ' (<a href="' . tep_href_link(FILENAME_LOGIN, 'action=logoff') . '" class="headerLink">Logoff</a>)';
+            echo 'Logged in as: ' . $owner['username'].'_owner'  . ' (<a href="' . tep_href_link(FILENAME_LOGIN, 'action=logoff') . '" class="headerLink">Logoff</a>)';
         }else if (tep_session_is_registered('manager')){
-            echo 'Logged in as: ' . $manager['username']  . ' (<a href="' . tep_href_link(FILENAME_LOGIN, 'action=logoff') . '" class="headerLink">Logoff</a>)';
+            echo 'Logged in as: ' . $manager['username'].'_manager'  . ' (<a href="' . tep_href_link(FILENAME_LOGIN, 'action=logoff') . '" class="headerLink">Logoff</a>)';
         }
         else{
             echo 'Session is not created';
