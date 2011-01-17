@@ -7,6 +7,8 @@ require('includes/application_top.php');
 //                                );
    // $_SESSION['cart_room'];
 	$id=$HTTP_GET_VARS['room_type_id'];
+    $songayo = $HTTP_GET_VARS['stay_dates'];
+	$ngayden = $HTTP_GET_VARS['comingdate'];
 //	$dayto= tep_db_prepare_input($HTTP_POST_VARS['dateden']);
 //	$daygo= tep_db_prepare_input($HTTP_POST_VARS['datedi']);
 //	$dayto=date("2011-1-13");
@@ -25,29 +27,36 @@ require('includes/application_top.php');
 	//$array=$_SESSION['cart_room'];
 	if(isset($_SESSION['cart_room']))
 	{
-		
+		//$array = $_SESSION['cart_room'];
+        $flag=0;
 		foreach($_SESSION['cart_room'] as $cartItems)
 		{	
 			echo $cartItems['roomtypeId']."      gia tri id:".$id;
 			
 			if($cartItems['roomtypeId'] == $id)
 			{
+			 $flag=1;
 			 echo "bang nhau";				
 			 //$_SESSION['cart_room'][$qty] = $_SESSION['cart_room'][$qty] + 1;
+             
+             $keys=array_search($cartItems,$_SESSION['cart_room']);
 			 echo  "sluong cu  ".$cartItems['qty']."   ";			 
 			 $qty= $cartItems['qty']+1;
-		     $cartItems['qty']=$qty;		   
+             echo " ; gia tri qty:".$qty."  ; ";
+		     $cartItems['qty']=$qty;
+             
+             	$_SESSION['cart_room'][$keys]=$cartItems;	   
 		     echo "sl moi  :" .$cartItems['qty'];		     
 			}
-			else
-			{
-			 $qty=1; 
-			 echo "testtttttttttt";
-			 $_SESSION['cart_room'][] = array( "qty" => $qty,
-                                               "roomtypeId" => $id                                              
-                                              );   
-		 	}			 
+				 
 		}
+        if($flag==0){
+             $qty=1; 
+			 echo "testtttttttttt";
+			 array_push($_SESSION['cart_room'],array( "qty" => $qty,
+                                               "roomtypeId" => $id                                              
+                                              ));   
+        }
 	}
 	else 
 	{
@@ -58,9 +67,14 @@ require('includes/application_top.php');
 			 								  );   
 	}
 	echo "so session   ".count($_SESSION['cart_room'])."      ";
+    foreach($_SESSION['cart_room'] as $cartItems)
+		{
+		   print_r($cartItems);
+          }
+          echo " ; Array keys ".array_keys($_SESSION['cart_room']);
 	//echo $_SESSION['cart_room'][$id];
 	//echo $id;
 	//header("location:cart.php");
-	//tep_redirect(tep_href_link("newcart.php"));	
+	tep_redirect(tep_href_link("cart.php","stay_dates=".$songayo."&comingdate=".$ngayden));
 	exit();	
 ?>

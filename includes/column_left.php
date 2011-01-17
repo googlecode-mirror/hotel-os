@@ -19,11 +19,11 @@
         <div class="search_content">
             <div class="line">
     			<label>Ng&agrave;y &#273;&#7871;n </label>
-    			<input type='text' class='text'/>
+    			<input id='ngayden' type='text' class='text'/>
     		</div>
     		<div class="line">
     			<label>Ng&agrave;y &#273;i </label>
-    			<input type='text' class='text'/>
+    			<input id='ngaydi' type='text' class='text'/>
     		</div>
     		<div class="line">
     			<label>Loại Ph&ograve;ng</label>

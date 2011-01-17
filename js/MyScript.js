@@ -3,8 +3,31 @@ jQuery.noConflict();
 var dateden = new Date();
 jQuery(document).ready(function($){
     /************ check dateden & datedi **********************/
-    
-    
+    //hien thi validation cho ngay den, ngay di cho column_left
+    if($('#ngayden').html()!=null){
+        $('#ngayden').datepicker({changeMonth:true,changeYear:true,dateFormat:'yy-mm-dd'});
+        $("#ngayden").change(function(){
+            var dateArray = ($("#ngayden").val()).split('-');
+            dateden.setFullYear(dateArray[0],dateArray[1]-1,dateArray[2]);
+            var today = new Date();
+            if(dateden < today){
+                alert("Ngày nhận phòng không được nhỏ hơn ngày hiện tại");
+            }
+        });
+    }
+    if($('#ngaydi').html() != null){
+		$('#ngaydi').datepicker({ changeMonth: true,
+			changeYear: true, dateFormat: 'yy-mm-dd' });
+        $("#ngaydi").change(function(){
+            var dateArray = ($("#ngaydi").val()).split('-');            
+            var datedi = new Date();
+            datedi.setFullYear(dateArray[0],dateArray[1]-1,dateArray[2]);  
+            if(datedi < dateden){
+                alert("Ngày trả phòng không được nhỏ hơn ngày nhận phòng");
+            }
+        });
+	}
+    /******************** end column_left ********************************/
 	if($('#dateden').html() != null){
 		$('#dateden').datepicker({ appendText: '(yyyy-mm-dd)',changeMonth: true,
 			changeYear: true, dateFormat: 'yy-mm-dd' });
@@ -181,6 +204,7 @@ jQuery(document).ready(function($){
              
 	$("div.loaiphong ul li").hover(function() {
 		$(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/ 
+        $(this).find("span").addClass("hidden");
 		var imagePosition = $(this).find('img').position();
 		$(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
 			.animate({
@@ -195,6 +219,7 @@ jQuery(document).ready(function($){
 
 		} , function() {
 		$(this).css({'z-index' : '0'}); /* Set z-index back to 0 */
+        $(this).find("span").removeClass("hidden");
 		$(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
 			.animate({
 				marginTop: '0', /* Set alignment back to default */

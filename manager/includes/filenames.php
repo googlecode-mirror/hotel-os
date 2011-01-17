@@ -11,7 +11,7 @@
 */
 
 // define the filenames used in the project
-  define('FILENAME_ADMINISTRATORS', 'manager.php');
+  define('FILENAME_ADMINISTRATORS', 'owner.php');
   define('FILENAME_BACKUP', 'backup.php');
   define('FILENAME_BANNER_MANAGER', 'banner_manager.php');
   define('FILENAME_BANNER_STATISTICS', 'banner_statistics.php');
