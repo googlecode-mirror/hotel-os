@@ -36,7 +36,7 @@
 
   function tep_db_query($query, $link = 'db_link') {
     global $$link, $logger;
-
+    mysql_query("set names 'utf8'");
     if (defined('STORE_DB_TRANSACTIONS') && (STORE_DB_TRANSACTIONS == 'true')) {
       if (!is_object($logger)) $logger = new logger;
       $logger->write($query, 'QUERY');

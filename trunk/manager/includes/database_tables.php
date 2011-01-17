@@ -57,7 +57,7 @@
   define('TABLE_WHOS_ONLINE', 'whos_online');
   define('TABLE_ZONES', 'zones');
   define('TABLE_MANAGERS','managers');
-  define('TABLE_ROOM_TYPE','');
+  define('TABLE_ROOM_TYPE','room_type');
   define('TABLE_STATUS_ROOM','status_room');
   define('TABLE_OWNERS','owners');
 ?>

@@ -55,12 +55,16 @@ define('FEMALE', 'Female');
 // text for date of birth example
 define('DOB_FORMAT_STRING', 'mm/dd/yyyy');
 
-// configuration box text in includes/boxes/configuration.php
-define('BOX_HEADING_CONFIGURATION', 'Quản lý khách sạn');
-define('BOX_CONFIGURATION_MYSTORE', 'My Store');
+// owner
+define('BOX_HEADING_CONFIGURATION', 'Chủ khách sạn');
+define('BOX_CONFIGURATION_MYSTORE', 'Nhân viên quản lý');
 define('BOX_CONFIGURATION_LOGGING', 'Logging');
 define('BOX_CONFIGURATION_CACHE', 'Cache');
-define('BOX_CONFIGURATION_ADMINISTRATORS', 'Chủ khách sạn');
+define('BOX_CONFIGURATION_ADMINISTRATORS', 'Tài khoản');
+define('BOX_MANAGER_OWNER','Nhân viên quản lý');
+
+//manager
+define('BOX_ROOM_TYPE','Loại phòng');
 
 // modules box text in includes/boxes/modules.php
 define('BOX_HEADING_MODULES', 'Modules');
@@ -69,7 +73,7 @@ define('BOX_MODULES_SHIPPING', 'Shipping');
 define('BOX_MODULES_ORDER_TOTAL', 'Order Total');
 
 // categories box text in includes/boxes/catalog.php
-define('BOX_HEADING_CATALOG', 'Quản lý phòng');
+define('BOX_HEADING_CATALOG', 'Nhân viên quản lý');
 define('BOX_CATALOG_CATEGORIES_PRODUCTS', 'Loại phòng');
 define('BOX_CATALOG_DISPLAY_EMPTY_PRODUCTS', 'Danh mục phòng trống');
 //define('BOX_CATALOG_MANUFACTURERS', 'Sửa phòng');
