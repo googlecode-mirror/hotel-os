@@ -21,7 +21,7 @@
                      'link'  => tep_href_link(FILENAME_CATEGORIES, 'selected_box=catalog'));
 
   if ($selected_box == 'catalog') {
-    $contents[] = array('text'  => '<a href="' . tep_href_link(FILENAME_CATEGORIES, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_CATEGORIES_PRODUCTS . '</a><br>' .
+    $contents[] = array('text'  => '<a href="' . tep_href_link(FILENAME_ROOMTYPE, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_CATEGORIES_PRODUCTS . '</a><br>' .
                                    '<a href="' . tep_href_link(FILENAME_EMPTY_PRODUCTS, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_DISPLAY_EMPTY_PRODUCTS . '</a><br>'
     //                               .'<a href="' . tep_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_MANUFACTURERS . '</a><br>' .
 //                                   '<a href="' . tep_href_link(FILENAME_REVIEWS, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_REVIEWS . '</a><br>' .
