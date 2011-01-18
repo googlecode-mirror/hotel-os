@@ -47,31 +47,38 @@
                     Ngày đến
                 </th>
                 <th class='center' width="10%">
-                    Số phòng
+                    Số ngày ở
                 </th>
                 <th class='center' width="10%">
-                    Số ngày ở
+                    Số phòng
                 </th>
                 <th class='center' width="10%">
                     Gía phòng
                 </th>
+                
                 <th width="10%">
                     Tổng tiền
+                </th>
+                <th class='center' width="10%">
+                   Hủy Phòng
                 </th>
             </tr>
             <?php
            while($row=tep_db_fetch_array($listing_query1)){
            	foreach($_SESSION['cart_room'] as $cartItems){
            		if($cartItems['roomtypeId'] == $row[room_type_id]){
-           		 echo "<tr>";
+           			$keys=array_search($cartItems,$_SESSION['cart_room']);
+           		  echo "<tr>";
                   echo  '<td width="10%">';
                   echo   " <p>$row[room_type_name]</p>";
                   echo  "</td>";
                   echo  '<td class="center" width="10%">';
-                  echo   " <p>".$HTTP_GET_VARS['comingdate']."</p>";
+//                  $date=$cartItems['dayto'];
+//                  echo $date->format('Y-m-d H:i:s');
+                  echo   " <p>".$cartItems['dayto']."</p>";
                   echo  "</td>";
                   echo  '<td class="center" width="10%">';
-                  echo   " <p>".$HTTP_GET_VARS['stay_dates']."</p>";
+                  echo   " <p>".$cartItems['staydate']."</p>";
                   echo  "</td>";
                   echo  "<td class=\"center\" width='10%'>";
                   echo    " <p>".$cartItems['qty']."</p>";
@@ -79,17 +86,21 @@
                   echo  "</td>";
                   echo '<td width="10%">';
                  // echo     "<p>120.000VND</p>";
-                  echo " <p>$row[room_type_price]</p>";
+                  echo " <p align=center>$row[room_type_price]</p>";
                   echo "</td>";
                   echo '<td width="10%">';
                  // echo    "<p>120.000VND</p>";
-                  echo "<p align=right>  ". number_format($cartItems['qty']*$row[room_type_price],3) ." VND</p>";
+                  echo "<p align=right>  ". number_format($cartItems['qty']*$row[room_type_price]*$cartItems['staydate'],3) ." VND</p>";
                   echo "</td>";
-                  echo "</tr>";
-                  $total +=intval($cartItems['qty'])*$row[room_type_price];
+                  
+                  echo '<td width="10%">';
+                  echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'"> Hủy </a></p>';
+                  echo "</td>";
+                  echo "</tr>";                
+                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate'];
            		}
            	}
-                 
+               
             }
              ?>
             <tr>
@@ -109,6 +120,6 @@
         <form id="userForm" name="userForm" method="get" action="index.php">                    
                 
                     <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"
-                        onclick="javascript:window.href='<?php echo tep_href_link('index.php')?>';"/>
+                        onclick="javascript:window.href='<?php echo tep_href_link('index.php');?>';"/>
         </form>
     </div>

@@ -44,7 +44,8 @@ require('includes/application_top.php');
 			 $qty= $cartItems['qty']+1;
              echo " ; gia tri qty:".$qty."  ; ";
 		     $cartItems['qty']=$qty;
-             
+		     $cartItems['staydate']=$songayo;
+             $cartItems['dayto']=$ngayden;
              	$_SESSION['cart_room'][$keys]=$cartItems;	   
 		     echo "sl moi  :" .$cartItems['qty'];		     
 			}
@@ -54,7 +55,9 @@ require('includes/application_top.php');
              $qty=1; 
 			 echo "testtttttttttt";
 			 array_push($_SESSION['cart_room'],array( "qty" => $qty,
-                                               "roomtypeId" => $id                                              
+                                               "roomtypeId" => $id ,
+			 									"staydate" =>  $songayo,
+			 									"dayto"=> $ngayden                                        
                                               ));   
         }
 	}
@@ -63,7 +66,9 @@ require('includes/application_top.php');
 		echo "aaaaaaaa";	
 	    $qty=1; 	    
 	    $_SESSION['cart_room'][] = array( "qty" => $qty,
-                                               "roomtypeId" => $id
+                                               "roomtypeId" => $id,
+	    										"staydate" =>  $songayo,
+	    										"dayto"=> $ngayden
 			 								  );   
 	}
 	echo "so session   ".count($_SESSION['cart_room'])."      ";
@@ -75,6 +80,6 @@ require('includes/application_top.php');
 	//echo $_SESSION['cart_room'][$id];
 	//echo $id;
 	//header("location:cart.php");
-	tep_redirect(tep_href_link("cart.php","stay_dates=".$songayo."&comingdate=".$ngayden));
+	tep_redirect(tep_href_link("cart.php"));
 	exit();	
 ?>
