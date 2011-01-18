@@ -4,7 +4,7 @@ require('includes/application_top.php');
 	$cart=$_SESSION['cart_room'];
 	$id=$_GET['room_type_id'];	
 	echo count($_SESSION['cart_room']);
-	if($id == 0)
+	if($id == 100)
 	{
 	 unset($_SESSION['cart_room']);
 	
@@ -16,6 +16,6 @@ require('includes/application_top.php');
 	 //echo "gfgf";
 	}
 	//header("location:cart.php");
-	//tep_redirect(tep_href_link("cart.php"));
+	tep_redirect(tep_href_link("cart.php"));
 	exit();
 ?>
