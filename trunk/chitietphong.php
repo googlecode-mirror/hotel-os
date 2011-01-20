@@ -166,7 +166,7 @@ jQuery.noConflict();
 		<div id="mainContent">
 		<?php 
 			if (isset($HTTP_GET_VARS['room_type_id'])){
-	   		$listing_sql1 = "select  room_type_description,room_type_price,room_type_image from " . room_type .  "  where room_type_id= '" . (int)$HTTP_GET_VARS['room_type_id'] . "' ";
+	   		$listing_sql1 = "select * from " . room_type .  "  where room_type_id= '" . (int)$HTTP_GET_VARS['room_type_id'] . "' ";
 	  	    }
 	  	    $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);
       		$listing_query1 = tep_db_query($listing_split1->sql_query);
@@ -206,7 +206,7 @@ jQuery.noConflict();
             <div class="itemImageBlock">
 		      <span class="itemImage">
     		  	<a title="Click to preview image" href="http://localhost/Khotel/media/k2/items/cache/4965657af186b9092c7a96976ffe881c_XL.jpg" class="modal">
-		  		  <img style="width: 600px; height: 400px;" alt="A1" src="<?php echo images.'/'.$listing1['room_type_image'];?>"/>
+		  		  <img style="width: 600px; height: 400px;" alt="A1" src="<?php echo images.'/'.phongkhachsan.'/'.$listing1['room_type_image'];?>"/>
                 </a>
               </span>
             </div>
@@ -217,16 +217,16 @@ jQuery.noConflict();
         </div>				
                 <div class="k2store_item_price">
                     <span class="item_price_label">Giá phòng : </span>
-                    <span class="k2store_item_price_value">&nbsp;<?php echo '$'.$listing1['room_type_price'] ;?> </span>                    
+                    <span class="k2store_item_price_value">&nbsp;<?php echo number_format($listing1['room_type_price'],3)."VND" ;?> </span>                    
                 </div>
                 <input type="submit" value="Đặt phòng" onclick="javascript:showDatphongForm();" />
 				<div class="view">
 					<h2>Góc ảnh</h2>
 					<ul> 
-							<li><a href="#"><img src="images/noithat1.jpg"/></a></li>
-							<li><a href="#"><img src="images/noithat2.jpg"/></a></li>
-							<li><a href="#"><img src="images/noithat3.jpg"/></a></li>
-							<li><a href="#"><img src="images/phong 8.jpg"/></a></li>
+							<li><a href="#"><img src="<?php echo images.'/'.phongkhachsan.'/'.$listing1['image1']; ?>"/></a></li>
+							<li><a href="#"><img src="<?php echo images.'/'.phongkhachsan.'/'.$listing1['image2'];?>"/></a></li>
+							<li><a href="#"><img src="<?php echo images.'/'.phongkhachsan.'/'.$listing1['image3']; ?>"/></a></li>
+							<li><a href="#"><img src="<?php echo images.'/'.phongkhachsan.'/'.$listing1['image4']; ?>"/></a></li>
 					</ul>
 				</div>
 			<div class="clear"></div>

@@ -1,4 +1,4 @@
-#Tue Jan 11 02:00:28 PST 2011
+#Thu Jan 13 01:33:17 PST 2011
 eclipse.preferences.version=1
 encoding//includes/column_left.php=UTF-8
 encoding//includes/header_top.php=UTF-8
@@ -8,5 +8,6 @@ encoding//includes/modules/product_listing2.php=UTF-8
 encoding//includes/popup.php=UTF-8
 encoding//includes/popup_login.php=UTF-8
 encoding/addcart.php=UTF-8
+encoding/addcartnew.php=UTF-8
 encoding/cart.php=UTF-8
 encoding/newcart.php=UTF-8
