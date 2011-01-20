@@ -88,10 +88,10 @@
           case 'PRODUCT_LIST_IMAGE':
           	  $lc_align = 'center';
      	   if (isset($HTTP_GET_VARS['room_type_categories'])) {
-              $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_id=' . $listing['room_type_id'] ) .  '">' .tep_image(DIR_WS_IMAGES . $listing['room_type_image'], $listing['room_type_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
+              $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_id=' . $listing['room_type_id'] ) .  '">' .tep_image(DIR_WS_IMAGES. "phongkhachsan/". $listing['room_type_image'], $listing['room_type_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';
              // $lc_text = '<a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['room_image'], $listing['room_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';                         
             } else {
-            $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_id=' . $listing['room_type_id'] ) .  '">' .tep_image(DIR_WS_IMAGES . $listing['room_type_image'], $listing['room_type_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';             
+            $p_pic = $lc_text =  '<a href="' . tep_href_link("chitietphong.php", 'room_type_id=' . $listing['room_type_id'] ) .  '">' .tep_image(DIR_WS_IMAGES. "phongkhachsan/" . $listing['room_type_image'], $listing['room_type_image'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a>';             
             }
              break;       
           case 'PRODUCT_LIST_BUY_NOW':

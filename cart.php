@@ -73,8 +73,7 @@
                   echo   " <p>$row[room_type_name]</p>";
                   echo  "</td>";
                   echo  '<td class="center" width="10%">';
-//                  $date=$cartItems['dayto'];
-//                  echo $date->format('Y-m-d H:i:s');
+				//  date_format($cartItems['dayto'], 'Y-m-d');
                   echo   " <p>".$cartItems['dayto']."</p>";
                   echo  "</td>";
                   echo  '<td class="center" width="10%">';

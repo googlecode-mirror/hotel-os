@@ -310,15 +310,17 @@ jQuery.noConflict();
 //		    mysql_num_rows($listing_query);
 //		    //$listing = tep_db_fetch_array($listing_query);
 //		    return  mysql_num_rows($listing_query);
-//		}
-       // echo "\r\n customer :".$_SESSION['customer_id'];
-       // list($year,$month,$day)=split('[-]', $datecurent);
-       // echo $year."-".$month."-".$day;
-        $day+=1;
-        $tomorrow  = date($year."-".$month."-".$day);
-       // echo $tomorrow;
-        $dayto=date("2011-1-4");
-		$daygo=date("2011-1-11");
+//		}      
+      	function getPriceRoom($room_type_id){
+      		$listing_sql="select * from  room_type  where  room_type_id ='".$room_type_id."'";		
+			$listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS);
+		    $listing_query = tep_db_query($listing_split->sql_query);
+		    $listing = tep_db_fetch_array($listing_query);
+		    return $listing['room_type_price'];
+      	}
+      	
+        $dayto=date("2011-1-5");
+		$daygo=date("2011-1-6");
 		function NumDayStay($dayto,$daygo){
 			list($year,$month,$day)=split('[-]', $dayto);			
 			list($year2,$month2,$day2)=split('[-]', $daygo);
@@ -419,69 +421,54 @@ jQuery.noConflict();
 			<?php
 			
 		    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 
-		    $roomnum=2;	
-	//		function testsearch($dayto,$daygo,$countday,$room_type_id){
-	//				$room_dayto=getroomofdate($dayto);
-	//				$room_daygo=getroomofdate($daygo);
-	//				while ($listing = tep_db_fetch_array($listing_query)) {
-	//					if(getroomtype($listing['room_type_id'],$listing2['room_type_id'])){
-	//						
-	//					}
-	//				}  
-	//		}
+		    $roomnum=2;		
 		}
-	else if($flag==0) { ?>	
-		<?php
-		
-		
-//		echo $datecurent;
-//	   echo $listing2['status_room_number_room_type_luxury1']; 	  
-		?>
+	else if($flag==0) { ?>			
 			<h3 class="welcome">Chào mừng quý khách đã đến với hệ thống Booking online của khách sạn chúng tôi. Đến với khách sạn quý khách sẽ bắt gặp thái độ phục vụ chuyên nghiệp, nhanh chóng. Kính chúc các bạn có kỳ nghỉ 	thoải mái ở khách sạn chúng tôi.</h3>
 			<div id="showloaiphong">
 				<p>Hiện tại khách sạn cung cấp một số loại phòng sau: </p>
 				<div class="loaiphong">
 					<h3>Phòng sang trọng</h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=1');?>"><img src="images/phongsangtrong1.jpg"/><span>Price:$1500</span><br><span>Phòng còn trống:<?php echo getroomtype(1,$listing2['1']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=2');?>"><img src="images/phongsangtrong2.jpg"/><span>Price:$1500</span><br><span>Phòng còn trống:<?php echo getroomtype(2,$listing2['2']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=3');?>"><img src="images/phongsangtrong3.jpg"/><span>Price:$1500</span><br><span>Phòng còn trống:<?php echo getroomtype(3,$listing2['3']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phongsangtrong4.jpg"/><span>Price:$1500</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=1');?>"><img src="images/phongkhachsan/sangtrong1.jpg"/><span><?php echo number_format(getPriceRoom(1),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(1,$listing2['1']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=2');?>"><img src="images/phongkhachsan/sangtrong2.jpg"/><span><?php echo number_format(getPriceRoom(2),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(2,$listing2['2']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=3');?>"><img src="images/phongkhachsan/sangtrong3.jpg"/><span><?php echo number_format(getPriceRoom(3),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(3,$listing2['3']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=3');?>"><img src="images/phongkhachsan/sangtrong4.jpg"/><span><?php echo number_format(getPriceRoom(3),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(3,$listing2['3']); ?></span></a></li>
 					</ul>
 					
-					<a href="#" class="more">Xem thêm...</a>
+<!--					<a href="#" class="more">Xem thêm...</a>-->
 					<div class="clear"></div>
 				</div>
 				<div class="loaiphong">
 					<h3>Phòng cao cấp</h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=5');?>"><img src="images/phongcaocap2.jpg"/><span>Price:$1200</span><br><span>Phòng còn trống:<?php echo getroomtype(4,$listing2['4']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=6');?>"><img src="images/phongcaocap2.jpg"/><span>Price:$1200</span><br><span>Phòng còn trống:<?php echo getroomtype(5,$listing2['5']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=7');?>"><img src="images/phongcaocap3.jpg"/><span>Price:$1200</span><br><span>Phòng còn trống:<?php echo getroomtype(6,$listing2['6']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=8');?>"><img src="images/phongcaocap8.jpg"/><span>Price:$1200</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=7');?>"><img src="images/phongkhachsan/caocap1.jpg"/><span><?php echo number_format(getPriceRoom(7),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(7,$listing2['7']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=8');?>"><img src="images/phongkhachsan/caocap2.jpg"/><span><?php echo number_format(getPriceRoom(8),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(8,$listing2['8']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=9');?>"><img src="images/phongkhachsan/caocap3.jpg"/><span><?php echo number_format(getPriceRoom(9),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(9,$listing2['9']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=7');?>"><img src="images/phongkhachsan/caocap1.jpg"/><span><?php echo number_format(getPriceRoom(7),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(7,$listing2['7']); ?></span></a></li>
 					</ul>
-					<a href="#" class="more">Xem thêm...</a>
+<!--					<a href="#" class="more">Xem thêm...</a>-->
 					<div class="clear"></div>
 				</div>
 				<div class="loaiphong">
 					<h3>Phòng gia đình</h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=9');?>"><img src="images/phongsangtrong4.jpg"/><span>Price:$800</span><br><span>Phòng còn trống:<?php echo getroomtype(7,$listing2['7']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=10');?>"><img src="images/phong 10.jpg"/><span>Price:$800</span><br><span>Phòng còn trống:<?php echo getroomtype(8,$listing2['8']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=11');?>"><img src="images/phong 11.jpg"/><span>Price:$800</span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=12');?>"><img src="images/phong 12.jpg"/><span>Price:$800</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=10');?>"><img src="images/phongkhachsan/giadinh1.jpg"/><span><?php echo number_format(getPriceRoom(10),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(10,$listing2['10']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=11');?>"><img src="images/phongkhachsan/giadinh2.jpg"/><span><?php echo number_format(getPriceRoom(11),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(11,$listing2['11']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=10');?>"><img src="images/phongkhachsan/giadinh1.jpg"/><span><?php echo number_format(getPriceRoom(10),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(10,$listing2['10']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=11');?>"><img src="images/phongkhachsan/giadinh2.jpg"/><span><?php echo number_format(getPriceRoom(11),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(11,$listing2['11']); ?></span></a></li>
 					</ul>
-					<a href="#" class="more">Xem thêm...</a>
+<!--					<a href="#" class="more">Xem thêm...</a>-->
 				</div>
 				<div class="loaiphong">
 					<h3>Phòng hội nghị</h3>
 					<ul> 
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=13');?>"><img src="images/phong 16.jpg"/><span>Price:$400</span><br><span>Phòng còn trống:<?php echo getroomtype(9,$listing2['9']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=14');?>"><img src="images/phong 13.jpg"/><span>Price:$400</span><br><span>Phòng còn trống:<?php echo getroomtype(10,$listing2['10']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=15');?>"><img src="images/phong 14.jpg"/><span>Price:$400</span><br><span>Phòng còn trống:<?php echo getroomtype(11,$listing2['11']); ?></span></a></li>
-						<li><a href="<?php echo tep_href_link('chitietphong.php','room_id=16');?>"><img src="images/phong 15.jpg"/><span>Price:$400</span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phongkhachsan/phonghop1.jpg"/><span><?php echo number_format(getPriceRoom(4),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(4,$listing2['4']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=5');?>"><img src="images/phongkhachsan/phonghop2.jpg"/><span><?php echo number_format(getPriceRoom(5),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(5,$listing2['5']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=6');?>"><img src="images/phongkhachsan/phonghop3.jpg"/><span><?php echo number_format(getPriceRoom(6),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(6,$listing2['6']); ?></span></a></li>
+						<li><a href="<?php echo tep_href_link('chitietphong.php','room_type_id=4');?>"><img src="images/phongkhachsan/phonghop1.jpg""/><span><?php echo number_format(getPriceRoom(4),3)."VND";?></span><br><span>Phòng còn trống:<?php echo getroomtype(4,$listing2['4']); ?></span></a></li>
 					</ul>
-					<a href="#" class="more">Xem thêm...</a>
+<!--					<a href="#" class="more">Xem thêm...</a>-->
 				</div>
 				<!--<ul>
 					<li>
