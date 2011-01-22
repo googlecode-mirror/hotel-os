@@ -11,72 +11,79 @@
 */
 
   require('includes/application_top.php');
-  #checking owner role
-if(!tep_session_is_registered('owner'))
-     tep_redirect(tep_href_link(FILENAME_LOGIN));
-     echo 'run hreer';
+
+  require(DIR_WS_CLASSES . 'currencies.php');
+  $currencies = new currencies();
+  
   $action = (isset($HTTP_GET_VARS['action']) ? $HTTP_GET_VARS['action'] : '');
 
   if (tep_not_null($action)) {
     switch ($action) {
-      case 'insert':
-        require('includes/functions/password_funcs.php');
-
-        $name = tep_db_prepare_input($HTTP_POST_VARS['name']);
-        $image = tep_db_prepare_input($HTTP_POST_VARS['image']);
-        $description = tep_db_prepare_input($HTTP_POST_VARS['description']);
-        $count = tep_db_prepare_input($HTTP_POST_VARS['count']);
-        $price = tep_db_prepare_input($HTTP_POST_VARS['price']);
-        $categories = tep_db_prepare_input($HTTP_POST_VARS['categories']);
-        $image1 = tep_db_prepare_input($HTTP_POST_VARS['image1']);
-        $image2 = tep_db_prepare_input($HTTP_POST_VARS['image2']);
-        $image3 = tep_db_prepare_input($HTTP_POST_VARS['image3']);
-        $image4 = tep_db_prepare_input($HTTP_POST_VARS['image4']);
-        $check_query = tep_db_query("select id from " . TABLE_ROOM_TYPE . " where room_type_name = '" . tep_db_input($name) . "' limit 1");
-
-        if (tep_db_num_rows($check_query) < 1) {
-          tep_db_query("insert into " . TABLE_ROOM_TYPE . 
-          " (room_type_name,room_type_image,room_type_description,room_type_count,room_type_price,room_type_categories,image1,image2,image3,image4) values ('" 
-          . tep_db_input($name) . "', '" . tep_db_input(($image)) . "', '".tep_db_input($description). "', '".tep_db_input($count). "', '".tep_db_input($price)
-          . "', '".tep_db_input($categories). "', '".tep_db_input($image1). "', '".tep_db_input($image2). "', '".tep_db_input($image3). "', '".tep_db_input($image4));
-        } else {
-          $messageStack->add_session(ERROR_ADMINISTRATOR_EXISTS, 'error');
-        }
-
-        tep_redirect(tep_href_link(FILENAME_ROOMTYPE));
-        break;
+      case 'insert':        
       case 'save':
-        require('includes/functions/password_funcs.php');
+        $room_type_id = tep_db_prepare_input($HTTP_GET_VARS['aID']);
+        $sql_data_array = array('room_type_name'        => tep_db_prepare_input($HTTP_POST_VARS['name']),
+                                'room_type_description' => tep_db_prepare_input($HTTP_POST_VARS['description']),
+                                'room_type_count'       => tep_db_prepare_input($HTTP_POST_VARS['count']),
+                                'room_type_price'       => tep_db_prepare_input($HTTP_POST_VARS['price'])
+                                
+                            );
+        if ($action == 'insert') {
+       
+          tep_db_perform(TABLE_ROOM_TYPE, $sql_data_array);
 
-        $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
-        $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
+          $room_type_id = tep_db_insert_id();
+            echo "success ".$room_type_id;
+        } elseif ($action == 'save') {
+            tep_db_perform(TABLE_ROOM_TYPE, $sql_data_array, 'update', "room_type_id = '" . (int)$room_type_id."'");
+        }
+
         
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($owner['username']) . "'");
-        $check = tep_db_fetch_array($check_query);
+   
+     unset($sql_data_array);   
+        
+        $room_image = new upload('roomtype_image');
+        $room_image->set_destination(DIR_FS_CATALOG_IMAGES_HOTEL);
 
-        if ($manager['id'] == $check['id']) {
-          $manager['username'] = $username;
+        if ($room_image->parse() && $room_image->save()) {
+          
+            $sql_data_array = array('room_type_image'=>tep_db_input($room_image->filename));  
         }
+        $room_image1 = new upload('image1');
+        $room_image1->set_destination(DIR_FS_CATALOG_IMAGES_HOTEL);
 
-        tep_db_query("update " . TABLE_ROOM_TYPE . " set user_name = '" . tep_db_input($username) . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");
-
-        if (tep_not_null($password)) {
-          tep_db_query("update " . TABLE_ROOM_TYPE . " set user_password = '" . tep_db_input(tep_encrypt_password($password)) . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");
+        if ($room_image1->parse() && $room_image1->save()) {
+            $sql_data_array = array_merge($sql_data_array,array('image1'=>tep_db_input($room_image1->filename)));  
         }
+        $room_image2 = new upload('image2');
+        $room_image2->set_destination(DIR_FS_CATALOG_IMAGES_HOTEL);
 
-        tep_redirect(tep_href_link(FILENAME_ROOMTYPE, 'aID=' . (int)$HTTP_GET_VARS['aID']));
+        if ($room_image2->parse() && $room_image2->save()) {
+            $sql_data_array = array_merge($sql_data_array,array('image2'=>tep_db_input($room_image2->filename))); 
+        }
+        $room_image3 = new upload('image3');
+        $room_image3->set_destination(DIR_FS_CATALOG_IMAGES_HOTEL);
+
+        if ($room_image3->parse() && $room_image3->save()) {
+           $sql_data_array = array_merge($sql_data_array,array('image3'=>tep_db_input($room_image3->filename)));
+        }
+        $room_image4 = new upload('image4');
+        $room_image4->set_destination(DIR_FS_CATALOG_IMAGES_HOTEL);
+
+        if ($room_image4->parse() && $room_image4->save()) {
+            $sql_data_array = array_merge($sql_data_array,array('image4'=>tep_db_input($room_image4->filename)));
+        }
+        if(count($sql_data_array) > 0){
+                   
+               tep_db_perform(TABLE_ROOM_TYPE, $sql_data_array, 'update', "room_type_id = '" . (int)$room_type_id."'"); 
+        }
+        
+       tep_redirect(tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $room_type_id));
         break;
       case 'deleteconfirm':
         $id = tep_db_prepare_input($HTTP_GET_VARS['aID']);
 
-        $check_query = tep_db_query("select id from " . TABLE_ROOM_TYPE . " where user_name = '" . tep_db_input($owner['username']) . "'");
-        $check = tep_db_fetch_array($check_query);
-
-        if ($id == $check['id']) {
-          tep_session_unregister('owner');
-        }
-        
-        tep_db_query("delete from " . TABLE_ROOM_TYPE . " where id = '" . (int)$id . "'");
+        tep_db_query("delete from " . TABLE_ROOM_TYPE . " where room_type_id = '" . (int)$id . "'");
 
         tep_redirect(tep_href_link(FILENAME_ROOMTYPE));
         break;
@@ -135,26 +142,26 @@ if(!tep_session_is_registered('owner'))
 
   $admins_query = tep_db_query("select room_type_id, room_type_name,room_type_image,room_type_description,room_type_count,room_type_price,room_type_categories,image1,image2,image3,image4 from " . TABLE_ROOM_TYPE);
   while ($admins = tep_db_fetch_array($admins_query)) {
-    if ((!isset($HTTP_GET_VARS['aID']) || (isset($HTTP_GET_VARS['aID']) && ($HTTP_GET_VARS['aID'] == $admins['id']))) && !isset($aInfo) && (substr($action, 0, 3) != 'new')) {
+    if ((!isset($HTTP_GET_VARS['aID']) || (isset($HTTP_GET_VARS['aID']) && ($HTTP_GET_VARS['aID'] == $admins['room_type_id']))) && !isset($aInfo) && (substr($action, 0, 3) != 'new')) {
       $aInfo = new objectInfo($admins);
     }
 
-    if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) {
-      echo '                  <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->id . '&action=edit') . '\'">' . "\n";
+    if ( (isset($aInfo) && is_object($aInfo)) && ($admins['room_type_id'] == $aInfo->room_type_id) ) {
+      echo '                  <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id . '&action=edit') . '\'">' . "\n";
     } else {
-      echo '                  <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $admins['id']) . '\'">' . "\n";
+      echo '                  <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $admins['room_type_id']) . '\'">' . "\n";
     }
 ?>
                 <td class="dataTableContent"><?php echo $admins['room_type_name']; ?></td>
-                <td class="dataTableContent"><img src="../images/<?php echo $admins['room_type_image']; ?>" height="70" width="70"/></td>
+                <td class="dataTableContent"><img src="../images/phongkhachsan/<?php echo $admins['room_type_image']; ?>" height="70" width="70"/></td>
                 <td class="dataTableContent"><?php echo $admins['room_type_description']; ?></td>
                 <td class="dataTableContent"><?php echo $admins['room_type_count']; ?></td>
                 <td class="dataTableContent"><?php echo $admins['room_type_price']; ?></td>
                 <td class="dataTableContent"><?php echo $admins['room_type_categories']; ?></td>
-                <td class="dataTableContent"><?php echo $admins['image1']; ?></td>
-                <td class="dataTableContent"><?php echo $admins['image2']; ?></td>
-                <td class="dataTableContent"><?php echo $admins['image3']; ?></td>
-                <td class="dataTableContent"><?php echo $admins['image4']; ?></td>
+                <td class="dataTableContent"><img src="../images/phongkhachsan/<?php echo $admins['image1']; ?>" height="70" width="70"/></td>
+                <td class="dataTableContent"><img src="../images/phongkhachsan/<?php echo $admins['image2']; ?>" height="70" width="70"/></td>
+                <td class="dataTableContent"><img src="../images/phongkhachsan/<?php echo $admins['image3']; ?>" height="70" width="70"/></td>
+                <td class="dataTableContent"><img src="../images/phongkhachsan/<?php echo $admins['image4']; ?>" height="70" width="70"/></td>
                 <td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $admins['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
                 
                </tr>
@@ -168,55 +175,66 @@ if(!tep_session_is_registered('owner'))
 <?php
   $heading = array();
   $contents = array();
-
   switch ($action) {
     case 'new':
       $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_NEW_ROOM . '</b>');
 
-      $contents = array('form' => tep_draw_form('administrator', FILENAME_MANAGER_OWNER, 'action=insert'));
+      $contents = array('form' => tep_draw_form('roomtype', FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id . '&action=insert', 'post', 'enctype="multipart/form-data"') );
       $contents[] = array('text' => TEXT_INFO_INSERT_INTRO);
-      $contents[] = array('text' => '<br>' . TEXT_INFO_NAME . '<br>' . tep_draw_input_field('name'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE . '<br>' . tep_draw_input_field('image'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_DESCRIPTION . '<br>' . tep_draw_input_field('description'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_COUNT . '<br>' . tep_draw_input_field('count'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_PRICE . '<br>' . tep_draw_input_field('price'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_CATEGORIES . '<br>' . tep_draw_input_field('catogories'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE1 . '<br>' . tep_draw_input_field('image1'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE2 . '<br>' . tep_draw_input_field('image2'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE3 . '<br>' . tep_draw_input_field('image3'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE4 . '<br>' . tep_draw_input_field('image4'));
-      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_save.gif', IMAGE_SAVE) . '&nbsp;<a href="' . tep_href_link(FILENAME_MANAGER_OWNER) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_NAME . '<br>' . tep_draw_input_field('name', $aInfo->room_type_name));
+      //$contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->room_type_image, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->room_type_image . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE . '<br>' . tep_draw_file_field('roomtype_image'));
+      $contents[] = array('text' => '<br>' . TEXT_INFO_DESCRIPTION . '<br>' . tep_draw_textarea_field('description','soft','40','20',$aInfo->room_type_description));
+      $contents[] = array('text' => '<br>' . TEXT_INFO_COUNT . '<br>' . tep_draw_input_field('count',$aInfo->room_type_count));
+      $contents[] = array('text' => '<br>' . TEXT_INFO_PRICE . '<br>' . tep_draw_input_field('price',$aInfo->room_type_price).'VND');
+      //$contents[] = array('text' => '<br>' . TEXT_INFO_CATEGORIES . '<br>' . tep_draw_input_field('catogories'));
+      //$contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image1, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image1 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE1 . '<br>' . tep_draw_file_field('image1'));
+      //$contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image2, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image2 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE2 . '<br>' . tep_draw_file_field('image2'));
+      //$contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image3, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image3 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE3 . '<br>' . tep_draw_file_field('image3'));
+      //$contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image4, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image4 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE4 . '<br>' . tep_draw_file_field('image4'));       
+      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_save.gif', IMAGE_SAVE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ROOMTYPE).'">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
     case 'edit':
-      $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
+      $heading[] = array('text' => '<b>' . $aInfo->room_type_name . '</b>');
 
-      $contents = array('form' => tep_draw_form('administrator', FILENAME_MANAGER_OWNER, 'aID=' . $aInfo->id . '&action=save'));
+      //$contents = array('form' => tep_draw_form('roomtype', FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id . '&action=save'));
+      $contents = array('form' => tep_draw_form('roomtype', FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id . '&action=save', 'post', 'enctype="multipart/form-data"') );
       $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
-      $contents[] = array('text' => '<br>' . TEXT_INFO_NAME . '<br>' . tep_draw_input_field('name', $aInfo->user_name));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE . '<br>' . tep_draw_input_field('image'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_DESCRIPTION . '<br>' . tep_draw_input_field('description'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_COUNT . '<br>' . tep_draw_input_field('count'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_PRICE . '<br>' . tep_draw_input_field('price'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_CATEGORIES . '<br>' . tep_draw_input_field('catogories'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE1 . '<br>' . tep_draw_input_field('image1'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE2 . '<br>' . tep_draw_input_field('image2'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE3 . '<br>' . tep_draw_input_field('image3'));
-      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE4 . '<br>' . tep_draw_input_field('image4'));     
-      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_update.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_MANAGER_OWNER, 'aID=' . $aInfo->id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_NAME . '<br>' . tep_draw_input_field('name', $aInfo->room_type_name));
+      $contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->room_type_image, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->room_type_image . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE . '<br>' . tep_draw_file_field('roomtype_image'));
+      $contents[] = array('text' => '<br>' . TEXT_INFO_DESCRIPTION . '<br>' . tep_draw_textarea_field('description','soft','40','20',$aInfo->room_type_description));
+      $contents[] = array('text' => '<br>' . TEXT_INFO_COUNT . '<br>' . tep_draw_input_field('count',$aInfo->room_type_count));
+      $contents[] = array('text' => '<br>' . TEXT_INFO_PRICE . '<br>' . tep_draw_input_field('price',$aInfo->room_type_price).'VND');
+      //$contents[] = array('text' => '<br>' . TEXT_INFO_CATEGORIES . '<br>' . tep_draw_input_field('catogories'));
+      $contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image1, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image1 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE1 . '<br>' . tep_draw_file_field('image1'));
+      $contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image2, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image2 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE2 . '<br>' . tep_draw_file_field('image2'));
+      $contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image3, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image3 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE3 . '<br>' . tep_draw_file_field('image3'));
+      $contents[] = array('text' => '<br>' . tep_image(DIR_WS_CATALOG_IMAGES_HOTEL . $aInfo->image4, $aInfo->room_type_name,'200','150') . '<br>' . DIR_WS_CATALOG_IMAGES_HOTEL . '<br><b>' . $aInfo->image4 . '</b>');
+      $contents[] = array('text' => '<br>' . TEXT_INFO_IMAGE4 . '<br>' . tep_draw_file_field('image4'));       
+      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_update.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
     case 'delete':
       $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
 
-      $contents = array('form' => tep_draw_form('administrator', FILENAME_ROOMTYPE, 'aID=' . $aInfo->id . '&action=deleteconfirm'));
+      $contents = array('form' => tep_draw_form('room_type', FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id . '&action=deleteconfirm'));
       $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
-      $contents[] = array('text' => '<br><b>' . $aInfo->user_name . '</b>');
-      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_delete.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+      $contents[] = array('text' => '<br><b>' . $aInfo->room_type_name . '</b>');
+      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_delete.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
       break;
     default:
       if (isset($aInfo) && is_object($aInfo)) {
-        $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
 
-        $contents[] = array('align' => 'center', 'text' => '<a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->id . '&action=edit') . '">' . tep_image_button('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->id . '&action=delete') . '">' . tep_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
+        $heading[] = array('text' => '<b>' . $aInfo->room_type_name . '</b>');
+
+        $contents[] = array('align' => 'center', 'text' => '<a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id . '&action=edit') . '">' . tep_image_button('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link(FILENAME_ROOMTYPE, 'aID=' . $aInfo->room_type_id . '&action=delete') . '">' . tep_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
       }
       break;
   }
