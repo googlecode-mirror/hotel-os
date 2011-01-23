@@ -45,7 +45,25 @@ window.addEvent('domready', function() {
 		         });
 		         
 		      });
-		      
+		     
+             $$('.cart_form').each(function(el) {
+                el.addEvent('click', function(e) {
+                    new Event(e).stop();
+                    var url=this.href;
+                    this.href='';
+		            
+                SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
+                    setTimeout('ajaxPage("'+url+'" )',3000);
+                    return false;
+                });
+             });
+              $$('a').addEvent('click', function(e) {
+                new Event(e).stop();
+                var url=this.href;
+                SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
+                    setTimeout('ajaxPage("'+url+'" )',3000);
+                    return false;
+              });
 		 }); //end dom ready
 		
         function ajaxPage(url){
