@@ -9,7 +9,7 @@ require('includes/application_top.php');
 	$id=$HTTP_GET_VARS['room_type_id'];
     $songayo = $HTTP_GET_VARS['stay_dates'];
 	//$ngayden = $HTTP_GET_VARS['comingdate'];
-	$ngayden=$_GET['comingdate'];
+	$ngayden= date("Y-m-d", mktime(0, 0, 0, $_GET['comingmonth'], $_GET['comingdate'], $_GET['comingyear']));
 	echo "ngay den   ".$ngayden."     ";
 //	$dayto= tep_db_prepare_input($HTTP_POST_VARS['dateden']);
 //	$daygo= tep_db_prepare_input($HTTP_POST_VARS['datedi']);
