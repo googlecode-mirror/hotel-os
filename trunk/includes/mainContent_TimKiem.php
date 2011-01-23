@@ -90,5 +90,5 @@ continued from previous line.value;document.ex.s.value=''">
 		<input type='text' class='text'/>
 	</div>
 	
-	<input type="submit" onclick="javascript:window.location='/Temp_NuTrang/DKTimKiem_Group.php?step=2'" value="T&igrave;m ki&#7871;m"/>
+	<input type="submit" onclick="javascript:window.location='/hotelbooking/DKTimKiem_Group.php?step=2'" value="T&igrave;m ki&#7871;m"/>
 	

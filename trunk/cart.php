@@ -112,10 +112,13 @@
             </tr>            
         </table>
          </form>
-        <form id="userForm" name="userForm" method="get" action="xulydatphong.php">
-                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Thanh toán"/>                
-                  
-        </form>
+        <form method="post" action="https://www.nganluong.vn/advance_payment.php">
+        <input type=hidden name=receiver value="thanhnha_kg2000@yahoo.com" />
+        <input type=hidden name=product value="phong khach san" />
+        <input type=hidden name=price value="<<?php echo $total ;?>>" />
+        <input type=hidden name=return_url value="http://complete.com.thank.php" />
+        <input type=hidden name=comments value="<!--Ghi chú về đơn hàng-->" />
+        <input type=image src="https://www.nganluong.vn/data/images/buttons/11.gif" /></form>
         <form id="userForm" name="userForm" method="get" action="index.php">                    
                 
                     <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"

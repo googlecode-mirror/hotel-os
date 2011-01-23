@@ -317,10 +317,8 @@ jQuery.noConflict();
 		    $listing_query = tep_db_query($listing_split->sql_query);
 		    $listing = tep_db_fetch_array($listing_query);
 		    return $listing['room_type_price'];
-      	}
-      	
-        $dayto=date("2011-1-5");
-		$daygo=date("2011-1-6");
+      	}      	
+        
 		function NumDayStay($dayto,$daygo){
 			list($year,$month,$day)=split('[-]', $dayto);			
 			list($year2,$month2,$day2)=split('[-]', $daygo);
@@ -343,15 +341,14 @@ jQuery.noConflict();
 	        	}
         	}
         	return $flag;	
-        }
-      
-		 ?>
-		<?php 
-		if($flag==1){
+        }      
+		
+		if($flag==1){	
+			$dayto=$_POST["ngayden"];
+			$daygo=$_POST["ngaydi"];			
 			if(isset($_POST["cb_loaiphong"])){
 			$room_type_categories=$_POST["cb_loaiphong"];
-			$room_number=tep_db_prepare_input($HTTP_POST_VARS["numroom"]);
-			//echo "loai fong   ".$room_type_categories."so fong  ".$room_number;
+			$room_number=tep_db_prepare_input($HTTP_POST_VARS["numroom"]);			
 			 $define_list = array('PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
 		                         'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,                         
 		                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,   			 				                                  
@@ -394,7 +391,7 @@ jQuery.noConflict();
 		                         'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
 		
 		    asort($define_list);
-		      $column_list = array();
+		    $column_list = array();
 		    reset($define_list);
 		    while (list($key, $value) = each($define_list)) {
 		      if ($value > 0) $column_list[] = $key;

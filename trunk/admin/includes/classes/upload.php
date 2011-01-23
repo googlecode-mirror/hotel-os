@@ -20,7 +20,9 @@
       $this->set_extensions($extensions);
 
       $this->set_output_messages('direct');
-
+      echo ";;;;;;;;;;;;";
+print_r($this);
+echo ";;;;;;;;;;;;";
       if (tep_not_null($this->file) && tep_not_null($this->destination)) {
         $this->set_output_messages('session');
 
@@ -37,18 +39,23 @@
 
       $file = array();
 
+echo "      thisisdf      ";
+print_r($_FILES);echo "                         ";
       if (isset($_FILES[$this->file])) {
+        echo " //test 1   ";
         $file = array('name' => $_FILES[$this->file]['name'],
                       'type' => $_FILES[$this->file]['type'],
                       'size' => $_FILES[$this->file]['size'],
                       'tmp_name' => $_FILES[$this->file]['tmp_name']);
       } elseif (isset($HTTP_POST_FILES[$this->file])) {
+        echo " //test 2   ";
         $file = array('name' => $HTTP_POST_FILES[$this->file]['name'],
                       'type' => $HTTP_POST_FILES[$this->file]['type'],
                       'size' => $HTTP_POST_FILES[$this->file]['size'],
                       'tmp_name' => $HTTP_POST_FILES[$this->file]['tmp_name']);
       }
-
+      echo " ;;;;;;;;;file ";
+print_r($file);
       if ( tep_not_null($file['tmp_name']) && ($file['tmp_name'] != 'none') && is_uploaded_file($file['tmp_name']) ) {
         if (sizeof($this->extensions) > 0) {
           if (!in_array(strtolower(substr($file['name'], strrpos($file['name'], '.')+1)), $this->extensions)) {

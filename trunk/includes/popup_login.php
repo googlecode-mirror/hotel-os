@@ -41,7 +41,7 @@
                <li> <a href="/Khotel/index.php?option=com_user&amp;view=reset"> Quên mật khẩu</a> </li>
                <li> <a href="/Khotel/index.php?option=com_user&amp;view=remind"> Quên Email</a> </li>
 
-                              <li> <a href="/Temp_NuTrang/includes/mainContent_account.php"> Đăng ký tài khoản</a> </li>
+                              <li> <a href="/hotelbooking/includes/mainContent_account.php"> Đăng ký tài khoản</a> </li>
                          </ul>
           <div style="clear: both;"></div>
                     <input type="hidden" name="option" value="com_user" />

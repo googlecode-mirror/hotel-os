@@ -19,11 +19,17 @@
         <div class="search_content">
             <div class="line">
     			<label>Ng&agrave;y &#273;&#7871;n </label>
-    			<input id='ngayden' type='text' class='text'/>
+    			<input id='ngayden' type='text' class='text' name='ngayden' value='<?php echo date("Y-m-d");?>'/>
     		</div>
     		<div class="line">
+    		<?php
+    		 $datecurent=date("Y-m-d");	
+    		 list($year,$month,$day)=split('[-]', $datecurent);
+    		 $day +=1;   
+    		 $daytomorrow=date($year."-".$month."-".$day);         		
+    		?>
     			<label>Ng&agrave;y &#273;i </label>
-    			<input id='ngaydi' type='text' class='text'/>
+    			<input id='ngaydi' type='text' class='text' name='ngaydi' value='<?php echo $daytomorrow	;?>'/>
     		</div>
     		<div class="line">
     			<label>Loại Ph&ograve;ng</label>
@@ -36,7 +42,7 @@
     		</div>
             <div class="line">
     			<label>SL phòng </label>
-    			<input type='text' class='text' name="numroom" id="numroom"/>
+    			<input type='text' class='text' name="numroom" id="numroom" value='1' maxlength="2"/>
     		</div>
     		<input  type="submit" value="T&igrave;m ki&#7871;m" style="margin: 10px 0 0 0;"/>
         </div>

@@ -190,7 +190,7 @@ jQuery.noConflict();
 		echo tep_customer_greeting(); 
         //echo "\r\n customer :".$_SESSION['customer_id'];
 		 ?>
-            <h2 class="itemTitle">A1</h2>
+            <h6 class="itemTitle"><?php echo $listing1['room_type_name'];?></h6>
         </div>
 			
 			<!--
@@ -205,7 +205,7 @@ jQuery.noConflict();
         <div class="itemBody">
             <div class="itemImageBlock">
 		      <span class="itemImage">
-    		  	<a title="Click to preview image" href="http://localhost/Khotel/media/k2/items/cache/4965657af186b9092c7a96976ffe881c_XL.jpg" class="modal">
+    		  	<a title="Click to preview image" href="<?php echo images.'/'.phongkhachsan.'/'.$listing1['room_type_image'];?>" class="modal">
 		  		  <img style="width: 600px; height: 400px;" alt="A1" src="<?php echo images.'/'.phongkhachsan.'/'.$listing1['room_type_image'];?>"/>
                 </a>
               </span>
@@ -219,6 +219,9 @@ jQuery.noConflict();
                     <span class="item_price_label">Giá phòng : </span>
                     <span class="k2store_item_price_value">&nbsp;<?php echo number_format($listing1['room_type_price'],3)."VND" ;?> </span>                    
                 </div>
+               
+                <script>function fbs_click() {u='http://<?php echo $_SERVER['SERVER_NAME']; ?>/classifieds/printAd.php?AdID=<?php echo $row_rsAds['AdID']; ?>';t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><style> html .fb_share_button { display: -moz-inline-block; display:inline; padding:1px 20px 0 5px; height:15px; margin-left:30px; border:1px solid #d8dfea; background:url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; } html .fb_share_button:hover { color:#fff; border-color:#295582; background:#3b5998 url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; text-decoration:none; } </style> <a rel="nofollow" href="http://www.facebook.com/share.php?u=<;url>" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Share facebook</a>
+              	
                 <input type="submit" value="Đặt phòng" onclick="javascript:showDatphongForm();" />
 				<div class="view">
 					<h2>Góc ảnh</h2>

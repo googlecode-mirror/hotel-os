@@ -99,16 +99,16 @@
     <div class="megacol column1 first last" style="width: 200px;">
         <ul  class="level1">
             <li class="mega last">
-                <a href="/Temp_NuTrang/dichvunhahang.php/" class="mega first haschild" id="menu96" title="K2">
+                <a href="/hotelbooking/dichvunhahang.php/" class="mega first haschild" id="menu96" title="K2">
                     <span class="menu-title">
                         <span>Nhà hàng</span>
                     </span>
                 </a>
                
             </li>
-            <li class="mega last"><a href="/Temp_NuTrang/dichvukaraoke.php" class="mega last" id="menu97" title="JComments"><span class="menu-title"><span>Karaoke</span></span></a></li>
-             <li class="mega last"><a href="/Temp_NuTrang/dichvuhoboi.php" class="mega last" title="JComments"><span class="menu-title"><span>Hồ bơi</span></span></a></li>
-              <li class="mega last"><a href="/Temp_NuTrang/index.php?option=com_content&amp;view=article&amp;id=22&amp;Itemid=97" class="mega last" id="menu97" title="JComments"><span class="menu-title"><span>Massage</span></span></a></li>
+            <li class="mega last"><a href="/hotelbooking/dichvukaraoke.php" class="mega last" id="menu97" title="JComments"><span class="menu-title"><span>Karaoke</span></span></a></li>
+             <li class="mega last"><a href="/hotelbooking/dichvuhoboi.php" class="mega last" title="JComments"><span class="menu-title"><span>Hồ bơi</span></span></a></li>
+              <li class="mega last"><a href="/hotelbooking/index.php?option=com_content&amp;view=article&amp;id=22&amp;Itemid=97" class="mega last" id="menu97" title="JComments"><span class="menu-title"><span>Massage</span></span></a></li>
             </ul></div></div>
 </div></div></li></ul>
 </div>	

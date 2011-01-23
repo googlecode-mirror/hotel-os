@@ -10,7 +10,7 @@ session_start();
 ?>
     <!-- Starting Header top -->
 <div id="gk-top" class="main">
-        <h1 class="logo"> <a href="/Temp_NuTrang/index.php" title=""><span></span></a> </h1>        
+        <h1 class="logo"> <a href="/hotelbooking/index.php" title=""><span></span></a> </h1>        
         	        <div class="gk-search">        	
 
 <script type="text/javascript">
@@ -41,7 +41,7 @@ window.addEvent('load', function(){
 </form>
         </div>
                 
-				<a href="http://localhost/Temp_NuTrang/index.php?" id="btn_login"></a>
+				<a href="http://localhost/hotelbooking/index.php?" id="btn_login"></a>
 		
 				<a href="http://twitter.com/gavickpro" target="_blank" id="btn_twitter"></a>
 		
