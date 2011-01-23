@@ -30,10 +30,15 @@ window.addEvent('domready', function() {
                     var dateden = getDateObj(jQuery('#dateden').val());
                     var datedi = getDateObj(jQuery('#datedi').val());
                     
+                    
+                    var dayden = dateden.getDate();
+                    var monthden = dateden.getMonth()+1;
+                    var yearden = dateden.getFullYear();
+                    
                     var songayo = getDaySubstract(datedi,dateden);
 		            
-		            var url = this.action+"&stay_dates="+songayo+"&comingdate="+dateden;
-           	     
+		            var url = this.action+"&stay_dates="+songayo+"&comingdate="+dayden+"&comingmonth="+monthden+"&comingyear="+yearden;
+           	     alert(url);
                     SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
                     setTimeout('ajaxPage("'+url+'" )',3000);
                    
