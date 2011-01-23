@@ -3,15 +3,15 @@
   define('HTTP_CATALOG_SERVER', 'http://localhost');
   define('HTTPS_CATALOG_SERVER', 'http://localhost');
   define('ENABLE_SSL_CATALOG', 'false');
-  define('DIR_FS_DOCUMENT_ROOT', 'C:/wamp/www/Temp_NuTrang/');
-  define('DIR_WS_ADMIN', '/Temp_NuTrang/admin/');
-  define('DIR_FS_ADMIN', 'C:/wamp/www/Temp_NuTrang/admin/');
+  define('DIR_FS_DOCUMENT_ROOT', 'C:/wamp/www/hotelbooking/');
+  define('DIR_WS_ADMIN', '/hotelbooking/admin/');
+  define('DIR_FS_ADMIN', 'C:/wamp/www/hotelbooking/admin/');
   
   # for manager 
-  define('DIR_WS_MANAGER', '/Temp_NuTrang/manager/');
-  define('DIR_FS_MANAGER', 'C:/wamp/www/Temp_NuTrang/manager/');
+  define('DIR_WS_MANAGER', '/hotelbooking/manager/');
+  define('DIR_FS_MANAGER', 'C:/wamp/www/hotelbooking/manager/');
   # 
-  define('DIR_WS_CATALOG', '/Temp_NuTrang/');  
+  define('DIR_WS_CATALOG', '/hotelbooking/');  
   define('DIR_WS_IMAGES', 'images/');
   define('DIR_WS_ICONS', DIR_WS_IMAGES . 'icons/');
   define('DIR_WS_CATALOG_IMAGES', DIR_WS_CATALOG . 'images/');
@@ -24,7 +24,7 @@
   define('DIR_WS_MODULES', DIR_WS_INCLUDES . 'modules/');
   define('DIR_WS_LANGUAGES', DIR_WS_INCLUDES . 'languages/');
   define('DIR_WS_CATALOG_LANGUAGES', DIR_WS_CATALOG . 'includes/languages/');
-  define('DIR_FS_CATALOG', 'C:/wamp/www/Temp_NuTrang/');
+  define('DIR_FS_CATALOG', 'C:/wamp/www/hotelbooking/');
   define('DIR_FS_CATALOG_LANGUAGES', DIR_FS_CATALOG . 'includes/languages/');
   define('DIR_FS_CATALOG_IMAGES', DIR_FS_CATALOG . 'images/');
   define('DIR_FS_CATALOG_IMAGES_HOTEL', DIR_FS_CATALOG_IMAGES . 'phongkhachsan/');

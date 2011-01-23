@@ -152,8 +152,8 @@ jQuery.noConflict();
         <div class="itemBody">
             <div class="itemImageBlock">
 		      <span class="itemImage">
-    		  	<a title="Click to preview image" href="http://localhost/Temp_NuTrang/HaNhan/images/nhahang1.jpg" class="modal">
-		  		  <img style="width: 600px; height: 400px;" alt="A1" src="/Temp_NuTrang/HaNhan/images/nhahang1.jpg"/>
+    		  	<a title="Click to preview image" href="http://localhost/hotelbooking/HaNhan/images/nhahang1.jpg" class="modal">
+		  		  <img style="width: 600px; height: 400px;" alt="A1" src="/hotelbooking/HaNhan/images/nhahang1.jpg"/>
                 </a>
               </span>
             </div>
@@ -186,10 +186,10 @@ jQuery.noConflict();
 				<div class="view">
 					<h2>Góc ảnh</h2>
 					<ul> 
-							<li><a href="#"><img src="/Temp_NuTrang/HaNhan/images/nhahang2.jpg"/></a></li>
-							<li><a href="#"><img src="/Temp_NuTrang/HaNhan/images/nhahang3.jpg"/></a></li>
-							<li><a href="#"><img src="/Temp_NuTrang/HaNhan/images/nhahang4.jpg"/></a></li>
-							<li><a href="#"><img src="/Temp_NuTrang/HaNhan/images/nhahang5.jpg"/></a></li>
+							<li><a href="#"><img src="/hotelbooking/HaNhan/images/nhahang2.jpg"/></a></li>
+							<li><a href="#"><img src="/hotelbooking/HaNhan/images/nhahang3.jpg"/></a></li>
+							<li><a href="#"><img src="/hotelbooking/HaNhan/images/nhahang4.jpg"/></a></li>
+							<li><a href="#"><img src="/hotelbooking/HaNhan/images/nhahang5.jpg"/></a></li>
 					</ul>
 				</div>
            <div class="clear"></div>

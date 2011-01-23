@@ -16,7 +16,7 @@
 	<h3>Đăng Nhập</h3>
 	
 <div class="mod_login">
-               <form action="/Temp_NuTrang/xulydangnhap.php" method="post" name="login" id="form-login" >
+               <form action="/hotelbooking/xulydangnhap.php" method="post" name="login" id="form-login" >
                     <p class="username">
                <label for="modlgn_username">Email</label>
               
@@ -40,7 +40,7 @@
                <li> <a href="/Khotel/index.php?option=com_user&amp;view=reset"> Quên mật khẩu</a> </li>
                <li> <a href="/Khotel/index.php?option=com_user&amp;view=remind"> Quên Email</a> </li>
 
-                              <li> <a href="/Temp_NuTrang/includes/mainContent_account.php"> Đăng ký tài khoản</a> </li>
+                              <li> <a href="/hotelbooking/includes/mainContent_account.php"> Đăng ký tài khoản</a> </li>
                          </ul>
           <div style="clear: both;"></div>
                     <input type="hidden" name="option" value="com_user" />
@@ -58,7 +58,7 @@
 		<script type="text/javascript" src="http://localhost/Khotel/media/system/js/validate.js"></script>
 		<script type="text/javascript">Window.onDomReady(function(){document.formvalidator.setHandler('passverify', function (value) { return ($('password').value == value); }	);});</script>
 
-		<form action="/Temp_NuTrang/xulydangky.php" method="post" id="josForm" name="josForm" class="form-validate">
+		<form action="/hotelbooking/xulydangky.php" method="post" id="josForm" name="josForm" class="form-validate">
 
 		
 		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="contentpane">

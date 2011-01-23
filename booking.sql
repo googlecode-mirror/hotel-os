@@ -2118,7 +2118,7 @@ CREATE TABLE IF NOT EXISTS `whos_online` (
 --
 
 INSERT INTO `whos_online` (`customer_id`, `full_name`, `session_id`, `ip_address`, `time_entry`, `time_last_click`, `last_page_url`) VALUES
-(0, 'Guest', 'i05qk16c39ciq1em34vftt1ae0', '127.0.0.1', '1295492429', '1295492429', '/Temp_NuTrang/chitietphong.php?room_type_id=8&osCsid=i05qk16c39ciq1em34vftt1ae0');
+(0, 'Guest', 'i05qk16c39ciq1em34vftt1ae0', '127.0.0.1', '1295492429', '1295492429', '/hotelbooking/chitietphong.php?room_type_id=8&osCsid=i05qk16c39ciq1em34vftt1ae0');
 
 -- --------------------------------------------------------
 

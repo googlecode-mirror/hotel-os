@@ -105,7 +105,7 @@ var K2RatingURL = 'http://localhost/Khotel/';
 <!--[if IE 7.0]><style>.clearfix { display: inline-block; } /* IE7xhtml*/</style><![endif]-->
 
 <script type="text/javascript">
-var siteurl='http://localhost/Temp_NuTrang/';
+var siteurl='http://localhost/hotelbooking/';
 var tmplurl='http://localhost/Khotel/templates/gk_blackandwhite';
 </script>
 

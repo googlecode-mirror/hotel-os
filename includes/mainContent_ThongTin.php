@@ -148,5 +148,5 @@
 			</div>
 		</div>
 	</div>
-		<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="javascript:window.location='/Temp_NuTrang/DKTimKiem_Group.php?step=4'"/>
+		<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="javascript:window.location='/hotelbooking/DKTimKiem_Group.php?step=4'"/>
 </form>

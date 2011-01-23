@@ -10,6 +10,7 @@ require('includes/application_top.php');
     $songayo = $HTTP_GET_VARS['stay_dates'];
 	//$ngayden = $HTTP_GET_VARS['comingdate'];
 	$ngayden=$_GET['comingdate'];
+	echo "ngay den   ".$ngayden."     ";
 //	$dayto= tep_db_prepare_input($HTTP_POST_VARS['dateden']);
 //	$daygo= tep_db_prepare_input($HTTP_POST_VARS['datedi']);
 //	$dayto=date("2011-1-13");
