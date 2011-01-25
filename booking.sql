@@ -3,17 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2011 at 10:45 PM
+-- Generation Time: Jan 25, 2011 at 11:49 PM
 -- Server version: 5.1.36
--- PHP Version: 5.2.0
+-- PHP Version: 5.2.11
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `booking`
@@ -115,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `banners` (
   `expires_impressions` int(7) DEFAULT '0',
   `expires_date` datetime DEFAULT NULL,
   `date_scheduled` datetime DEFAULT NULL,
-  `date_added` datetime NOT NULL,
+  `date_added` datetime NOT NULL,e
   `date_status_change` datetime DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`banners_id`),
@@ -1081,6 +1075,30 @@ INSERT INTO `languages` (`languages_id`, `name`, `code`, `image`, `directory`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `managers`
+--
+
+DROP TABLE IF EXISTS `managers`;
+CREATE TABLE IF NOT EXISTS `managers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(32) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `user_password` varchar(40) NOT NULL,
+  `role` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `managers`
+--
+
+INSERT INTO `managers` (`id`, `user_name`, `user_password`, `role`) VALUES
+(1, 'vonhan', '5ae5480fa76bea9ce8d449ad65e39faf:bd', 0),
+(2, 'quangha', '90a4490c9a5984c90f3dd3e84e138c78:8e', 0),
+(3, 'kitaro', '367fbb31d3bfa1102886fb9ffeb8b7b8:29', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `manufacturers`
 --
 
@@ -1242,7 +1260,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 --
 
 INSERT INTO `orders` (`orders_id`, `customers_id`, `customers_name`, `customers_company`, `customers_street_address`, `customers_suburb`, `customers_city`, `customers_postcode`, `customers_state`, `customers_country`, `customers_telephone`, `customers_email_address`, `customers_address_format_id`, `delivery_name`, `delivery_company`, `delivery_street_address`, `delivery_suburb`, `delivery_city`, `delivery_postcode`, `delivery_state`, `delivery_country`, `delivery_address_format_id`, `billing_name`, `billing_company`, `billing_street_address`, `billing_suburb`, `billing_city`, `billing_postcode`, `billing_state`, `billing_country`, `billing_address_format_id`, `payment_method`, `cc_type`, `cc_owner`, `cc_number`, `cc_expires`, `last_modified`, `date_purchased`, `orders_status`, `orders_date_finished`, `currency`, `currency_value`) VALUES
-(1, 2, 'Vo Nhan', 'FPT Online', '100/53 Thien Phuoc', '', 'HCM', '08444', '112', 'Viet Nam', '0938318629', 'thanhnhan_kg2000@yahoo.com', 1, 'Vo Nhan', 'FPT Online', '100/53 Thien Phuoc', '', 'HCM', '08444', '112', 'Viet Nam', 1, 'Vo Nhan', 'FPT Online', '100/53 Thien Phuoc', '', 'HCM', '08444', '112', 'Viet Nam', 1, 'Cash on Delivery', '', '', '', '', NULL, '2010-11-07 22:52:22', 1, NULL, 'USD', 1.000000);
+(1, 2, 'Vo Nhan', 'FPT Online', '100/53 Thien Phuoc', '', 'HCM', '08444', '112', 'Viet Nam', '0938318629', 'thanhnhan_kg2000@yahoo.com', 1, 'Vo Nhan', 'FPT Online', '100/53 Thien Phuoc', '', 'HCM', '08444', '112', 'Viet Nam', 1, 'Vo Nhan', 'FPT Online', '100/53 Thien Phuoc', '', 'HCM', '08444', '112', 'Viet Nam', 1, 'Cash on Delivery', '', '', '', '', NULL, '2010-11-07 22:52:22', 1, NULL, 'USD', '1.000000');
 
 -- --------------------------------------------------------
 
@@ -1271,8 +1289,8 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
 --
 
 INSERT INTO `orders_products` (`orders_products_id`, `orders_id`, `products_id`, `products_model`, `products_name`, `products_price`, `final_price`, `products_tax`, `products_quantity`) VALUES
-(1, 1, 8, 'DVD-ABUG', 'A Bug''s Life', 35.9900, 35.9900, 0.0000, 1),
-(2, 1, 20, 'DVD-BELOVED', 'Beloved', 54.9900, 54.9900, 0.0000, 1);
+(1, 1, 8, 'DVD-ABUG', 'A Bug''s Life', '35.9900', '35.9900', '0.0000', 1),
+(2, 1, 20, 'DVD-BELOVED', 'Beloved', '54.9900', '54.9900', '0.0000', 1);
 
 -- --------------------------------------------------------
 
@@ -1402,9 +1420,30 @@ CREATE TABLE IF NOT EXISTS `orders_total` (
 --
 
 INSERT INTO `orders_total` (`orders_total_id`, `orders_id`, `title`, `text`, `value`, `class`, `sort_order`) VALUES
-(1, 1, 'Sub-Total:', '$90.98', 90.9800, 'ot_subtotal', 1),
-(2, 1, 'Flat Rate (Best Way):', '$5.00', 5.0000, 'ot_shipping', 2),
-(3, 1, 'Total:', '<b>$95.98</b>', 95.9800, 'ot_total', 4);
+(1, 1, 'Sub-Total:', '$90.98', '90.9800', 'ot_subtotal', 1),
+(2, 1, 'Flat Rate (Best Way):', '$5.00', '5.0000', 'ot_shipping', 2),
+(3, 1, 'Total:', '<b>$95.98</b>', '95.9800', 'ot_total', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `owners`
+--
+
+DROP TABLE IF EXISTS `owners`;
+CREATE TABLE IF NOT EXISTS `owners` (
+  `id` int(11) NOT NULL,
+  `account_number` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `owners`
+--
+
+INSERT INTO `owners` (`id`, `account_number`) VALUES
+(1, 123456),
+(2, 102409729);
 
 -- --------------------------------------------------------
 
@@ -1457,33 +1496,33 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`products_id`, `products_quantity`, `products_model`, `products_image`, `products_price`, `products_date_added`, `products_last_modified`, `products_date_available`, `products_weight`, `products_status`, `products_tax_class_id`, `manufacturers_id`, `products_ordered`) VALUES
-(1, 32, 'MG200MMS', 'matrox/mg200mms.gif', 299.9900, '2010-11-08 12:00:12', NULL, NULL, 23.00, 1, 1, 1, 0),
-(2, 32, 'MG400-32MB', 'matrox/mg400-32mb.gif', 499.9900, '2010-11-08 12:00:12', NULL, NULL, 23.00, 1, 1, 1, 0),
-(3, 2, 'MSIMPRO', 'microsoft/msimpro.gif', 49.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(4, 13, 'DVD-RPMK', 'dvd/replacement_killers.gif', 42.0000, '2010-11-08 12:00:12', NULL, NULL, 23.00, 1, 1, 2, 0),
-(5, 17, 'DVD-BLDRNDC', 'dvd/blade_runner.gif', 35.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(6, 10, 'DVD-MATR', 'dvd/the_matrix.gif', 39.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(7, 10, 'DVD-YGEM', 'dvd/youve_got_mail.gif', 34.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(8, 9, 'DVD-ABUG', 'dvd/a_bugs_life.gif', 35.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 1),
-(9, 10, 'DVD-UNSG', 'dvd/under_siege.gif', 29.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(10, 10, 'DVD-UNSG2', 'dvd/under_siege2.gif', 29.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(11, 10, 'DVD-FDBL', 'dvd/fire_down_below.gif', 29.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(12, 10, 'DVD-DHWV', 'dvd/die_hard_3.gif', 39.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 4, 0),
-(13, 10, 'DVD-LTWP', 'dvd/lethal_weapon.gif', 34.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(14, 10, 'DVD-REDC', 'dvd/red_corner.gif', 32.0000, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(15, 10, 'DVD-FRAN', 'dvd/frantic.gif', 35.0000, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 0),
-(16, 10, 'DVD-CUFI', 'dvd/courage_under_fire.gif', 38.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 4, 0),
-(17, 10, 'DVD-SPEED', 'dvd/speed.gif', 39.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 4, 0),
-(18, 10, 'DVD-SPEED2', 'dvd/speed_2.gif', 42.0000, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 4, 0),
-(19, 10, 'DVD-TSAB', 'dvd/theres_something_about_mary.gif', 49.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 4, 0),
-(20, 9, 'DVD-BELOVED', 'dvd/beloved.gif', 54.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 3, 1),
-(21, 16, 'PC-SWAT3', 'sierra/swat_3.gif', 79.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 7, 0),
-(22, 13, 'PC-UNTM', 'gt_interactive/unreal_tournament.gif', 89.9900, '2010-11-08 12:00:12', NULL, NULL, 7.00, 1, 1, 8, 0),
-(23, 16, 'PC-TWOF', 'gt_interactive/wheel_of_time.gif', 99.9900, '2010-11-08 12:00:12', NULL, NULL, 10.00, 1, 1, 8, 0),
-(24, 17, 'PC-DISC', 'gt_interactive/disciples.gif', 90.0000, '2010-11-08 12:00:12', NULL, NULL, 8.00, 1, 1, 8, 0),
-(25, 16, 'MSINTKB', 'microsoft/intkeyboardps2.gif', 69.9900, '2010-11-08 12:00:12', NULL, NULL, 8.00, 1, 1, 2, 0),
-(26, 10, 'MSIMEXP', 'microsoft/imexplorer.gif', 64.9500, '2010-11-08 12:00:12', NULL, NULL, 8.00, 1, 1, 2, 0),
-(27, 8, 'HPLJ1100XI', 'hewlett_packard/lj1100xi.gif', 499.9900, '2010-11-08 12:00:12', NULL, NULL, 45.00, 1, 1, 9, 0);
+(1, 32, 'MG200MMS', 'matrox/mg200mms.gif', '299.9900', '2010-11-08 12:00:12', NULL, NULL, '23.00', 1, 1, 1, 0),
+(2, 32, 'MG400-32MB', 'matrox/mg400-32mb.gif', '499.9900', '2010-11-08 12:00:12', NULL, NULL, '23.00', 1, 1, 1, 0),
+(3, 2, 'MSIMPRO', 'microsoft/msimpro.gif', '49.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(4, 13, 'DVD-RPMK', 'dvd/replacement_killers.gif', '42.0000', '2010-11-08 12:00:12', NULL, NULL, '23.00', 1, 1, 2, 0),
+(5, 17, 'DVD-BLDRNDC', 'dvd/blade_runner.gif', '35.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(6, 10, 'DVD-MATR', 'dvd/the_matrix.gif', '39.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(7, 10, 'DVD-YGEM', 'dvd/youve_got_mail.gif', '34.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(8, 9, 'DVD-ABUG', 'dvd/a_bugs_life.gif', '35.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 1),
+(9, 10, 'DVD-UNSG', 'dvd/under_siege.gif', '29.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(10, 10, 'DVD-UNSG2', 'dvd/under_siege2.gif', '29.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(11, 10, 'DVD-FDBL', 'dvd/fire_down_below.gif', '29.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(12, 10, 'DVD-DHWV', 'dvd/die_hard_3.gif', '39.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 4, 0),
+(13, 10, 'DVD-LTWP', 'dvd/lethal_weapon.gif', '34.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(14, 10, 'DVD-REDC', 'dvd/red_corner.gif', '32.0000', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(15, 10, 'DVD-FRAN', 'dvd/frantic.gif', '35.0000', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 0),
+(16, 10, 'DVD-CUFI', 'dvd/courage_under_fire.gif', '38.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 4, 0),
+(17, 10, 'DVD-SPEED', 'dvd/speed.gif', '39.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 4, 0),
+(18, 10, 'DVD-SPEED2', 'dvd/speed_2.gif', '42.0000', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 4, 0),
+(19, 10, 'DVD-TSAB', 'dvd/theres_something_about_mary.gif', '49.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 4, 0),
+(20, 9, 'DVD-BELOVED', 'dvd/beloved.gif', '54.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 3, 1),
+(21, 16, 'PC-SWAT3', 'sierra/swat_3.gif', '79.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 7, 0),
+(22, 13, 'PC-UNTM', 'gt_interactive/unreal_tournament.gif', '89.9900', '2010-11-08 12:00:12', NULL, NULL, '7.00', 1, 1, 8, 0),
+(23, 16, 'PC-TWOF', 'gt_interactive/wheel_of_time.gif', '99.9900', '2010-11-08 12:00:12', NULL, NULL, '10.00', 1, 1, 8, 0),
+(24, 17, 'PC-DISC', 'gt_interactive/disciples.gif', '90.0000', '2010-11-08 12:00:12', NULL, NULL, '8.00', 1, 1, 8, 0),
+(25, 16, 'MSINTKB', 'microsoft/intkeyboardps2.gif', '69.9900', '2010-11-08 12:00:12', NULL, NULL, '8.00', 1, 1, 2, 0),
+(26, 10, 'MSIMEXP', 'microsoft/imexplorer.gif', '64.9500', '2010-11-08 12:00:12', NULL, NULL, '8.00', 1, 1, 2, 0),
+(27, 8, 'HPLJ1100XI', 'hewlett_packard/lj1100xi.gif', '499.9900', '2010-11-08 12:00:12', NULL, NULL, '45.00', 1, 1, 9, 0);
 
 -- --------------------------------------------------------
 
@@ -1508,19 +1547,19 @@ CREATE TABLE IF NOT EXISTS `products_attributes` (
 --
 
 INSERT INTO `products_attributes` (`products_attributes_id`, `products_id`, `options_id`, `options_values_id`, `options_values_price`, `price_prefix`) VALUES
-(1, 1, 4, 1, 0.0000, '+'),
-(2, 1, 4, 2, 50.0000, '+'),
-(3, 1, 4, 3, 70.0000, '+'),
-(4, 1, 3, 5, 0.0000, '+'),
-(5, 1, 3, 6, 100.0000, '+'),
-(6, 2, 4, 3, 10.0000, '-'),
-(7, 2, 4, 4, 0.0000, '+'),
-(8, 2, 3, 6, 0.0000, '+'),
-(9, 2, 3, 7, 120.0000, '+'),
-(10, 26, 3, 8, 0.0000, '+'),
-(11, 26, 3, 9, 6.0000, '+'),
-(26, 22, 5, 10, 0.0000, '+'),
-(27, 22, 5, 13, 0.0000, '+');
+(1, 1, 4, 1, '0.0000', '+'),
+(2, 1, 4, 2, '50.0000', '+'),
+(3, 1, 4, 3, '70.0000', '+'),
+(4, 1, 3, 5, '0.0000', '+'),
+(5, 1, 3, 6, '100.0000', '+'),
+(6, 2, 4, 3, '10.0000', '-'),
+(7, 2, 4, 4, '0.0000', '+'),
+(8, 2, 3, 6, '0.0000', '+'),
+(9, 2, 3, 7, '120.0000', '+'),
+(10, 26, 3, 8, '0.0000', '+'),
+(11, 26, 3, 9, '6.0000', '+'),
+(26, 22, 5, 10, '0.0000', '+'),
+(27, 22, 5, 13, '0.0000', '+');
 
 -- --------------------------------------------------------
 
@@ -1974,7 +2013,9 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`sesskey`, `expiry`, `value`) VALUES
-('i05qk16c39ciq1em34vftt1ae0', 1295493869, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:16:"chitietphong.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:12:"room_type_id";s:1:"8";s:6:"osCsid";s:26:"i05qk16c39ciq1em34vftt1ae0";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+('i05qk16c39ciq1em34vftt1ae0', 1295493869, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:16:"chitietphong.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:12:"room_type_id";s:1:"8";s:6:"osCsid";s:26:"i05qk16c39ciq1em34vftt1ae0";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}'),
+('174q0qbfvn967fltfr1v3c1tk6', 1295975461, 'language|s:7:"english";languages_id|s:1:"1";selected_box|s:7:"catalog";manager|a:2:{s:2:"id";s:1:"3";s:8:"username";s:6:"kitaro";}owner|a:2:{s:2:"id";s:1:"2";s:8:"username";s:7:"quangha";}'),
+('kdqn5naqesdnqeotp31e598bv5', 1295975467, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
 
 -- --------------------------------------------------------
 
@@ -2001,10 +2042,10 @@ CREATE TABLE IF NOT EXISTS `specials` (
 --
 
 INSERT INTO `specials` (`specials_id`, `products_id`, `specials_new_products_price`, `specials_date_added`, `specials_last_modified`, `expires_date`, `date_status_change`, `status`) VALUES
-(1, 3, 39.9900, '2010-11-08 12:00:12', NULL, NULL, NULL, 1),
-(2, 5, 30.0000, '2010-11-08 12:00:12', NULL, NULL, NULL, 1),
-(3, 6, 30.0000, '2010-11-08 12:00:12', NULL, NULL, NULL, 1),
-(4, 16, 29.9900, '2010-11-08 12:00:12', NULL, NULL, NULL, 1);
+(1, 3, '39.9900', '2010-11-08 12:00:12', NULL, NULL, NULL, 1),
+(2, 5, '30.0000', '2010-11-08 12:00:12', NULL, NULL, NULL, 1),
+(3, 6, '30.0000', '2010-11-08 12:00:12', NULL, NULL, NULL, 1),
+(4, 16, '29.9900', '2010-11-08 12:00:12', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -2094,7 +2135,7 @@ CREATE TABLE IF NOT EXISTS `tax_rates` (
 --
 
 INSERT INTO `tax_rates` (`tax_rates_id`, `tax_zone_id`, `tax_class_id`, `tax_priority`, `tax_rate`, `tax_description`, `last_modified`, `date_added`) VALUES
-(1, 1, 1, 1, 7.0000, 'FL TAX 7.0%', '2010-11-08 12:00:12', '2010-11-08 12:00:12');
+(1, 1, 1, 1, '7.0000', 'FL TAX 7.0%', '2010-11-08 12:00:12', '2010-11-08 12:00:12');
 
 -- --------------------------------------------------------
 
@@ -2118,7 +2159,7 @@ CREATE TABLE IF NOT EXISTS `whos_online` (
 --
 
 INSERT INTO `whos_online` (`customer_id`, `full_name`, `session_id`, `ip_address`, `time_entry`, `time_last_click`, `last_page_url`) VALUES
-(0, 'Guest', 'i05qk16c39ciq1em34vftt1ae0', '127.0.0.1', '1295492429', '1295492429', '/hotelbooking/chitietphong.php?room_type_id=8&osCsid=i05qk16c39ciq1em34vftt1ae0');
+(0, 'Guest', 'kdqn5naqesdnqeotp31e598bv5', '127.0.0.1', '1295974027', '1295974027', '/hotelbooking/');
 
 -- --------------------------------------------------------
 

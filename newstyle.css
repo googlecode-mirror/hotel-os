@@ -112,10 +112,10 @@ text-decoration:underline;
 #mainContent{
 	margin-left:290px;
 	text-align:justify;
-background: #f1f1f1;
-padding: 0 7px;
-min-height:566px;
-border:1px solid #DEDEDE;
+    background: #f1f1f1;
+    padding: 0 7px;
+    min-height:566px;
+    border:1px solid #DEDEDE;
 }
 #mainContent h2{
    margin:15px 0;
