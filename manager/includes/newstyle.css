@@ -1,0 +1,52 @@
+//manager dat phong
+#managerBooking{
+   position:ralative;
+   margin:0 15px;
+}
+#managerBooking .text{
+    float:left;
+    width:150px;
+}
+#managerBooking .line{
+    width:50%;
+    margin-bottom:1em;
+    overflow:auto;
+}
+#managerBooking label{
+    float:left;
+    width:28%;
+}
+.h2{
+    margin:15px 0;
+    text-indent:10px;
+}
+#managerBooking .button{
+	width:20%;
+	text-align:center;
+	margin-left:170px;
+	font-weight: bold;
+	margin-bottom:1.2em;
+}
+
+//manager the
+#bookingthe{
+   position:ralative;
+   margin:0 15px;
+}
+#bookingthe .text{
+    float:left;
+    width:150px;
+}
+#bookingthe .line{
+    width:50%;
+    margin-bottom:1em;
+    overflow:auto;
+}
+#bookingthe label{
+    float:left;
+    width:28%;
+}
+#bookingthe .checkbox{
+    width:150px;
+
+}
