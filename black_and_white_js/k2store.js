@@ -38,32 +38,22 @@ window.addEvent('domready', function() {
                     var songayo = getDaySubstract(datedi,dateden);
 		            
 		            var url = this.action+"&stay_dates="+songayo+"&comingdate="+dayden+"&comingmonth="+monthden+"&comingyear="+yearden;
-           	     alert(url);
                     SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
                     setTimeout('ajaxPage("'+url+'" )',3000);
                    
 		         });
 		         
 		      });
-		     
-             $$('.cart_form').each(function(el) {
+
+             $$('a.product_list').each(function(el) {
                 el.addEvent('click', function(e) {
-                    new Event(e).stop();
-                    var url=this.href;
-                    this.href='';
-		            
+                new Event(e).stop();
+                var url=this.href;
                 SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
                     setTimeout('ajaxPage("'+url+'" )',3000);
                     return false;
-                });
+              });
              });
-              //$$('a').addEvent('click', function(e) {
-//                new Event(e).stop();
-//                var url=this.href;
-//                SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
-//                    setTimeout('ajaxPage("'+url+'" )',3000);
-//                    return false;
-//              });
 		 }); //end dom ready
 		
         function ajaxPage(url){

@@ -15,6 +15,7 @@
   define('FILENAME_MANAGER_OWNER','manager_owner.php');
   define('FILENAME_ROOMTYPE','roomtype.php');
   define('FILENAME_ROOMBOOKING','roombooking.php');
+  define('FILENAME_ROOMEDIT_DELETE','roomedit_delete.php');
   define('FILENAME_BACKUP', 'backup.php');
   define('FILENAME_BANNER_MANAGER', 'banner_manager.php');
   define('FILENAME_BANNER_STATISTICS', 'banner_statistics.php');

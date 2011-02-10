@@ -99,7 +99,7 @@ jQuery(document).ready(function($) {
 			 },
 			 matkhau: {
 				required: true,
-				minlength:5,
+				minlength:5
 			 },
 			 rematkhau: {
 				required: true,
@@ -133,6 +133,7 @@ jQuery(document).ready(function($) {
 			ngaysinh: "Bạn chưa chọn ngày sinh"			
 		}	
 	});
+    
 });
 jQuery(document).ready(function($) {		
 	// propose username by combining first- and lastname
@@ -234,6 +235,7 @@ jQuery(document).ready(function($){
 });
 /****************** show form dat phong ********************************/
 function showDatphongForm(){
+    alert('dfsfsdg');
     //if($("#datphongForm").html()!= null)
            jQuery("#datphongForm").removeClass('hidden');
     jQuery("#datphongForm").dialog({
@@ -316,4 +318,50 @@ jQuery(document).ready(function($){
     
 });
 
+/**********************************Validation cho manager dat phong cho khach hang****/
+jQuery(document).ready(function($) {	
+	if($('#managerbookForm')== null||$("#managerbookForm").html() == null)
+		return false;
+	// validate signup form on keyup and submit
+	$("#managerForm").validate({
+		rules: {			
+			email: {
+				 required: true,
+				 email: true
+			 },
+			 hoten: {
+				required: true
+			 },
+			 diachi: {
+				required: true
+			 },
+			 dienthoai: "required",
+			 ngaysinh: "required",
+             ngayden: "required",
+             ngaydi: "required",
+             soluongphong: "required",
+             tenchuthe: "required",
+             sothe: "required"
+		},
+		messages: {
+			email: {
+					required: "Bạn chưa nhập email",
+					email: "Email chưa đúng"
+					},
+			hoten: {
+					required: "Bạn chưa nhập họ tên"
+				},
+			diachi: {
+					required: "Bạn chưa nhập địa chỉ"
+					},		
+			dienthoai: "Bạn chưa nhập số điện thoại",
+			ngaysinh: "Bạn chưa chọn ngày sinh",
+            ngayden: "Bạn chưa chọn ngày đến",
+            ngaydi: "Bạn chưa chọn ngày đi",
+            soluongphong: "Bạn chưa nhập số lượng phòng",
+            tenchuthe: "Bạn chưa nhập tên chủ thẻ",	
+            sothe: "Bạn chưa nhập số thẻ"	
+		}	
+	});
+});
 /*************************** cart **********************************/

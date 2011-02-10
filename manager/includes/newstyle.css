@@ -50,3 +50,21 @@
     width:150px;
 
 }
+.line .text,select{
+	width:25%;
+float:left;	
+
+}
+input, select{
+border:1px solid black;
+}
+label.error {
+    color: red;
+    display: inline;
+    font-style: italic;
+    margin-left: 10px;
+    width: auto;
+}
+input.error, select.error {
+    border: 1px dotted red;
+}

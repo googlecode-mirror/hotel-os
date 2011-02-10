@@ -34,7 +34,7 @@
 ?>
 
 
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>  
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -67,18 +67,17 @@
   <link rel="stylesheet" href="black_and_white_css/layout.css" type="text/css" />
   <link rel="stylesheet" href="black_and_white_css/template.css" type="text/css" />
   <link rel="stylesheet" href="black_and_white_css/joomla.css" type="text/css" />
-
   <link rel="stylesheet" href="black_and_white_css/gk_stuff.css" type="text/css" />
   <link rel="stylesheet" href="black_and_white_css/typo.css" type="text/css" />
   <link rel="stylesheet" href="black_and_white_css/css3.css" type="text/css" />
   <link rel="stylesheet" href="black_and_white_css/style1.css" type="text/css" >  
-
   <script type="text/javascript" src="black_and_white_js/mootools.js"></script>
 <script type="text/javascript" src="black_and_white_js/domready_fix.js"></script>
 <script type="text/javascript" src="black_and_white_js/modal.js"></script>
+
  <script type="text/javascript" src="black_and_white_js/k2.js"></script>
  <script type="text/javascript" src="black_and_white_js/caption.js"></script>
- <script type="text/javascript" src="black_and_white_js/gk.script.js"></script>
+ 
  <script type="text/javascript" src="black_and_white_js/engine-mootools-11.js"></script>
  <script type="text/javascript" src="black_and_white_js/k2store.js"></script>
  <script type="text/javascript" src="black_and_white_js/gk_image_show.js"></script>
@@ -149,7 +148,7 @@ jQuery.noConflict();
 <!-- ---------------------------- -->
 
 </head>
-<body id="bd" class="fs3 FF">
+<body id="bd" class="fs3 IE7">
 <?php require(DIR_WS_INCLUDES . 'popup.php'); ?>
 	
 <div id="bg-wrap">
@@ -254,11 +253,8 @@ jQuery.noConflict();
             		</div>
             			</div>
             </div>
-          </div>
-        </div>
-       </div>
-       	
-            <script type="text/javascript">
+            
+              <script type="text/javascript">
             	try {$Gavick;}catch(e){$Gavick = {};};
             	$Gavick["gk_is-newsimage1"] = {
             		"anim_speed": 1800,
@@ -268,6 +264,12 @@ jQuery.noConflict();
             		"slide_links": true,
             		"stripe_width": 60	};
             </script>
+            
+          </div>
+        </div>
+       </div>
+       	
+          
 
 	<div id="gk-container">
 		<!-- left_navigation //-->

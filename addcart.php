@@ -1,6 +1,6 @@
 <?php
 require('includes/application_top.php');
-	session_start(); 
+//	session_start(); 
 	session_register('cart_room');
     //$_SESSION['cart_room'];
 	$id=$HTTP_GET_VARS['room_type_id'];

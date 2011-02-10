@@ -1,6 +1,6 @@
 <?php
 require('includes/application_top.php');
-	session_start();
+//	session_start();
 	$cart=$_SESSION['cart_room'];
 	$id=$_GET['room_type_id'];	
 	echo count($_SESSION['cart_room']);

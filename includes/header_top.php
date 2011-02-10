@@ -5,7 +5,7 @@
  * @copyright 2010
  */
 
-session_start();
+//session_start();
 
 ?>
     <!-- Starting Header top -->

@@ -28,7 +28,7 @@
 	 //   echo "item   :".$item;
 	   $str=implode(",",$item);	 
 	 //  echo "mang     ".$str; 
-	   session_start();      
+//	   session_start();      
 	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
 	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
        $listing_query1 = tep_db_query($listing_split1->sql_query);

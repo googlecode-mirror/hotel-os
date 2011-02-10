@@ -85,6 +85,14 @@ if(!tep_session_is_registered('owner'))
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="includes/newstyle.css">
 <script language="javascript" src="includes/general.js"></script>
+
+<script src="js/jquery-1.4.2.min.js"></script>
+<script src="js/jquery-ui-1.8.2.custom.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/loopedslider.js"></script>
+
+<script src="js/MyScript.js"></script>
+
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" onload="SetFocus();">
 <!-- header //-->
@@ -100,22 +108,10 @@ if(!tep_session_is_registered('owner'))
 <!-- left_navigation_eof //-->
     </table></td>
 <!-- body_text //-->
-    <td width="100%" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
-      <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="pageHeading"><?php echo HEADING_TITLE ?></td>
-            <td class="pageHeading" align="right"><?php echo tep_draw_separator('pixel_trans.gif', HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT); ?></td>
-          </tr>
-        </table></td>
-      </tr>
-      <!-- Dat phong do manager thuc hien-->
-      <tr>
+    <td width="100%" valign="top">
         <h2 style="text-align: center;">THÔNG TIN ĐĂNG KÝ ĐẶT PHÒNG</h2>
-           <div id="datphongForm" title="THÔNG TIN ĐẶT PHÒNG">
-           <!--check chọn người đặt phòng-->
-           <?php ?>
-               <form id="managerForm">
+
+               <form id="managerForm" action="" method="post">
                 	<div id="managerBooking">
                             <div class="line">
                 			<label for="hoten"> Họ tên KH </label>
@@ -135,27 +131,17 @@ if(!tep_session_is_registered('owner'))
                 			</div>
                             
                             <div class="line">
-                			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="dateden"/>
+                			<label for="ngayden"> Ngày đến  </label>
+                			<input id="ngayden" type="text" class="text" name="ngayden"/>
                 			</div> 
                             <div class="line">
-                			<label for="datedi"> Ngày đi  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
+                			<label for="ngaydi"> Ngày đi  </label>
+                			<input id="ngaydi" type="text" class="text" name="ngaydi"/>
                 			</div>
                             <div class="line">
-                			<label for="datedi"> Số lượng phòng  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
+                			<label for="soluongphong"> Số lượng phòng  </label>
+                			<input id="soluongphong" type="text" class="text" name="soluongphong"/>
                 			</div>
-                            <div class="line">
-                			<label for="nguoilon"> Số người lớn  </label>
-                			<input id="nguoilon" type="text" class="text" name="nguoilon"/>
-                			</div>
-                             
-                             <div class="line">
-                			<label for="treem"> Số trẻ em  </label>
-                			<input id="treem" type="text" class="text" name="treem"/>
-                			</div>
-                            
                             <div class="line">
                             <p>Phương thức thanh toán</p>                			
                 			<input id="cash" type="radio" name="payment" class="payment" value="0"/>Tiền mặt
@@ -280,9 +266,7 @@ if(!tep_session_is_registered('owner'))
 #?>
           </tr>
 end comment-->
-        </table></td>
-      </tr>
-    </table></td>
+</td>
 <!-- body_text_eof //-->
   </tr>
 </table>
