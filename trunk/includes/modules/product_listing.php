@@ -92,7 +92,7 @@
           case 'PRODUCT_LIST_BUY_NOW':
             $lc_align = 'center';
             //$lc_text = '<a href="' . tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=buy_now&products_id=' . $listing['products_id']) . '">' . tep_image_button('button_buy_now.gif', IMAGE_BUTTON_BUY_NOW) . '</a>&nbsp;';
-             $lc_text = '<a href="' . tep_href_link("addcartnew.php",'room_type_id=' . $listing['room_type_id']) . '">' . tep_image_button('book_room.gif', IMAGE_BUTTON_BUY_NOW) . '</a>&nbsp;';
+             $lc_text = '<a class="product_list" href="' . tep_href_link("addcartnew.php",'room_type_id=' . $listing['room_type_id']) . '">' . tep_image_button('book_room.gif', IMAGE_BUTTON_BUY_NOW) . '</a>&nbsp;';
            // $lc_text='<input type="text" class="mintext" style="width:10px;"/>';
             break;
         }

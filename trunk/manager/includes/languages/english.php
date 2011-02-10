@@ -77,6 +77,7 @@ define('BOX_HEADING_CATALOG', 'Nhân viên quản lý');
 define('BOX_CATALOG_CATEGORIES_PRODUCTS', 'Loại phòng');
 define('BOX_CATALOG_DISPLAY_EMPTY_PRODUCTS', 'Phòng trống');
 define('BOX_CATALOG_ROOM_BOOKING', 'Đặt phòng');
+define('BOX_CATALOG_ROOM_EDIT_DELETE', 'Hủy_Sửa đặt phòng');
 //define('BOX_CATALOG_MANUFACTURERS', 'Sửa phòng');
 //define('BOX_CATALOG_REVIEWS', 'Xem phòng trống');
 //define('BOX_CATALOG_SPECIALS', 'Specials');

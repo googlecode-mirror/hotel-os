@@ -159,12 +159,7 @@ jQuery.noConflict();
 	<!-- header_eof //-->
 	<div id="gk-container">
 		<!-- left_navigation //-->
-		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
-		<!-- left_navigation_eof //-->
-		
-		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>
-		<div id="mainContent">
-		<?php 
+        <?php 
 			if (isset($HTTP_GET_VARS['room_type_id'])){
 	   		$listing_sql1 = "select * from " . room_type .  "  where room_type_id= '" . (int)$HTTP_GET_VARS['room_type_id'] . "' ";
 	  	    }
@@ -185,6 +180,12 @@ jQuery.noConflict();
 			}
 			//echo $listing['customers_email_address'];
 		?>
+		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
+		<!-- left_navigation_eof //-->
+		
+		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>
+		<div id="mainContent">
+		
         <div class="itemHeader">
         <?php
 		echo tep_customer_greeting(); 
@@ -243,11 +244,11 @@ jQuery.noConflict();
                 	<div id="thongtinkhach">
                             <div class="line">
                 			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="datede"/>
+                			<input id="dateden" type="text" class="text" name="dateden"/>
                 			</div> 
                             <div class="line">
                 			<label for="datedi"> Ngày đi  </label>
-                			<input id="datedi" type="text" class="text" name="dated"/>
+                			<input id="datedi" type="text" class="text" name="datedi"/>
                 			</div>
                    </div>                          
                    <input type="hidden" id="test" value="2356">
