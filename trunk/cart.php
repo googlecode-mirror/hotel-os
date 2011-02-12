@@ -3,14 +3,12 @@
 	$ok=1;
 	if(isset($_SESSION['cart_room']))
 	{
-	    $_SESSION['temp']=$_SESSION['cart_room'];   
-	    echo count($_SESSION['cart_room']);	    
+	    $_SESSION['temp']=$_SESSION['cart_room'];   	     
 		foreach($_SESSION['cart_room'] as $cartItems)
 		{
 			
 			if(isset($cartItems['roomtypeId']))
-			{	
-				echo $cartItems['roomtypeId'];			
+			{						
 				$ok=2;
 			}
 		}
@@ -22,20 +20,16 @@
 		//echo count($_SESSION['cart_room']);
 	    foreach($_SESSION['cart_room'] as $cartItems)
 	    {
-	    	$item[]=$cartItems['roomtypeId'];
-	    	//echo $item."    ";
-	    }
-	 //   echo "item   :".$item;
-	   $str=implode(",",$item);	 
-	 //  echo "mang     ".$str; 
-//	   session_start();      
+	    	$item[]=$cartItems['roomtypeId'];	    
+	    }	
+	   $str=implode(",",$item);	 	      
 	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
 	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
        $listing_query1 = tep_db_query($listing_split1->sql_query);
      
     }       
 ?>
-
+<script type="text/javascript" src="black_and_white_js/k2store.js"></script>
     <div id="container">
         <h3>DANH MỤC PHÒNG ĐẶT</h3>
         <table id="cart" style="margin-bottom: 20px;">
@@ -93,7 +87,7 @@
                   echo "</td>";
                   
                   echo '<td width="10%">';
-                  echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'"> Hủy </a></p>';
+                  echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'" class="delcartItem"> Hủy </a></p>';
                   echo "</td>";
                   echo "</tr>";                
                   $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate']*1000;

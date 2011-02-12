@@ -30,14 +30,14 @@
         <div class="search_content">
             <div class="line">
     			<label>Ng&agrave;y &#273;&#7871;n </label>
-    			<input id='ngayden' type='text' class='text' name='ngayden' value='<?php echo date("Y-m-d");?>'/>
+    			<input id='ngayden' type='text' class='text' name='ngayden' value='<?php echo date("d-m-Y");?>'/>
     		</div>
     		<div class="line">
     		<?php
-    		 $datecurent=date("Y-m-d");	
-    		 list($year,$month,$day)=split('[-]', $datecurent);
+    		 $datecurent=date("d-m-Y");	
+    		 list($day,$month,$year)=split('[-]', $datecurent);
     		 $day +=1;   
-    		 $daytomorrow=date($year."-".$month."-".$day);         		
+    		 $daytomorrow=date($day."-".$month."-".$year);         		
     		?>
     			<label>Ng&agrave;y &#273;i </label>
     			<input id='ngaydi' type='text' class='text' name='ngaydi' value='<?php echo $daytomorrow	;?>'/>

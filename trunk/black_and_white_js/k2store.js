@@ -2,7 +2,7 @@
 function  getDateObj(str){
     var arr = str.split('-');
     var obj = new Date();
-    obj.setFullYear(arr[0],arr[1]-1,arr[2]);
+    obj.setFullYear(arr[2],arr[1]-1,arr[0]);
     return obj;
 }
 
@@ -54,8 +54,25 @@ window.addEvent('domready', function() {
                     return false;
               });
              });
+             
+              $$('a.delcartItem').each(function(el) {
+                el.addEvent('click', function(e) {
+                new Event(e).stop();
+                var url=this.href;
+                SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
+                    setTimeout('ajaxPage("'+url+'" )',3000);
+                    return false;
+              });
+             });
 		 }); //end dom ready
 		
+        function delcart(url){
+            SqueezeBox.initialize({size: {x: 700, y: 400}});
+                SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
+                    setTimeout('ajaxPage("'+url+'" )',3000);
+                    return false;
+        }
+        
         function ajaxPage(url){
                     new Ajax(url,{
 						 method:"post",

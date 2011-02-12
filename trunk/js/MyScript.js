@@ -5,62 +5,66 @@ jQuery(document).ready(function($){
     /************ check dateden & datedi **********************/
     //hien thi validation cho ngay den, ngay di cho column_left
     if($('#ngayden').html()!=null){
-        $('#ngayden').datepicker({changeMonth:true,changeYear:true,dateFormat:'yy-mm-dd'});
+        $('#ngayden').datepicker({changeMonth:true,changeYear:true,dateFormat:'dd-mm-yy'});
         $("#ngayden").change(function(){
             var dateArray = ($("#ngayden").val()).split('-');
-            dateden.setFullYear(dateArray[0],dateArray[1]-1,dateArray[2]);
+            dateden.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);
             var today = new Date();
             if(dateden < today){
                 alert("Ngày nhận phòng không được nhỏ hơn ngày hiện tại");
+                $("#ngayden").val('');
             }
         });
     }
     if($('#ngaydi').html() != null){
 		$('#ngaydi').datepicker({ changeMonth: true,
-			changeYear: true, dateFormat: 'yy-mm-dd' });
+			changeYear: true, dateFormat: 'dd-mm-yy' });
         $("#ngaydi").change(function(){
             var dateArray = ($("#ngaydi").val()).split('-');            
             var datedi = new Date();
-            datedi.setFullYear(dateArray[0],dateArray[1]-1,dateArray[2]);  
+            datedi.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);  
             if(datedi < dateden){
                 alert("Ngày trả phòng không được nhỏ hơn ngày nhận phòng");
+                $("#ngaydi").val('');
             }
         });
 	}
     /******************** end column_left ********************************/
 	if($('#dateden').html() != null){
-		$('#dateden').datepicker({ appendText: '(yyyy-mm-dd)',changeMonth: true,
-			changeYear: true, dateFormat: 'yy-mm-dd' });
+		$('#dateden').datepicker({ appendText: '(dd-mm-yy)',changeMonth: true,
+			changeYear: true, dateFormat: 'dd-mm-yy' });
         
         $("#dateden").change(function(){
             var dateArray = ($("#dateden").val()).split('-');
-            dateden.setFullYear(dateArray[0],dateArray[1]-1,dateArray[2]);
+            dateden.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);
             var today = new Date();
             if(dateden < today){
                 alert("Ngày nhận phòng không được nhỏ hơn ngày hiện tại");
+                $("#dateden").val('');
             }
         });
 	}
 	if($('#datedi').html() != null){
-		$('#datedi').datepicker({ appendText: '(yyyy-mm-dd)',changeMonth: true,
-			changeYear: true, dateFormat: 'yy-mm-dd' });
+		$('#datedi').datepicker({ appendText: '(dd-mm-yy)',changeMonth: true,
+			changeYear: true, dateFormat: 'dd-mm-yy' });
         $("#datedi").change(function(){
             var dateArray = ($("#datedi").val()).split('-');            
             var datedi = new Date();
-            datedi.setFullYear(dateArray[0],dateArray[1]-1,dateArray[2]);  
+            datedi.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);  
             if(datedi < dateden){
                 alert("Ngày trả phòng không được nhỏ hơn ngày nhận phòng");
+                $("#datedi").val('');
             }
         });
 	}
     /**********************************************************/
 	if($('#ngayhethan').html() != null){
-		$('#ngayhethan').datepicker({ appendText: '(yyyy-mm-dd)',changeMonth: true,
-			changeYear: true, dateFormat: 'yy-mm-dd' });
+		$('#ngayhethan').datepicker({ appendText: '(dd-mm-yy)',changeMonth: true,
+			changeYear: true, dateFormat: 'dd-mm-yy' });
 	}
 	if($('#ngaysinh').html() != null){
-		$('#ngaysinh').datepicker({ appendText: '(yyyy-mm-dd)',changeMonth: true,
-			changeYear: true, dateFormat: 'yy-mm-dd' });
+		$('#ngaysinh').datepicker({ appendText: '(dd-mm-yy)',changeMonth: true,
+			changeYear: true, dateFormat: 'dd-mm-yy' });
 	}
 });
 
@@ -235,7 +239,6 @@ jQuery(document).ready(function($){
 });
 /****************** show form dat phong ********************************/
 function showDatphongForm(){
-    alert('dfsfsdg');
     //if($("#datphongForm").html()!= null)
            jQuery("#datphongForm").removeClass('hidden');
     jQuery("#datphongForm").dialog({
@@ -249,6 +252,17 @@ function showDatphongForm(){
 
 var lastBodyThe='';
 jQuery(document).ready(function($){
+    
+    $.validator.addMethod(
+        "vnDate",
+        function(value, element) {
+            // put your own logic here, this is just a (crappy) example
+            return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
+        },
+        "Please enter a date in the format dd/mm/yyyy"
+    );
+
+
     $("input:radio[name=payment]").change(function(){        
        if($("input:radio[name=payment]:checked").val()=='0'){
         lastBodyThe = $("#thongtinthe").html();
@@ -273,11 +287,11 @@ jQuery(document).ready(function($){
             },
             dateden:{
                 required:true,
-                date:true
+                vnDate:true
             },  
             datedi:{
                 required:true,
-                date:true
+                vnDate:true
             },
             tenchuthe:{
                 required:true
@@ -299,12 +313,10 @@ jQuery(document).ready(function($){
                 digits:"Số ĐT gồm các chữ số 1-9"
             },
             dateden:{
-                required:"Chưa điền ngày đến",
-                date:"Ngày không đúng"
+                required:"Chưa điền ngày đến"
             },  
             datedi:{
-                required:"Chưa điền ngày đi",
-                date:"Ngày không đúng"
+                required:"Chưa điền ngày đi"
             },
             tenchuthe:{
                 required:"Tên chủ thẻ không được trống"

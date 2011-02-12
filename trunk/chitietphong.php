@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
   $Id: index.php,v 1.1 2003/06/11 17:37:59 hpdl Exp $
 

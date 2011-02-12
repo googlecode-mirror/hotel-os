@@ -92,7 +92,7 @@ $row2=getroom(1,$listing1['room_type_categories'],$listing1['room_type_id']);
       
       <!-- K2 Plugins: K2AfterDisplayContent -->
       <div class="k2store_item_price"><span class="item_price_label">Item Price : </span><span class="k2store_item_price_value">&nbsp;<?php echo  number_format($row1['room_type_price'],3)."VND";?></span></div>
-          	<?php echo "dfgdgfdgfjdjfh" ;?>
+          
 			<a class="moduleItemReadMore" href=<?php echo   tep_href_link("chitietphong.php", 'room_type_id=' . $row1['room_type_id'] ); ?>>
 			Chi tiết...</a>
             
