@@ -1,5 +1,5 @@
 <?php
-require('includes/application_top.php');
+require_once('includes/application_top.php');
 //	session_start(); 
 	//session_register('cart_room');
 //	$_SESSION['cart_room'][] = array( "qty" => $qty,

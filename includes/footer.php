@@ -138,7 +138,7 @@
 				
 			
 		<div id="gk-copyright" >
-					Hotel © Booking Online | Group Ha & Nhan.</div>
+					Hotel © Booking Online | Group Ha &amp; Nhan.</div>
 	</div> 
 
 <?php
