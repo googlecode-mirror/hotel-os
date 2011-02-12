@@ -89,14 +89,14 @@
                   echo "</td>";
                   echo '<td width="10%">';
                  // echo    "<p>120.000VND</p>";
-                  echo "<p align=right>  ". number_format($cartItems['qty']*$row[room_type_price]*$cartItems['staydate'],3) ." VND</p>";
+                  echo "<p align=right>  ". ($cartItems['qty']*$row[room_type_price]*$cartItems['staydate'])*1000 ." VND</p>";
                   echo "</td>";
                   
                   echo '<td width="10%">';
                   echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'"> Hủy </a></p>';
                   echo "</td>";
                   echo "</tr>";                
-                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate'];
+                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate']*1000;
            		}
            	}
                
@@ -107,21 +107,23 @@
                     <p>Tổng tiền</p>
                 </td>
                 <td id="total_price">
-                    <p>&nbsp;<?php echo number_format($total,3); ?></p>
+                    <p>&nbsp;<?php echo $total."VND"; ?></p>
                 </td>
             </tr>            
         </table>
          </form>
-        <form method="post" action="https://www.nganluong.vn/advance_payment.php">
-        <input type=hidden name=receiver value="thanhnha_kg2000@yahoo.com" />
-        <input type=hidden name=product value="phong khach san" />
-        <input type=hidden name=price value="<<?php echo $total ;?>>" />
-        <input type=hidden name=return_url value="http://complete.com.thank.php" />
-        <input type=hidden name=comments value="<!--Ghi chú về đơn hàng-->" />
-        <input type=image src="https://www.nganluong.vn/data/images/buttons/11.gif" /></form>
-        <form id="userForm" name="userForm" method="get" action="index.php">                    
-                
-                    <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"
+         <?php
+            require_once("nganluong.php");
+            $nl=new NL_Checkout();
+            $return_url="http://hotelonline.viit-group.com/complete.php";//dia chi thanh toan thanh cong
+            $transaction_info="ma phong";//thong tin giao dich
+            $receiver="thanhnhan_kg2000@yahoo.com";//tai khoan chu hotel
+            $order_code="ma hoa don ddddd";//ma hoa don
+            $price=$total;
+            $url=$nl->buildCheckoutUrl($return_url, $receiver, $transaction_info, $order_code, $price);
+          ?>
+    
+        <td colspan="2"><a href="<?php echo $url; ?>"><img border="0" src="https://www.nganluong.vn/data/images/buttons/11.gif" /></a></td>
+          <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"
                         onclick="javascript:window.href='<?php echo tep_href_link('index.php');?>';"/>
-        </form>
     </div>

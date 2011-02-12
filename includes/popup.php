@@ -55,7 +55,7 @@
 <div id="register_form">		
 	<h3>Đăng ký</h3>	
 
-		<script type="text/javascript" src="http://localhost/Khotel/media/system/js/validate.js"></script>
+		<script type="text/javascript" src="black_and_white_js/validate.js"></script>
 		<script type="text/javascript">Window.onDomReady(function(){document.formvalidator.setHandler('passverify', function (value) { return ($('password').value == value); }	);});</script>
 
 		<form action="/hotelbooking/xulydangky.php" method="post" id="josForm" name="josForm" class="form-validate">

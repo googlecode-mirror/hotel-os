@@ -1,12 +1,17 @@
 window.addEvent('load', function() {
     if(MooTools.version.contains('1.1')){
         $$(".gk_is_wrapper-template").each(function(el){
+            alert('run');            
             var elID = el.getProperty('id');
+            alert(elID);            
             new GK_IS_sep2010_11($Gavick[elID], el, elID);
         });
     } else {
         $$(".gk_is_wrapper-template").each(function(el){
             var elID = el.getProperty('id');
+            alert(elID);
+           // alert('cont');
+            alert($Gavick[elID]);
             new GK_IS_sep2010_12($Gavick[elID], el, elID);
         });
 	}
