@@ -35,7 +35,7 @@
 
     while ( (substr($link, -1) == '&') || (substr($link, -1) == '?') ) $link = substr($link, 0, -1);
 
-    return $link;
+    return htmlspecialchars($link);
   }
 
   function tep_catalog_href_link($page = '', $parameters = '', $connection = 'NONSSL') {

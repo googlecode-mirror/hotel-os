@@ -66,7 +66,7 @@
       $link .= $separator . tep_output_string($_sid);
     }
 
-    return $link;
+    return htmlspecialchars($link);
   }
 
 ////
