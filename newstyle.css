@@ -600,7 +600,10 @@ margin: 0 5px 0 30px;
 	font-style:italic;
 	margin:5px 10px 0 0;
 }
-=======
+.total{
+    background:rgb(235,238,91);
+    font-weight: bold;
 }
-/*************************/
->>>>>>> .r29
+.total #total_price{
+    text-align:center;
+}

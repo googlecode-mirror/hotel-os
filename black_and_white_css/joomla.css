@@ -75,7 +75,7 @@ small,
 .contenttoc { font-size:90%; }
 .modifydate { font-style:italic; font-size:80%; color:#aaa; }
 .smalldark { text-align:left; }
-th { font-weight:normal; padding:5px 0; text-align:left; }
+th { font-weight:normal; padding:5px 0; text-align:center; background: rgb(20,111,201);color:#ffffff; }
 td { font-size:100%; padding:6px; }
 fieldset { border:none; padding:12px 0; }
 fieldset a { font-weight:bold; }

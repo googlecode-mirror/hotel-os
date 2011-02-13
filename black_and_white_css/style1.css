@@ -179,8 +179,8 @@ tr.k2store_table_footer td { border-top: 1px solid #ccc; }
 .color2 .moduletable_content table#cart tr { border: 1px solid #d2d2cb; border-bottom: 1px solid #f3f3ec; }
 .color2 .moduletable_content table#cart tr td { background: #d9d9d1 }
 .color2 .moduletable_content table#cart #total_price { color: #666; }
-table#cart th { background:#efeee9 !important; color: #666 !important; }
-table#cart tr { border-bottom: 1px dotted #dadada; }
+table#cart th { background:rgb(20,111,201) !important; color: #fff !important; text-align:center; }
+table#cart tr { border-bottom: 1px dotted #dadada;  }
 #total_price_td, #sbox-content #total_price { color: #c03131; }
 #container > h3 { color:#373636; }
 .k2storeUserLogin .inputbox, .k2storeUserPassword .inputbox { border: 1px solid #ddd; }
