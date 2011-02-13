@@ -14,6 +14,7 @@
   require('includes/application_top.php');
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
 ?>
+
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>  
 <head>
@@ -145,11 +146,85 @@ jQuery.noConflict();
 		<!-- left_navigation_eof //-->
 		
 		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>
+        <?php
+        foreach($_SESSION['cart_room'] as $cartItems)
+	    {
+	    	$item[]=$cartItems['roomtypeId'];	    
+	    }	
+	   $str=implode(",",$item);	 	      
+	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
+	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
+       $listing_query1 = tep_db_query($listing_split1->sql_query);
+       ?>       
+          
 		<div id="mainContent">
+        <h2 style="text-align: center;">DANH MỤC PHÒNG ĐẶT</h2>
+        <table cellpadding="5" cellspacing="5" border="1" style="border: 1px solid;margin-bottom: 10px;">
+            <tr>
+                <th width="15%">
+                    Tên loại phòng
+                </th>
+                <th class='center' width="5%">
+                    Ngày đến
+                </th>
+                <th class='center' width="5%">
+                    Số phòng
+                </th>
+                <th class='center' width="5%">
+                    Số ngày ở
+                </th>
+                <th class='center' width="5%">
+                    Gía phòng
+                </th>
+                <th width="5%">
+                    Tổng tiền
+                </th>
+            </tr>
+            <?php
+           while($row=tep_db_fetch_array($listing_query1)){
+           	foreach($_SESSION['cart_room'] as $cartItems){
+           		if($cartItems['roomtypeId'] == $row[room_type_id]){
+           			$keys=array_search($cartItems,$_SESSION['cart_room']);
+           		  echo "<tr>";
+                  echo  '<td width="5%">';
+                  echo   " <p>$row[room_type_name]</p>";
+                  echo  "</td>";
+                  echo  '<td class="center" width="5%">';				
+                  list($year,$month,$day)=split('[-]', $cartItems['dayto']);  
+                  $dayto=date($day."-".$month."-".$year);
+                  echo   " <p>".$dayto."</p>";
+                  echo  "</td>";
+                  echo  '<td class="center" width="5%">';
+                  echo   " <p>".$cartItems['staydate']."</p>";
+                  echo  "</td>";
+                  echo  "<td class=\"center\" width='5%'>";
+                  echo    " <p>".$cartItems['qty']."</p>";               
+                  echo  "</td>";
+                  echo '<td width="5%">';                
+                  echo " <p align=center>$row[room_type_price].000</p>";
+                  echo "</td>";   
+                  echo '<td width="5%">';             
+                  echo "<p align=right>  ". ($cartItems['qty']*$row[room_type_price]*$cartItems['staydate'])*1000 ." VND</p>";
+                  echo "</td>";   
+                  echo "</tr>";                
+                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate']*1000;
+           		}
+                }
+           	} 
+             
+            ?>
+            <tr class="total">
+                <td width="10%" align="right" colspan="5">
+                    <p>Tổng tiền:</p>
+                </td>
+                <td id="total_price">
+                    <p>&nbsp;<?php echo $total." VND"; ?> </p>
+                </td>
+            </tr>  
+            </table>
 		      <h2 style="text-align: center;">THÔNG TIN ĐĂNG KÝ ĐẶT PHÒNG</h2>
            <div id="datphongForm" title="THÔNG TIN ĐẶT PHÒNG">
-           <!--check chọn người đặt phòng-->
-           <?php ?>
+           <!--check chọn người đặt phòng-->          
            <input id="setMyself" type="radio" name="setRoom" class="payment" value="0"/>Đặt phòng cho chính bạn
            <input id="setFor" type="radio" name="setRoom" class="payment" value="1"/>Đặt phòng cho người khác
            
@@ -202,7 +277,8 @@ jQuery.noConflict();
                 			</div>
                 	</div>
                 	<div id="thongtinthe" class="hidden">                		
-                			<div class="line">
+                	<!--
+		<div class="line">
                 			<label for="tenchuthe"> T&ecirc;n Ch&#7911; Th&#7867; </label>
                 			<input id="tenchuthe" type="text" class="text" name="tenchuthe"/>
                 			</div>
@@ -223,9 +299,12 @@ jQuery.noConflict();
                 			   <INPUT TYPE="checkbox" NAME="checkbox" VALUE="checkbox"> 
                 			   T&ocirc;i ch&#7845;p nh&#7853;n v&#7899;i c&aacute;c &#273;i&#7873;u kho&#7843;n tr&ecirc;n
                 			</div>
+--><a href="<?php echo $url; ?>"><img border="0" src="https://www.nganluong.vn/data/images/buttons/11.gif" /></a>
                 		
                 	</div>
-                		<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="success.php">
+                	<!--
+	<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="success.php">
+-->
                 </form>
             </div>
             <div class="clear"></div> </div>

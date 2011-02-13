@@ -1,13 +1,13 @@
 window.addEvent('load', function() {
     if(MooTools.version.contains('1.1')){
         $$(".gk_is_wrapper-template").each(function(el){
-            //alert('1.1');
+            ////alert('1.1');
             var elID = el.getProperty('id');
             new GK_IS_sep2010_11($Gavick[elID], el, elID);
         });
     } else {
         $$(".gk_is_wrapper-template").each(function(el){
-            //alert('1.2');
+            ////alert('1.2');
             var elID = el.getProperty('id');
             new GK_IS_sep2010_12($Gavick[elID], el, elID);
         });
@@ -300,7 +300,7 @@ var GK_IS_sep2010_12 = new Class({
             imagesToLoad.each(function(el,i){ if(el.complete) process++; });
           
             if(process == imagesToLoad.length){
-                //alert("process "+process);
+                ////alert("process "+process);
                 $clear(time);
                 $this.loadedImages = process;
                 (function(){
@@ -310,7 +310,7 @@ var GK_IS_sep2010_12 = new Class({
                     		"slide":slide, 
                     		"anim": new Fx.Style(slide, 'opacity', { duration: $this.options['anim_speed'] }).set(i != 0 ? 0 : 1)
                     	});
-                        //alert("fserwer "+$this.slides.length);
+                        ////alert("fserwer "+$this.slides.length);
                     	if($this.options.slide_links) slide.addEvent('click', function() { $this.redirect($this.actual_slide); });
                     });
                 }).delay(400);
