@@ -13,10 +13,11 @@ function getDaySubstract(date1, date2){
 }
 window.addEvent('domready', function() {
         
-			//var container = 'miniK2StoreCart';
-			//if ($(container))	{
-//				doMiniCart();
-//			}
+			var container = 'miniK2StoreCart';
+			if ($(container))	{
+			     var url = $("getminicart").value;
+				doMiniCart(url);
+			}
 			      
 		     SqueezeBox.initialize({size: {x: 700, y: 400}});
 		      $$('.cart_form').each(function(el) {
@@ -35,9 +36,16 @@ window.addEvent('domready', function() {
                     var monthden = dateden.getMonth()+1;
                     var yearden = dateden.getFullYear();
                     
+                    
+                    var daydi = datedi.getDate();
+                    var monthdi = datedi.getMonth()+1;
+                    var yeardi = datedi.getFullYear();
+                    
+                     
                     var songayo = getDaySubstract(datedi,dateden);
 		            
-		            var url = this.action+"&stay_dates="+songayo+"&comingdate="+dayden+"&comingmonth="+monthden+"&comingyear="+yearden;
+		            var url = this.action+"&stay_dates="+songayo+"&comingdate="+dayden+"&comingmonth="+monthden+"&comingyear="+yearden
+                                            +"&leavingdate="+daydi+"&leavingmonth="+monthdi+"&leavingyear="+yeardi;
                     SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
                     setTimeout('ajaxPage("'+url+'" )',3000);
                    
@@ -85,9 +93,9 @@ window.addEvent('domready', function() {
 					}).request();
         }
          
-		function doMiniCart() {
+		function doMiniCart(url) {
 		var container = 'miniK2StoreCart';
-			var murl = 'index.php?option=com_k2store&view=mycart&format=ajaxmini';
+			var murl = url+'&option=com_k2store&view=mycart&format=ajaxmini';
 		
 			var a=new Ajax(murl,{
                 method:"post",

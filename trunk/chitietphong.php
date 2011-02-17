@@ -247,7 +247,7 @@ jQuery.noConflict();
                 			<input id="dateden" type="text" class="text" name="dateden"/>
                 			</div> 
                             <div class="line">
-                			<label for="datedi"> Ngày đi  </label>
+                			<label for="datedi"> Ngày đi  </label> 
                 			<input id="datedi" type="text" class="text" name="datedi"/>
                 			</div>
                    </div>                          

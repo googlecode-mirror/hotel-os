@@ -161,26 +161,29 @@ jQuery.noConflict();
        ?>       
           
 		<div id="mainContent">
-        <h2 style="text-align: center;">DANH MỤC PHÒNG ĐẶT</h2>
+        <h2 style="text-align: center;">DANH M?C PH�NG �?T</h2>
         <table cellpadding="5" cellspacing="5" border="1" style="border: 1px solid;margin-bottom: 10px;">
             <tr>
                 <th width="15%">
-                    Tên loại phòng
+                    T�n lo?i ph�ng
                 </th>
                 <th class='center' width="5%">
-                    Ngày đến
+                    Ng�y d?n
                 </th>
                 <th class='center' width="5%">
-                    Số phòng
+                    S? ph�ng
                 </th>
                 <th class='center' width="5%">
-                    Số ngày ở
+                    S? ng�y ?
                 </th>
                 <th class='center' width="5%">
-                    Gía phòng
+                    G�a ph�ng
                 </th>
                 <th width="5%">
-                    Tổng tiền
+                    T?ng ti?n
+                </th>
+                 <th width="5%">
+                    Huy
                 </th>
             </tr>
             <?php
@@ -209,12 +212,13 @@ jQuery.noConflict();
                   echo " <p align=center>$row[room_type_price].000</p>";
                   echo "</td>";   
                   echo '<td width="5%">';             
-                  echo "<p align=right>  ". number_format(($cartItems['qty']*$row[room_type_price]*$cartItems['staydate']),3) ." VND</p>";
+                  echo "<p align=right>  ". ($cartItems['qty']*$row[room_type_price]*$cartItems['staydate'])*1000 ." VND</p>";
                   echo "</td>";   
+                    echo '<td width="5%">';
+                  echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'" class="delcartItem"> H?y </a></p>';
+                  echo "</td>";
                   echo "</tr>";                
                   $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate']*1000;
-                  $total1 +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate'];
-
            		}
                 }
            	} 
@@ -222,107 +226,25 @@ jQuery.noConflict();
             ?>
             <tr class="total">
                 <td width="10%" align="right" colspan="5">
-                    <p>Tổng tiền:</p>
+                    <p>T?ng ti?n:</p>
                 </td>
                 <td id="total_price">
-                    <p>&nbsp;<?php echo number_format($total1,3)." VND"; ?> </p>
+                    <p>&nbsp;<?php echo $total." VND"; ?> </p>
                 </td>
             </tr>  
+            <tr>
+            <td></td>
+            </tr>
+            </form>
+            </div>
             </table>
-		      <h2 style="text-align: center;">THÔNG TIN ĐĂNG KÝ ĐẶT PHÒNG</h2>
-           <div id="datphongForm" title="THÔNG TIN ĐẶT PHÒNG">
-           <!--check chọn người đặt phòng-->          
-           <input id="setMyself" type="radio" name="setRoom" class="payment" value="0"/>Đặt phòng cho chính bạn
-           <input id="setFor" type="radio" name="setRoom" class="payment" value="1"/>Đặt phòng cho người khác
-           
-           
-                <form id="signupForm" method="post" action="xulydangky.php">
-                	<div id="thongtinkhach">
-                            <div class="line">
-                			<label for="hoten"> Họ tên KH </label>
-                			<input id="hoten" type="text" class="text" name="hoten" />
-                			</div>
-                			<div class="line">
-                			<label for="email">&#272;&#7883;a ch&#7881; email </label>
-                			<input id="email" type="text" class="text" name="email"/>
-                			</div>
-                			<div class="line">
-                			<label for="diachi"> &#272;&#7883;a ch&#7881;  </label>
-                			<input id="diachi" type="text" class="text" name="diachi"/>
-                			</div>      
-                			<div class="line">
-                			<label for="dienthoai">&#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c </label>
-                			<input id="dienthoai" type="text" class="text" name="dienthoai"/>
-                			</div>
-                            
-                            <div class="line">
-                			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="dateden"/>
-                			</div> 
-                            <div class="line">
-                			<label for="datedi"> Ngày đi  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
-                			</div>
-                            <div class="line">
-                			<label for="datedi"> Số lượng phòng  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
-                			</div>
-                            <div class="line">
-                			<label for="nguoilon"> Số người lớn  </label>
-                			<input id="nguoilon" type="text" class="text" name="nguoilon"/>
-                			</div>
-                             
-                             <div class="line">
-                			<label for="treem"> Số trẻ em  </label>
-                			<input id="treem" type="text" class="text" name="treem"/>
-                			</div>
-                            
-                            <div class="line">
-                            <p>Phương thức thanh toán</p>                			
-                			<input id="cash" type="radio" name="payment" class="payment" value="0"/>Tiền mặt
-                            <input id="card" type="radio" name="payment" class="payment" value="1"/>Thẻ tín dụng
-                			</div>
-                	</div>
-                	<div id="thongtinthe" class="hidden">                		
-                	<!--
-		<div class="line">
-                			<label for="tenchuthe"> T&ecirc;n Ch&#7911; Th&#7867; </label>
-                			<input id="tenchuthe" type="text" class="text" name="tenchuthe"/>
-                			</div>
-                			
-                			<div class="line">
-                			<label> Lo&#7841;i th&#7867; </label>
-                			<select name="s" size="1"	>
-                			<option value="1" selected="selected">Mater Card</option>		
-                			<option value="2"> Visa Card</option>                			
-                			</select>
-                			</div>
-                			<div class="line">
-                			
-                			<label for="sothe">  S&#7889; th&#7867; </label>
-                			<input id="sothe" type="text" class="text" name="sothe"/>
-                			</div>
-                			<div> 			
-                			   <INPUT TYPE="checkbox" NAME="checkbox" VALUE="checkbox"> 
-                			   T&ocirc;i ch&#7845;p nh&#7853;n v&#7899;i c&aacute;c &#273;i&#7873;u kho&#7843;n tr&ecirc;n
-                			</div>
-              <?php
-            require_once("nganluong.php");
-            $nl=new NL_Checkout();
-            $return_url="http://hotelonline.viit-group.com/complete.php";//dia chi thanh toan thanh cong
-            $transaction_info="ma phong";//thong tin giao dich
-            $receiver="thanhnhan_kg2000@yahoo.com";//tai khoan chu hotel
-            $order_code="ma hoa don ddddd";//ma hoa don
-            $price="2000";
-            $url=$nl->buildCheckoutUrl($return_url, $receiver, $transaction_info, $order_code, $price);
-          ?>
---><a href="<?php echo $url; ?>"><img border="0" src="https://www.nganluong.vn/data/images/buttons/11.gif" /></a>
-                		
-                	</div>
-                	<!--
-	<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="success.php">
--->
-                </form>
+             <form id="signupForm" class="cart_form" method="post" action="<?php echo tep_href_link('datphong.php');?>">
+          <input type="submit" style="margin: 10px 15px 0 10px;" value="Thanh Toan"/>
+          </form>
+            
+                	 
+                
+               
             </div>
             <div class="clear"></div> </div>
             </div>
