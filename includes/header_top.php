@@ -41,7 +41,7 @@ window.addEvent('load', function(){
 </form>
         </div>
                 
-				<a href="http://localhost/hotelbooking/index.php?" id="btn_login"></a>
+				<a href="http://hotelonline.viit-group.com/index.php?" id="btn_login"></a>
 		
 				<a href="http://twitter.com/gavickpro" target="_blank" id="btn_twitter"></a>
 		

@@ -103,6 +103,31 @@ window.addEvent('load', function() {
 			forms_visible = !forms_visible;
 		});  
 	}
+    if($('btn_login2')) {
+		var login_fx = new Fx.Style($('gk-popup'), 'height',{duration:800, transition: Fx.Transitions.Quint.easeOut}).set(0);
+		var popup = $('system-message');
+		var msg_died = true;
+		var forms_visible = false;
+       		
+		if(popup) {
+            msg_died = false;
+            (function(){
+                login_fx.start(0, popup.getSize().size.y);
+                (function(){ 
+                    if(!forms_visible) login_fx.start(0);
+                    new Fx.Style($('system-message'), 'opacity', {onComplete: function(){ $('system-message').remove(); }}).start(0);
+                    msg_died = true;
+                }).delay(6000);
+            }).delay(1000);
+		}
+		
+		$('btn_login2').addEvent('click', function(e){
+			new Event(e).stop();
+			if(msg_died) (!forms_visible) ? login_fx.start($$('#gk-popup .main')[0].getSize().size.y) : login_fx.start(0);
+			else (!forms_visible) ? login_fx.start($$('#gk-popup .main')[0].getSize().size.y) : login_fx.start(0);
+			forms_visible = !forms_visible;
+		});  
+	}
     // EQUAL COLUMNS
 	var equalizers = [$('gk-botsl1'), $('gk-botsl2')];
 	equalizers.each(function(wrap,i){

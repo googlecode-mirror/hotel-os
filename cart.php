@@ -84,14 +84,14 @@
                   echo "</td>";
                   echo '<td width="5%">';
                  // echo    "<p>120.000VND</p>";
-                  echo "<p align=right>  ". ($cartItems['qty']*$row[room_type_price]*$cartItems['staydate'])*1000 ." VND</p>";
+                  echo "<p align=right>  ". number_format(($cartItems['qty']*$row[room_type_price]*$cartItems['staydate']),3) ." VND</p>";
                   echo "</td>";
                   
                   echo '<td width="5%">';
                   echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'" class="delcartItem"> Hủy </a></p>';
                   echo "</td>";
                   echo "</tr>";                
-                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate']*1000;
+                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate'];
            		}
            	}
                
@@ -103,21 +103,12 @@
                     <p>Tổng tiền:</p>
                 </td>
                 <td id="total_price" colspan="3">
-                    <p>&nbsp;<?php echo $total." VND"; ?> </p>
+                    <p>&nbsp;<?php echo number_format($total,3)." VND"; ?> </p>
                 </td>
             </tr>            
         </table>
          </form>
-         <?php
-            require_once("nganluong.php");
-            $nl=new NL_Checkout();
-            $return_url="http://hotelonline.viit-group.com/complete.php";//dia chi thanh toan thanh cong
-            $transaction_info="ma phong";//thong tin giao dich
-            $receiver="thanhnhan_kg2000@yahoo.com";//tai khoan chu hotel
-            $order_code="ma hoa don ddddd";//ma hoa don
-            $price="2000";
-            $url=$nl->buildCheckoutUrl($return_url, $receiver, $transaction_info, $order_code, $price);
-          ?>
+        
     
         <!--
 <td colspan="2"></td>

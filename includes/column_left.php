@@ -23,6 +23,7 @@
         </div>
     </div>
 </div>
+
 		<!--****************************************************************Tim kiem-->
  <form id="Form_search" class="search_form" method="post" action="<?php echo tep_href_link('index.php','flag_search=1');?>">		
 	<div id="search" class="moduletable color2">

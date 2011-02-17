@@ -132,7 +132,16 @@ jQuery.noConflict();
 		<!-- left_navigation //-->
 		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
 		<!-- left_navigation_eof //-->		
-	
+        <?php
+             function getroomofdate($daytest){			
+    			                         //cap nhat so phong dat xuong table status_room            			
+                            			$listing_sql2="select * from  status_room  where  status_room_dayofyear ='".$daytest."'";		
+                            			$listing_split2 = new splitPageResults($listing_sql2, MAX_DISPLAY_SEARCH_RESULTS);
+                            		    $listing_query2 = tep_db_query($listing_split2->sql_query);
+                            		    $listing2 = tep_db_fetch_array($listing_query2);
+                            		    return $listing2;
+                                    } 
+        ?>	
         <?php
             require_once("nganluong.php");
             $nl=new NL_Checkout();            
@@ -145,13 +154,68 @@ jQuery.noConflict();
             $secure_code=@$_GET["secure_code"];//lay ma kiem tra tinh hop le cua dau vao
             $check=$nl->verifyPaymentUrl($transaction_info, $order_code, $price, $payment_id, $payment_type, $error_text, $secure_code);//kiem tra giao dich
             
-            if($check){
+            //if($check){
+                  $account_id=null;  
+                  $dateset=date("Y-m-d"); 
+                  $payment=tep_db_prepare_input($HTTP_POST_VARS['payment']);
+                  $sql_data_array = array('booking_form_dateset' => $dateset,		    				 
+		                      'booking_form_custommers_id' => $customer_id,
+		                      'booking_form_account_id' => $account_id,
+		                      'booking_form_payment_methods_id' =>  $payment,
+                              'booking_form_total_price'=>$price
+		                      );
+	  
+	                          tep_db_perform(booking_form, $sql_data_array);
+	                          $booking_form_id= tep_db_insert_id(); 
+                              
+                  if(isset($_SESSION['cart_room']))
+                  {
+                    foreach($_SESSION['cart_room'] as $cartItems)
+                    {
+    	    	       $item[]=$cartItems['roomtypeId'];	    
+    	            }
+        	       $str=implode(",",$item);	 	      
+            	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
+            	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
+                   $listing_query1 = tep_db_query($listing_split1->sql_query);
+                 }
+                 while($row=tep_db_fetch_array($listing_query1)){
+                	foreach($_SESSION['cart_room'] as $cartItems){
+           		       if($cartItems['roomtypeId'] == $row[room_type_id]){
+           		           try{
+     		                   $sql_data_array = array('detail_booking_form_type_room_id' => $cartItems['roomtypeId'],
+                              'detail_booking_form_id'=>$booking_form_id,
+		    				  'detail_booking_form_dateto' => $cartItems['dayto'],
+		                      'detail_booking_form_datego' =>  $cartItems['daygo'],	                      
+	                          'detail_booking_form_staydate' =>  $cartItems['staydate'],
+                              'detail_booking_form_number_room'=> $cartItems['qty'],		                      
+		                      'detail_booking_form_price' =>  $row[room_type_price]);	  
+	                          tep_db_perform(detail_booking_form, $sql_data_array);
+                              list($year,$month,$day)=split('[-]', $cartItems['dayto']);
+                              $n=$cartItems['staydate'];                               
+                               for($i=0;$i<$n;$i++){  
+                                    $daytest=date($year."-".$month."-".$day); 
+            		                  $day +=1;                                     
+                                  	 $listing2=getroomofdate($daytest);                                                                          
+                                     $id_status_room="id_".$cartItems['roomtypeId']; 
+                                     list($name,$room_id)=split('[_]', $cartItems['roomtypeId']);                                     
+                                     $num_room= $listing2[$id_status_room] +$cartItems['qty'] ;         
+                                     tep_db_query("update status_room set ". $id_status_room." = '" . (int)$num_room . "' where status_room_dayofyear = '" . $daytest . "'");                    
+	                          } 	                          
+           		           }
+                           catch ( Exception $e){
+	    	                  echo 'Exception caught: ',  $e->getMessage(), "\n";	    	
+	                       }
+       		           }
+                    }
+                 }       
+           			$keys=array_search($cartItems,$_SESSION['cart_room']);          
                 $html.="<div align=\"center\">Cam on quy khach,qua trinh thanh toan da duoc hoan tat!</div>";
                 echo $html;
-            }
-            else{
-                echo "Qua trinh thanh toan khong thanh cong vui long thu lai";
-            }
+          //  }
+            //else{
+           //     echo "Qua trinh thanh toan khong thanh cong vui long thu lai";
+           // }
  ?> 
 		</div>
 	</div>
