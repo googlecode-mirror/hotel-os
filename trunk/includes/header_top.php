@@ -17,10 +17,10 @@
 window.addEvent('load', function(){
 	var input = $('mod_search_searchword');
 	input.addEvents({
-		'blur' : function(){ if(input.value == '') input.value='search...'; },
-		'focus' : function(){ if(input.value == 'search...') input.value='';	}
+		'blur' : function(){ if(input.value == '') input.value='Tìm kiếm...'; },
+		'focus' : function(){ if(input.value == 'Tìm kiếm...') input.value='';	}
 	});
-	input.value = 'search...';
+	input.value = 'Tìm kiếm...';
 	
 	if($('mod_search_button')){
 		$('mod_search_button').addEvent('click', function(){ 

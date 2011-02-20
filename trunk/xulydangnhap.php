@@ -1,6 +1,9 @@
-<?php
-	require('includes/application_top.php');	
+<?php  
+
+
+	require('includes/application_top.php');	    
  	require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_LOGIN);
+   
  	$email_address = tep_db_prepare_input($HTTP_POST_VARS['email']);
   	$password= tep_db_prepare_input($HTTP_POST_VARS['password']);
   	 $error = false;
@@ -16,26 +19,20 @@
         $error = true;   
         echo ENTRY_PASSWORD_NEW_TEXT ;  
       } else {
-        if (SESSION_RECREATE == 'True') {
-          tep_session_recreate();
-        }		
-        $customer_id = $check_customer['customers_id'];
-       // $customer_default_address_id = $check_customer['customers_default_address_id'];
-        $customer_first_name = $check_customer['customers_firstname'];
-        //$customer_country_id = $check_country['entry_country_id'];
-       // $customer_zone_id = $check_country['entry_zone_id'];
-       
-       $_SESSION['customer']= $customer_id;
-        tep_session_register('customer_id');
-       // tep_session_register('customer_default_address_id');
+      //  if (SESSION_RECREATE == 'True') {
+      //    tep_session_recreate();
+      //  }
+      		
+        $customer_id = $check_customer['customers_id'];       
+        $customer_first_name = $check_customer['customers_firstname'];    
+        $_SESSION['customer']= $customer_id;
+        tep_session_register('customer_id');     
         tep_session_register('customer_first_name');
+        #luu giu session hien tai osCsid
         
+               tep_redirect(tep_href_link(FILENAME_DEFAULT));          
         
-       // tep_session_register('customer_country_id');
-       // tep_session_register('customer_zone_id');  
-       //$_SESSION['login23']=1;   
-      //tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'SSL'));
-		tep_redirect(tep_href_link(FILENAME_DEFAULT));		
+        exit();	        	
       }
     }
 ?>

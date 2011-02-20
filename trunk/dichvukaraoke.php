@@ -159,26 +159,21 @@ jQuery.noConflict();
             </div>
                 <div class="itemIntroText">
                     <p class="gioithieu"><b>Mục đích: </b>
-				Bơi lội là môn thể thao phù hợp với mọi lứa tuổi để rèn luyện sức khỏe, sự dẻo dai và sức bền của 
-                tất cả các nhóm cơ. Hoạt động bơi lội giúp cơ thể nhanh chóng đốt cháy năng lượng, yếu tố cơ bản 
-                giúp bạn kiểm soát trọng lượng cơ thể. Không ngoài những mục đích trên, khách sạn chúng tôi cũng 
-                mong muốn mang lại cho quí khách hàng sức khỏe và sự thuận tiện trong dịch vụ bơi lội tại khách sạn.
-                Hồ bơi được thiết kế thoát mát, sạch sẽ, màu sắc rực rỡ, vui tươi luôn mang lại cảm giác thú vị cho
-                du khách khi bơi lội và nghỉ ngơi. </p> 
+                Karaoke là một hình thức tiêu khiển bằng cách hát theo lời dưới hình thức phụ đề và giai điệu âm nhạc do 
+                thiết bị Karaoke (hay dàn karaoke) cung cấp. Để có thể phục vụ những thú tiêu khiển của khách hàng chúng 
+                tôi luôn cố gắng thiết kế nhiều dạng dịch vụ để thỏa mãn nhu cầu, trong đó karaoke là một i
+                     </p>
+                 </p> 
                            
-			         <p class="gioithieu"><b>Kiến trúc: </b>
-                Và để tạo điều kiện thuận lợi cho du khách, khách sạn chúng tôi 
-                thiết lập hồ bơi ngay bên trong khách sạn. Hồ bơi được thiết kế ngoài trời nên rất thuận tiện cho việc 
-                tắm nắng của du khách. Về kiến trúc hồ bơi: Thành và đáy bể đều sử dụng vật liệu cao cấp tấm PVC – Polyester 
-                Flag pool có in giả gạch, trang trí đường diềm, in tranh ảnh phong cảnh biển…Hệ thống đèn dưới nước 
-                thật hoàn hảo làm nổi bật khung cảnh bể bơi trong đêm tối và nhất là các hình ảnh trong bể bơi. Thời gian 
-                lọc toàn bộ nước trong bể là 4 đến 8 giờ. Hồ bơi sử dụng hệ thống lọc có đường ống (thường là lọc bằng
-                 cát)
+			         <p class="gioithieu"><b>Hệ thống: </b>
+                Dịch vụ karaoke tại khách sạn được thiết kế đẹp, tiện nghi và sang trọng. Chúng tôi luôn mong muốn 
+                mang lại sự sum họp, vui vẻ, hòa đồng cùng gia đình. Và chúng tôi luôn thay đổi hệ thống karaoke mỗi
+                ngày để phù hợp với thị hiếu người dùng.
                      </p>
                      
                      <p class="gioithieu"><b>Lợi ích: </b>
-                     Khi du khách đã lựa chọn khách sạn chúng tôi làm nơi dừng chân, thì dịch vụ hồ bơi dành cho du khách
-                     là hoàn toàn miễn phí. Chúng tôi sẽ phục vụ chu đáo từ: khắn tắm, ghế, dù,...
+                     Khi du khách đã lựa chọn khách sạn chúng tôi làm nơi dừng chân, thì dịch vụ karaoke dành cho du khách
+                     là hoàn toàn miễn phí. Chúng tôi sẽ phục vụ chu đáo, tận tình, giúp cho quí khách hàng vui vẻ, thoải mái.
                  </p>
                 </div>            
         </div>				

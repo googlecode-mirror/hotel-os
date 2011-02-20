@@ -12,9 +12,10 @@
   //require('includes/application_top.php');
 ?>
 <div id="left">
+<input id="getminicart" type="hidden" value="<?php echo tep_href_link("index.php")?>">
 <!-- Show gio hang -->
 <div class="moduletable color1">		
-				<h3><span>K2</span> Store Cart</h3>
+				<h3><span></span>Danh sách phòng đặt</h3>
     <div class="moduletable_content">
         <div id="miniK2StoreCart">
             <div id="container">
@@ -70,10 +71,10 @@
 	           <ul class="level0">
                 <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>"><span>Nhóm loại phòng</span></a>
                     <ul class="level1">                        
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=1');?>"><span>Phòng Sang Trọng ( 20)</span></a></li>
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=2');?>"><span>Phòng Cao Cấp ( 25)</span></a></li>
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=3');?>"><span>Phòng Gia Đình ( 40)</span></a></li>
-                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=4');?>"><span>Phòng Hội Nghị ( 15)</span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=1');?>"><span>Phòng Sang Trọng </span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=2');?>"><span>Phòng Cao Cấp </span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=3');?>"><span>Phòng Gia Đình </span></a></li>
+                        <li><a href="<?php echo tep_href_link(FILENAME_DEFAULT,'room_type_categories=4');?>"><span>Phòng Hội Nghị </span></a></li>
                     </ul>
                 </li>
                </ul>

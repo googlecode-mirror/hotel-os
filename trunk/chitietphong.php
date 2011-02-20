@@ -221,7 +221,7 @@ jQuery.noConflict();
                     <span class="k2store_item_price_value">&nbsp;<?php echo number_format($listing1['room_type_price'],3)."VND" ;?> </span>                    
                 </div>
                
-                <script>function fbs_click() {u='http://<?php echo $_SERVER['SERVER_NAME']; ?>/classifieds/printAd.php?AdID=<?php echo $row_rsAds['AdID']; ?>';t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><style> html .fb_share_button { display: -moz-inline-block; display:inline; padding:1px 20px 0 5px; height:15px; margin-left:30px; border:1px solid #d8dfea; background:url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; } html .fb_share_button:hover { color:#fff; border-color:#295582; background:#3b5998 url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; text-decoration:none; } </style> <a rel="nofollow" href="http://www.facebook.com/share.php?u=<;url>" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Share facebook</a>
+                <script>function fbs_click() {u='http://hotelonline.viit-group.com';t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><style> html .fb_share_button { display: -moz-inline-block; display:inline; padding:1px 20px 0 5px; height:15px; margin-left:30px; border:1px solid #d8dfea; background:url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; } html .fb_share_button:hover { color:#fff; border-color:#295582; background:#3b5998 url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; text-decoration:none; } </style> <a rel="nofollow" href="http://www.facebook.com/share.php?u=<;url>" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Chia sẻ facebook</a>
               	
                 <input type="submit" value="Đặt phòng" onclick="javascript:showDatphongForm();" />
 				<div class="view">
@@ -240,15 +240,20 @@ jQuery.noConflict();
            <p style="font-weight: bold;margin: 7px 0;">Xin vui lòng chọn ngày đến và đi của bạn.</p>
                 
             <form id="signupForm" class="cart_form" method="post" action="<?php echo tep_href_link('addcartnew.php','room_type_id='.$HTTP_GET_VARS['room_type_id']);?>">
-
+           	<?php
+    		 $datecurent=date("d-m-Y");	
+    		 list($day,$month,$year)=split('[-]', $datecurent);
+    		 $day +=1;   
+    		 $daytomorrow=date($day."-".$month."-".$year);         		
+    		?>
                 	<div id="thongtinkhach">
                             <div class="line">
                 			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="dateden"/>
+                			<input id="dateden" type="text" class="text" name="dateden" value="<?php echo $datecurent; ?>"/>
                 			</div> 
                             <div class="line">
                 			<label for="datedi"> Ngày đi  </label> 
-                			<input id="datedi" type="text" class="text" name="datedi"/>
+                			<input id="datedi" type="text" class="text" name="datedi" value="<?php echo $daytomorrow; ?>"   />
                 			</div>
                    </div>                          
                    <input type="hidden" id="test" value="2356">

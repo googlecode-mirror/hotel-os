@@ -187,7 +187,7 @@ div.logo p { font-size:11px; font-family:Verdana, sans-serif; line-height:12px; 
 #gk-footer { border-top: 1px solid #d6d5cb; color: #888; font-size: 11px; line-height: 12px; padding: 0 0 25px; }
 /* gk-copyright */
 #gk-footer-nav { float: right; padding: 15px 0 0 0; }
-#gk-copyright { float: left; padding: 15px 25px 0 0; }
+#gk-copyright { /*float: left;*/width:100%; padding: 15px 25px 0 0; text-align:center; font-size: 1.25em;}
 #stylearea { float: left; padding: 15px 0 0 0; }
 /* footer menu */
 	#gk-footer-nav .menu { list-style-type: none; }

@@ -1,7 +1,15 @@
 <?php
 require_once('includes/application_top.php');
-	$id=$HTTP_GET_VARS['room_type_id']; 
-    $songayo = $HTTP_GET_VARS['stay_dates'];
+	$id=$HTTP_GET_VARS['room_type_id'];
+    //echo "id".$id;  
+    if(isset($HTTP_GET_VARS['stay_dates'])) 
+    {
+        $songayo=$HTTP_GET_VARS['stay_dates'];
+    }
+    else
+    {
+        $songayo=1;
+    }
     	function getroomofdate($day){			
 			//echo $datecurent; 			
 			$listing_sql2="select * from  status_room  where  status_room_dayofyear ='".$day."'";		
@@ -41,10 +49,22 @@ require_once('includes/application_top.php');
 	        	}
         	}
         	return $flag;	
-        }      
-	$ngayden= date("Y-m-d", mktime(0, 0, 0, $_GET['comingmonth'], $_GET['comingdate'], $_GET['comingyear']));
-    $ngaydi= date("Y-m-d", mktime(0, 0, 0, $_GET['leavingmonth'], $_GET['leavingdate'], $_GET['leavingyear']));   
-   
+        }
+    $dayto=$HTTP_GET_VARS['dayto'];    
+    $daygo=$HTTP_GET_VARS['daygo'];  
+    if(isset($daygo))
+    {
+        $ngayden=$dayto;
+        $ngaydi=$daygo;
+        $songayo=NumDayStay($ngayden,$ngaydi);
+        $sofong=$HTTP_GET_VARS['count_room'];       
+    }         
+    else
+    {
+    	$ngayden= date("Y-m-d", mktime(0, 0, 0, $_GET['comingmonth'], $_GET['comingdate'], $_GET['comingyear']));
+        $ngaydi= date("Y-m-d", mktime(0, 0, 0, $_GET['leavingmonth'], $_GET['leavingdate'], $_GET['leavingyear']));
+        $sofong=1;   
+    }   
 
     if(testAllDay($id,$songayo,$ngayden,$ngaydi)==1)
     {
@@ -57,7 +77,7 @@ require_once('includes/application_top.php');
     			{
     			 $flag=1;
                  $keys=array_search($cartItems,$_SESSION['cart_room']);			 			 
-    			 $qty= $cartItems['qty']+1;         
+    			 $qty= $cartItems['qty']+$sofong;         
     		     $cartItems['qty']=$qty;
     		     $cartItems['staydate']=$songayo;
                  $cartItems['dayto']=$ngayden;
@@ -67,7 +87,7 @@ require_once('includes/application_top.php');
     			}				 
     		}
             if($flag==0){
-                 $qty=1; 			 
+                 $qty=$sofong; 			 
     			 array_push($_SESSION['cart_room'],array( "qty" => $qty,
                                                    "roomtypeId" => $id ,
     			 									"staydate" =>  $songayo,
@@ -78,7 +98,7 @@ require_once('includes/application_top.php');
     	}
     	else 
     	{		
-    	    $qty=1; 	    
+    	    $qty=$sofong; 	    
     	    $_SESSION['cart_room'][] = array( "qty" => $qty,
                                                    "roomtypeId" => $id,
     	    										"staydate" =>  $songayo,
@@ -91,7 +111,7 @@ require_once('includes/application_top.php');
     }
     else
     {
-        echo "ko con fong";
+        echo "Hi?n t?i không còn phòng tr?ng vào ngày b?n mu?n d?t";
     }
 		
 ?>

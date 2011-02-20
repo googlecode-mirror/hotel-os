@@ -39,7 +39,47 @@
  <script type="text/javascript" src="black_and_white_js/engine-mootools-11.js"></script>
  <script type="text/javascript" src="black_and_white_js/k2store.js"></script>
  <script type="text/javascript" src="black_and_white_js/gk_image_show.js"></script>
- 
+ <script>
+function gup( name )
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+var osCsid = gup('transaction_info');
+if(osCsid != "")
+    {
+      /*  var payment_id=gup('payment_id');
+        var payment_type=gup('payment_type');
+        var order_code=gup('order_code');
+        var price=gup('price');
+        var error_text=('error_text');
+        var secure_code=('secure_code');*/
+        var url = "http://hotelonline.viit-group.com/complete.php?osCsid=" + osCsid;
+      /*  url +=  "&payment_id=";
+        url += payment_id;
+        url +=  "&payment_type=";
+        url += payment_type;
+        url +=  "&order_code=";
+        url += order_code;
+        url +=  "&price=";
+        url += price;
+        url +=  "&error_text=";
+        url += error_text;
+        url +=  "&secure_code=";
+        url += secure_code;*/
+        window.location = url;
+        
+        
+        
+    }
+    
+</script>
 
 
   <script type="text/javascript">
@@ -130,7 +170,7 @@ jQuery.noConflict();
 	<!-- header_eof //-->
 	<div id="gk-container">
 		<!-- left_navigation //-->
-		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
+		<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 		<!-- left_navigation_eof //-->		
         <?php
              function getroomofdate($daytest){			
@@ -143,9 +183,11 @@ jQuery.noConflict();
                                     } 
         ?>	
         <?php
+            
             require_once("nganluong.php");
             $nl=new NL_Checkout();            
             $transaction_info=@$_GET["transaction_info"];//lay thong tin giao dich
+           // tep_redirect(tep_href_link("datphong.php?osCsid=" . $transaction_info));
             $payment_id=@$_GET["payment_id"];//ma giao dich
             $payment_type=@$_GET["payment_type"];//loai giao dich (1. thanh toan ngay 2. thanh toan tam giu)
             $order_code=@$_GET["order_code"];//ma gia dich
@@ -153,11 +195,27 @@ jQuery.noConflict();
             $error_text=@$_GET['error_text'];//lay thong tin chi tiet loi tra ve tu giao dich
             $secure_code=@$_GET["secure_code"];//lay ma kiem tra tinh hop le cua dau vao
             $check=$nl->verifyPaymentUrl($transaction_info, $order_code, $price, $payment_id, $payment_type, $error_text, $secure_code);//kiem tra giao dich
-            
+           //list($osCsid,$id_customer)= split('[-]',$order_code); 
             //if($check){
+                  $count= count($_SESSION['cart_room']);    
+            if($count>0){
                   $account_id=null;  
                   $dateset=date("Y-m-d"); 
-                  $payment=tep_db_prepare_input($HTTP_POST_VARS['payment']);
+                  $payment=1;
+                  foreach($_SESSION['cart_room'] as $cartItems)
+                    {
+    	    	       $item1[]=$cartItems['roomtypeId'];	    
+    	            }
+        	       $str1=implode(",",$item1);	 	      
+            	   $listing_sql2="select * from room_type where room_type_id in ($str1)";      
+            	   $listing_split2 = new splitPageResults($listing_sql2, MAX_DISPLAY_SEARCH_RESULTS);      
+                   $listing_query2 = tep_db_query($listing_split2->sql_query);
+                   while($row1=tep_db_fetch_array($listing_query2)){
+           	       foreach($_SESSION['cart_room'] as $cartItems){
+           	        if($cartItems['roomtypeId'] == $row1[room_type_id]){
+                    $money +=intval($cartItems['qty'])*$row1[room_type_price]*$cartItems['staydate'];                  
+                  }}}
+                  $price=$money;
                   $sql_data_array = array('booking_form_dateset' => $dateset,		    				 
 		                      'booking_form_custommers_id' => $customer_id,
 		                      'booking_form_account_id' => $account_id,
@@ -168,8 +226,9 @@ jQuery.noConflict();
 	                          tep_db_perform(booking_form, $sql_data_array);
 	                          $booking_form_id= tep_db_insert_id(); 
                               
-                  if(isset($_SESSION['cart_room']))
-                  {
+                   $count= count($_SESSION['cart_room']);    
+                //  if($count>0)
+               //   {
                     foreach($_SESSION['cart_room'] as $cartItems)
                     {
     	    	       $item[]=$cartItems['roomtypeId'];	    
@@ -178,7 +237,9 @@ jQuery.noConflict();
             	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
             	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
                    $listing_query1 = tep_db_query($listing_split1->sql_query);
-                 }
+               //  }
+                   
+                 //if($count>0)
                  while($row=tep_db_fetch_array($listing_query1)){
                 	foreach($_SESSION['cart_room'] as $cartItems){
            		       if($cartItems['roomtypeId'] == $row[room_type_id]){
@@ -208,14 +269,16 @@ jQuery.noConflict();
 	                       }
        		           }
                     }
-                 }       
-           			$keys=array_search($cartItems,$_SESSION['cart_room']);          
-                $html.="<div align=\"center\">Cam on quy khach,qua trinh thanh toan da duoc hoan tat!</div>";
+                 }   
+               //  echo "ma hoa don".$order_code."hoa don ".$osCsid."  ma khach hang: ".$id_customer;    
+           			$keys=array_search($cartItems,$_SESSION['cart_room']);    
+                     
+                $html.="<div align=\"center\">Cảm ơn qúy khách,quá trình thanh toán đã được hoàn tất!</div>";
                 echo $html;
-          //  }
-            //else{
-           //     echo "Qua trinh thanh toan khong thanh cong vui long thu lai";
-           // }
+            }
+            else{
+                echo "Quá trình thanh toán không thành công vui lòng thử lại";
+            }
  ?> 
 		</div>
 	</div>
