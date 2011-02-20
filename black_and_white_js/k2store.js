@@ -14,9 +14,12 @@ function getDaySubstract(date1, date2){
 window.addEvent('domready', function() {
         
 			var container = 'miniK2StoreCart';
+            var getminicart = 'getminicart';
 			if ($(container))	{
-			     var url = $("getminicart").value;
-				doMiniCart(url);
+			     if ($(getminicart))	{
+			         var url = $(getminicart).value;
+				    doMiniCart(url);
+                }
 			}
 			      
 		     SqueezeBox.initialize({size: {x: 700, y: 400}});
@@ -24,13 +27,16 @@ window.addEvent('domready', function() {
 		         el.addEvent('submit', function(e) {
 		            new Event(e).stop();
                     
-                    if(!jQuery("#signupForm").valid())
-                        return false;
-                    jQuery("#datphongForm").dialog('close');
-                    
+                   
                     var dateden = getDateObj(jQuery('#dateden').val());
                     var datedi = getDateObj(jQuery('#datedi').val());
                     
+                    if(datedi < dateden){
+                        alert("Ngày trả phòng không được nhỏ hơn ngày nhận phòng");
+                        $("#ngaydi").val('');
+                        return false;
+                    }
+                    jQuery("#datphongForm").dialog('close');
                     
                     var dayden = dateden.getDate();
                     var monthden = dateden.getMonth()+1;
@@ -63,15 +69,15 @@ window.addEvent('domready', function() {
               });
              });
              
-              $$('a.delcartItem').each(function(el) {
-                el.addEvent('click', function(e) {
-                new Event(e).stop();
-                var url=this.href;
-                SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
-                    setTimeout('ajaxPage("'+url+'" )',3000);
-                    return false;
-              });
-             });
+           //   $$('a.delcartItem').each(function(el) {
+//                el.addEvent('click', function(e) {
+//                new Event(e).stop();
+//                var url=this.href;
+//                SqueezeBox.applyContent('<img src="images/loading.gif" width="50px" height="50px" style="margin:20% 45%;" />');
+//                    setTimeout('ajaxPage("'+url+'" )',3000);
+//                    return false;
+//              });
+//             });
 		 }); //end dom ready
 		
         function delcart(url){

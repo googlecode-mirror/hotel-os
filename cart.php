@@ -46,7 +46,7 @@
                     Số phòng
                 </th>
                 <th class='center' width="5%">
-                    Gía phòng
+                    Giá phòng
                 </th>
                 
                 <th width="5%">
@@ -117,6 +117,6 @@
           <input type="submit" style="margin: 10px 15px 0 10px;" value="Chọn tiếp"/>
           </form>         
          <form id="signupForm" class="cart_form" method="post" action="<?php echo tep_href_link('datphong.php');?>">
-          <input type="submit" style="margin: 10px 15px 0 10px;" value="Thanh Toan"/>
+          <input type="submit" style="margin: 10px 15px 0 10px;" value="Thanh Toán"/>
           </form>               
     </div>

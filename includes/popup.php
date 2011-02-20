@@ -5,8 +5,6 @@
  * @copyright 2010
  */
 
-
-
 ?>
 <div id="gk-popup">	
 	<div class="main gk-popup-wrap">        
@@ -16,7 +14,7 @@
 	<h3>Đăng Nhập</h3>
 	
 <div class="mod_login">
-               <form action="/hotelbooking/xulydangnhap.php" method="post" name="login" id="form-login" >
+               <form action="<?php echo tep_href_link('xulydangnhap.php') ?>" method="post" name="login" id="form-login" >
                     <p class="username">
                <label for="modlgn_username">Email</label>
               
@@ -46,6 +44,7 @@
                     <input type="hidden" name="option" value="com_user" />
           <input type="hidden" name="task" value="login" />
           <input type="hidden" name="return" value="L0tob3RlbC8=" />
+          <input type="hidden" name="lostSession" value="<?php echo $_GET['osCsid'] ?>">
           <input type="hidden" name="1cc9b4ae8693d48be6efa33ba79536d6" value="1" />     </form>
 
      </div>
@@ -58,7 +57,7 @@
 		<script type="text/javascript" src="black_and_white_js/validate.js"></script>
 		<script type="text/javascript">Window.onDomReady(function(){document.formvalidator.setHandler('passverify', function (value) { return ($('password').value == value); }	);});</script>
 
-		<form action="/hotelbooking/xulydangky.php" method="post" id="josForm" name="josForm" class="form-validate">
+		<form action="<?php echo tep_href_link('xulydangky.php') ?>">
 
 		
 		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="contentpane">

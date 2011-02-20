@@ -75,7 +75,7 @@ width:69%;
 line-height:25px;
 }
 #search .text{
-	width:69%;
+	width:60%;
 }
 #search .mintext{
 	width:30%;
@@ -376,6 +376,7 @@ height:100px;
 .welcome{
 margin:10px 5px;
 text-indent:2px;
+color:#004eff;
 }
 .roomType p{
 text-align:center;
@@ -409,9 +410,13 @@ float:left;
 position:relative;
 }
 .loaiphong ul li span{
-bottom:-105px;
-position:relative;
-left:40px;
+    bottom: -105px;
+    color:  rgb(255,128,64);
+    font-size: 1.1em;
+    font-style: oblique;
+    font-weight: bold;
+    left: 5px;
+    position: relative;
 }
 
 .loaiphong ul li img{

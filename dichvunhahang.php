@@ -158,27 +158,22 @@ jQuery.noConflict();
               </span>
             </div>
                 <div class="itemIntroText">
-                    <p class="gioithieu"><b>Mục đích: </b>
-				Bơi lội là môn thể thao phù hợp với mọi lứa tuổi để rèn luyện sức khỏe, sự dẻo dai và sức bền của 
-                tất cả các nhóm cơ. Hoạt động bơi lội giúp cơ thể nhanh chóng đốt cháy năng lượng, yếu tố cơ bản 
-                giúp bạn kiểm soát trọng lượng cơ thể. Không ngoài những mục đích trên, khách sạn chúng tôi cũng 
-                mong muốn mang lại cho quí khách hàng sức khỏe và sự thuận tiện trong dịch vụ bơi lội tại khách sạn.
-                Hồ bơi được thiết kế thoát mát, sạch sẽ, màu sắc rực rỡ, vui tươi luôn mang lại cảm giác thú vị cho
-                du khách khi bơi lội và nghỉ ngơi. </p> 
+                    <p class="gioithieu"><b>Giới thiệu: </b>
+				Bên cạnh giúp cho khách hàng tìm được một nơi nghỉ ngơi thoải mái, yên tĩnh thì món ngon tại khách sạn 
+                cũng là một mục tiêu mà khách sạn chúng tôi quan tâm. Chúng tôi luôn tìm tòi và chế biến nhiều món ăn
+                ngon, lạ mắt và giá cả phù hợp với túi tiền của nhiều tầng lớp khách hàng. Các đầu bếp tại đây đều được 
+                tuyển từ mọi miền đất nước để có thể phục các món ăn từ Bắc vào Nam và các món ăn các nước trên thế giới.
+                  </p> 
                            
-			         <p class="gioithieu"><b>Kiến trúc: </b>
-                Và để tạo điều kiện thuận lợi cho du khách, khách sạn chúng tôi 
-                thiết lập hồ bơi ngay bên trong khách sạn. Hồ bơi được thiết kế ngoài trời nên rất thuận tiện cho việc 
-                tắm nắng của du khách. Về kiến trúc hồ bơi: Thành và đáy bể đều sử dụng vật liệu cao cấp tấm PVC – Polyester 
-                Flag pool có in giả gạch, trang trí đường diềm, in tranh ảnh phong cảnh biển…Hệ thống đèn dưới nước 
-                thật hoàn hảo làm nổi bật khung cảnh bể bơi trong đêm tối và nhất là các hình ảnh trong bể bơi. Thời gian 
-                lọc toàn bộ nước trong bể là 4 đến 8 giờ. Hồ bơi sử dụng hệ thống lọc có đường ống (thường là lọc bằng
-                 cát)
-                     </p>
+			         <p class="gioithieu"><b>Món ngon: </b>
+               Khách sạn chúng tôi đưa ra thực đơn cho khách hàng mỗi ngày đều khác nhau, đa dạng, phong phú trong từng thực 
+               đơn. Buổi sáng: khách hàng có thể chọn bánh mì ốp la, súp, hủ tiếu, phở,... Buổi trưa: những món ăn của 
+               buổi sáng và cơm. Buổi chiều: có cơm, bún thịt nướng,... Ngoài ra khách sạn có thêm các món ăn nhẹ vào buổi tối
+            </p>
                      
                      <p class="gioithieu"><b>Lợi ích: </b>
-                     Khi du khách đã lựa chọn khách sạn chúng tôi làm nơi dừng chân, thì dịch vụ hồ bơi dành cho du khách
-                     là hoàn toàn miễn phí. Chúng tôi sẽ phục vụ chu đáo từ: khắn tắm, ghế, dù,...
+                     Khi du khách đã lựa chọn khách sạn chúng tôi làm nơi dừng chân, thì dịch vụ nhà hàng dành cho du khách
+                     sẽ được ưu đãi về giá cả. Chúng tôi sẽ phục vụ chu đáo từ: khăn giấy, tăm,...
                  </p>
                 </div>            
         </div>				

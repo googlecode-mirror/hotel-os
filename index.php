@@ -140,7 +140,8 @@ jQuery.noConflict();
   if(isset($_GET['option'])&&isset($_GET['view'])&&isset($_GET['format']))
   {
     
-    if(isset($_SESSION['cart_room']))
+     $count= count($_SESSION['cart_room']);    
+        if($count>0)
         {   
             foreach($_SESSION['cart_room'] as $cartItems)
     	    {
@@ -167,15 +168,15 @@ jQuery.noConflict();
           echo "<tr><td align=\"right\" colspan=\"2\">Total : &nbsp;&nbsp;</td>";
           echo "<td id=\"total_price\">&nbsp;".number_format($total,3)."VND</td></tr> </table>";
           
-          echo "<form action=". tep_href_link('datphong.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."\" method=\"post\" name=\"userForm\" id=\"userForm\">";
+          echo "<form action=". tep_href_link('ReviewShopCart.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."\" method=\"post\" name=\"userForm\" id=\"userForm\">";
           echo "<table> <tr> <td colspan=\"2\">";
-          echo "<input type=\"button\" value=\"Thanh Toan\" onclick=\"SqueezeBox.close(); window.location = '".tep_href_link('datphong.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."';\" />";
+          echo "<input type=\"button\" value=\"Thanh Toán\" onclick=\"SqueezeBox.close(); window.location = '".tep_href_link('ReviewShopCart.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."';\" />";
           echo "</tr> </table> </form>";
           echo " </div>"; 
       }
       else{
          echo "<div id=\"container\"> <table id=\"cart\"> <tr>";
-            echo "<td class=\"item_name\">Ban chua dat phong nao.</td>";
+            echo "<td class=\"item_name\">Bạn chưa đặt phòng nào.</td>";
            echo "</tr>";
            echo "</table>";        
       }
@@ -234,55 +235,56 @@ jQuery.noConflict();
             				
             		<div class="gk_is_text_item">
             
-            			<h4><a href="index.php"><span>Star</span> Qualmark</a></h4>
-            			<p>accommodation in the city centre provides 5 star qualmark accommodation <a href="index.php" class="readon"></a></p>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>">Biệt Thự <span>&nbsp;Star</span></a></h4>
+            			<p>Chỗ ở tại trung tâm thành phố chất lượng đạt 5 sao <a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon"></a></p>
             		</div>
             				
             				
             		<div class="gk_is_text_item">
-            			<h4><a href="index.php"><span>Design</span> Sponge</a></h4>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>"><span>Thiết kế </span> kiểu bọt biển</a></h4>
             
-            			<p>new and innovative furniture for your house <a href="index.php" class="readon"></a></p>
+            			<p>Phong cách nội thất mới và sáng tạo cho ngôi nhà của bạn <a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon"></a></p>
             		</div>
             				
             				
             		<div class="gk_is_text_item">
-            			<h4><a href="index.php"><span>Rusty</span> Wallace Villa</a></h4>
-            			<p>handmade primitive, folk art and seasonal rusty house <a href="index.php" class="readon"></a></p>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>"><span>Rusty</span> Wallace Villa</a></h4>
+                        
+            			<p>Nghệ thuật thủ công nguyên thủy, dân gian và nhà gỉ theo mùa. <a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon"></a></p>
             		</div>
             
             				
             				
             		<div class="gk_is_text_item">
-            			<h4><a href="index.php"><span>Moco</span> Loco</a></h4>
-            			<p>complete your imagination, with new sofa furniture collection <a href="/Khotel/index.php?option=com_k2&amp;view=item&amp;id=9:let-the-sunlight-in-on-your-house&amp;Itemid=102" class="readon">&raquo;</a></p>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>"><span>Moco</span> Loco</a></h4>
+            			<p>Hoàn thành trí tưởng tượng của bạn, với bộ sưu tập nội thất sofa mới.<a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon">&raquo;</a></p>
             		</div>
             				
             				
             		<div class="gk_is_text_item">
-            			<h4><a href="index.php"><span>Yerger</span> Residence</a></h4>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>"><span>Yerger</span> Residence</a></h4>
             
-            			<p>American most popular, beautiful &amp; affordable home. <a href="/Khotel/index.php?option=com_k2&amp;view=item&amp;id=4:villa-near-paraiso&amp;Itemid=119" class="readon">&raquo;</a></p>
+            			<p>Nhà kiểu Mỹ phổ biến nhất, đẹp và giá cả phải chăng. <a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon">&raquo;</a></p>
             		</div>
             				
             				
             		<div class="gk_is_text_item">
-            			<h4><a href="index.php"><span>Fiana</span> bedroom</a></h4>
-            			<p>superb modern designer furniture including bedroom balance design <a href="/Khotel/index.php?option=com_k2&amp;view=item&amp;id=19:debmoor-yellow-dream&amp;Itemid=130" class="readon">&raquo;</a></p>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>">Phòng ngủ <span>Fiana</span></a></h4>
+            			<p>Thiết kế nội thất hiện đại tuyệt vời bao gồm thiết kế cân bằng phòng ngủ. <a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon">&raquo;</a></p>
             
             		</div>
             				
             				
             		<div class="gk_is_text_item">
-            			<h4><a href="index.php"><span>Meriton</span> luxury</a></h4>
-            			<p>Sleek modern design with luxury internals, realise your property dreams <a href="/Khotel/index.php?option=com_k2&amp;view=item&amp;id=5:heidi-fleiss-real-mansion&amp;Itemid=119" class="readon"></a></p>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>"><span>Meriton</span> luxury</a></h4>
+            			<p>Kiểu dáng đẹp, thiết kế hiện đại sang trọng, thực hiện ước mơ sở hữu của bạn. <a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon"></a></p>
             		</div>
             				
             				
             		<div class="gk_is_text_item">
-            			<h4><a href="index.php"><span>Sinica</span> bedroom suite</a></h4>
+            			<h4><a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>">Bộ phòng ngủ <span>Sinica</span></a></h4>
             
-            			<p>solid hardwood dining room tables, bedroom suites, furniture for your &hellip;<a href="index.php" class="readon"></a></p>
+            			<p>Phòng ăn, phòng ngủ, đồ dùng cho bạn làm bằng gỗ vững chắc, hài hòa, cân đối.<a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" class="readon"></a></p>
             		</div>
             			</div>
             </div>
@@ -317,9 +319,9 @@ jQuery.noConflict();
 			$flag=1;
 		}
 		//echo $flag;
-		//echo tep_customer_greeting();
+		echo tep_customer_greeting();
 		//Lấy số phòng còn trống của mỗi loại của ngày hiện tại
-        echo $customer_id;
+        //echo $customer_id;
 		$datecurent=date("Y-m-d"); 
 		function getroomofdate($day){			
 			//echo $datecurent; 			
@@ -386,10 +388,11 @@ jQuery.noConflict();
             $dayto=date($year."-".$month."-".$day);
             list($day,$month,$year)=split('[-]', $daygo1);           
             $daygo=date($year."-".$month."-".$day);		
-             echo $dayto."  ".$daygo;	
+            // echo $dayto."  ".$daygo;	
 			if(isset($_POST["cb_loaiphong"])){
 			$room_type_categories=$_POST["cb_loaiphong"];
-			$room_number=tep_db_prepare_input($HTTP_POST_VARS["numroom"]);			
+			$room_number=tep_db_prepare_input($HTTP_POST_VARS["numroom"]);	
+            echo "so phong :".$room_number;		
 			 $define_list = array('PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
 		                         'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,                         
 		                         'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,   			 				                                  

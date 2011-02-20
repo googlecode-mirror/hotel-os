@@ -89,8 +89,26 @@ var tmplurl='templates/gk_blackandwhite';
 jQuery.noConflict();
 </script>
 <script src="js/MyScript.js"></script>
-
-
+<script>
+function gup( name )
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+var osCsid = gup('oscsid');
+if(osCsid != "")
+    {
+        window.location = "http://hotelonline.viit-group.com/datphong.php?osCsid=" + osCsid;
+        
+    }
+    
+</script>
 
 <link href="templates/gk_blackandwhite/css/menu/mega.css" rel="stylesheet" type="text/css" /><script src="templates/gk_blackandwhite/js/menu/mega.js" language="javascript" type="text/javascript"></script>
 
@@ -142,12 +160,13 @@ jQuery.noConflict();
 	<!-- header_eof //-->
 	<div id="gk-container">
 		<!-- left_navigation //-->
-		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
+		<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 		<!-- left_navigation_eof //-->
 		
 		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>
         <?php
-        if(isset($_SESSION['cart_room']))
+         $count= count($_SESSION['cart_room']);
+        if($count>0)
         {
             foreach($_SESSION['cart_room'] as $cartItems)
     	    {
@@ -184,7 +203,7 @@ jQuery.noConflict();
                 </th>
             </tr>
             <?php
-           if(isset($_SESSION['cart_room']))
+           if($count>0)
            { 
            while($row=tep_db_fetch_array($listing_query1)){
            	foreach($_SESSION['cart_room'] as $cartItems){
@@ -238,6 +257,40 @@ jQuery.noConflict();
            
                 <form id="signupForm" method="post" action="xulydangky.php">
                 	<div id="thongtinkhach">
+                    <?php
+                        function getInfoCustomer($id){
+                    		$listing_sql2="select * from  customers  where  customers_id ='".$id."'";		
+                    		$listing_split2 = new splitPageResults($listing_sql2, MAX_DISPLAY_SEARCH_RESULTS);
+                    		$listing_query2 = tep_db_query($listing_split2->sql_query);
+                    		$listing2 = tep_db_fetch_array($listing_query2);
+                    		return $listing2;
+                    		}
+                          
+                        if(isset($customer_id))
+                        {
+                            $list=getInfoCustomer($customer_id);
+                      ?>
+                            <div class="line">
+                			<label for="hoten"> Họ tên KH </label>
+                			<input id="hoten" type="text" class="text" name="hoten" value="<?php echo $list['customers_firstname'] ;?> " readonly />
+                			</div>
+                			<div class="line">
+                			<label for="email">&#272;&#7883;a ch&#7881; email </label>
+                			<input id="email" type="text" class="text" name="email" value="<?php echo $list['customers_email_address'] ;?> " readonly/>
+                			</div>
+                			<div class="line">
+                			<label for="diachi"> &#272;&#7883;a ch&#7881;  </label>
+                			<input id="diachi" type="text" class="text" name="diachi" value="<?php echo $list['customers_lastname'] ;?> " readonly/>
+                			</div>      
+                			<div class="line">
+                			<label for="dienthoai">&#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c </label>
+                			<input id="dienthoai" type="text" class="text" name="dienthoai" value="<?php echo $list['customers_telephone'] ;?> " readonly/>
+                			</div>         
+                     <?php       
+                        } 
+                        else
+                        {                  
+                     ?>
                             <div class="line">
                 			<label for="hoten"> Họ tên KH </label>
                 			<input id="hoten" type="text" class="text" name="hoten" />
@@ -253,35 +306,16 @@ jQuery.noConflict();
                 			<div class="line">
                 			<label for="dienthoai">&#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c </label>
                 			<input id="dienthoai" type="text" class="text" name="dienthoai"/>
-                			</div>
-                            
-                            <div class="line">
-                			<label for="dateden"> Ngày đến  </label>
-                			<input id="dateden" type="text" class="text" name="dateden"/>
-                			</div> 
-                            <div class="line">
-                			<label for="datedi"> Ngày đi  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
-                			</div>
-                            <div class="line">
-                			<label for="datedi"> Số lượng phòng  </label>
-                			<input id="datedi" type="text" class="text" name="datedi"/>
-                			</div>
-                            <div class="line">
-                			<label for="nguoilon"> Số người lớn  </label>
-                			<input id="nguoilon" type="text" class="text" name="nguoilon"/>
-                			</div>
-                             
-                             <div class="line">
-                			<label for="treem"> Số trẻ em  </label>
-                			<input id="treem" type="text" class="text" name="treem"/>
-                			</div>
-                            
+                			</div>                           
+                           
+                          
+                    <?php }?>  
+                              
                             <div class="line">
                             <p>Phương thức thanh toán</p>                			
                 			<input id="cash" type="radio" name="payment" class="payment" value="0"/>Tiền mặt
                             <input id="card" type="radio" name="payment" class="payment" value="1"/>Thẻ tín dụng
-                			</div>
+                			</div>      
                 	</div>
                 	<div id="thongtinthe" class="hidden">                		
                 	<!--
@@ -307,14 +341,33 @@ jQuery.noConflict();
                 			   T&ocirc;i ch&#7845;p nh&#7853;n v&#7899;i c&aacute;c &#273;i&#7873;u kho&#7843;n tr&ecirc;n
                 			</div>
               <?php
+             if($_GET['oscsid'])
+             {
+                $url = "http://hotelonline.viit-group.com/datphong.php?osCsid=" . $_GET['osc'];
+                if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) {
+      tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'NONSSL', false));
+    }
+
+    if ( (ENABLE_SSL == true) && (getenv('HTTPS') == 'on') ) { // We are loading an SSL page
+      if (substr($url, 0, strlen(HTTP_SERVER)) == HTTP_SERVER) { // NONSSL url
+        $url = HTTPS_SERVER . substr($url, strlen(HTTP_SERVER)); // Change it to SSL
+      }
+    }
+               // echo "testttttttttt";
+               //header(("datphong.php?osCsid=" . $_GET['oscsid']));
+               header("Location: " . $url);
+                 //tep_redirect(("datphong.php?osCsid=" . $_GET['oscsid']));
+                  //tep_redirect(tep_href_link("datphong.php?osCsid=" . $_GET['oscsid'],"" ,"NONSSL" ) );
+             } 
             require_once("nganluong.php");
             $nl=new NL_Checkout();
             $return_url="http://hotelonline.viit-group.com/complete.php";//dia chi thanh toan thanh cong
-            $transaction_info="ma phong";//thong tin giao dich
+            $transaction_info=$_GET['osCsid'];//thong tin giao dich
             $receiver="thanhnhan_kg2000@yahoo.com";//tai khoan chu hotel
-            $order_code="ma hoa don ddddd";//ma hoa don
+            $order_code="Phòng khách sạn";//ma hoa don
             $price="2000";
             $url=$nl->buildCheckoutUrl($return_url, $receiver, $transaction_info, $order_code, $price);
+          
           ?>
 --><a href="<?php echo $url; ?>"><img border="0" src="https://www.nganluong.vn/data/images/buttons/11.gif" /></a>
                 		

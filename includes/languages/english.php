@@ -282,9 +282,9 @@ define('ICON_ERROR', 'Error');
 define('ICON_SUCCESS', 'Success');
 define('ICON_WARNING', 'Warning');
 
-define('TEXT_GREETING_PERSONAL', 'Welcome back <span class="greetUser">%s!</span> ');
+define('TEXT_GREETING_PERSONAL', 'Xin chào <span class="greetUser">%s!</span> ');
 define('TEXT_GREETING_PERSONAL_RELOGON', '<small>If you are not %s, please <a href="%s"><u>log yourself in</u></a> with your account information.</small>');
-define('TEXT_GREETING_GUEST', 'Welcome <span class="greetUser">Guest!</span> ');
+define('TEXT_GREETING_GUEST', 'Xin Chào <span class="greetUser">Khách!</span> ');
 
 define('TEXT_SORT_PRODUCTS', 'Sort products ');
 define('TEXT_DESCENDINGLY', 'descendingly');

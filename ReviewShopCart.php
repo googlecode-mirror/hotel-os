@@ -142,12 +142,13 @@ jQuery.noConflict();
 	<!-- header_eof //-->
 	<div id="gk-container">
 		<!-- left_navigation //-->
-		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
+		<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 		<!-- left_navigation_eof //-->
 		
 		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>
         <?php
-        if(isset($_SESSION['cart_room']))
+        $count= count($_SESSION['cart_room']);
+        if($count>0)
         {
             foreach($_SESSION['cart_room'] as $cartItems)
     	    {
@@ -161,33 +162,33 @@ jQuery.noConflict();
        ?>       
           
 		<div id="mainContent">
-        <h2 style="text-align: center;">DANH M?C PH�NG �?T</h2>
+        <h2 style="text-align: center;">DANH MỤC PHÒNG ÐẶT</h2>
         <table cellpadding="5" cellspacing="5" border="1" style="border: 1px solid;margin-bottom: 10px;">
             <tr>
                 <th width="15%">
-                    T�n lo?i ph�ng
+                    Tên loại phòng
                 </th>
                 <th class='center' width="5%">
-                    Ng�y d?n
+                    Ngày đến
                 </th>
                 <th class='center' width="5%">
-                    S? ph�ng
+                    Số phòng
                 </th>
                 <th class='center' width="5%">
-                    S? ng�y ?
+                    Số ngày ở
                 </th>
                 <th class='center' width="5%">
-                    G�a ph�ng
+                    Gía phòng
                 </th>
                 <th width="5%">
-                    T?ng ti?n
+                    Tổng tiền
                 </th>
                  <th width="5%">
-                    Huy
+                    Hủy
                 </th>
             </tr>
             <?php
-           if(isset($_SESSION['cart_room']))
+           if($count>0)
            { 
            while($row=tep_db_fetch_array($listing_query1)){
            	foreach($_SESSION['cart_room'] as $cartItems){
@@ -215,7 +216,7 @@ jQuery.noConflict();
                   echo "<p align=right>  ". ($cartItems['qty']*$row[room_type_price]*$cartItems['staydate'])*1000 ." VND</p>";
                   echo "</td>";   
                     echo '<td width="5%">';
-                  echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'" class="delcartItem"> H?y </a></p>';
+                  echo '<p align=center><a href="'. tep_href_link('delcart.php','room_type_id='.$keys).'" class="delcartItem"> Hủy </a></p>';
                   echo "</td>";
                   echo "</tr>";                
                   $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate']*1000;
@@ -223,12 +224,13 @@ jQuery.noConflict();
                 }
            	} 
             }
+            
             ?>
             <tr class="total">
                 <td width="10%" align="right" colspan="5">
-                    <p>T?ng ti?n:</p>
+                    <p>Tổng tiền:</p>
                 </td>
-                <td id="total_price">
+                <td id="total_price" colspan="2">
                     <p>&nbsp;<?php echo $total." VND"; ?> </p>
                 </td>
             </tr>  
@@ -238,9 +240,8 @@ jQuery.noConflict();
             </form>
             </div>
             </table>
-             <form id="signupForm" class="cart_form" method="post" action="<?php echo tep_href_link('datphong.php');?>">
-          <input type="submit" style="margin: 10px 15px 0 10px;" value="Thanh Toan"/>
-          </form>
+            <a id="signupForm"  class="cart_form" href="<?php echo tep_href_link('complete.php');?>"><?php echo tep_image_button('payment.gif', IMAGE_BUTTON_BUY_NOW);?> </a>
+            
             
                 	 
                 
