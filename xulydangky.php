@@ -13,7 +13,9 @@
     $check_email = tep_db_fetch_array($check_email_query);
       if ($check_email['total'] > 0) {
         $error = true;
-        echo ENTRY_EMAIL_ADDRESS_ERROR_EXISTS;
+        //echo ENTRY_EMAIL_ADDRESS_ERROR_EXISTS;
+         tep_db_query("update customers set customers_firstname = '" . $name."' , customers_lastname = '" .$stress_address."',customers_password='".tep_encrypt_password($password)."',customers_telephone='".$telephone."',customers_gender='".$gender."',customers_dob='".$birthday."' where customers_email_address = '" . tep_db_input($email_address) . "'");
+          tep_redirect(tep_href_link(FILENAME_DEFAULT, '', 'SSL'));
       }
     if  ($error == false){  
 	    try{

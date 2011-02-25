@@ -65,15 +65,24 @@ width:69%;
 /*search*/
 #search .search_content
 {
-	//background: #f1f1f1;
-	padding:8px;	
+	background: #f1f1f1;
+	padding:5px;	
 }
-#search label{
+#search .label{
 	float:left;
-	width:28%;
+	width:26%;
 	margin-right:5px;
 line-height:25px;
 }
+
+#search label.error {
+    color: red;
+    display: inline;
+    font-style: italic;
+    margin-left: 3px;
+    width: 7px;
+}
+
 #search .text{
 	width:60%;
 }
@@ -258,6 +267,7 @@ border:1px solid #d1d1d1;
 color:red;
 font-style:italic;
 }
+ 
 #newsletter_topics label.error {
 	display: none;
 	margin-left: 103px;

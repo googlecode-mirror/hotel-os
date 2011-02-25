@@ -154,11 +154,8 @@ jQuery.noConflict();
     
 
 	<div id="mainContent">
-<form action="<?php echo tep_href_link('xulydangky.php') ?>" enctype="multipart/form-data" method="post" id="registeringForm" name="registeringForm" class="form-validate">
+<form id="registeringForm" action="<?php echo tep_href_link('xulydangky.php') ?>" enctype="multipart/form-data" method="post" name="registeringForm" class="form-validate">
 
-
-
-  
   <h2>ĐĂNG KÝ</h2> 
   
 <div id="k2Container" class="k2AccountPage">

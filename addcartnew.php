@@ -111,7 +111,7 @@ require_once('includes/application_top.php');
     }
     else
     {
-        echo "Hi?n t?i không còn phòng tr?ng vào ngày b?n mu?n d?t";
+        echo "Hi?n t?i khÃ´ng cÃ²n phÃ²ng tr?ng vÃ o ngÃ y b?n mu?n d?t";
     }
 		
 ?>

@@ -64,7 +64,7 @@ jQuery(document).ready(function($){
 	}
 	if($('#ngaysinh').html() != null){
 		$('#ngaysinh').datepicker({ appendText: '(dd-mm-yy)',changeMonth: true,
-			changeYear: true, dateFormat: 'dd-mm-yy' });
+			changeYear: true, dateFormat: 'dd-mm-yy', yearRange: '1950:2011' });
 	}
 });
 
@@ -101,40 +101,38 @@ jQuery(document).ready(function($) {
 				 required: true,
 				 email: true
 			 },
-			 matkhau: {
+			 password: {
 				required: true,
 				minlength:5
 			 },
-			 rematkhau: {
+			 repassword: {
 				required: true,
 				minlength:5,
 				equalTo: "#matkhau"
 			 },
-			 tenchuthe: "required",
-			 diachi: "required",
-			 dienthoai: "required",
-			 quocgia: {required: true},
-			 ngaysinh: "required"
+			 name: "required",
+			 address: "required",
+			 telephone: "required",
+			 dob: "required"
 		},
 		messages: {
 			email: {
 					required: "Bạn chưa nhập email",
 					email: "Email chưa đúng"
 					},
-			matkhau: {
+			password: {
 					required: "Bạn chưa nhập mật khẩu",
 					minlength: "Chiều dài từ 5 ký tự trở lên"
 					},
-			rematkhau: {
+			repassword: {
 					required: "Bạn chưa nhập lại mật khẩu",
 					minlength: "Chiều dài từ 5 ký tự trở lên",
 					equalTo: "Mật khẩu không khớp"
 					},		
-			tenchuthe: "Bạn chưa nhập họ tên",
-			diachi: "Bạn chưa nhập địa chỉ",
-			dienthoai: "Bạn chưa nhập số điện thoại",
-			quocgia: {required:"Bạn chưa chọn quốc gia"},
-			ngaysinh: "Bạn chưa chọn ngày sinh"			
+			name: "Bạn chưa nhập họ tên",
+			address: "Bạn chưa nhập địa chỉ",
+			telephone: "Bạn chưa nhập số điện thoại",
+			dob: "Bạn chưa chọn ngày sinh"			
 		}	
 	});
     
@@ -375,5 +373,24 @@ jQuery(document).ready(function($) {
             sothe: "Bạn chưa nhập số thẻ"	
 		}	
 	});
+ });
+    //validating for form_search()
+ jQuery(document).ready(function($) {
+    if($('#form_search')== null||$("#form_search").html() == null)
+		return false;
+	// validate signup form on keyup and submit
+	$("#form_search").validate({
+		rules: {			
+             ngayden: "required",
+             ngaydi: "required",
+             numroom: "required"
+		},
+		messages: {
+            ngayden: "*",
+            ngaydi: "*",
+            numroom: "*"	
+		}	
+	});
 });
+
 /*************************** cart **********************************/

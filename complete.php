@@ -215,6 +215,20 @@ jQuery.noConflict();
            	        if($cartItems['roomtypeId'] == $row1[room_type_id]){
                     $money +=intval($cartItems['qty'])*$row1[room_type_price]*$cartItems['staydate'];                  
                   }}}
+                   if($customer_id==null)
+                   {                    
+                    $name=$_SESSION['customers']["name"] ;
+                    $email_address= $_SESSION['customers']["email"] ;
+                    $stress_address= $_SESSION['customers']["address"] ;
+                    $telephone= $_SESSION['customers']["telephone"] ;
+                    $sql_data_array = array('customers_firstname' => $name,
+		    					  'customers_lastname' => $stress_address,
+		                          'customers_email_address' => $email_address,
+		                          'customers_telephone' => $telephone) ;
+                    tep_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+		            $customer_id = tep_db_insert_id();                     	  
+                   } 
+                  // echo "id kh: ". $customer_id;
                   $price=$money;
                   $sql_data_array = array('booking_form_dateset' => $dateset,		    				 
 		                      'booking_form_custommers_id' => $customer_id,
@@ -269,7 +283,8 @@ jQuery.noConflict();
 	                       }
        		           }
                     }
-                 }   
+                 } 
+                
                //  echo "ma hoa don".$order_code."hoa don ".$osCsid."  ma khach hang: ".$id_customer;    
            			$keys=array_search($cartItems,$_SESSION['cart_room']);    
                      
