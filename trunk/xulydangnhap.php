@@ -19,20 +19,21 @@
         $error = true;   
         echo ENTRY_PASSWORD_NEW_TEXT ;  
       } else {
-      //  if (SESSION_RECREATE == 'True') {
-      //    tep_session_recreate();
-      //  }
+        if (SESSION_RECREATE == 'True') {
+          tep_session_recreate();
+        }
       		
         $customer_id = $check_customer['customers_id'];       
         $customer_first_name = $check_customer['customers_firstname'];    
         $_SESSION['customer']= $customer_id;
+        $arrays = $_SESSION['cart_room'];
         tep_session_register('customer_id');     
         tep_session_register('customer_first_name');
         #luu giu session hien tai osCsid
-        
+        unset($_SESSION['cart_room']);
+        $_SESSION['cart_room'] = $arrays;
                tep_redirect(tep_href_link(FILENAME_DEFAULT));          
-        
-        exit();	        	
+               	
       }
     }
 ?>

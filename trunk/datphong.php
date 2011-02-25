@@ -13,6 +13,29 @@
 
   require('includes/application_top.php');
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
+ 
+         if($_GET["process"]=="pending"){
+           $_SESSION['customers'] = array( "name" => $_POST['hoten'],
+                                                   "email" => $_POST['email'],
+    	    										"address" => $_POST['diachi'],
+    	    										"telephone"=> $_POST['dienthoai']                                                 
+    			 								  );   
+         
+            require_once("nganluong.php");
+            $nl=new NL_Checkout();
+            $return_url="http://hotelonline.viit-group.com/complete.php";//dia chi thanh toan thanh cong
+            $transaction_info=$_GET['osCsid'];//thong tin giao dich
+            $receiver="thanhnhan_kg2000@yahoo.com";//tai khoan chu hotel
+            $order_code="Phòng khách sạn";//ma hoa don
+            $price="2000";
+            $url=$nl->buildCheckoutUrl($return_url, $receiver, $transaction_info, $order_code, $price);
+         
+       //  print_r($_SESSION['customers']); 
+          tep_redirect($url);
+          exit;
+  }
+
+ 
 ?>
 
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -163,7 +186,7 @@ if(osCsid != "")
 		<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 		<!-- left_navigation_eof //-->
 		
-		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>
+		
         <?php
          $count= count($_SESSION['cart_room']);
         if($count>0)
@@ -255,7 +278,7 @@ if(osCsid != "")
            <input id="setFor" type="radio" name="setRoom" class="payment" value="1"/>Đặt phòng cho người khác
            
            
-                <form id="signupForm" method="post" action="xulydangky.php">
+                <form id="signupForm" method="post" action="<?php echo tep_href_link("datphong.php","process=pending") ?>">
                 	<div id="thongtinkhach">
                     <?php
                         function getInfoCustomer($id){
@@ -269,22 +292,23 @@ if(osCsid != "")
                         if(isset($customer_id))
                         {
                             $list=getInfoCustomer($customer_id);
+                            
                       ?>
                             <div class="line">
                 			<label for="hoten"> Họ tên KH </label>
-                			<input id="hoten" type="text" class="text" name="hoten" value="<?php echo $list['customers_firstname'] ;?> " readonly />
+                			<input id="hoten" type="text" class="text" name="hoten" value="<?php echo $list['customers_firstname'] ;?>" readonly />
                 			</div>
                 			<div class="line">
                 			<label for="email">&#272;&#7883;a ch&#7881; email </label>
-                			<input id="email" type="text" class="text" name="email" value="<?php echo $list['customers_email_address'] ;?> " readonly/>
+                			<input id="email" type="text" class="text" name="email" value="<?php echo trim($list['customers_email_address']);?>" readonly/>
                 			</div>
                 			<div class="line">
                 			<label for="diachi"> &#272;&#7883;a ch&#7881;  </label>
-                			<input id="diachi" type="text" class="text" name="diachi" value="<?php echo $list['customers_lastname'] ;?> " readonly/>
+                			<input id="diachi" type="text" class="text" name="diachi" value="<?php echo $list['customers_lastname'] ;?>" readonly/>
                 			</div>      
                 			<div class="line">
                 			<label for="dienthoai">&#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c </label>
-                			<input id="dienthoai" type="text" class="text" name="dienthoai" value="<?php echo $list['customers_telephone'] ;?> " readonly/>
+                			<input id="dienthoai" type="text" class="text" name="dienthoai" value="<?php echo $list['customers_telephone'] ;?>" readonly/>
                 			</div>         
                      <?php       
                         } 
@@ -309,7 +333,9 @@ if(osCsid != "")
                 			</div>                           
                            
                           
-                    <?php }?>  
+                    <?php }
+                    
+                    ?>  
                               
                             <div class="line">
                             <p>Phương thức thanh toán</p>                			
@@ -318,30 +344,18 @@ if(osCsid != "")
                 			</div>      
                 	</div>
                 	<div id="thongtinthe" class="hidden">                		
-                	<!--
-		<div class="line">
-                			<label for="tenchuthe"> T&ecirc;n Ch&#7911; Th&#7867; </label>
-                			<input id="tenchuthe" type="text" class="text" name="tenchuthe"/>
-                			</div>
-                			
-                			<div class="line">
-                			<label> Lo&#7841;i th&#7867; </label>
-                			<select name="s" size="1"	>
-                			<option value="1" selected="selected">Mater Card</option>		
-                			<option value="2"> Visa Card</option>                			
-                			</select>
-                			</div>
-                			<div class="line">
-                			
-                			<label for="sothe">  S&#7889; th&#7867; </label>
-                			<input id="sothe" type="text" class="text" name="sothe"/>
-                			</div>
-                			<div> 			
-                			   <INPUT TYPE="checkbox" NAME="checkbox" VALUE="checkbox"> 
-                			   T&ocirc;i ch&#7845;p nh&#7853;n v&#7899;i c&aacute;c &#273;i&#7873;u kho&#7843;n tr&ecirc;n
-                			</div>
-              <?php
-             if($_GET['oscsid'])
+         <input type="submit" value="&#272;&#7863;t ph&ograve;ng" style="   background: url(https://www.nganluong.vn/data/images/buttons/11.gif); border: none;
+    height: 73px !important;
+    line-height: 2em;
+    text-indent: -9999px;
+    width: 137px;">
+
+          <!--<img border="0" src="https://www.nganluong.vn/data/images/buttons/11.gif" />-->
+                		
+                	</div>
+                	
+                <?php
+                    if($_GET['oscsid'])
              {
                 $url = "http://hotelonline.viit-group.com/datphong.php?osCsid=" . $_GET['osc'];
                 if ( (strstr($url, "\n") != false) || (strstr($url, "\r") != false) ) {
@@ -358,23 +372,8 @@ if(osCsid != "")
                header("Location: " . $url);
                  //tep_redirect(("datphong.php?osCsid=" . $_GET['oscsid']));
                   //tep_redirect(tep_href_link("datphong.php?osCsid=" . $_GET['oscsid'],"" ,"NONSSL" ) );
-             } 
-            require_once("nganluong.php");
-            $nl=new NL_Checkout();
-            $return_url="http://hotelonline.viit-group.com/complete.php";//dia chi thanh toan thanh cong
-            $transaction_info=$_GET['osCsid'];//thong tin giao dich
-            $receiver="thanhnhan_kg2000@yahoo.com";//tai khoan chu hotel
-            $order_code="Phòng khách sạn";//ma hoa don
-            $price="2000";
-            $url=$nl->buildCheckoutUrl($return_url, $receiver, $transaction_info, $order_code, $price);
-          
-          ?>
---><a href="<?php echo $url; ?>"><img border="0" src="https://www.nganluong.vn/data/images/buttons/11.gif" /></a>
-                		
-                	</div>
-                	<!--
-	<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="success.php">
--->
+             }  
+                ?>	
                 </form>
             </div>
             <div class="clear"></div> </div>

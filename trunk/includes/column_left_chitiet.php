@@ -83,7 +83,7 @@ $row2=getroom(1,$listing1['room_type_categories'],$listing1['room_type_id']);
       
             <div class="moduleItemIntrotext">
 	      	      <a href=<?php echo   tep_href_link("chitietphong.php", 'room_type_id=' . $row1['room_type_id'] ); ?>>
-	      	<img src="<?php echo images.'/'.phongkhachsan.'/'.$row1['room_type_image'];?>" alt="Jonathan Adler Villa" width="220"/>
+	      	<img src="<?php echo images.'/'.phongkhachsan.'/'.$row1['room_type_image'];?>" alt="" width="220"/>
 
 	      </a>	
                     	      </div>
@@ -129,10 +129,14 @@ $row2=getroom(1,$listing1['room_type_categories'],$listing1['room_type_id']);
 
       
       <!-- K2 Plugins: K2BeforeDisplayContent -->
+      <?php
+        if($row2!=null)
+        {
+       ?>
       
             <div class="moduleItemIntrotext">
 	      	      <a href=<?php echo   tep_href_link("chitietphong.php", 'room_type_id=' . $row2['room_type_id'] ); ?>>
-	      	<img src="<?php echo images.'/'.phongkhachsan.'/'.$row2['room_type_image'];?>" alt="Heidi Fleiss real mansion" width="220" />
+	      	<img src="<?php echo images.'/'.phongkhachsan.'/'.$row2['room_type_image'];?>" alt="" width="220" />
 	      </a>
 	      
       	      	   </div>
@@ -153,7 +157,7 @@ $row2=getroom(1,$listing1['room_type_categories'],$listing1['room_type_id']);
       <div class="k2store_item_price"><span class="item_price_label">Giá : </span><span class="k2store_item_price_value">&nbsp;<?php echo  number_format($row2['room_type_price'],3)."VND";?></span></div>
     	<a class="moduleItemReadMore" href=<?php echo   tep_href_link("chitietphong.php", 'room_type_id=' . $row2['room_type_id'] ); ?>>
 			Chi tiết...</a>
-			
+		<?php } ?>	
       <!-- Plugins: AfterDisplay -->
       
       <!-- K2 Plugins: K2AfterDisplay -->

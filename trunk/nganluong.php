@@ -1,5 +1,4 @@
 ﻿<?php
-
 /**
 *	
 *		Phiên bản: 0.1   
@@ -9,7 +8,6 @@
 *						- Xác thực tính chính xác của thông tin đơn hàng được gửi về từ nganluong.vn.
 *		
 **/
-
 class NL_Checkout 
 {
 	// URL chheckout của nganluong.vn

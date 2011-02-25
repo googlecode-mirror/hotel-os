@@ -140,7 +140,7 @@ jQuery.noConflict();
 	<!-- header_eof //-->
 	<div id="gk-container">
 		<!-- left_navigation //-->
-		<?php require(DIR_WS_INCLUDES . 'column_left_chitiet.php'); ?>
+		<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
 		<!-- left_navigation_eof //-->
 		
 		<?php /*require(DIR_WS_INCLUDES . 'mainContent_ThongTin.php'); */?>

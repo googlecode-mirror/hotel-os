@@ -29,8 +29,54 @@
     }
   }
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
-  
-  
+
+     //show gio hang   
+     
+  if(isset($_GET['option'])&&isset($_GET['view'])&&isset($_GET['format']))
+  {
+    
+     $count= count($_SESSION['cart_room']);    
+        if($count>0)
+        {   
+            foreach($_SESSION['cart_room'] as $cartItems)
+    	    {
+    	    	$item[]=$cartItems['roomtypeId'];	    
+    	    }	
+    	   $str=implode(",",$item);	 	      
+    	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
+    	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
+           $listing_query1 = tep_db_query($listing_split1->sql_query);
+        $total=0;   
+        echo "<div id=\"container\"> <table id=\"cart\">";        
+        while($row=tep_db_fetch_array($listing_query1)){
+           	foreach($_SESSION['cart_room'] as $cartItems){
+           		if($cartItems['roomtypeId'] == $row[room_type_id]){
+                  echo " <tr>";
+                  echo "<td class=\"quantity center\">".$cartItems['qty']."</td>";
+                  echo "<td class=\"item_name\">$row[room_type_name]</td>";
+                  echo "<td class=\"extended_price\">&nbsp;".number_format(($cartItems['qty']*$row[room_type_price]*$cartItems['staydate']),3)."</td> </tr>";
+                  echo "<tr class='odd'>"; 
+                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate'];
+                }    
+             }  
+         } 
+          echo "<tr><td align=\"right\" colspan=\"2\">Total : &nbsp;&nbsp;</td>";
+          echo "<td id=\"total_price\">&nbsp;".number_format($total,3)."VND</td></tr> </table>";
+          
+          echo "<form action=". tep_href_link('ReviewShopCart.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."\" method=\"post\" name=\"userForm\" id=\"userForm\">";
+          echo "<table> <tr> <td colspan=\"2\">";
+          echo "<input type=\"button\" value=\"Thanh Toán\" onclick=\"SqueezeBox.close(); window.location = '".tep_href_link('ReviewShopCart.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."';\" />";
+          echo "</tr> </table> </form>";
+          echo " </div>"; 
+      }
+      else{
+         echo "<div id=\"container\"> <table id=\"cart\"> <tr>";
+            echo "<td class=\"item_name\">Bạn chưa đặt phòng nào.</td>";
+           echo "</tr>";
+           echo "</table>";        
+      }
+      exit;
+  }        
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
@@ -134,55 +180,7 @@ jQuery.noConflict();
 <!-- end head -->
 </head>
 <body id="bd" class="fs3 IE7">
-<?php
-     //show gio hang   
-      
-  if(isset($_GET['option'])&&isset($_GET['view'])&&isset($_GET['format']))
-  {
-    
-     $count= count($_SESSION['cart_room']);    
-        if($count>0)
-        {   
-            foreach($_SESSION['cart_room'] as $cartItems)
-    	    {
-    	    	$item[]=$cartItems['roomtypeId'];	    
-    	    }	
-    	   $str=implode(",",$item);	 	      
-    	   $listing_sql1="select * from room_type where room_type_id in ($str)";      
-    	   $listing_split1 = new splitPageResults($listing_sql1, MAX_DISPLAY_SEARCH_RESULTS);      
-           $listing_query1 = tep_db_query($listing_split1->sql_query);
-        $total=0;   
-        echo "<div id=\"container\"> <table id=\"cart\">";        
-        while($row=tep_db_fetch_array($listing_query1)){
-           	foreach($_SESSION['cart_room'] as $cartItems){
-           		if($cartItems['roomtypeId'] == $row[room_type_id]){
-                  echo " <tr>";
-                  echo "<td class=\"quantity center\">".$cartItems['qty']."</td>";
-                  echo "<td class=\"item_name\">$row[room_type_name]</td>";
-                  echo "<td class=\"extended_price\">&nbsp;".number_format(($cartItems['qty']*$row[room_type_price]*$cartItems['staydate']),3)."</td> </tr>";
-                  echo "<tr class='odd'>"; 
-                  $total +=intval($cartItems['qty'])*$row[room_type_price]*$cartItems['staydate'];
-                }    
-             }  
-         } 
-          echo "<tr><td align=\"right\" colspan=\"2\">Total : &nbsp;&nbsp;</td>";
-          echo "<td id=\"total_price\">&nbsp;".number_format($total,3)."VND</td></tr> </table>";
-          
-          echo "<form action=". tep_href_link('ReviewShopCart.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."\" method=\"post\" name=\"userForm\" id=\"userForm\">";
-          echo "<table> <tr> <td colspan=\"2\">";
-          echo "<input type=\"button\" value=\"Thanh Toán\" onclick=\"SqueezeBox.close(); window.location = '".tep_href_link('ReviewShopCart.php','flagcart='.$HTTP_GET_VARS['room_type_id'])."';\" />";
-          echo "</tr> </table> </form>";
-          echo " </div>"; 
-      }
-      else{
-         echo "<div id=\"container\"> <table id=\"cart\"> <tr>";
-            echo "<td class=\"item_name\">Bạn chưa đặt phòng nào.</td>";
-           echo "</tr>";
-           echo "</table>";        
-      }
-      exit;
-  }        
-?>
+
 
 <?php require(DIR_WS_INCLUDES . 'popup.php'); ?>
 	
@@ -211,7 +209,7 @@ jQuery.noConflict();
             								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/916235slide6.jpg' ); ?></span>
             								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/750852slide3.jpg' ); ?></span>
             								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/797216slide8.jpg' ); ?></span>
-            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/664703bedroom.jppg' ); ?></span>
+            								<span class="gk_is_slide"><?php echo ( DIR_WS_HTTP_CATALOG.'black_and_white_images/664703bedroom.jpg' ); ?></span>
             			
             	</div>
             
@@ -303,9 +301,6 @@ jQuery.noConflict();
           </div>
         </div>
        </div>
-       	
-          
-<input id="getminicart" type="hidden" value="<?php echo tep_href_link("index.php")?>">
 	<div id="gk-container">
 		<!-- left_navigation //-->
 		<?php require(DIR_WS_INCLUDES . 'column_left.php'); ?>
@@ -464,7 +459,8 @@ jQuery.noConflict();
 		    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING); 
 		    $roomnum=2;		
 		}
-	else if($flag==0) { ?>			
+	else if($flag==0) { print_r($_SESSION['customers']);
+    ?>			
 			<h3 class="welcome">Chào mừng quý khách đã đến với hệ thống Booking online của khách sạn chúng tôi. Đến với khách sạn quý khách sẽ bắt gặp thái độ phục vụ chuyên nghiệp, nhanh chóng. Kính chúc các bạn có kỳ nghỉ 	thoải mái ở khách sạn chúng tôi.</h3>
 			<div id="showloaiphong">
 				<p>Hiện tại khách sạn cung cấp một số loại phòng sau: </p>
@@ -511,32 +507,6 @@ jQuery.noConflict();
 					</ul>
 <!--					<a href="#" class="more">Xem thêm...</a>-->
 				</div>
-				<!--<ul>
-					<li>
-						<div class="roomType">
-							<a href="javascript:showphongOfRoomType(1);"><img alt="alt" src="images/phong 1.jpg" alt="Phòng VIP"></a>
-							<p>Loại A: 1500$</p>
-						</div>
-					</li>
-					 <li>
-						<div class="roomType">
-							<a href="javascript:showphongOfRoomType(2);"><img alt="alt" src="images/phong 2.jpg" alt="Phòng Tot"></a>
-							<p>Loại B: 1200$</p>
-						</div>
-					</li>
-					<li>
-						<div class="roomType">
-						
-							<a href="javascript:showphongOfRoomType(3);"><img alt="alt" src="images/phong 3.jpg" alt="Phòng Dep"></a>
-							<p>Loại C: 800$</p>
-					</li>
-					 <li>
-						<div class="roomType">
-							<a href="javascript:showphongOfRoomType(4);"><img alt="alt" src="images/phong 5.jpg" alt="Phòng TB"></a>
-							<p>Loại D: 400$</p>
-						</div>
-					</li>
-				 </ul>-->
 			 </div>
 			 <?php }?>
              <div id="showphongDiv" class="hidden">
@@ -544,12 +514,12 @@ jQuery.noConflict();
                 <div id="showphong">
                     <div class="container">
         				<ul class="slides">
-        					<li><a href="javascript:detail(1)"><img alt="alt" id="img1" src="images/phong 1.jpg"/></a></li>
-        					<li><a href="javascript:detail(2)"><img alt="alt" id="img2" src="images/phong 2.jpg"/></a></li>
-        					<li><a href="javascript:detail(3)"><img alt="alt" id="img3" src="images/phong 3.jpg"/></a></li>
-        					<li><a href="javascript:detail(4)"><img alt="alt" id="img4" src="images/phong 4.jpg"/></a></li>
-        					<li><a href="javascript:detail(5)"><img alt="alt" id="img5" src="images/phong 5.jpg"/></a></li>
-        					<li><a href="javascript:detail(6)"><img alt="alt" id="img6" src="images/phong 6.jpg"/></a></li>
+        					<li><a href="javascript:detail(1)"><img alt="alt" id="img1" src="images/phong1.jpg"/></a></li>
+        					<li><a href="javascript:detail(2)"><img alt="alt" id="img2" src="images/phong2.jpg"/></a></li>
+        					<li><a href="javascript:detail(3)"><img alt="alt" id="img3" src="images/phong3.jpg"/></a></li>
+        					<li><a href="javascript:detail(4)"><img alt="alt" id="img4" src="images/phong4.jpg"/></a></li>
+        					<li><a href="javascript:detail(5)"><img alt="alt" id="img5" src="images/phong5.jpg"/></a></li>
+        					<li><a href="javascript:detail(6)"><img alt="alt" id="img6" src="images/phong6.jpg"/></a></li>
         				</ul>
     			     </div>
 					 
