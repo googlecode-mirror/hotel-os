@@ -12,8 +12,10 @@
 
 define('HEADING_TITLE', 'THÔNG TIN ĐĂNG KÝ ĐẶT PHÒNG');
 
-define('TABLE_HEADING_MANUFACTURERS', 'Manufacturers');
+define('TABLE_HEADING_MANUFACTURERS', 'Thông tin đặt phòng');
 define('TABLE_HEADING_ACTION', 'Action');
+
+define('TEXT_INFO_INSERT_INTRO','Nhập thông tin loại phòng');
 
 define('TEXT_HEADING_NEW_MANUFACTURER', 'New Manufacturer');
 define('TEXT_HEADING_EDIT_MANUFACTURER', 'Edit Manufacturer');
@@ -39,4 +41,12 @@ define('TEXT_DELETE_WARNING_PRODUCTS', '<b>WARNING:</b> There are %s products st
 
 define('ERROR_DIRECTORY_NOT_WRITEABLE', 'Error: I can not write to this directory. Please set the right user permissions on: %s');
 define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Error: Directory does not exist: %s');
+
+define('TEXT_INFO_DMPHONG', 'Danh mục phòng');
+define('TEXT_INFO_LOAIPHONG', 'Loại phòng');
+define('TEXT_INFO_NGAY_DEN', 'Ngày đến');
+define('TEXT_INFO_NGAY_DI', 'Ngày đi');
+define('TEXT_INFO_SOLUONG', 'Số lượng phòng');
+define('TEXT_INFO_TONGTIEN', 'Tổng tiền');
+define('TEXT_INFO_GIA', 'Giá');
 ?>

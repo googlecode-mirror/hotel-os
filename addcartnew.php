@@ -1,16 +1,6 @@
 <?php
 require_once('includes/application_top.php');
-	$id=$HTTP_GET_VARS['room_type_id'];
-    //echo "id".$id;  
-    if(isset($HTTP_GET_VARS['stay_dates'])) 
-    {
-        $songayo=$HTTP_GET_VARS['stay_dates'];
-    }
-    else
-    {
-        $songayo=1;
-    }
-    	function getroomofdate($day){			
+function getroomofdate($day){			
 			//echo $datecurent; 			
 			$listing_sql2="select * from  status_room  where  status_room_dayofyear ='".$day."'";		
 			$listing_split2 = new splitPageResults($listing_sql2, MAX_DISPLAY_SEARCH_RESULTS);
@@ -50,6 +40,18 @@ require_once('includes/application_top.php');
         	}
         	return $flag;	
         }
+        
+	$id=$HTTP_GET_VARS['room_type_id'];
+    //echo "id".$id;  
+    if(isset($HTTP_GET_VARS['stay_dates'])) 
+    {
+        $songayo=$HTTP_GET_VARS['stay_dates'];
+    }
+    else
+    {
+        $songayo=1;
+    }
+    	
     $dayto=$HTTP_GET_VARS['dayto'];    
     $daygo=$HTTP_GET_VARS['daygo'];  
     if(isset($daygo))
