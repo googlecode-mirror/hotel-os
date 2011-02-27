@@ -11,71 +11,126 @@
 */
 
   require('includes/application_top.php');
-  #checking owner role
-if(!tep_session_is_registered('owner'))
-     tep_redirect(tep_href_link(FILENAME_LOGIN));
-     echo 'run hreer';
-  $action = (isset($HTTP_GET_VARS['action']) ? $HTTP_GET_VARS['action'] : '');
 
-  if (tep_not_null($action)) {
-    switch ($action) {
-      case 'insert':
-        require('includes/functions/password_funcs.php');
-
-        $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
-        $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
-        $account = tep_db_prepare_input($HTTP_POST_VARS['account_number']);
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($username) . "' limit 1");
-
-        if (tep_db_num_rows($check_query) < 1) {
-          tep_db_query("insert into " . TABLE_MANAGERS . " (user_name, user_password,role) values ('" . tep_db_input($username) . "', '" . tep_db_input(tep_encrypt_password($password)) . "',0)");
-          tep_db_query("insert into " . TABLE_OWNERS . " (id, account_number) values ('" .tep_db_insert_id(). "', '" .$account . "')");
-        } else {
-          $messageStack->add_session(ERROR_ADMINISTRATOR_EXISTS, 'error');
+function getroomofdate($day){			
+			//echo $datecurent; 			
+			$listing_sql2="select * from  status_room  where  status_room_dayofyear ='".$day."'";
+		    $listing_query2 = tep_db_query($listing_sql2);
+		    $listing2 = tep_db_fetch_array($listing_query2);
+		    return $listing2;
+		}
+    function getroomtype($a,$b){
+	    	$listing_sql="select * from  room_type  where  room_type_id ='".$a."'";		
+		    $listing_query = tep_db_query($listing_sql);
+		    $listing = tep_db_fetch_array($listing_query);
+		    $temp=$listing[room_type_count]-$b;	            
+	    return $temp;
+		} 
+    function NumDayStay($dayto,$daygo){
+			list($day,$month,$year)=split('[-]', $dayto);			
+			list($day2,$month2,$year2)=split('[-]', $daygo);
+			$to=mktime(0,0,0,$month,$day,$year);
+			$go=mktime(0,0,0,$month2,$day2,$year2);
+			$temp=$go-$to;
+			$daynum=$temp/(24*60*60);
+			return $daynum;
+		}
+    function testAllDay($roomID,$roomNumber,$dayto,$daygo){
+        	$n=NumDayStay($dayto, $daygo); 
+        	$flag=1;
+        	list($day,$month,$year)=split('[-]', $dayto);
+        	for($i=0;$i<$n;$i++){        		
+        		$daytest=date($year."-".$month."-".$day); 
+        		$day +=1;         			
+	        	$listtemp=getroomofdate($daytest);
+                $id_temp="id_".$roomID;   
+	        	if(getroomtype($roomID, $listtemp[$id_temp])<$roomNumber){
+	        		$flag=0;                  
+	        	}
+        	}
+        	return $flag;	
         }
-
-        tep_redirect(tep_href_link(FILENAME_ADMINISTRATORS));
-        break;
-      case 'save':
-        require('includes/functions/password_funcs.php');
-
-        $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
-        $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
-        $account = tep_db_prepare_input($HTTP_POST_VARS['account_number']);
-        
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($owner['username']) . "'");
-        $check = tep_db_fetch_array($check_query);
-
-        if ($owner['id'] == $check['id']) {
-          $owner['username'] = $username;
-        }
-
-        tep_db_query("update " . TABLE_MANAGERS . " set user_name = '" . tep_db_input($username) . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");
-
-        if (tep_not_null($password)) {
-          tep_db_query("update " . TABLE_MANAGERS . " set user_password = '" . tep_db_input(tep_encrypt_password($password)) . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");
-        }
-//update account_number
-         tep_db_query("update " . TABLE_OWNERS . " set account_number = '" . $account . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");        
-        tep_redirect(tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . (int)$HTTP_GET_VARS['aID']));
-        break;
-      case 'deleteconfirm':
-        $id = tep_db_prepare_input($HTTP_GET_VARS['aID']);
-
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($owner['username']) . "'");
-        $check = tep_db_fetch_array($check_query);
-
-        if ($id == $check['id']) {
-          tep_session_unregister('owner');
-        }
-        
-        tep_db_query("delete from " . TABLE_OWNERS . " where id = '" . (int)$id . "'");
-        tep_db_query("delete from " . TABLE_MANAGERS . " where id = '" . (int)$id . "'");
-
-        tep_redirect(tep_href_link(FILENAME_ADMINISTRATORS));
-        break;
-    }
+  #
+  # load from db roomtypcate
+  #
+    mysql_query("set names 'utf8'");
+  $query = mysql_query("select room_type_id,room_type_name from room_type");
+  while($result = mysql_fetch_array($query, MYSQL_ASSOC)){
+      if(!isset($_SESSION['roomtypecat'])){
+            $_SESSION['roomtypecat'] = array();            
+          }
+      $_SESSION['roomtypecat'][$result["room_type_id"]] = $result["room_type_name"];
   }
+  
+  
+  $action = (isset($HTTP_GET_VARS['action']) ? $HTTP_GET_VARS['action'] : '');  
+  if (tep_not_null($action) && $action=='insert') {
+    $hoten = tep_db_prepare_input($HTTP_POST_VARS['hoten']);
+    $email = tep_db_prepare_input($HTTP_POST_VARS['email']);
+    $diachi = tep_db_prepare_input($HTTP_POST_VARS['diachi']);
+    $dienthoai = tep_db_prepare_input($HTTP_POST_VARS['dienthoai']);
+    $payment = $_POST['payment'];
+    
+    $loaiphong = $_POST["cb_loaiphong"];
+    $tempArr = split("-",$loaiphong);
+    $roomTypeId = array_search(trim($tempArr[0]),$_SESSION['roomtypecat']);
+    $loaiphongName = trim($tempArr[0]);
+    $price = trim($tempArr[1]);
+    $dayto = tep_db_prepare_input($HTTP_POST_VARS['ngayden']);
+    $daygo = tep_db_prepare_input($HTTP_POST_VARS['ngaydi']);
+    $songayo=NumDayStay($dayto,$daygo);
+    $roomcout = tep_db_prepare_input($HTTP_POST_VARS['soluongphong']);
+    
+    $total = tep_db_prepare_input($HTTP_POST_VARS['total']);
+    $sql_data_array = array('customers_firstname' => $hoten,
+		    					  'customers_lastname' => $diachi,
+		                          'customers_email_address' => $email,
+		                          'customers_telephone' => $dienthoai) ;
+                    tep_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+		            $customer_id = tep_db_insert_id();  
+                    $dateset=date("Y-m-d");
+                    $account_id=null; 
+   $sql_data_array = array('booking_form_dateset' => $dateset,		    				 
+		                      'booking_form_custommers_id' => $customer_id,
+		                      'booking_form_account_id' => $account_id,
+		                      'booking_form_payment_methods_id' =>  $payment,
+                              'booking_form_total_price'=>$total/1000
+		                      );
+	  
+	                          tep_db_perform(booking_form, $sql_data_array);
+	                          $booking_form_id= tep_db_insert_id(); 
+                list($day,$month,$year)=split('[-]', $dayto);
+                $ngayden=date($year."-".$month."-".$day); 
+                list($day2,$month2,$year2)=split('[-]', $dayto);
+                $ngaydi=date($year2."-".$month2."-".$day2); 
+    $sql_data_array = array('detail_booking_form_type_room_id' => $roomTypeId,
+                              'detail_booking_form_id'=>$booking_form_id,
+		    				  'detail_booking_form_dateto' => $ngayden,
+		                      'detail_booking_form_datego' =>  $ngaydi,	                      
+	                          'detail_booking_form_staydate' =>  $songayo,
+                              'detail_booking_form_number_room'=> $roomcout,		                      
+		                      'detail_booking_form_price' =>  $price);	  
+	                          tep_db_perform(detail_booking_form, $sql_data_array);
+                           list($day,$month,$year)=split('[-]', $dayto);
+                              $n=$songayo;                               
+                               for($i=0;$i<$n;$i++){  
+                                    $daytest=date($year."-".$month."-".$day); 
+            		                  $day +=1;                                     
+                                  	 $listing2=getroomofdate($daytest);                                                                          
+                                     $id_status_room="id_".$roomTypeId; 
+                                     list($name,$room_id)=split('[_]', $roomTypeId);                                     
+                                     $num_room= $listing2[$id_status_room] +$roomcout ;         
+                                     tep_db_query("update status_room set ". $id_status_room." = '" . (int)$num_room . "' where status_room_dayofyear = '" . $daytest . "'");                    
+	                          }
+    $prepaid = tep_db_prepare_input($HTTP_POST_VARS['prepaid'])/1000;
+    $remain = tep_db_prepare_input($HTTP_POST_VARS['remain'])/1000;   
+    $sql_data_array = array('booking_form_id' => $booking_form_id,
+                              'prepay'=>$prepaid,
+		    				  'remain' => $remain);	  
+	                          tep_db_perform(prepaid, $sql_data_array);       
+    tep_redirect(tep_href_link(FILENAME_ROOMBOOKING));              
+  }
+    
 ?>
 <!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html <?php echo HTML_PARAMS; ?>>
@@ -84,13 +139,12 @@ if(!tep_session_is_registered('owner'))
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="includes/newstyle.css">
+<link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.8.2.custom.css">
 <script language="javascript" src="includes/general.js"></script>
-
 <script src="js/jquery-1.4.2.min.js"></script>
 <script src="js/jquery-ui-1.8.2.custom.min.js"></script>
 <script src="js/jquery.validate.js"></script>
 <script src="js/loopedslider.js"></script>
-
 <script src="js/MyScript.js"></script>
 
 </head>
@@ -111,7 +165,7 @@ if(!tep_session_is_registered('owner'))
     <td width="100%" valign="top">
         <h2 style="text-align: center;">THÔNG TIN ĐĂNG KÝ ĐẶT PHÒNG</h2>
 
-               <form id="managerForm" action="" method="post">
+    <form id="managerForm" action="<?php echo tep_href_link(FILENAME_ROOMBOOKING,"action=insert") ?>" method="post">
                 	<div id="managerBooking">
                             <div class="line">
                 			<label for="hoten"> Họ tên KH </label>
@@ -131,6 +185,22 @@ if(!tep_session_is_registered('owner'))
                 			</div>
                             
                             <div class="line">
+                			<label for="cb_dmphong"> Danh mục phòng  </label>
+                			<select id="cb_dmphong" class="text" name="cb_dmphong">
+                                <option value="0" selected="selected"> --------- </option>          
+                                <option value="1">Phòng sang trọng</option>
+                                <option value="2">Phòng cao cấp</option>
+                                <option value="3">Phòng gia đình</option>
+                                <option value="4">Phòng hội nghị</option>
+                            </select>
+                			</div>                         
+                            <div class="line">
+                			<label for="ngayden"> Loại phòng</label>
+                			<select style="width:50%;" id="cb_loaiphong" name="cb_loaiphong">
+                            </select>
+                			</div> 
+                                                                                                                
+                            <div class="line">
                 			<label for="ngayden"> Ngày đến  </label>
                 			<input id="ngayden" type="text" class="text" name="ngayden"/>
                 			</div> 
@@ -144,128 +214,26 @@ if(!tep_session_is_registered('owner'))
                 			</div>
                             <div class="line">
                             <p>Phương thức thanh toán</p>                			
-                			<input id="cash" type="radio" name="payment" class="payment" value="0"/>Tiền mặt
-                            <input id="card" type="radio" name="payment" class="payment" value="1"/>Thẻ tín dụng
+                			<input id="cash" type="radio" checked="true"  name="payment" class="payment" value="0"/>Tiền mặt
+                			</div>
+                            <div class="line">
+                			<label for="total"> Tổng tiền</label>
+                			<input id="total" type="text" class="text" name="total"/>
+                			</div>
+                            <div class="line">
+                			<label for="prepaid"> Đặt cọc</label>
+                			<input id="prepaid" type="text" class="text" name="prepaid"/>
+                			</div>
+                            <div class="line">
+                			<label for="remain"> Còn lại</label>
+                			<input id="remain" type="text" class="text" name="remain"/>
                 			</div>
                 	</div>
-                	<div id="bookingthe" class="hidden">                		
-                			<div class="line">
-                			<label for="tenchuthe"> T&ecirc;n Ch&#7911; Th&#7867; </label>
-                			<input id="tenchuthe" type="text" class="text" name="tenchuthe"/>
-                			</div>
-                			
-                			<div class="line">
-                			<label> Lo&#7841;i th&#7867; </label>
-                			<select name="s" size="1"	>
-                			<option value="1" selected="selected">Mater Card</option>		
-                			<option value="2"> Visa Card</option>                			
-                			</select>
-                			</div>
-                			<div class="line">
-                			
-                			<label for="sothe">  S&#7889; th&#7867; </label>
-                			<input id="sothe" type="text" class="text" name="sothe"/>
-                			</div>
-                			<div> 			
-                			   <INPUT TYPE="checkbox" NAME="checkbox" VALUE="checkbox"> 
-                			   T&ocirc;i ch&#7845;p nh&#7853;n v&#7899;i c&aacute;c &#273;i&#7873;u kho&#7843;n tr&ecirc;n
-                			</div>
-                		
-                	</div>
-                		<input type="submit" value="&#272;&#7863;t ph&ograve;ng" onclick="success.php">
+                	
+                		<input type="submit" value="&#272;&#7863;t ph&ograve;ng"/>
                 </form>
         </tr>
       <!--end dat phong -->
-  <!-- start comment 
-        </a>    <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
-              <tr class="dataTableHeadingRow">
-                <td class="dataTableHeadingContent"><?php echo 'Tên đăng nhập' ?></td>
-                <td class="dataTableHeadingContent"><?php echo 'Số tài khoản ngân hàng' ?></td>
-                <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION ?>&nbsp;</td>
-              </tr>
-#<?php
-#
-#  $admins_query = tep_db_query("select ".TABLE_OWNERS.".id, user_name,account_number from " .
-#                     TABLE_MANAGERS.",".TABLE_OWNERS . " where ".TABLE_MANAGERS.".id = ".TABLE_OWNERS.".id order by user_name");
-#  while ($admins = tep_db_fetch_array($admins_query)) {
-#    if ((!isset($HTTP_GET_VARS['aID']) || (isset($HTTP_GET_VARS['aID']) && ($HTTP_GET_VARS['aID'] == $admins['id']))) && !isset($aInfo) && (substr($action, 0, 3) != 'new')) {
-#      $aInfo = new objectInfo($admins);
-#    }
-#
-#    if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) {
-#      echo '                  <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=edit') . '\'">' . "\n";
-#    } else {
-#      echo '                  <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '\'">' . "\n";
-#    }
-#?>
-#                <td class="dataTableContent"><?php echo $admins['user_name']; ?></td>
-#                <td class="dataTableContent"><?php echo $admins['account_number']; ?></td>
-#                <td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
-#                
-#               </tr>
-#<?php
- # }
-#?>
-#              <tr>
-#                <td colspan="2" align="right"><?php echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'action=new') . '">' . tep_image_button('button_insert.gif', IMAGE_INSERT) . '</a>'; ?></td>
-#              </tr>
-#            </table></td>
-#<?php
-#  $heading = array();
-#  $contents = array();
-#
-#  switch ($action) {
-#    case 'new':
-#      $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_NEW_ADMINISTRATOR . '</b>');
-#
-#      $contents = array('form' => tep_draw_form('administrator', FILENAME_ADMINISTRATORS, 'action=insert'));
-#      $contents[] = array('text' => TEXT_INFO_INSERT_INTRO);
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_USERNAME . '<br>' . tep_draw_input_field('username'));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_PASSWORD . '<br>' . tep_draw_password_field('password'));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_ACCOUNT . '<br>' . tep_draw_input_field('account_number'));
-#      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_save.gif', IMAGE_SAVE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ADMINISTRATORS) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
-#      break;
-#    case 'edit':
-#      $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
-#
-#      $contents = array('form' => tep_draw_form('administrator', FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=save'));
-#      $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_USERNAME . '<br>' . tep_draw_input_field('username', $aInfo->user_name));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_NEW_PASSWORD . '<br>' . tep_draw_password_field('password'));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_ACCOUNT . '<br>' . tep_draw_input_field('account_number'));
-#      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_update.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
-#      break;
-#    case 'delete':
-#      $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
-#
-#      $contents = array('form' => tep_draw_form('administrator', FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=deleteconfirm'));
-#      $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
-#      $contents[] = array('text' => '<br><b>' . $aInfo->user_name . '</b>');
-#      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_delete.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
-#      break;
-#    default:
-#      if (isset($aInfo) && is_object($aInfo)) {
-#        $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
-#
-#        $contents[] = array('align' => 'center', 'text' => '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=edit') . '">' . tep_image_button('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=delete') . '">' . tep_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
-#      }
-#      break;
-#  }
-#
-#  if ( (tep_not_null($heading)) && (tep_not_null($contents)) ) {
-#    echo '            <td width="25%" valign="top">' . "\n";
-#
-#    $box = new box;
-#    echo $box->infoBox($heading, $contents);
-#
-#    echo '            </td>' . "\n";
-#  }
-#?>
-          </tr>
-end comment-->
 </td>
 <!-- body_text_eof //-->
   </tr>

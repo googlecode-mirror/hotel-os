@@ -1,13 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 25, 2011 at 11:49 PM
--- Server version: 5.1.36
+-- Generation Time: Feb 28, 2011 at 01:29 AM
+-- Server version: 5.5.8
 -- PHP Version: 5.2.11
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `booking`
@@ -109,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `banners` (
   `expires_impressions` int(7) DEFAULT '0',
   `expires_date` datetime DEFAULT NULL,
   `date_scheduled` datetime DEFAULT NULL,
-  `date_added` datetime NOT NULL,e
+  `date_added` datetime NOT NULL,
   `date_status_change` datetime DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`banners_id`),
@@ -183,23 +189,138 @@ DROP TABLE IF EXISTS `booking_form`;
 CREATE TABLE IF NOT EXISTS `booking_form` (
   `booking_form_id` int(20) NOT NULL AUTO_INCREMENT,
   `booking_form_dateset` date NOT NULL,
-  `booking_form_dateto` date NOT NULL,
-  `booking_form_datego` date NOT NULL,
   `booking_form_custommers_id` int(20) DEFAULT NULL,
   `booking_form_account_id` int(20) NOT NULL,
   `booking_form_payment_methods_id` varchar(20) NOT NULL,
-  `booking_form_number_room` int(20) NOT NULL,
+  `booking_form_total_price` int(20) NOT NULL,
   PRIMARY KEY (`booking_form_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=129 ;
 
 --
 -- Dumping data for table `booking_form`
 --
 
-INSERT INTO `booking_form` (`booking_form_id`, `booking_form_dateset`, `booking_form_dateto`, `booking_form_datego`, `booking_form_custommers_id`, `booking_form_account_id`, `booking_form_payment_methods_id`, `booking_form_number_room`) VALUES
-(2, '2010-12-27', '2010-12-29', '2010-12-30', 13, 0, 'cash', 2),
-(3, '2010-12-27', '2010-12-30', '2010-12-31', 18, 0, 'cash', 5),
-(4, '2010-12-28', '0000-00-00', '0000-00-00', 19, 0, '', 0);
+INSERT INTO `booking_form` (`booking_form_id`, `booking_form_dateset`, `booking_form_custommers_id`, `booking_form_account_id`, `booking_form_payment_methods_id`, `booking_form_total_price`) VALUES
+(9, '2011-02-16', 0, 0, '', 0),
+(10, '2011-02-16', 0, 0, '', 0),
+(11, '2011-02-16', 0, 0, '', 0),
+(12, '2011-02-16', 0, 0, '', 0),
+(13, '2011-02-16', 0, 0, '', 0),
+(14, '2011-02-16', 0, 0, '', 0),
+(15, '2011-02-16', 0, 0, '', 0),
+(16, '2011-02-17', 0, 0, '', 0),
+(17, '2011-02-17', 0, 0, '', 0),
+(18, '2011-02-17', 0, 0, '', 0),
+(19, '2011-02-17', 0, 0, '', 0),
+(20, '2011-02-17', 0, 0, '', 0),
+(21, '2011-02-17', 0, 0, '', 0),
+(22, '2011-02-17', 0, 0, '', 0),
+(23, '2011-02-17', 0, 0, '', 0),
+(24, '2011-02-17', 0, 0, '', 0),
+(25, '2011-02-17', 0, 0, '', 0),
+(26, '2011-02-17', 0, 0, '', 0),
+(27, '2011-02-17', 0, 0, '', 0),
+(28, '2011-02-17', 0, 0, '', 0),
+(29, '2011-02-17', 0, 0, '', 0),
+(30, '2011-02-17', 0, 0, '', 0),
+(31, '2011-02-17', 0, 0, '', 0),
+(32, '2011-02-17', 0, 0, '', 0),
+(33, '2011-02-17', 0, 0, '', 0),
+(34, '2011-02-17', 0, 0, '', 0),
+(35, '2011-02-17', 0, 0, '', 0),
+(36, '2011-02-17', 0, 0, '', 0),
+(37, '2011-02-17', 0, 0, '', 0),
+(38, '2011-02-17', 0, 0, '', 0),
+(39, '2011-02-17', 0, 0, '', 0),
+(40, '2011-02-17', 0, 0, '', 0),
+(41, '2011-02-17', 0, 0, '', 0),
+(42, '2011-02-17', 0, 0, '', 0),
+(43, '2011-02-17', 0, 0, '', 0),
+(44, '2011-02-17', 0, 0, '', 0),
+(45, '2011-02-17', 0, 0, '', 0),
+(46, '2011-02-17', 0, 0, '', 0),
+(47, '2011-02-17', 0, 0, '', 0),
+(48, '2011-02-17', 0, 0, '', 0),
+(49, '2011-02-17', 0, 0, '', 0),
+(50, '2011-02-17', 0, 0, '', 0),
+(51, '2011-02-17', 0, 0, '', 0),
+(52, '2011-02-17', 0, 0, '', 0),
+(53, '2011-02-17', 0, 0, '', 0),
+(54, '2011-02-17', 0, 0, '', 0),
+(55, '2011-02-17', 0, 0, '', 0),
+(56, '2011-02-17', 0, 0, '', 0),
+(57, '2011-02-17', 0, 0, '', 0),
+(58, '2011-02-17', 0, 0, '', 0),
+(59, '2011-02-17', 0, 0, '', 0),
+(60, '2011-02-17', 0, 0, '', 0),
+(61, '2011-02-17', 0, 0, '', 0),
+(62, '2011-02-17', 0, 0, '', 0),
+(63, '2011-02-17', 0, 0, '', 0),
+(64, '2011-02-17', 0, 0, '', 0),
+(65, '2011-02-17', 0, 0, '', 0),
+(66, '2011-02-17', 0, 0, '', 0),
+(67, '2011-02-17', 0, 0, '', 0),
+(68, '2011-02-17', 0, 0, '', 0),
+(69, '2011-02-17', 0, 0, '', 0),
+(70, '2011-02-17', 0, 0, '', 0),
+(71, '2011-02-17', 0, 0, '', 0),
+(72, '2011-02-18', 0, 0, '', 0),
+(73, '2011-02-19', 0, 0, '', 2000),
+(74, '2011-02-19', 0, 0, '', 2000),
+(75, '2011-02-19', 0, 0, '', 2000),
+(76, '2011-02-19', 0, 0, '', 2000),
+(77, '2011-02-19', 0, 0, '', 2000),
+(78, '2011-02-19', 0, 0, '', 2000),
+(79, '2011-02-19', 0, 0, '', 2000),
+(80, '2011-02-19', 0, 0, '', 2000),
+(81, '2011-02-19', 0, 0, '', 0),
+(82, '2011-02-19', 0, 0, '', 2000),
+(83, '2011-02-19', 0, 0, '', 2000),
+(84, '2011-02-19', 0, 0, '', 0),
+(85, '2011-02-19', 0, 0, '', 2000),
+(86, '2011-02-19', 0, 0, '', 2000),
+(87, '2011-02-19', 0, 0, '', 0),
+(88, '2011-02-19', 0, 0, '', 2000),
+(89, '2011-02-19', 0, 0, '', 2000),
+(90, '2011-02-19', 0, 0, '', 2000),
+(91, '2011-02-19', 0, 0, '', 2000),
+(92, '2011-02-19', 0, 0, '', 2000),
+(93, '2011-02-19', 0, 0, '', 2000),
+(94, '2011-02-19', 0, 0, '', 2000),
+(95, '2011-02-19', 0, 0, '', 0),
+(96, '2011-02-19', 0, 0, '', 2000),
+(97, '2011-02-19', 0, 0, '', 2000),
+(98, '2011-02-19', 0, 0, '', 2000),
+(99, '2011-02-19', 0, 0, '', 2000),
+(100, '2011-02-19', 0, 0, '', 2000),
+(101, '2011-02-19', 0, 0, '', 2000),
+(102, '2011-02-19', 0, 0, '', 2000),
+(103, '2011-02-19', 9, 0, '', 0),
+(104, '2011-02-20', 0, 0, '', 2000),
+(105, '2011-02-20', 0, 0, '', 2000),
+(106, '2011-02-20', 0, 0, '', 2000),
+(107, '2011-02-20', 0, 0, '', 2000),
+(108, '2011-02-20', 9, 0, '', 0),
+(109, '2011-02-20', 9, 0, '', 0),
+(110, '2011-02-20', 9, 0, '', 0),
+(111, '2011-02-20', 0, 0, '', 0),
+(112, '2011-02-20', 0, 0, '', 0),
+(113, '2011-02-20', 9, 0, '', 0),
+(114, '2011-02-20', 20, 0, '', 0),
+(115, '2011-02-20', 9, 0, '1', 0),
+(116, '2011-02-20', 20, 0, '1', 2660),
+(117, '2011-02-20', 9, 0, '1', 11300),
+(118, '2011-02-20', 9, 0, '1', 6600),
+(119, '2011-02-20', 9, 0, '1', 5000),
+(120, '2011-02-20', 20, 0, '1', 0),
+(121, '2011-02-20', 20, 0, '1', 0),
+(122, '2011-02-20', 9, 0, '1', 650),
+(123, '2011-02-20', 9, 0, '1', 1230),
+(124, '2011-02-20', 20, 0, '1', 12940),
+(125, '2011-02-21', 28, 0, '1', 500),
+(126, '2011-02-28', 29, 0, '0', 3200000),
+(127, '2011-02-28', 30, 0, '0', 960000),
+(128, '2011-02-28', 31, 0, '0', 2000);
 
 -- --------------------------------------------------------
 
@@ -266,64 +387,64 @@ CREATE TABLE IF NOT EXISTS `categories_description` (
 
 INSERT INTO `categories_description` (`categories_id`, `language_id`, `categories_name`) VALUES
 (1, 1, 'Hardware'),
-(2, 1, 'Software'),
-(3, 1, 'DVD Movies'),
-(4, 1, 'Graphics Cards'),
-(5, 1, 'Printers'),
-(6, 1, 'Monitors'),
-(7, 1, 'Speakers'),
-(8, 1, 'Keyboards'),
-(9, 1, 'Mice'),
-(10, 1, 'Action'),
-(11, 1, 'Science Fiction'),
-(12, 1, 'Comedy'),
-(13, 1, 'Cartoons'),
-(14, 1, 'Thriller'),
-(15, 1, 'Drama'),
-(16, 1, 'Memory'),
-(17, 1, 'CDROM Drives'),
-(18, 1, 'Simulation'),
-(19, 1, 'Action'),
-(20, 1, 'Strategy'),
 (1, 2, 'Hardware'),
-(2, 2, 'Software'),
-(3, 2, 'DVD Filme'),
-(4, 2, 'Grafikkarten'),
-(5, 2, 'Drucker'),
-(6, 2, 'Bildschirme'),
-(7, 2, 'Lautsprecher'),
-(8, 2, 'Tastaturen'),
-(9, 2, 'Mäuse'),
-(10, 2, 'Action'),
-(11, 2, 'Science Fiction'),
-(12, 2, 'Komödie'),
-(13, 2, 'Zeichentrick'),
-(14, 2, 'Thriller'),
-(15, 2, 'Drama'),
-(16, 2, 'Speicher'),
-(17, 2, 'CDROM Laufwerke'),
-(18, 2, 'Simulation'),
-(19, 2, 'Action'),
-(20, 2, 'Strategie'),
 (1, 3, 'Hardware'),
+(2, 1, 'Software'),
+(2, 2, 'Software'),
 (2, 3, 'Software'),
+(3, 1, 'DVD Movies'),
+(3, 2, 'DVD Filme'),
 (3, 3, 'Peliculas DVD'),
+(4, 1, 'Graphics Cards'),
+(4, 2, 'Grafikkarten'),
 (4, 3, 'Tarjetas Graficas'),
+(5, 1, 'Printers'),
+(5, 2, 'Drucker'),
 (5, 3, 'Impresoras'),
+(6, 1, 'Monitors'),
+(6, 2, 'Bildschirme'),
 (6, 3, 'Monitores'),
+(7, 1, 'Speakers'),
+(7, 2, 'Lautsprecher'),
 (7, 3, 'Altavoces'),
+(8, 1, 'Keyboards'),
+(8, 2, 'Tastaturen'),
 (8, 3, 'Teclados'),
+(9, 1, 'Mice'),
+(9, 2, 'Mäuse'),
 (9, 3, 'Ratones'),
+(10, 1, 'Action'),
+(10, 2, 'Action'),
 (10, 3, 'Accion'),
+(11, 1, 'Science Fiction'),
+(11, 2, 'Science Fiction'),
 (11, 3, 'Ciencia Ficcion'),
+(12, 1, 'Comedy'),
+(12, 2, 'Komödie'),
 (12, 3, 'Comedia'),
+(13, 1, 'Cartoons'),
+(13, 2, 'Zeichentrick'),
 (13, 3, 'Dibujos Animados'),
+(14, 1, 'Thriller'),
+(14, 2, 'Thriller'),
 (14, 3, 'Suspense'),
+(15, 1, 'Drama'),
+(15, 2, 'Drama'),
 (15, 3, 'Drama'),
+(16, 1, 'Memory'),
+(16, 2, 'Speicher'),
 (16, 3, 'Memoria'),
+(17, 1, 'CDROM Drives'),
+(17, 2, 'CDROM Laufwerke'),
 (17, 3, 'Unidades CDROM'),
+(18, 1, 'Simulation'),
+(18, 2, 'Simulation'),
 (18, 3, 'Simulacion'),
+(19, 1, 'Action'),
+(19, 2, 'Action'),
 (19, 3, 'Accion'),
+(20, 1, 'Strategy'),
+(20, 2, 'Strategie'),
 (20, 3, 'Estrategia');
 
 -- --------------------------------------------------------
@@ -908,7 +1029,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `customers_newsletter` char(1) DEFAULT NULL,
   PRIMARY KEY (`customers_id`),
   KEY `idx_customers_email_address` (`customers_email_address`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `customers`
@@ -925,7 +1046,19 @@ INSERT INTO `customers` (`customers_id`, `customers_gender`, `customers_firstnam
 (16, '', 'g', '', '0000-00-00 00:00:00', 'g', NULL, '', NULL, '002b26a710fa59bee334b254ead9cd2e:e1', NULL),
 (17, '', 'r', '', '0000-00-00 00:00:00', 'r', NULL, '', NULL, 'd4b6066ae7e0b3092dd3ef49349d0c73:21', NULL),
 (18, '', 'david', 'Hue', '0000-00-00 00:00:00', '', NULL, '1234567', NULL, '14ef8abfe3ae0194a39de558fbcfa765:5b', NULL),
-(19, '', '', '', '0000-00-00 00:00:00', '', NULL, '', NULL, 'd9d4f495e875a2e075a1a4a6e1b9770f:46', NULL);
+(19, '', '', '', '0000-00-00 00:00:00', '', NULL, '', NULL, 'd9d4f495e875a2e075a1a4a6e1b9770f:46', NULL),
+(20, '', 'Nhan', '', '0000-00-00 00:00:00', 'thanhnhan@yahoo.com', NULL, '', NULL, 'e1b50dbdfef461a836141e9a54dec7dd:8b', NULL),
+(21, 'Nam', 'ad', 'á', '0000-00-00 00:00:00', 'ada@dfs.vb', NULL, 'sa', NULL, '56cca34187204b5d2374bc3a767f8fc4:0a', NULL),
+(22, 'Nam', 'Hu?nh T?n Tài', 'TPHCM', '0000-00-00 00:00:00', 'tantai@yahoo.com', NULL, '0909090909', NULL, '132eb33b4bdeea22221f09f686d9b096:b5', NULL),
+(23, '', 'david', '', '0000-00-00 00:00:00', 'david@yahoo.com', NULL, '', NULL, '01d1f9f26664935fe7a2d0fa559218f4:94', NULL),
+(24, '', 'yty', '', '0000-00-00 00:00:00', 'kyo00710@gmail.com', NULL, '', NULL, 'b22f44db437e7b2926656afbd3fe0c62:44', NULL),
+(25, 'Nam', 'nhan`', 'Ho chi minh', '0000-00-00 00:00:00', 'qqq@yahoo.com', NULL, '23424657', NULL, '7950f2bd0aeef9ed473eda0e1d939a80:6a', NULL),
+(26, '', 'aaa', '', '0000-00-00 00:00:00', 'aaaa@yahoo.com', NULL, '', NULL, '99f3314da93dceb532a4c9a8acaf92f0:14', NULL),
+(27, 'Nam', 'Thành Nhân', 'Hu?', '0000-00-00 00:00:00', 'nhanvt1@fpt.net', NULL, '0938318629', NULL, 'a00d2b26588b6fe2a085558c3638bb01:61', NULL),
+(28, 'nu', 'ThuHa', 'Ho chi minh', '0000-00-00 00:00:00', 'thuynga@yahoo.com', NULL, '888888', NULL, 'e648d2eab2b2c78db628afbce8c4a4ef:d2', NULL),
+(29, '', 'katana', '123educjt', '0000-00-00 00:00:00', 'katana@ki.co', NULL, '12345566', NULL, '', NULL),
+(30, '', 'triquang', 'sdfsodifh', '0000-00-00 00:00:00', 'kyo00710@gmail.com', NULL, '2038403249', NULL, '', NULL),
+(31, '', 'thuha', '123educjt', '0000-00-00 00:00:00', 'kyo00710@gmail.com', NULL, '12345566', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -950,10 +1083,10 @@ CREATE TABLE IF NOT EXISTS `customers_basket` (
 --
 
 INSERT INTO `customers_basket` (`customers_basket_id`, `customers_id`, `products_id`, `customers_basket_quantity`, `final_price`, `customers_basket_date_added`) VALUES
-(4, 2, '16', 2, NULL, '20101125'),
 (3, 2, '8', 1, NULL, '20101125'),
-(7, 13, '8', 1, NULL, '20110106'),
-(6, 13, '21', 2, NULL, '20110106');
+(4, 2, '16', 2, NULL, '20101125'),
+(6, 13, '21', 2, NULL, '20110106'),
+(7, 13, '8', 1, NULL, '20110106');
 
 -- --------------------------------------------------------
 
@@ -1010,17 +1143,121 @@ INSERT INTO `customers_info` (`customers_info_id`, `customers_info_date_of_last_
 
 DROP TABLE IF EXISTS `detail_booking_form`;
 CREATE TABLE IF NOT EXISTS `detail_booking_form` (
-  `detail_booking_form_id` int(20) NOT NULL,
   `detail_booking_form_type_room_id` int(20) NOT NULL,
+  `detail_booking_form_id` int(20) NOT NULL,
+  `detail_booking_form_dateto` date NOT NULL,
+  `detail_booking_form_datego` date NOT NULL,
+  `detail_booking_form_staydate` int(2) NOT NULL,
   `detail_booking_form_number_room` int(20) NOT NULL,
   `detail_booking_form_price` int(20) NOT NULL,
-  PRIMARY KEY (`detail_booking_form_id`,`detail_booking_form_type_room_id`)
+  PRIMARY KEY (`detail_booking_form_type_room_id`,`detail_booking_form_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_booking_form`
 --
 
+INSERT INTO `detail_booking_form` (`detail_booking_form_type_room_id`, `detail_booking_form_id`, `detail_booking_form_dateto`, `detail_booking_form_datego`, `detail_booking_form_staydate`, `detail_booking_form_number_room`, `detail_booking_form_price`) VALUES
+(1, 13, '2011-02-17', '2011-02-19', 2, 1, 500),
+(1, 14, '2011-02-17', '2011-02-19', 2, 1, 500),
+(1, 15, '2011-02-17', '2011-02-19', 2, 1, 500),
+(1, 16, '2011-02-18', '2011-02-20', 2, 1, 500),
+(1, 17, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 18, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 19, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 20, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 21, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 22, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 23, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 24, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 25, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 26, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 27, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 28, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 29, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 30, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 31, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 32, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 33, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 34, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 35, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 36, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 37, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 38, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 39, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 40, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 41, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 42, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 43, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 44, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 45, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 46, '2011-02-18', '2011-02-19', 1, 2, 500),
+(1, 47, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 48, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 49, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 50, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 51, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 52, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 53, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 54, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 55, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 56, '2011-02-18', '2011-02-20', 2, 3, 500),
+(1, 57, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 58, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 59, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 60, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 61, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 62, '2011-02-18', '2011-02-19', 1, 1, 500),
+(1, 67, '2011-02-25', '2011-02-27', 2, 1, 500),
+(1, 81, '2011-02-22', '2011-02-25', 3, 1, 500),
+(1, 84, '2011-02-22', '2011-02-25', 3, 1, 500),
+(1, 87, '2011-02-27', '2011-02-28', 1, 1, 500),
+(1, 95, '2011-02-27', '2011-02-28', 1, 1, 500),
+(1, 103, '2011-02-22', '2011-02-24', 2, 1, 500),
+(1, 108, '2011-02-20', '2011-02-21', 1, 1, 500),
+(1, 109, '2011-02-22', '2011-02-25', 3, 3, 500),
+(1, 110, '2011-02-22', '2011-02-25', 3, 3, 500),
+(1, 125, '2011-02-21', '2011-02-22', 1, 1, 500),
+(2, 14, '2011-02-17', '2011-02-19', 2, 1, 480),
+(2, 15, '2011-02-17', '2011-02-19', 2, 1, 480),
+(2, 63, '2011-02-21', '2011-02-23', 2, 1, 480),
+(2, 64, '2011-02-21', '2011-02-23', 2, 1, 480),
+(2, 65, '2011-02-21', '2011-02-23', 2, 1, 480),
+(2, 66, '2011-02-21', '2011-02-23', 2, 1, 480),
+(2, 68, '2011-02-25', '2011-02-27', 2, 2, 480),
+(2, 84, '2011-02-22', '2011-02-24', 2, 1, 480),
+(2, 115, '2011-02-20', '2011-02-21', 1, 1, 480),
+(2, 120, '2011-02-20', '2011-02-21', 1, 1, 480),
+(2, 124, '2011-02-27', '2011-02-28', 1, 3, 480),
+(3, 115, '2011-02-20', '2011-02-21', 1, 1, 550),
+(3, 124, '2011-02-25', '2011-02-27', 2, 1, 550),
+(4, 119, '2011-02-22', '2011-02-24', 2, 1, 5000),
+(5, 124, '2011-02-25', '2011-02-27', 2, 1, 5200),
+(6, 110, '2011-02-20', '2011-02-21', 1, 1, 10000),
+(7, 69, '2011-02-25', '2011-02-27', 2, 2, 650),
+(7, 119, '2011-02-22', '2011-02-24', 2, 1, 650),
+(8, 13, '2011-02-17', '2011-02-19', 2, 1, 650),
+(8, 26, '2011-02-18', '2011-02-21', 3, 1, 650),
+(8, 27, '2011-02-18', '2011-02-21', 3, 1, 650),
+(8, 33, '2011-02-18', '2011-02-21', 3, 1, 650),
+(8, 34, '2011-02-18', '2011-02-21', 3, 1, 650),
+(8, 43, '2011-02-18', '2011-02-21', 3, 1, 650),
+(8, 44, '2011-02-18', '2011-02-21', 3, 1, 650),
+(8, 66, '2011-02-18', '2011-02-22', 4, 1, 650),
+(8, 69, '2011-02-25', '2011-02-27', 2, 1, 650),
+(8, 111, '2011-02-20', '2011-02-21', 1, 1, 650),
+(8, 122, '2011-02-20', '2011-02-21', 1, 1, 650),
+(8, 123, '2011-02-20', '2011-02-21', 1, 1, 650),
+(9, 123, '2011-02-20', '2011-02-21', 1, 1, 580),
+(10, 13, '2011-02-17', '2011-02-19', 2, 1, 800),
+(10, 112, '2011-02-20', '2011-02-21', 1, 1, 800),
+(10, 114, '2011-02-20', '2011-02-21', 1, 1, 800),
+(10, 120, '2011-02-20', '2011-02-21', 1, 2, 800),
+(10, 121, '2011-02-20', '2011-02-21', 1, 2, 800),
+(11, 113, '2011-02-20', '2011-02-21', 1, 1, 850),
+(10, 126, '0000-00-00', '0000-00-00', 2, 2, 800),
+(2, 127, '2011-03-03', '2011-03-03', 2, 1, 480),
+(1, 128, '2011-03-01', '2011-03-01', 2, 2, 500);
 
 -- --------------------------------------------------------
 
@@ -1085,7 +1322,7 @@ CREATE TABLE IF NOT EXISTS `managers` (
   `user_password` varchar(40) NOT NULL,
   `role` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `managers`
@@ -1094,7 +1331,9 @@ CREATE TABLE IF NOT EXISTS `managers` (
 INSERT INTO `managers` (`id`, `user_name`, `user_password`, `role`) VALUES
 (1, 'vonhan', '5ae5480fa76bea9ce8d449ad65e39faf:bd', 0),
 (2, 'quangha', '90a4490c9a5984c90f3dd3e84e138c78:8e', 0),
-(3, 'kitaro', '367fbb31d3bfa1102886fb9ffeb8b7b8:29', 1);
+(4, 'kitaro', '863e28b2647c7ad9622d104bb6cf0e33:f9', 1),
+(5, 'kangta', '000acc080b2bb574edde34774e64fda1:8c', 1),
+(6, 'kantana', 'd59084b66e167f13bef93b1a5d07acd2:ab', 0);
 
 -- --------------------------------------------------------
 
@@ -1443,7 +1682,8 @@ CREATE TABLE IF NOT EXISTS `owners` (
 
 INSERT INTO `owners` (`id`, `account_number`) VALUES
 (1, 123456),
-(2, 102409729);
+(2, 102409729),
+(6, 101204907);
 
 -- --------------------------------------------------------
 
@@ -1464,6 +1704,30 @@ CREATE TABLE IF NOT EXISTS `payment_methods` (
 -- Dumping data for table `payment_methods`
 --
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prepaid`
+--
+
+DROP TABLE IF EXISTS `prepaid`;
+CREATE TABLE IF NOT EXISTS `prepaid` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `booking_form_id` int(11) NOT NULL,
+  `prepay` int(11) NOT NULL,
+  `remain` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `prepaid`
+--
+
+INSERT INTO `prepaid` (`Id`, `booking_form_id`, `prepay`, `remain`) VALUES
+(1, 126, 160000, 3040000),
+(2, 127, 480000, 480000),
+(3, 128, 300, 1700);
 
 -- --------------------------------------------------------
 
@@ -1607,86 +1871,86 @@ CREATE TABLE IF NOT EXISTS `products_description` (
 
 INSERT INTO `products_description` (`products_id`, `language_id`, `products_name`, `products_description`, `products_url`, `products_viewed`) VALUES
 (1, 1, 'Matrox G200 MMS', 'Reinforcing its position as a multi-monitor trailblazer, Matrox Graphics Inc. has once again developed the most flexible and highly advanced solution in the industry. Introducing the new Matrox G200 Multi-Monitor Series; the first graphics card ever to support up to four DVI digital flat panel displays on a single 8&quot; PCI board.<br><br>With continuing demand for digital flat panels in the financial workplace, the Matrox G200 MMS is the ultimate in flexible solutions. The Matrox G200 MMS also supports the new digital video interface (DVI) created by the Digital Display Working Group (DDWG) designed to ease the adoption of digital flat panels. Other configurations include composite video capture ability and onboard TV tuner, making the Matrox G200 MMS the complete solution for business needs.<br><br>Based on the award-winning MGA-G200 graphics chip, the Matrox G200 Multi-Monitor Series provides superior 2D/3D graphics acceleration to meet the demanding needs of business applications such as real-time stock quotes (Versus), live video feeds (Reuters & Bloombergs), multiple windows applications, word processing, spreadsheets and CAD.', 'www.matrox.com/mga/products/g200_mms/home.cfm', 3),
-(2, 1, 'Matrox G400 32MB', '<b>Dramatically Different High Performance Graphics</b><br><br>Introducing the Millennium G400 Series - a dramatically different, high performance graphics experience. Armed with the industry''s fastest graphics chip, the Millennium G400 Series takes explosive acceleration two steps further by adding unprecedented image quality, along with the most versatile display options for all your 3D, 2D and DVD applications. As the most powerful and innovative tools in your PC''s arsenal, the Millennium G400 Series will not only change the way you see graphics, but will revolutionize the way you use your computer.<br><br><b>Key features:</b><ul><li>New Matrox G400 256-bit DualBus graphics chip</li><li>Explosive 3D, 2D and DVD performance</li><li>DualHead Display</li><li>Superior DVD and TV output</li><li>3D Environment-Mapped Bump Mapping</li><li>Vibrant Color Quality rendering </li><li>UltraSharp DAC of up to 360 MHz</li><li>3D Rendering Array Processor</li><li>Support for 16 or 32 MB of memory</li></ul>', 'www.matrox.com/mga/products/mill_g400/home.htm', 0),
-(3, 1, 'Microsoft IntelliMouse Pro', 'Every element of IntelliMouse Pro - from its unique arched shape to the texture of the rubber grip around its base - is the product of extensive customer and ergonomic research. Microsoft''s popular wheel control, which now allows zooming and universal scrolling functions, gives IntelliMouse Pro outstanding comfort and efficiency.', 'www.microsoft.com/hardware/mouse/intellimouse.asp', 0),
-(4, 1, 'The Replacement Killers', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>Languages: English, Deutsch.<br>Subtitles: English, Deutsch, Spanish.<br>Audio: Dolby Surround 5.1.<br>Picture Format: 16:9 Wide-Screen.<br>Length: (approx) 80 minutes.<br>Other: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.replacement-killers.com', 0),
-(5, 1, 'Blade Runner - Director''s Cut', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>Languages: English, Deutsch.<br>Subtitles: English, Deutsch, Spanish.<br>Audio: Dolby Surround 5.1.<br>Picture Format: 16:9 Wide-Screen.<br>Length: (approx) 112 minutes.<br>Other: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.bladerunner.com', 0),
-(6, 1, 'The Matrix', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch.\r<br>\nAudio: Dolby Surround.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 131 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Making Of.', 'www.thematrix.com', 1),
-(7, 1, 'You''ve Got Mail', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch, Spanish.\r<br>\nSubtitles: English, Deutsch, Spanish, French, Nordic, Polish.\r<br>\nAudio: Dolby Digital 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 115 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.youvegotmail.com', 0),
-(8, 1, 'A Bug''s Life', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Digital 5.1 / Dobly Surround Stereo.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 91 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.abugslife.com', 1),
-(9, 1, 'Under Siege', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 98 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
-(10, 1, 'Under Siege 2 - Dark Territory', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 98 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
-(11, 1, 'Fire Down Below', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 100 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
-(12, 1, 'Die Hard With A Vengeance', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 122 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
-(13, 1, 'Lethal Weapon', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 100 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
-(14, 1, 'Red Corner', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 117 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
-(15, 1, 'Frantic', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 115 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
-(16, 1, 'Courage Under Fire', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 112 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 3),
-(17, 1, 'Speed', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 112 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 2),
-(18, 1, 'Speed 2: Cruise Control', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 120 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
-(19, 1, 'There''s Something About Mary', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 114 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
-(20, 1, 'Beloved', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 164 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 2),
-(21, 1, 'SWAT 3: Close Quarters Battle', '<b>Windows 95/98</b><br><br>211 in progress with shots fired. Officer down. Armed suspects with hostages. Respond Code 3! Los Angles, 2005, In the next seven days, representatives from every nation around the world will converge on Las Angles to witness the signing of the United Nations Nuclear Abolishment Treaty. The protection of these dignitaries falls on the shoulders of one organization, LAPD SWAT. As part of this elite tactical organization, you and your team have the weapons and all the training necessary to protect, to serve, and "When needed" to use deadly force to keep the peace. It takes more than weapons to make it through each mission. Your arsenal includes C2 charges, flashbangs, tactical grenades. opti-Wand mini-video cameras, and other devices critical to meeting your objectives and keeping your men free of injury. Uncompromised Duty, Honor and Valor!', 'www.swat3.com', 2),
-(22, 1, 'Unreal Tournament', 'From the creators of the best-selling Unreal, comes Unreal Tournament. A new kind of single player experience. A ruthless multiplayer revolution.<br><br>This stand-alone game showcases completely new team-based gameplay, groundbreaking multi-faceted single player action or dynamic multi-player mayhem. It''s a fight to the finish for the title of Unreal Grand Master in the gladiatorial arena. A single player experience like no other! Guide your team of ''bots'' (virtual teamates) against the hardest criminals in the galaxy for the ultimate title - the Unreal Grand Master.', 'www.unrealtournament.net', 1),
-(23, 1, 'The Wheel Of Time', 'The world in which The Wheel of Time takes place is lifted directly out of Jordan''s pages; it''s huge and consists of many different environments. How you navigate the world will depend largely on which game - single player or multipayer - you''re playing. The single player experience, with a few exceptions, will see Elayna traversing the world mainly by foot (with a couple notable exceptions). In the multiplayer experience, your character will have more access to travel via Ter''angreal, Portal Stones, and the Ways. However you move around, though, you''ll quickly discover that means of locomotion can easily become the least of the your worries...<br><br>During your travels, you quickly discover that four locations are crucial to your success in the game. Not surprisingly, these locations are the homes of The Wheel of Time''s main characters. Some of these places are ripped directly from the pages of Jordan''s books, made flesh with Legend''s unparalleled pixel-pushing ways. Other places are specific to the game, conceived and executed with the intent of expanding this game world even further. Either way, they provide a backdrop for some of the most intense first person action and strategy you''ll have this year.', 'www.wheeloftime.com', 1),
-(24, 1, 'Disciples: Sacred Lands', 'A new age is dawning...<br><br>Enter the realm of the Sacred Lands, where the dawn of a New Age has set in motion the most momentous of wars. As the prophecies long foretold, four races now clash with swords and sorcery in a desperate bid to control the destiny of their gods. Take on the quest as a champion of the Empire, the Mountain Clans, the Legions of the Damned, or the Undead Hordes and test your faith in battles of brute force, spellbinding magic and acts of guile. Slay demons, vanquish giants and combat merciless forces of the dead and undead. But to ensure the salvation of your god, the hero within must evolve.<br><br>The day of reckoning has come... and only the chosen will survive.', '', 4),
-(25, 1, 'Microsoft Internet Keyboard PS/2', 'The Internet Keyboard has 10 Hot Keys on a comfortable standard keyboard design that also includes a detachable palm rest. The Hot Keys allow you to browse the web, or check e-mail directly from your keyboard. The IntelliType Pro software also allows you to customize your hot keys - make the Internet Keyboard work the way you want it to!', '', 1),
-(26, 1, 'Microsoft IntelliMouse Explorer', 'Microsoft introduces its most advanced mouse, the IntelliMouse Explorer! IntelliMouse Explorer features a sleek design, an industrial-silver finish, a glowing red underside and taillight, creating a style and look unlike any other mouse. IntelliMouse Explorer combines the accuracy and reliability of Microsoft IntelliEye optical tracking technology, the convenience of two new customizable function buttons, the efficiency of the scrolling wheel and the comfort of expert ergonomic design. All these great features make this the best mouse for the PC!', 'www.microsoft.com/hardware/mouse/explorer.asp', 8),
-(27, 1, 'Hewlett Packard LaserJet 1100Xi', 'HP has always set the pace in laser printing technology. The new generation HP LaserJet 1100 series sets another impressive pace, delivering a stunning 8 pages per minute print speed. The 600 dpi print resolution with HP''s Resolution Enhancement technology (REt) makes every document more professional.<br><br>Enhanced print speed and laser quality results are just the beginning. With 2MB standard memory, HP LaserJet 1100xi users will be able to print increasingly complex pages. Memory can be increased to 18MB to tackle even more complex documents with ease. The HP LaserJet 1100xi supports key operating systems including Windows 3.1, 3.11, 95, 98, NT 4.0, OS/2 and DOS. Network compatibility available via the optional HP JetDirect External Print Servers.<br><br>HP LaserJet 1100xi also features The Document Builder for the Web Era from Trellix Corp. (featuring software to create Web documents).', 'www.pandi.hp.com/pandi-db/prodinfo.main?product=laserjet1100', 1),
 (1, 2, 'Matrox G200 MMS', '<b>Unterstützung für zwei bzw. vier analoge oder digitale Monitore</b><br><br>\r\nDie Matrox G200 Multi-Monitor-Serie führt die bewährte Matrox Tradition im Multi-Monitor- Bereich fort und bietet flexible und fortschrittliche Lösungen.Matrox stellt als erstes Unternehmen einen vierfachen digitalen PanelLink® DVI Flachbildschirm Ausgang zur Verfügung. Mit den optional erhältlichen TV Tuner und Video-Capture Möglichkeiten stellt die Matrox G200 MMS eine alles umfassende Mehrschirm-Lösung dar.<br><br>\r\n<b>Leistungsmerkmale:</b>\r\n<ul>\r\n<li>Preisgekrönter Matrox G200 128-Bit Grafikchip</li>\r\n<li>Schneller 8 MB SGRAM-Speicher pro Kanal</li>\r\n<li>Integrierter, leistungsstarker 250 MHz RAMDAC</li>\r\n<li>Unterstützung für bis zu 16 Bildschirme über 4 Quad-Karten (unter Win NT,ab Treiber 4.40)</li>\r\n<li>Unterstützung von 9 Monitoren unter Win 98</li>\r\n<li>2 bzw. 4 analoge oder digitale Ausgabekanäle pro PCI-Karte</li>\r\n<li>Desktop-Darstellung von 1800 x 1440 oder 1920 x 1200 pro Chip</li>\r\n<li>Anschlußmöglichkeit an einen 15-poligen VGA-Monitor oder an einen 30-poligen digitalen DVI-Flachbildschirm plus integriertem Composite-Video-Eingang (bei der TV-Version)</li>\r\n<li>PCI Grafikkarte, kurze Baulänge</li>\r\n<li>Treiberunterstützung: Windows® 2000, Windows NT® und Windows® 98</li>\r\n<li>Anwendungsbereiche: Börsenumgebung mit zeitgleich großem Visualisierungsbedarf, Videoüberwachung, Video-Conferencing</li>\r\n</ul>', 'www.matrox.com/mga/deutsch/products/g200_mms/home.cfm', 0),
+(1, 3, 'Matrox G200 MMS', 'Reinforcing its position as a multi-monitor trailblazer, Matrox Graphics Inc. has once again developed the most flexible and highly advanced solution in the industry. Introducing the new Matrox G200 Multi-Monitor Series; the first graphics card ever to support up to four DVI digital flat panel displays on a single 8&quot; PCI board.<br><br>With continuing demand for digital flat panels in the financial workplace, the Matrox G200 MMS is the ultimate in flexible solutions. The Matrox G200 MMS also supports the new digital video interface (DVI) created by the Digital Display Working Group (DDWG) designed to ease the adoption of digital flat panels. Other configurations include composite video capture ability and onboard TV tuner, making the Matrox G200 MMS the complete solution for business needs.<br><br>Based on the award-winning MGA-G200 graphics chip, the Matrox G200 Multi-Monitor Series provides superior 2D/3D graphics acceleration to meet the demanding needs of business applications such as real-time stock quotes (Versus), live video feeds (Reuters & Bloombergs), multiple windows applications, word processing, spreadsheets and CAD.', 'www.matrox.com/mga/products/g200_mms/home.cfm', 0),
+(2, 1, 'Matrox G400 32MB', '<b>Dramatically Different High Performance Graphics</b><br><br>Introducing the Millennium G400 Series - a dramatically different, high performance graphics experience. Armed with the industry''s fastest graphics chip, the Millennium G400 Series takes explosive acceleration two steps further by adding unprecedented image quality, along with the most versatile display options for all your 3D, 2D and DVD applications. As the most powerful and innovative tools in your PC''s arsenal, the Millennium G400 Series will not only change the way you see graphics, but will revolutionize the way you use your computer.<br><br><b>Key features:</b><ul><li>New Matrox G400 256-bit DualBus graphics chip</li><li>Explosive 3D, 2D and DVD performance</li><li>DualHead Display</li><li>Superior DVD and TV output</li><li>3D Environment-Mapped Bump Mapping</li><li>Vibrant Color Quality rendering </li><li>UltraSharp DAC of up to 360 MHz</li><li>3D Rendering Array Processor</li><li>Support for 16 or 32 MB of memory</li></ul>', 'www.matrox.com/mga/products/mill_g400/home.htm', 0),
 (2, 2, 'Matrox G400 32 MB', '<b>Neu! Matrox G400 &quot;all inclusive&quot; und vieles mehr...</b><br><br>\r\nDie neue Millennium G400-Serie - Hochleistungsgrafik mit dem sensationellen Unterschied. Ausgestattet mit dem neu eingeführten Matrox G400 Grafikchip, bietet die Millennium G400-Serie eine überragende Beschleunigung inklusive bisher nie dagewesener Bildqualitat und enorm flexibler Darstellungsoptionen bei allen Ihren 3D-, 2D- und DVD-Anwendungen.<br><br>\r\n<ul>\r\n<li>DualHead Display und TV-Ausgang</li>\r\n<li>Environment Mapped Bump Mapping</li>\r\n<li>Matrox G400 256-Bit DualBus</li>\r\n<li>3D Rendering Array Prozessor</li>\r\n<li>Vibrant Color Quality² (VCQ²)</li>\r\n<li>UltraSharp DAC</li>\r\n</ul>\r\n<i>&quot;Bleibt abschließend festzustellen, daß die Matrox Millennium G400 Max als Allroundkarte für den Highend-PC derzeit unerreicht ist. Das ergibt den Testsieg und unsere wärmste Empfehlung.&quot;</i><br>\r\n<b>GameStar 8/99 (S.184)</b>', 'www.matrox.com/mga/deutsch/products/mill_g400/home.cfm', 0),
-(3, 2, 'Microsoft IntelliMouse Pro', 'Die IntelliMouse Pro hat mit der IntelliRad-Technologie einen neuen Standard gesetzt. Anwenderfreundliche Handhabung und produktiveres Arbeiten am PC zeichnen die IntelliMouse aus. Die gewölbte Oberseite paßt sich natürlich in die Handfläche ein, die geschwungene Form erleichtert das Bedienen der Maus. Sie ist sowohl für Rechts- wie auch für Linkshänder geeignet. Mit dem Rad der IntelliMouse kann der Anwender einfach und komfortabel durch Dokumente navigieren.<br><br>\r\n<b>Eigenschaften:</b>\r\n<ul>\r\n<li><b>ANSCHLUSS:</b> PS/2</li>\r\n<li><b>FARBE:</b> weiß</li>\r\n<li><b>TECHNIK:</b> Mauskugel</li>\r\n<li><b>TASTEN:</b> 3 (incl. Scrollrad)</li>\r\n<li><b>SCROLLRAD:</b> Ja</li>\r\n</ul>', '', 0),
-(4, 2, 'Die Ersatzkiller', 'Originaltitel: &quot;The Replacement Killers&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 80 minutes.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1998). Til Schweiger schießt auf Hongkong-Star Chow Yun-Fat (&quot;Anna und der König&quot;) ­ ein Fehler ...', 'www.replacement-killers.com', 0),
-(5, 2, 'Blade Runner - Director''s Cut', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 112 minutes.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n<b>Sci-Fi-Klassiker, USA 1983, 112 Min.</b><br><br>\r\nLos Angeles ist im Jahr 2019 ein Hexenkessel. Dauerregen und Smog tauchen den überbevölkerten Moloch in ewige Dämmerung. Polizeigleiter schwirren durch die Luft und überwachen das grelle Ethnogemisch, das sich am Fuße 400stöckiger Stahlbeton-Pyramiden tummelt. Der abgehalfterte Ex-Cop und "Blade Runner" Rick Deckard ist Spezialist für die Beseitigung von Replikanten, künstlichen Menschen, geschaffen für harte Arbeit auf fremden Planeten. Nur ihm kann es gelingen, vier flüchtige, hochintelligente "Nexus 6"-Spezialmodelle zu stellen. Die sind mit ihrem starken und brandgefährlichen Anführer Batty auf der Suche nach ihrem Schöpfer. Er soll ihnen eine längere Lebenszeit schenken. Das muß Rick Deckard verhindern.  Als sich der eiskalte Jäger in Rachel, die Sekretärin seines Auftraggebers, verliebt, gerät sein Weltbild jedoch ins Wanken. Er entdeckt, daß sie - vielleicht wie er selbst - ein Replikant ist ...<br><br>\r\nDie Konfrontation des Menschen mit "Realität" und "Virtualität" und das verstrickte Spiel mit getürkten Erinnerungen zieht sich als roter Faden durch das Werk von Autor Philip K. Dick ("Die totale Erinnerung"). Sein Roman "Träumen Roboter von elektrischen Schafen?" liefert die Vorlage für diesen doppelbödigen Thriller, der den Zuschauer mit faszinierenden\r\nZukunftsvisionen und der gigantischen Kulisse des Großstadtmolochs gefangen nimmt.', 'www.bladerunner.com', 0),
-(6, 2, 'Matrix', 'Originaltitel: &quot;The Matrix&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 136 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1999) Der Geniestreich der Wachowski-Brüder. In dieser technisch perfekten Utopie kämpft Hacker Keanu Reeves gegen die Diktatur der Maschinen...', 'www.whatisthematrix.com', 0),
-(7, 2, 'e-m@il für Dich', 'Original: &quot;You''ve got mail&quot;<br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 112 minutes.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1998) von Nora Ephron (&qout;Schlaflos in Seattle&quot;). Meg Ryan und Tom Hanks knüpfen per E-Mail zarte Bande. Dass sie sich schon kennen, ahnen sie nicht ...', 'www.youvegotmail.com', 0),
-(8, 2, 'Das Große Krabbeln', 'Originaltitel: &quot;A Bug''s Life&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1998). Ameise Flik zettelt einen Aufstand gegen gefräßige Grashüpfer an ... Eine fantastische Computeranimation des "Toy Story"-Teams. ', 'www.abugslife.com', 0),
-(9, 2, 'Alarmstufe: Rot', 'Originaltitel: &quot;Under Siege&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n<b>Actionthriller. Smutje Steven Seagal versalzt Schurke Tommy Lee Jones die Suppe</b><br><br>\r\nKatastrophe ahoi: Kurz vor Ausmusterung der "U.S.S. Missouri" kapert die High-tech-Bande von Ex-CIA-Agent Strannix (Tommy Lee Jones) das Schlachtschiff. Strannix will die Nuklearraketen des Kreuzers klauen und verscherbeln. Mit Hilfe des irren Ersten Offiziers Krill (lustig: Gary Busey) killen die Gangster den Käpt’n und sperren seine Crew unter Deck. Blöd, dass sie dabei Schiffskoch Rybak (Steven Seagal) vergessen. Der Ex-Elitekämpfer knipst einen Schurken nach dem anderen aus. Eine Verbündete findet er in Stripperin Jordan (Ex-"Baywatch"-Biene Erika Eleniak). Die sollte eigentlich aus Käpt’ns Geburtstagstorte hüpfen ... Klar: Seagal ist kein Edelmime. Dafür ist Regisseur Andrew Davis ("Auf der Flucht") ein Könner: Er würzt die Action-Orgie mit Ironie und nutzt die imposante Schiffskulisse voll aus. Für Effekte und Ton gab es 1993 Oscar-Nominierungen. ', '', 0),
-(10, 2, 'Alarmstufe: Rot 2', 'Originaltitel: &quot;Under Siege 2: Dark Territory&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA ’95). Von einem gekaperten Zug aus übernimmt Computerspezi Dane die Kontrolle über einen Kampfsatelliten und erpresst das Pentagon. Aber auch Ex-Offizier Ryback (Steven Seagal) ist im Zug ...\r\n', '', 0),
-(11, 2, 'Fire Down Below', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nEin mysteriöser Mordfall führt den Bundesmarschall Jack Taggert in eine Kleinstadt im US-Staat Kentucky. Doch bei seinen Ermittlungen stößt er auf eine Mauer des Schweigens. Angst beherrscht die Stadt, und alle Spuren führen zu dem undurchsichtigen Minen-Tycoon Orin Hanner. Offenbar werden in der friedlichen Berglandschaft gigantische Mengen Giftmülls verschoben, mit unkalkulierbaren Risiken. Um eine Katastrophe zu verhindern, räumt Taggert gnadenlos auf ...', '', 0),
-(12, 2, 'Stirb Langsam - Jetzt Erst Recht', 'Originaltitel: &quot;Die Hard With A Vengeance&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nSo explosiv, so spannend, so rasant wie nie zuvor: Bruce Willis als Detectiv John McClane in einem Action-Thriller der Superlative! Das ist heute nicht McClanes Tag. Seine Frau hat ihn verlassen, sein Boß hat ihn vom Dienst suspendiert und irgendein Verrückter hat ihn gerade zum Gegenspieler in einem teuflischen Spiel erkoren - und der Einsatz ist New York selbst. Ein Kaufhaus ist explodiert, doch das ist nur der Auftakt. Der geniale Superverbrecher Simon droht, die ganze Stadt Stück für Stück in die Luft zu sprengen, wenn McClane und sein Partner wider Willen seine explosiven" Rätsel nicht lösen. Eine mörderische Hetzjagd quer durch New York beginnt - bis McClane merkt, daß der Bombenterror eigentlich nur ein brillantes Ablenkungsmanöver ist...!<br><i>"Perfekt gemacht und stark besetzt. Das Action-Highlight des Jahres!"</i> <b>(Bild)</b>', '', 0),
-(13, 2, 'Zwei stahlharte Profis', 'Originaltitel: &quot;Lethal Weapon&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nSie sind beide Cops in L.A.. Sie haben beide in Vietnam für eine Spezialeinheit gekämpft. Und sie hassen es beide, mit einem Partner arbeiten zu müssen. Aber sie sind Partner: Martin Riggs, der Mann mit dem Todeswunsch, für wen auch immer. Und Roger Murtaugh, der besonnene Polizist. Gemeinsam enttarnen sie einen gigantischen Heroinschmuggel, hinter dem sich eine Gruppe ehemaliger CIA-Söldner verbirgt. Eine Killerbande gegen zwei Profis ...', '', 0),
-(14, 2, 'Labyrinth ohne Ausweg', 'Originaltitel: &quot;Red Corner&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nDem Amerikaner Jack Moore wird in China der bestialische Mord an einem Fotomodel angehängt. Brutale Gefängnisschergen versuchen, ihn durch Folter zu einem Geständnis zu zwingen. Vor Gericht fordert die Anklage die Todesstrafe - Moore''s Schicksal scheint besiegelt. Durch einen Zufall gelingt es ihm, aus der Haft zu fliehen, doch aus der feindseligen chinesischen Hauptstadt gibt es praktisch kein Entkommen ...', '', 0),
-(15, 2, 'Frantic', 'Originaltitel: &quot;Frantic&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nEin romantischer Urlaub in Paris, der sich in einen Alptraum verwandelt. Ein Mann auf der verzweifelten Suche nach seiner entführten Frau. Ein düster-bedrohliches Paris, in dem nur ein Mensch Licht in die tödliche Affäre bringen kann.', '', 0),
-(16, 2, 'Mut Zur Wahrheit', 'Originaltitel: &quot;Courage Under Fire&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nLieutenant Colonel Nathaniel Serling (Denzel Washington) lässt während einer Schlacht im Golfkrieg versehentlich auf einen US-Panzer schießen, dessen Mannschaft dabei ums Leben kommt. Ein Jahr nach diesem Vorfall wird Serling, der mittlerweile nach Washington D.C. versetzt wurde, die Aufgabe übertragen, sich um einen Kandidaten zu kümmern, der während des Krieges starb und dem der höchste militärische Orden zuteil werden soll. Allerdings sind sowohl der Fall und als auch der betreffende Soldat ein politisch heißes Eisen -- Captain Karen Walden (Meg Ryan) ist Amerikas erster weiblicher Soldat, der im Kampf getötet wurde.<br><br>\r\nSerling findet schnell heraus, dass es im Fall des im felsigen Gebiet von Kuwait abgestürzten Rettungshubschraubers Diskrepanzen gibt. In Flashbacks werden von unterschiedlichen Personen verschiedene Versionen von Waldens Taktik, die Soldaten zu retten und den Absturz zu überleben, dargestellt (à la Kurosawas Rashomon). Genau wie in Glory erweist sich Regisseur Edward Zwicks Zusammenstellung von bekannten und unbekannten Schauspielern als die richtige Mischung. Waldens Crew ist besonders überzeugend. Matt Damon als der Sanitäter kommt gut als der leichtfertige Typ rüber, als er Washington seine Geschichte erzählt. Im Kampf ist er ein mit Fehlern behafteter, humorvoller Soldat.<br><br>\r\nDie erstaunlichste Arbeit in Mut zur Wahrheit leistet Lou Diamond Phillips (als der Schütze der Gruppe), dessen Karriere sich auf dem Weg in die direkt für den Videomarkt produzierten Filme befand. Und dann ist da noch Ryan. Sie hat sich in dramatischen Filmen in der Vergangenheit gut behauptet (Eine fast perfekte Liebe, Ein blutiges Erbe), es aber nie geschafft, ihrem Image zu entfliehen, das sie in die Ecke der romantischen Komödie steckte. Mit gefärbtem Haar, einem leichten Akzent und der von ihr geforderten Darstellungskunst hat sie endlich einen langlebigen dramatischen Film. Obwohl sie nur halb so oft wie Washington im Film zu sehen ist, macht ihre mutige und beeindruckend nachhaltige Darstellung Mut zur Wahrheit zu einem speziellen Film bis hin zu dessen seltsamer, aber lohnender letzter Szene.', '', 0),
-(17, 2, 'Speed', 'Originaltitel: &quot;Speed&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nEr ist ein Cop aus der Anti-Terror-Einheit von Los Angeles. Und so ist der Alarm für Jack Traven nichts Ungewöhnliches: Ein Terrorist will drei Millionen Dollar erpressen, oder die zufälligen Geiseln in einem Aufzug fallen 35 Stockwerke in die Tiefe. Doch Jack schafft das Unmögliche - die Geiseln werden gerettet und der Terrorist stirbt an seiner eigenen Bombe. Scheinbar. Denn schon wenig später steht Jack (Keanu Reeves) dem Bombenexperten Payne erneut gegenüber. Diesmal hat sich der Erpresser eine ganz perfide Mordwaffe ausgedacht: Er plaziert eine Bombe in einem öffentlichen Bus. Der Mechanismus der Sprengladung schaltet sich automatisch ein, sobald der Bus schneller als 50 Meilen in der Stunde fährt und detoniert sofort, sobald die Geschwindigkeit sinkt. Plötzlich wird für eine Handvoll ahnungsloser Durchschnittsbürger der Weg zur Arbeit zum Höllentrip - und nur Jack hat ihr Leben in der Hand. Als der Busfahrer verletzt wird, übernimmt Fahrgast Annie (Sandra Bullock) das Steuer. Doch wohin mit einem Bus, der nicht bremsen kann in der Stadt der Staus? Doch es kommt noch schlimmer: Payne (Dennis Hopper) will jetzt nicht nur seine drei Millionen Dollar. Er will Jack. Um jeden Preis.', '', 0),
-(18, 2, 'Speed 2: Cruise Control', 'Originaltitel: &quot;Speed 2 - Cruise Control&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nHalten Sie ihre Schwimmwesten bereit, denn die actiongeladene Fortsetzung von Speed begibt sich auf Hochseekurs. Erleben Sie Sandra Bullock erneut in ihrer Star-Rolle als Annie Porter. Die Karibik-Kreuzfahrt mit ihrem Freund Alex entwickelt sich unaufhaltsam zur rasenden Todesfahrt, als ein wahnsinniger Computer-Spezialist den Luxusliner in seine Gewalt bringt und auf einen mörderischen Zerstörungskurs programmiert. Eine hochexplosive Reise, bei der kein geringerer als Action-Spezialist Jan De Bont das Ruder in die Hand nimmt. Speed 2: Cruise Controll läßt ihre Adrenalin-Wellen in rasender Geschwindigkeit ganz nach oben schnellen.', '', 0),
-(19, 2, 'Verrückt nach Mary', 'Originaltitel: &quot;There''s Something About Mary&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n13 Jahre nachdem Teds Rendezvous mit seiner angebeteten Mary in einem peinlichen Fiasko endete, träumt er immer noch von ihr und engagiert den windigen Privatdetektiv Healy um sie aufzuspüren. Der findet Mary in Florida und verliebt sich auf den ersten Blick in die atemberaubende Traumfrau. Um Ted als Nebenbuhler auszuschalten, tischt er ihm dicke Lügen über Mary auf. Ted läßt sich jedoch nicht abschrecken, eilt nach Miami und versucht nun alles, um Healy die Balztour zu vermasseln. Doch nicht nur Healy ist verrückt nach Mary und Ted bekommt es mit einer ganzen Legion liebeskranker Konkurrenten zu tun ...', '', 0),
-(20, 2, 'Menschenkind', 'Originaltitel: &quot;Beloved&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nDieser vielschichtige Film ist eine Arbeit, die Regisseur Jonathan Demme und dem amerikanischen Talkshow-Star Oprah Winfrey sehr am Herzen lag. Der Film deckt im Verlauf seiner dreistündigen Spielzeit viele Bereiche ab. Menschenkind ist teils Sklavenepos, teils Mutter-Tochter-Drama und teils Geistergeschichte.<br><br>\r\nDer Film fordert vom Publikum höchste Aufmerksamkeit, angefangen bei seiner dramatischen und etwas verwirrenden Eingangssequenz, in der die Bewohner eines Hauses von einem niederträchtigen übersinnlichen Angriff heimgesucht werden. Aber Demme und seine talentierte Besetzung bereiten denen, die dabei bleiben ein unvergessliches Erlebnis. Der Film folgt den Spuren von Sethe (in ihren mittleren Jahren von Oprah Winfrey dargestellt), einer ehemaligen Sklavin, die sich scheinbar ein friedliches und produktives Leben in Ohio aufgebaut hat. Aber durch den erschreckenden und sparsamen Einsatz von Rückblenden deckt Demme, genau wie das literarische Meisterwerk von Toni Morrison, auf dem der Film basiert, langsam die Schrecken von Sethes früherem Leben auf und das schreckliche Ereignis, dass dazu führte, dass Sethes Haus von Geistern heimgesucht wird.<br><br>\r\nWährend die Gräuel der Sklaverei und das blutige Ereignis in Sethes Familie unleugbar tief beeindrucken, ist die Qualität des Film auch in kleineren, genauso befriedigenden Details sichtbar. Die geistlich beeinflusste Musik von Rachel Portman ist gleichzeitig befreiend und bedrückend, und der Einblick in die afro-amerikanische Gemeinschaft nach der Sklaverei -- am Beispiel eines Familienausflugs zu einem Jahrmarkt, oder dem gospelsingenden Nähkränzchen -- machen diesen Film zu einem speziellen Vergnügen sowohl für den Geist als auch für das Herz. Die Schauspieler, besonders Kimberley Elise als Sethes kämpfende Tochter und Thandie Newton als der mysteriöse Titelcharakter, sind sehr rührend. Achten Sie auch auf Danny Glover (Lethal Weapon) als Paul D.', '', 0),
-(21, 2, 'SWAT 3: Elite Edition', '<b>KEINE KOMPROMISSE!</b><br><i>Kämpfen Sie Seite an Seite mit Ihren LAPD SWAT-Kameraden gegen das organisierte Verbrechen!</i><br><br>\r\nEine der realistischsten 3D-Taktiksimulationen der letzten Zeit jetzt mit Multiplayer-Modus, 5 neuen Missionen und jede Menge nützliche Tools!<br><br>\r\nLos Angeles, 2005. In wenigen Tagen steht die Unterzeichnung des Abkommens der Vereinten Nationen zur Atom-Ächtung durch Vertreter aller Nationen der Welt an. Radikale terroristische Vereinigungen machen sich in der ganzen Stadt breit. Verantwortlich für die Sicherheit der Delegierten zeichnet sich eine Eliteeinheit der LAPD: das SWAT-Team. Das Schicksal der Stadt liegt in Ihren Händen.<br><br>\r\n<b>Neue Features:</b>\r\n<ul>\r\n<li>Multiplayer-Modus (Co op-Modus, Deathmatch in den bekannten Variationen)</li>\r\n<li>5 neue Missionen an original Örtlichkeiten Las (U-Bahn, Whitman Airport, etc.)</li>\r\n<li>neue Charakter</li>\r\n<li>neue Skins</li>\r\n<li>neue Waffen</li>\r\n<li>neue Sounds</li>\r\n<li>verbesserte KI</li>\r\n<li>Tools-Package</li>\r\n<li>Scenario-Editor</li>\r\n<li>Level-Editor</li>\r\n</ul>\r\nDie dritte Folge der Bestseller-Reihe im Bereich der 3D-Echtzeit-Simulationen präsentiert sich mit einer neuen Spielengine mit extrem ausgeprägtem Realismusgrad. Der Spieler übernimmt das Kommando über eine der besten Polizei-Spezialeinheiten oder einer der übelsten Terroristen-Gangs der Welt. Er durchläuft - als "Guter" oder "Böser" - eine der härtesten und elitärsten Kampfausbildungen, in der er lernt, mit jeder Art von Krisensituationen umzugehen. Bei diesem Action-Abenteuer geht es um das Leben prominenter Vertreter der Vereinten Nationen und bei 16 Missionen an Originalschauplätzen in LA gibt die "lebensechte" KI den Protagonisten jeder Seite so einige harte Nüsse zu knacken.', 'www.swat3.com', 0),
-(22, 2, 'Unreal Tournament', '2341: Die Gewalt ist eine Lebensweise, die sich ihren Weg durch die dunklen Risse der Gesellschaft bahnt. Sie bedroht die Macht und den Einfluss der regierenden Firmen, die schnellstens ein Mittel finden müssen, die tobenden Massen zu besänftigen - ein profitables Mittel ... Gladiatorenkämpfe sind die Lösung. Sie sollen den Durst der Menschen nach Blut stillen und sind die perfekte Gelegenheit, die Aufständischen, Kriminellen und Aliens zu beseitigen, die die Firmenelite bedrohen.<br><br>\r\nDas Turnier war geboren - ein Kampf auf Leben und Tod. Galaxisweit live und in Farbe! Kämpfen Sie für Freiheit, Ruhm und Ehre. Sie müssen stark, schnell und geschickt sein ... oder Sie bleiben auf der Strecke.<br><br>\r\nKämpfen Sie allein oder kommandieren Sie ein Team gegen Armeen unbarmherziger Krieger, die alle nur ein Ziel vor Augen haben: Die Arenen lebend zu verlassen und sich dem Grand Champion zu stellen ... um ihn dann zu bezwingen!<br><br>\r\n<b>Features:</b>\r\n<ul>\r\n<li>Auf dem PC mehrfach als Spiel des Jahres ausgezeichnet!</li>\r\n<li>Mehr als 50 faszinierende Level - verlassene Raumstationen, gotische Kathedralen und graffitibedeckte Großstädte.</li>\r\n<li>Vier actionreiche Spielmodi - Deathmatch, Capture the Flag, Assault und Domination werden Ihren Adrenalinpegel in die Höhe schnellen lassen.</li>\r\n<li>Dramatische Mehrspieler-Kämpfe mit 2, 3 und 4 Spielern, auch über das Netzwerk</li>\r\n<li>Gnadenlos aggressive Computergegner verlangen Ihnen das Äußerste ab.</li>\r\n<li>Neuartiges Benutzerinterface und verbesserte Steuerung - auch mit USB-Maus und -Tastatur spielbar.</li>\r\n</ul>\r\nDer Nachfolger des Actionhits "Unreal" verspricht ein leichtes, intuitives Interface, um auch Einsteigern schnellen Zugang zu den Duellen gegen die Bots zu ermöglichen. Mit diesen KI-Kriegern kann man auch Teams bilden und im umfangreichen Multiplayermodus ohne Onlinekosten in den Kampf ziehen. 35 komplett neue Arenen und das erweiterte Waffenangebot bilden dazu den würdigen Rahmen.', 'www.unrealtournament.net', 0),
-(23, 2, 'The Wheel Of Time', '<b><i>"Wheel Of Time"(Das Rad der Zeit)</i></b> basiert auf den Fantasy-Romanen von Kultautor Robert Jordan und stellt einen einzigartigen Mix aus Strategie-, Action- und Rollenspielelementen dar. Obwohl die Welt von "Wheel of Time" eng an die literarische Vorlage der Romane angelehnt ist, erzählt das Spiel keine lineare Geschichte. Die Story entwickelt sich abhängig von den Aktionen der Spieler, die jeweils die Rollen der Hauptcharaktere aus dem Roman übernehmen. Jede Figur hat den Oberbefehl über eine große Gefolgschaft, militärische Einheiten und Ländereien. Die Spieler können ihre eigenen Festungen konstruieren, individuell ausbauen, von dort aus das umliegende Land erforschen, magische Gegenstände sammeln oder die gegnerischen Zitadellen erstürmen. Selbstverständlich kann man sich auch über LAN oder Internet gegenseitig Truppen auf den Hals hetzen und die Festungen seiner Mitspieler in Schutt und Asche legen. Dreh- und Anlegepunkt von "Wheel of Time" ist der Kampf um die finstere Macht "The Dark One", die vor langer Zeit die Menschheit beinahe ins Verderben stürzte und nur mit Hilfe gewaltiger magischer Energie verbannt werden konnte. "The Amyrlin Seat" und "The Children of the Night" kämpfen nur gegen "The Forsaken" und "The Hound" um den Besitz des Schlüssels zu "Shayol Ghul" - dem magischen Siegel, mit dessen Hilfe "The Dark One" seinerzeit gebannt werden konnte.<br><br>\r\n<b>Features:</b> \r\n<ul>\r\n<li>Ego-Shooter mit Strategie-Elementen</li>\r\n<li>Spielumgebung in Echtzeit-3D</li>\r\n<li>Konstruktion aud Ausbau der eigenen Festung</li>\r\n<li>Einsatz von über 100 Artefakten und Zaubersprüchen</li>\r\n<li>Single- und Multiplayermodus</li>\r\n</ul>\r\nIm Mittelpunkt steht der Kampf gegen eine finstere Macht namens The Dark One. Deren Schergen müssen mit dem Einsatz von über 100 Artefakten und Zaubereien wie Blitzschlag oder Teleportation aus dem Weg geräumt werden. Die opulente 3D-Grafik verbindet Strategie- und Rollenspielelemente. \r\n\r\n<b>Voraussetzungen</b>\r\nmind. P200, 32MB RAM, 4x CD-Rom, Win95/98, DirectX 5.0 komp.Grafikkarte und Soundkarte. ', 'www.wheeloftime.com', 0),
-(24, 2, 'Disciples: Sacred Land', 'Rundenbasierende Fantasy/RTS-Strategie mit gutem Design (vor allem die Levels, 4 versch. Rassen, tolle Einheiten), fantastischer Atmosphäre und exzellentem Soundtrack. Grafisch leider auf das Niveau von 1990.', 'www.strategyfirst.com/disciples/welcome.html', 0),
-(25, 2, 'Microsoft Internet Tastatur PS/2', '<i>Microsoft Internet Keyboard,Windows-Tastatur mit 10 zusätzl. Tasten,2 selbst programmierbar, abnehmbareHandgelenkauflage. Treiber im Lieferumfang.</i><br><br>\r\nEin-Klick-Zugriff auf das Internet und vieles mehr! Das Internet Keyboard verfügt über 10 zusätzliche Abkürzungstasten auf einer benutzerfreundlichen Standardtastatur, die darüber hinaus eine abnehmbare Handballenauflage aufweist. Über die Abkürzungstasten können Sie durch das Internet surfen oder direkt von der Tastatur aus auf E-Mails zugreifen. Die IntelliType Pro-Software ermöglicht außerdem das individuelle Belegen der Tasten.', '', 0),
-(26, 2, 'Microsof IntelliMouse Explorer', 'Die IntelliMouse Explorer überzeugt durch ihr modernes Design mit silberfarbenem Gehäuse, sowie rot schimmernder Unter- und Rückseite. Die neuartige IntelliEye-Technologie sorgt für eine noch nie dagewesene Präzision, da statt der beweglichen Teile (zum Abtasten der Bewegungsänderungen an der Unterseite der Maus) ein optischer Sensor die Bewegungen der Maus erfaßt. Das Herzstück der Microsoft IntelliEye-Technologie ist ein kleiner Chip, der einen optischen Sensor und einen digitalen Signalprozessor (DSP) enthält.<br><br>\r\nDa auf bewegliche Teile, die Staub, Schmutz und Fett aufnehmen können, verzichtet wurde, muß die IntelliMouse Explorer nicht mehr gereinigt werden. Darüber hinaus arbeitet die IntelliMouse Explorer auf nahezu jeder Arbeitsoberfläche, so daß kein Mauspad mehr erforderlich ist. Mit dem Rad und zwei neuen zusätzlichen Maustasten ermöglicht sie effizientes und komfortables Arbeiten am PC.<br><br>\r\n<b>Eigenschaften:</b>\r\n<ul>\r\n<li><b>ANSCHLUSS:</b> USB (PS/2-Adapter enthalten)</li>\r\n<li><b>FARBE:</b> metallic-grau</li>\r\n<li><b>TECHNIK:</b> Optisch (Akt.: ca. 1500 Bilder/s)</li>\r\n<li><b>TASTEN:</b> 5 (incl. Scrollrad)</li>\r\n<li><b>SCROLLRAD:</b> Ja</li>\r\n</ul>\r\n<i><b>BEMERKUNG:</b><br>Keine Reinigung bewegter Teile mehr notwendig, da statt der Mauskugel ein Fotoempfänger benutzt wird.</i>', '', 0),
-(27, 2, 'Hewlett-Packard LaserJet 1100Xi', '<b>HP LaserJet für mehr Produktivität und Flexibilität am Arbeitsplatz</b><br><br>\r\nDer HP LaserJet 1100Xi Drucker verbindet exzellente Laserdruckqualität mit hoher Geschwindigkeit für mehr Effizienz.<br><br>\r\n<b>Zielkunden</b>\r\n<ul><li>Einzelanwender, die Wert auf professionelle Ausdrucke in Laserqualität legen und schnelle Ergebnisse auch bei komplexen Dokumenten erwarten.</li>\r\n<li>Der HP LaserJet 1100 sorgt mit gestochen scharfen Texten und Grafiken für ein professionelles Erscheinungsbild Ihrer Arbeit und Ihres Unternehmens. Selbst bei komplexen Dokumenten liefert er schnelle Ergebnisse. Andere Medien - wie z.B. Transparentfolien und Briefumschläge, etc. - lassen sich problemlos bedrucken. Somit ist der HP LaserJet 1100 ein Multifunktionstalent im Büroalltag.</li>\r\n</ul>\r\n<b>Eigenschaften</b>\r\n<ul>\r\n<li><b>Druckqualität</b> Schwarzweiß: 600 x 600 dpi</li>\r\n<li><b>Monatliche Druckleistung</b> Bis zu 7000 Seiten</li>\r\n<li><b>Speicher</b> 2 MB Standardspeicher, erweiterbar auf 18 MB</li>\r\n<li><b>Schnittstelle/gemeinsame Nutzung</b> Parallel, IEEE 1284-kompatibel</li>\r\n<li><b>Softwarekompatibilität</b> DOS/Win 3.1x/9x/NT 4.0</li>\r\n<li><b>Papierzuführung</b> 125-Blatt-Papierzuführung</li>\r\n<li><b>Druckmedien</b> Normalpapier, Briefumschläge, Transparentfolien, kartoniertes Papier, Postkarten und Etiketten</li>\r\n<li><b>Netzwerkfähig</b> Über HP JetDirect PrintServer</li>\r\n<li><b>Lieferumfang</b> HP LaserJet 1100Xi Drucker (Lieferumfang: Drucker, Tonerkassette, 2 m Parallelkabel, Netzkabel, Kurzbedienungsanleitung, Benutzerhandbuch, CD-ROM, 3,5"-Disketten mit Windows® 3.1x, 9x, NT 4.0 Treibern und DOS-Dienstprogrammen)</li>\r\n<li><b>Gewährleistung</b> Ein Jahr</li>\r\n</ul>\r\n', 'www.hp.com', 0),
-(1, 3, 'Matrox G200 MMS', 'Reinforcing its position as a multi-monitor trailblazer, Matrox Graphics Inc. has once again developed the most flexible and highly advanced solution in the industry. Introducing the new Matrox G200 Multi-Monitor Series; the first graphics card ever to support up to four DVI digital flat panel displays on a single 8&quot; PCI board.<br><br>With continuing demand for digital flat panels in the financial workplace, the Matrox G200 MMS is the ultimate in flexible solutions. The Matrox G200 MMS also supports the new digital video interface (DVI) created by the Digital Display Working Group (DDWG) designed to ease the adoption of digital flat panels. Other configurations include composite video capture ability and onboard TV tuner, making the Matrox G200 MMS the complete solution for business needs.<br><br>Based on the award-winning MGA-G200 graphics chip, the Matrox G200 Multi-Monitor Series provides superior 2D/3D graphics acceleration to meet the demanding needs of business applications such as real-time stock quotes (Versus), live video feeds (Reuters & Bloombergs), multiple windows applications, word processing, spreadsheets and CAD.', 'www.matrox.com/mga/products/g200_mms/home.cfm', 0);
-INSERT INTO `products_description` (`products_id`, `language_id`, `products_name`, `products_description`, `products_url`, `products_viewed`) VALUES
 (2, 3, 'Matrox G400 32MB', '<b>Dramatically Different High Performance Graphics</b><br><br>Introducing the Millennium G400 Series - a dramatically different, high performance graphics experience. Armed with the industry''s fastest graphics chip, the Millennium G400 Series takes explosive acceleration two steps further by adding unprecedented image quality, along with the most versatile display options for all your 3D, 2D and DVD applications. As the most powerful and innovative tools in your PC''s arsenal, the Millennium G400 Series will not only change the way you see graphics, but will revolutionize the way you use your computer.<br><br><b>Key features:</b><ul><li>New Matrox G400 256-bit DualBus graphics chip</li><li>Explosive 3D, 2D and DVD performance</li><li>DualHead Display</li><li>Superior DVD and TV output</li><li>3D Environment-Mapped Bump Mapping</li><li>Vibrant Color Quality rendering </li><li>UltraSharp DAC of up to 360 MHz</li><li>3D Rendering Array Processor</li><li>Support for 16 or 32 MB of memory</li></ul>', 'www.matrox.com/mga/products/mill_g400/home.htm', 0),
+(3, 1, 'Microsoft IntelliMouse Pro', 'Every element of IntelliMouse Pro - from its unique arched shape to the texture of the rubber grip around its base - is the product of extensive customer and ergonomic research. Microsoft''s popular wheel control, which now allows zooming and universal scrolling functions, gives IntelliMouse Pro outstanding comfort and efficiency.', 'www.microsoft.com/hardware/mouse/intellimouse.asp', 0),
+(3, 2, 'Microsoft IntelliMouse Pro', 'Die IntelliMouse Pro hat mit der IntelliRad-Technologie einen neuen Standard gesetzt. Anwenderfreundliche Handhabung und produktiveres Arbeiten am PC zeichnen die IntelliMouse aus. Die gewölbte Oberseite paßt sich natürlich in die Handfläche ein, die geschwungene Form erleichtert das Bedienen der Maus. Sie ist sowohl für Rechts- wie auch für Linkshänder geeignet. Mit dem Rad der IntelliMouse kann der Anwender einfach und komfortabel durch Dokumente navigieren.<br><br>\r\n<b>Eigenschaften:</b>\r\n<ul>\r\n<li><b>ANSCHLUSS:</b> PS/2</li>\r\n<li><b>FARBE:</b> weiß</li>\r\n<li><b>TECHNIK:</b> Mauskugel</li>\r\n<li><b>TASTEN:</b> 3 (incl. Scrollrad)</li>\r\n<li><b>SCROLLRAD:</b> Ja</li>\r\n</ul>', '', 0),
 (3, 3, 'Microsoft IntelliMouse Pro', 'Every element of IntelliMouse Pro - from its unique arched shape to the texture of the rubber grip around its base - is the product of extensive customer and ergonomic research. Microsoft''s popular wheel control, which now allows zooming and universal scrolling functions, gives IntelliMouse Pro outstanding comfort and efficiency.', 'www.microsoft.com/hardware/mouse/intellimouse.asp', 0),
+(4, 1, 'The Replacement Killers', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>Languages: English, Deutsch.<br>Subtitles: English, Deutsch, Spanish.<br>Audio: Dolby Surround 5.1.<br>Picture Format: 16:9 Wide-Screen.<br>Length: (approx) 80 minutes.<br>Other: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.replacement-killers.com', 0),
+(4, 2, 'Die Ersatzkiller', 'Originaltitel: &quot;The Replacement Killers&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 80 minutes.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1998). Til Schweiger schießt auf Hongkong-Star Chow Yun-Fat (&quot;Anna und der König&quot;) ­ ein Fehler ...', 'www.replacement-killers.com', 0),
 (4, 3, 'The Replacement Killers', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>Languages: English, Deutsch.<br>Subtitles: English, Deutsch, Spanish.<br>Audio: Dolby Surround 5.1.<br>Picture Format: 16:9 Wide-Screen.<br>Length: (approx) 80 minutes.<br>Other: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.replacement-killers.com', 0),
+(5, 1, 'Blade Runner - Director''s Cut', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>Languages: English, Deutsch.<br>Subtitles: English, Deutsch, Spanish.<br>Audio: Dolby Surround 5.1.<br>Picture Format: 16:9 Wide-Screen.<br>Length: (approx) 112 minutes.<br>Other: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.bladerunner.com', 0),
+(5, 2, 'Blade Runner - Director''s Cut', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 112 minutes.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n<b>Sci-Fi-Klassiker, USA 1983, 112 Min.</b><br><br>\r\nLos Angeles ist im Jahr 2019 ein Hexenkessel. Dauerregen und Smog tauchen den überbevölkerten Moloch in ewige Dämmerung. Polizeigleiter schwirren durch die Luft und überwachen das grelle Ethnogemisch, das sich am Fuße 400stöckiger Stahlbeton-Pyramiden tummelt. Der abgehalfterte Ex-Cop und "Blade Runner" Rick Deckard ist Spezialist für die Beseitigung von Replikanten, künstlichen Menschen, geschaffen für harte Arbeit auf fremden Planeten. Nur ihm kann es gelingen, vier flüchtige, hochintelligente "Nexus 6"-Spezialmodelle zu stellen. Die sind mit ihrem starken und brandgefährlichen Anführer Batty auf der Suche nach ihrem Schöpfer. Er soll ihnen eine längere Lebenszeit schenken. Das muß Rick Deckard verhindern.  Als sich der eiskalte Jäger in Rachel, die Sekretärin seines Auftraggebers, verliebt, gerät sein Weltbild jedoch ins Wanken. Er entdeckt, daß sie - vielleicht wie er selbst - ein Replikant ist ...<br><br>\r\nDie Konfrontation des Menschen mit "Realität" und "Virtualität" und das verstrickte Spiel mit getürkten Erinnerungen zieht sich als roter Faden durch das Werk von Autor Philip K. Dick ("Die totale Erinnerung"). Sein Roman "Träumen Roboter von elektrischen Schafen?" liefert die Vorlage für diesen doppelbödigen Thriller, der den Zuschauer mit faszinierenden\r\nZukunftsvisionen und der gigantischen Kulisse des Großstadtmolochs gefangen nimmt.', 'www.bladerunner.com', 0),
 (5, 3, 'Blade Runner - Director''s Cut', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>Languages: English, Deutsch.<br>Subtitles: English, Deutsch, Spanish.<br>Audio: Dolby Surround 5.1.<br>Picture Format: 16:9 Wide-Screen.<br>Length: (approx) 112 minutes.<br>Other: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.bladerunner.com', 0),
+(6, 1, 'The Matrix', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch.\r<br>\nAudio: Dolby Surround.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 131 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Making Of.', 'www.thematrix.com', 1),
+(6, 2, 'Matrix', 'Originaltitel: &quot;The Matrix&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 136 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1999) Der Geniestreich der Wachowski-Brüder. In dieser technisch perfekten Utopie kämpft Hacker Keanu Reeves gegen die Diktatur der Maschinen...', 'www.whatisthematrix.com', 0),
 (6, 3, 'The Matrix', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch.\r<br>\nAudio: Dolby Surround.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 131 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Making Of.', 'www.thematrix.com', 0),
+(7, 1, 'You''ve Got Mail', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch, Spanish.\r<br>\nSubtitles: English, Deutsch, Spanish, French, Nordic, Polish.\r<br>\nAudio: Dolby Digital 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 115 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.youvegotmail.com', 0),
+(7, 2, 'e-m@il für Dich', 'Original: &quot;You''ve got mail&quot;<br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 112 minutes.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1998) von Nora Ephron (&qout;Schlaflos in Seattle&quot;). Meg Ryan und Tom Hanks knüpfen per E-Mail zarte Bande. Dass sie sich schon kennen, ahnen sie nicht ...', 'www.youvegotmail.com', 0),
 (7, 3, 'You''ve Got Mail', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch, Spanish.\r<br>\nSubtitles: English, Deutsch, Spanish, French, Nordic, Polish.\r<br>\nAudio: Dolby Digital 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 115 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.youvegotmail.com', 0),
+(8, 1, 'A Bug''s Life', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Digital 5.1 / Dobly Surround Stereo.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 91 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.abugslife.com', 1),
+(8, 2, 'Das Große Krabbeln', 'Originaltitel: &quot;A Bug''s Life&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA 1998). Ameise Flik zettelt einen Aufstand gegen gefräßige Grashüpfer an ... Eine fantastische Computeranimation des "Toy Story"-Teams. ', 'www.abugslife.com', 0),
 (8, 3, 'A Bug''s Life', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Digital 5.1 / Dobly Surround Stereo.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 91 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', 'www.abugslife.com', 0),
+(9, 1, 'Under Siege', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 98 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(9, 2, 'Alarmstufe: Rot', 'Originaltitel: &quot;Under Siege&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n<b>Actionthriller. Smutje Steven Seagal versalzt Schurke Tommy Lee Jones die Suppe</b><br><br>\r\nKatastrophe ahoi: Kurz vor Ausmusterung der "U.S.S. Missouri" kapert die High-tech-Bande von Ex-CIA-Agent Strannix (Tommy Lee Jones) das Schlachtschiff. Strannix will die Nuklearraketen des Kreuzers klauen und verscherbeln. Mit Hilfe des irren Ersten Offiziers Krill (lustig: Gary Busey) killen die Gangster den Käpt’n und sperren seine Crew unter Deck. Blöd, dass sie dabei Schiffskoch Rybak (Steven Seagal) vergessen. Der Ex-Elitekämpfer knipst einen Schurken nach dem anderen aus. Eine Verbündete findet er in Stripperin Jordan (Ex-"Baywatch"-Biene Erika Eleniak). Die sollte eigentlich aus Käpt’ns Geburtstagstorte hüpfen ... Klar: Seagal ist kein Edelmime. Dafür ist Regisseur Andrew Davis ("Auf der Flucht") ein Könner: Er würzt die Action-Orgie mit Ironie und nutzt die imposante Schiffskulisse voll aus. Für Effekte und Ton gab es 1993 Oscar-Nominierungen. ', '', 0),
 (9, 3, 'Under Siege', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 98 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(10, 1, 'Under Siege 2 - Dark Territory', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 98 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
+(10, 2, 'Alarmstufe: Rot 2', 'Originaltitel: &quot;Under Siege 2: Dark Territory&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n(USA ’95). Von einem gekaperten Zug aus übernimmt Computerspezi Dane die Kontrolle über einen Kampfsatelliten und erpresst das Pentagon. Aber auch Ex-Offizier Ryback (Steven Seagal) ist im Zug ...\r\n', '', 0),
 (10, 3, 'Under Siege 2 - Dark Territory', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 98 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(11, 1, 'Fire Down Below', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 100 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(11, 2, 'Fire Down Below', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nEin mysteriöser Mordfall führt den Bundesmarschall Jack Taggert in eine Kleinstadt im US-Staat Kentucky. Doch bei seinen Ermittlungen stößt er auf eine Mauer des Schweigens. Angst beherrscht die Stadt, und alle Spuren führen zu dem undurchsichtigen Minen-Tycoon Orin Hanner. Offenbar werden in der friedlichen Berglandschaft gigantische Mengen Giftmülls verschoben, mit unkalkulierbaren Risiken. Um eine Katastrophe zu verhindern, räumt Taggert gnadenlos auf ...', '', 0),
 (11, 3, 'Fire Down Below', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 100 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(12, 1, 'Die Hard With A Vengeance', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 122 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(12, 2, 'Stirb Langsam - Jetzt Erst Recht', 'Originaltitel: &quot;Die Hard With A Vengeance&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nSo explosiv, so spannend, so rasant wie nie zuvor: Bruce Willis als Detectiv John McClane in einem Action-Thriller der Superlative! Das ist heute nicht McClanes Tag. Seine Frau hat ihn verlassen, sein Boß hat ihn vom Dienst suspendiert und irgendein Verrückter hat ihn gerade zum Gegenspieler in einem teuflischen Spiel erkoren - und der Einsatz ist New York selbst. Ein Kaufhaus ist explodiert, doch das ist nur der Auftakt. Der geniale Superverbrecher Simon droht, die ganze Stadt Stück für Stück in die Luft zu sprengen, wenn McClane und sein Partner wider Willen seine explosiven" Rätsel nicht lösen. Eine mörderische Hetzjagd quer durch New York beginnt - bis McClane merkt, daß der Bombenterror eigentlich nur ein brillantes Ablenkungsmanöver ist...!<br><i>"Perfekt gemacht und stark besetzt. Das Action-Highlight des Jahres!"</i> <b>(Bild)</b>', '', 0),
 (12, 3, 'Die Hard With A Vengeance', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 122 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(13, 1, 'Lethal Weapon', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 100 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(13, 2, 'Zwei stahlharte Profis', 'Originaltitel: &quot;Lethal Weapon&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nSie sind beide Cops in L.A.. Sie haben beide in Vietnam für eine Spezialeinheit gekämpft. Und sie hassen es beide, mit einem Partner arbeiten zu müssen. Aber sie sind Partner: Martin Riggs, der Mann mit dem Todeswunsch, für wen auch immer. Und Roger Murtaugh, der besonnene Polizist. Gemeinsam enttarnen sie einen gigantischen Heroinschmuggel, hinter dem sich eine Gruppe ehemaliger CIA-Söldner verbirgt. Eine Killerbande gegen zwei Profis ...', '', 0),
 (13, 3, 'Lethal Weapon', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 100 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(14, 1, 'Red Corner', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 117 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
+(14, 2, 'Labyrinth ohne Ausweg', 'Originaltitel: &quot;Red Corner&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nDem Amerikaner Jack Moore wird in China der bestialische Mord an einem Fotomodel angehängt. Brutale Gefängnisschergen versuchen, ihn durch Folter zu einem Geständnis zu zwingen. Vor Gericht fordert die Anklage die Todesstrafe - Moore''s Schicksal scheint besiegelt. Durch einen Zufall gelingt es ihm, aus der Haft zu fliehen, doch aus der feindseligen chinesischen Hauptstadt gibt es praktisch kein Entkommen ...', '', 0),
 (14, 3, 'Red Corner', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 117 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(15, 1, 'Frantic', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 115 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(15, 2, 'Frantic', 'Originaltitel: &quot;Frantic&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nEin romantischer Urlaub in Paris, der sich in einen Alptraum verwandelt. Ein Mann auf der verzweifelten Suche nach seiner entführten Frau. Ein düster-bedrohliches Paris, in dem nur ein Mensch Licht in die tödliche Affäre bringen kann.', '', 0),
 (15, 3, 'Frantic', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 115 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(16, 1, 'Courage Under Fire', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 112 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 3),
+(16, 2, 'Mut Zur Wahrheit', 'Originaltitel: &quot;Courage Under Fire&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nLieutenant Colonel Nathaniel Serling (Denzel Washington) lässt während einer Schlacht im Golfkrieg versehentlich auf einen US-Panzer schießen, dessen Mannschaft dabei ums Leben kommt. Ein Jahr nach diesem Vorfall wird Serling, der mittlerweile nach Washington D.C. versetzt wurde, die Aufgabe übertragen, sich um einen Kandidaten zu kümmern, der während des Krieges starb und dem der höchste militärische Orden zuteil werden soll. Allerdings sind sowohl der Fall und als auch der betreffende Soldat ein politisch heißes Eisen -- Captain Karen Walden (Meg Ryan) ist Amerikas erster weiblicher Soldat, der im Kampf getötet wurde.<br><br>\r\nSerling findet schnell heraus, dass es im Fall des im felsigen Gebiet von Kuwait abgestürzten Rettungshubschraubers Diskrepanzen gibt. In Flashbacks werden von unterschiedlichen Personen verschiedene Versionen von Waldens Taktik, die Soldaten zu retten und den Absturz zu überleben, dargestellt (à la Kurosawas Rashomon). Genau wie in Glory erweist sich Regisseur Edward Zwicks Zusammenstellung von bekannten und unbekannten Schauspielern als die richtige Mischung. Waldens Crew ist besonders überzeugend. Matt Damon als der Sanitäter kommt gut als der leichtfertige Typ rüber, als er Washington seine Geschichte erzählt. Im Kampf ist er ein mit Fehlern behafteter, humorvoller Soldat.<br><br>\r\nDie erstaunlichste Arbeit in Mut zur Wahrheit leistet Lou Diamond Phillips (als der Schütze der Gruppe), dessen Karriere sich auf dem Weg in die direkt für den Videomarkt produzierten Filme befand. Und dann ist da noch Ryan. Sie hat sich in dramatischen Filmen in der Vergangenheit gut behauptet (Eine fast perfekte Liebe, Ein blutiges Erbe), es aber nie geschafft, ihrem Image zu entfliehen, das sie in die Ecke der romantischen Komödie steckte. Mit gefärbtem Haar, einem leichten Akzent und der von ihr geforderten Darstellungskunst hat sie endlich einen langlebigen dramatischen Film. Obwohl sie nur halb so oft wie Washington im Film zu sehen ist, macht ihre mutige und beeindruckend nachhaltige Darstellung Mut zur Wahrheit zu einem speziellen Film bis hin zu dessen seltsamer, aber lohnender letzter Szene.', '', 0),
 (16, 3, 'Courage Under Fire', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 112 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(17, 1, 'Speed', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 112 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 2),
+(17, 2, 'Speed', 'Originaltitel: &quot;Speed&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nEr ist ein Cop aus der Anti-Terror-Einheit von Los Angeles. Und so ist der Alarm für Jack Traven nichts Ungewöhnliches: Ein Terrorist will drei Millionen Dollar erpressen, oder die zufälligen Geiseln in einem Aufzug fallen 35 Stockwerke in die Tiefe. Doch Jack schafft das Unmögliche - die Geiseln werden gerettet und der Terrorist stirbt an seiner eigenen Bombe. Scheinbar. Denn schon wenig später steht Jack (Keanu Reeves) dem Bombenexperten Payne erneut gegenüber. Diesmal hat sich der Erpresser eine ganz perfide Mordwaffe ausgedacht: Er plaziert eine Bombe in einem öffentlichen Bus. Der Mechanismus der Sprengladung schaltet sich automatisch ein, sobald der Bus schneller als 50 Meilen in der Stunde fährt und detoniert sofort, sobald die Geschwindigkeit sinkt. Plötzlich wird für eine Handvoll ahnungsloser Durchschnittsbürger der Weg zur Arbeit zum Höllentrip - und nur Jack hat ihr Leben in der Hand. Als der Busfahrer verletzt wird, übernimmt Fahrgast Annie (Sandra Bullock) das Steuer. Doch wohin mit einem Bus, der nicht bremsen kann in der Stadt der Staus? Doch es kommt noch schlimmer: Payne (Dennis Hopper) will jetzt nicht nur seine drei Millionen Dollar. Er will Jack. Um jeden Preis.', '', 0),
 (17, 3, 'Speed', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 112 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(18, 1, 'Speed 2: Cruise Control', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 120 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
+(18, 2, 'Speed 2: Cruise Control', 'Originaltitel: &quot;Speed 2 - Cruise Control&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nHalten Sie ihre Schwimmwesten bereit, denn die actiongeladene Fortsetzung von Speed begibt sich auf Hochseekurs. Erleben Sie Sandra Bullock erneut in ihrer Star-Rolle als Annie Porter. Die Karibik-Kreuzfahrt mit ihrem Freund Alex entwickelt sich unaufhaltsam zur rasenden Todesfahrt, als ein wahnsinniger Computer-Spezialist den Luxusliner in seine Gewalt bringt und auf einen mörderischen Zerstörungskurs programmiert. Eine hochexplosive Reise, bei der kein geringerer als Action-Spezialist Jan De Bont das Ruder in die Hand nimmt. Speed 2: Cruise Controll läßt ihre Adrenalin-Wellen in rasender Geschwindigkeit ganz nach oben schnellen.', '', 0),
 (18, 3, 'Speed 2: Cruise Control', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 120 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(19, 1, 'There''s Something About Mary', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 114 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 1),
+(19, 2, 'Verrückt nach Mary', 'Originaltitel: &quot;There''s Something About Mary&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\n13 Jahre nachdem Teds Rendezvous mit seiner angebeteten Mary in einem peinlichen Fiasko endete, träumt er immer noch von ihr und engagiert den windigen Privatdetektiv Healy um sie aufzuspüren. Der findet Mary in Florida und verliebt sich auf den ersten Blick in die atemberaubende Traumfrau. Um Ted als Nebenbuhler auszuschalten, tischt er ihm dicke Lügen über Mary auf. Ted läßt sich jedoch nicht abschrecken, eilt nach Miami und versucht nun alles, um Healy die Balztour zu vermasseln. Doch nicht nur Healy ist verrückt nach Mary und Ted bekommt es mit einer ganzen Legion liebeskranker Konkurrenten zu tun ...', '', 0),
 (19, 3, 'There''s Something About Mary', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 114 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(20, 1, 'Beloved', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 164 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 2),
+(20, 2, 'Menschenkind', 'Originaltitel: &quot;Beloved&quot;<br><br>\r\nRegional Code: 2 (Japan, Europe, Middle East, South Africa).<br>\r\nSprachen: English, Deutsch.<br>\r\nUntertitel: English, Deutsch, Spanish.<br>\r\nAudio: Dolby Surround 5.1.<br>\r\nBildformat: 16:9 Wide-Screen.<br>\r\nDauer: (approx) 96 minuten.<br>\r\nAußerdem: Interaktive Menus, Kapitelauswahl, Untertitel.<br><br>\r\nDieser vielschichtige Film ist eine Arbeit, die Regisseur Jonathan Demme und dem amerikanischen Talkshow-Star Oprah Winfrey sehr am Herzen lag. Der Film deckt im Verlauf seiner dreistündigen Spielzeit viele Bereiche ab. Menschenkind ist teils Sklavenepos, teils Mutter-Tochter-Drama und teils Geistergeschichte.<br><br>\r\nDer Film fordert vom Publikum höchste Aufmerksamkeit, angefangen bei seiner dramatischen und etwas verwirrenden Eingangssequenz, in der die Bewohner eines Hauses von einem niederträchtigen übersinnlichen Angriff heimgesucht werden. Aber Demme und seine talentierte Besetzung bereiten denen, die dabei bleiben ein unvergessliches Erlebnis. Der Film folgt den Spuren von Sethe (in ihren mittleren Jahren von Oprah Winfrey dargestellt), einer ehemaligen Sklavin, die sich scheinbar ein friedliches und produktives Leben in Ohio aufgebaut hat. Aber durch den erschreckenden und sparsamen Einsatz von Rückblenden deckt Demme, genau wie das literarische Meisterwerk von Toni Morrison, auf dem der Film basiert, langsam die Schrecken von Sethes früherem Leben auf und das schreckliche Ereignis, dass dazu führte, dass Sethes Haus von Geistern heimgesucht wird.<br><br>\r\nWährend die Gräuel der Sklaverei und das blutige Ereignis in Sethes Familie unleugbar tief beeindrucken, ist die Qualität des Film auch in kleineren, genauso befriedigenden Details sichtbar. Die geistlich beeinflusste Musik von Rachel Portman ist gleichzeitig befreiend und bedrückend, und der Einblick in die afro-amerikanische Gemeinschaft nach der Sklaverei -- am Beispiel eines Familienausflugs zu einem Jahrmarkt, oder dem gospelsingenden Nähkränzchen -- machen diesen Film zu einem speziellen Vergnügen sowohl für den Geist als auch für das Herz. Die Schauspieler, besonders Kimberley Elise als Sethes kämpfende Tochter und Thandie Newton als der mysteriöse Titelcharakter, sind sehr rührend. Achten Sie auch auf Danny Glover (Lethal Weapon) als Paul D.', '', 0),
 (20, 3, 'Beloved', 'Regional Code: 2 (Japan, Europe, Middle East, South Africa).\r<br>\nLanguages: English, Deutsch.\r<br>\nSubtitles: English, Deutsch, Spanish.\r<br>\nAudio: Dolby Surround 5.1.\r<br>\nPicture Format: 16:9 Wide-Screen.\r<br>\nLength: (approx) 164 minutes.\r<br>\nOther: Interactive Menus, Chapter Selection, Subtitles (more languages).', '', 0),
+(21, 1, 'SWAT 3: Close Quarters Battle', '<b>Windows 95/98</b><br><br>211 in progress with shots fired. Officer down. Armed suspects with hostages. Respond Code 3! Los Angles, 2005, In the next seven days, representatives from every nation around the world will converge on Las Angles to witness the signing of the United Nations Nuclear Abolishment Treaty. The protection of these dignitaries falls on the shoulders of one organization, LAPD SWAT. As part of this elite tactical organization, you and your team have the weapons and all the training necessary to protect, to serve, and "When needed" to use deadly force to keep the peace. It takes more than weapons to make it through each mission. Your arsenal includes C2 charges, flashbangs, tactical grenades. opti-Wand mini-video cameras, and other devices critical to meeting your objectives and keeping your men free of injury. Uncompromised Duty, Honor and Valor!', 'www.swat3.com', 2),
+(21, 2, 'SWAT 3: Elite Edition', '<b>KEINE KOMPROMISSE!</b><br><i>Kämpfen Sie Seite an Seite mit Ihren LAPD SWAT-Kameraden gegen das organisierte Verbrechen!</i><br><br>\r\nEine der realistischsten 3D-Taktiksimulationen der letzten Zeit jetzt mit Multiplayer-Modus, 5 neuen Missionen und jede Menge nützliche Tools!<br><br>\r\nLos Angeles, 2005. In wenigen Tagen steht die Unterzeichnung des Abkommens der Vereinten Nationen zur Atom-Ächtung durch Vertreter aller Nationen der Welt an. Radikale terroristische Vereinigungen machen sich in der ganzen Stadt breit. Verantwortlich für die Sicherheit der Delegierten zeichnet sich eine Eliteeinheit der LAPD: das SWAT-Team. Das Schicksal der Stadt liegt in Ihren Händen.<br><br>\r\n<b>Neue Features:</b>\r\n<ul>\r\n<li>Multiplayer-Modus (Co op-Modus, Deathmatch in den bekannten Variationen)</li>\r\n<li>5 neue Missionen an original Örtlichkeiten Las (U-Bahn, Whitman Airport, etc.)</li>\r\n<li>neue Charakter</li>\r\n<li>neue Skins</li>\r\n<li>neue Waffen</li>\r\n<li>neue Sounds</li>\r\n<li>verbesserte KI</li>\r\n<li>Tools-Package</li>\r\n<li>Scenario-Editor</li>\r\n<li>Level-Editor</li>\r\n</ul>\r\nDie dritte Folge der Bestseller-Reihe im Bereich der 3D-Echtzeit-Simulationen präsentiert sich mit einer neuen Spielengine mit extrem ausgeprägtem Realismusgrad. Der Spieler übernimmt das Kommando über eine der besten Polizei-Spezialeinheiten oder einer der übelsten Terroristen-Gangs der Welt. Er durchläuft - als "Guter" oder "Böser" - eine der härtesten und elitärsten Kampfausbildungen, in der er lernt, mit jeder Art von Krisensituationen umzugehen. Bei diesem Action-Abenteuer geht es um das Leben prominenter Vertreter der Vereinten Nationen und bei 16 Missionen an Originalschauplätzen in LA gibt die "lebensechte" KI den Protagonisten jeder Seite so einige harte Nüsse zu knacken.', 'www.swat3.com', 0),
 (21, 3, 'SWAT 3: Close Quarters Battle', '<b>Windows 95/98</b><br><br>211 in progress with shots fired. Officer down. Armed suspects with hostages. Respond Code 3! Los Angles, 2005, In the next seven days, representatives from every nation around the world will converge on Las Angles to witness the signing of the United Nations Nuclear Abolishment Treaty. The protection of these dignitaries falls on the shoulders of one organization, LAPD SWAT. As part of this elite tactical organization, you and your team have the weapons and all the training necessary to protect, to serve, and "When needed" to use deadly force to keep the peace. It takes more than weapons to make it through each mission. Your arsenal includes C2 charges, flashbangs, tactical grenades. opti-Wand mini-video cameras, and other devices critical to meeting your objectives and keeping your men free of injury. Uncompromised Duty, Honor and Valor!', 'www.swat3.com', 0),
+(22, 1, 'Unreal Tournament', 'From the creators of the best-selling Unreal, comes Unreal Tournament. A new kind of single player experience. A ruthless multiplayer revolution.<br><br>This stand-alone game showcases completely new team-based gameplay, groundbreaking multi-faceted single player action or dynamic multi-player mayhem. It''s a fight to the finish for the title of Unreal Grand Master in the gladiatorial arena. A single player experience like no other! Guide your team of ''bots'' (virtual teamates) against the hardest criminals in the galaxy for the ultimate title - the Unreal Grand Master.', 'www.unrealtournament.net', 1),
+(22, 2, 'Unreal Tournament', '2341: Die Gewalt ist eine Lebensweise, die sich ihren Weg durch die dunklen Risse der Gesellschaft bahnt. Sie bedroht die Macht und den Einfluss der regierenden Firmen, die schnellstens ein Mittel finden müssen, die tobenden Massen zu besänftigen - ein profitables Mittel ... Gladiatorenkämpfe sind die Lösung. Sie sollen den Durst der Menschen nach Blut stillen und sind die perfekte Gelegenheit, die Aufständischen, Kriminellen und Aliens zu beseitigen, die die Firmenelite bedrohen.<br><br>\r\nDas Turnier war geboren - ein Kampf auf Leben und Tod. Galaxisweit live und in Farbe! Kämpfen Sie für Freiheit, Ruhm und Ehre. Sie müssen stark, schnell und geschickt sein ... oder Sie bleiben auf der Strecke.<br><br>\r\nKämpfen Sie allein oder kommandieren Sie ein Team gegen Armeen unbarmherziger Krieger, die alle nur ein Ziel vor Augen haben: Die Arenen lebend zu verlassen und sich dem Grand Champion zu stellen ... um ihn dann zu bezwingen!<br><br>\r\n<b>Features:</b>\r\n<ul>\r\n<li>Auf dem PC mehrfach als Spiel des Jahres ausgezeichnet!</li>\r\n<li>Mehr als 50 faszinierende Level - verlassene Raumstationen, gotische Kathedralen und graffitibedeckte Großstädte.</li>\r\n<li>Vier actionreiche Spielmodi - Deathmatch, Capture the Flag, Assault und Domination werden Ihren Adrenalinpegel in die Höhe schnellen lassen.</li>\r\n<li>Dramatische Mehrspieler-Kämpfe mit 2, 3 und 4 Spielern, auch über das Netzwerk</li>\r\n<li>Gnadenlos aggressive Computergegner verlangen Ihnen das Äußerste ab.</li>\r\n<li>Neuartiges Benutzerinterface und verbesserte Steuerung - auch mit USB-Maus und -Tastatur spielbar.</li>\r\n</ul>\r\nDer Nachfolger des Actionhits "Unreal" verspricht ein leichtes, intuitives Interface, um auch Einsteigern schnellen Zugang zu den Duellen gegen die Bots zu ermöglichen. Mit diesen KI-Kriegern kann man auch Teams bilden und im umfangreichen Multiplayermodus ohne Onlinekosten in den Kampf ziehen. 35 komplett neue Arenen und das erweiterte Waffenangebot bilden dazu den würdigen Rahmen.', 'www.unrealtournament.net', 0),
 (22, 3, 'Unreal Tournament', 'From the creators of the best-selling Unreal, comes Unreal Tournament. A new kind of single player experience. A ruthless multiplayer revolution.<br><br>This stand-alone game showcases completely new team-based gameplay, groundbreaking multi-faceted single player action or dynamic multi-player mayhem. It''s a fight to the finish for the title of Unreal Grand Master in the gladiatorial arena. A single player experience like no other! Guide your team of ''bots'' (virtual teamates) against the hardest criminals in the galaxy for the ultimate title - the Unreal Grand Master.', 'www.unrealtournament.net', 0),
+(23, 1, 'The Wheel Of Time', 'The world in which The Wheel of Time takes place is lifted directly out of Jordan''s pages; it''s huge and consists of many different environments. How you navigate the world will depend largely on which game - single player or multipayer - you''re playing. The single player experience, with a few exceptions, will see Elayna traversing the world mainly by foot (with a couple notable exceptions). In the multiplayer experience, your character will have more access to travel via Ter''angreal, Portal Stones, and the Ways. However you move around, though, you''ll quickly discover that means of locomotion can easily become the least of the your worries...<br><br>During your travels, you quickly discover that four locations are crucial to your success in the game. Not surprisingly, these locations are the homes of The Wheel of Time''s main characters. Some of these places are ripped directly from the pages of Jordan''s books, made flesh with Legend''s unparalleled pixel-pushing ways. Other places are specific to the game, conceived and executed with the intent of expanding this game world even further. Either way, they provide a backdrop for some of the most intense first person action and strategy you''ll have this year.', 'www.wheeloftime.com', 1);
+INSERT INTO `products_description` (`products_id`, `language_id`, `products_name`, `products_description`, `products_url`, `products_viewed`) VALUES
+(23, 2, 'The Wheel Of Time', '<b><i>"Wheel Of Time"(Das Rad der Zeit)</i></b> basiert auf den Fantasy-Romanen von Kultautor Robert Jordan und stellt einen einzigartigen Mix aus Strategie-, Action- und Rollenspielelementen dar. Obwohl die Welt von "Wheel of Time" eng an die literarische Vorlage der Romane angelehnt ist, erzählt das Spiel keine lineare Geschichte. Die Story entwickelt sich abhängig von den Aktionen der Spieler, die jeweils die Rollen der Hauptcharaktere aus dem Roman übernehmen. Jede Figur hat den Oberbefehl über eine große Gefolgschaft, militärische Einheiten und Ländereien. Die Spieler können ihre eigenen Festungen konstruieren, individuell ausbauen, von dort aus das umliegende Land erforschen, magische Gegenstände sammeln oder die gegnerischen Zitadellen erstürmen. Selbstverständlich kann man sich auch über LAN oder Internet gegenseitig Truppen auf den Hals hetzen und die Festungen seiner Mitspieler in Schutt und Asche legen. Dreh- und Anlegepunkt von "Wheel of Time" ist der Kampf um die finstere Macht "The Dark One", die vor langer Zeit die Menschheit beinahe ins Verderben stürzte und nur mit Hilfe gewaltiger magischer Energie verbannt werden konnte. "The Amyrlin Seat" und "The Children of the Night" kämpfen nur gegen "The Forsaken" und "The Hound" um den Besitz des Schlüssels zu "Shayol Ghul" - dem magischen Siegel, mit dessen Hilfe "The Dark One" seinerzeit gebannt werden konnte.<br><br>\r\n<b>Features:</b> \r\n<ul>\r\n<li>Ego-Shooter mit Strategie-Elementen</li>\r\n<li>Spielumgebung in Echtzeit-3D</li>\r\n<li>Konstruktion aud Ausbau der eigenen Festung</li>\r\n<li>Einsatz von über 100 Artefakten und Zaubersprüchen</li>\r\n<li>Single- und Multiplayermodus</li>\r\n</ul>\r\nIm Mittelpunkt steht der Kampf gegen eine finstere Macht namens The Dark One. Deren Schergen müssen mit dem Einsatz von über 100 Artefakten und Zaubereien wie Blitzschlag oder Teleportation aus dem Weg geräumt werden. Die opulente 3D-Grafik verbindet Strategie- und Rollenspielelemente. \r\n\r\n<b>Voraussetzungen</b>\r\nmind. P200, 32MB RAM, 4x CD-Rom, Win95/98, DirectX 5.0 komp.Grafikkarte und Soundkarte. ', 'www.wheeloftime.com', 0),
 (23, 3, 'The Wheel Of Time', 'The world in which The Wheel of Time takes place is lifted directly out of Jordan''s pages; it''s huge and consists of many different environments. How you navigate the world will depend largely on which game - single player or multipayer - you''re playing. The single player experience, with a few exceptions, will see Elayna traversing the world mainly by foot (with a couple notable exceptions). In the multiplayer experience, your character will have more access to travel via Ter''angreal, Portal Stones, and the Ways. However you move around, though, you''ll quickly discover that means of locomotion can easily become the least of the your worries...<br><br>During your travels, you quickly discover that four locations are crucial to your success in the game. Not surprisingly, these locations are the homes of The Wheel of Time''s main characters. Some of these places are ripped directly from the pages of Jordan''s books, made flesh with Legend''s unparalleled pixel-pushing ways. Other places are specific to the game, conceived and executed with the intent of expanding this game world even further. Either way, they provide a backdrop for some of the most intense first person action and strategy you''ll have this year.', 'www.wheeloftime.com', 0),
+(24, 1, 'Disciples: Sacred Lands', 'A new age is dawning...<br><br>Enter the realm of the Sacred Lands, where the dawn of a New Age has set in motion the most momentous of wars. As the prophecies long foretold, four races now clash with swords and sorcery in a desperate bid to control the destiny of their gods. Take on the quest as a champion of the Empire, the Mountain Clans, the Legions of the Damned, or the Undead Hordes and test your faith in battles of brute force, spellbinding magic and acts of guile. Slay demons, vanquish giants and combat merciless forces of the dead and undead. But to ensure the salvation of your god, the hero within must evolve.<br><br>The day of reckoning has come... and only the chosen will survive.', '', 4),
+(24, 2, 'Disciples: Sacred Land', 'Rundenbasierende Fantasy/RTS-Strategie mit gutem Design (vor allem die Levels, 4 versch. Rassen, tolle Einheiten), fantastischer Atmosphäre und exzellentem Soundtrack. Grafisch leider auf das Niveau von 1990.', 'www.strategyfirst.com/disciples/welcome.html', 0),
 (24, 3, 'Disciples: Sacred Lands', 'A new age is dawning...<br><br>Enter the realm of the Sacred Lands, where the dawn of a New Age has set in motion the most momentous of wars. As the prophecies long foretold, four races now clash with swords and sorcery in a desperate bid to control the destiny of their gods. Take on the quest as a champion of the Empire, the Mountain Clans, the Legions of the Damned, or the Undead Hordes and test your faith in battles of brute force, spellbinding magic and acts of guile. Slay demons, vanquish giants and combat merciless forces of the dead and undead. But to ensure the salvation of your god, the hero within must evolve.<br><br>The day of reckoning has come... and only the chosen will survive.', '', 0),
+(25, 1, 'Microsoft Internet Keyboard PS/2', 'The Internet Keyboard has 10 Hot Keys on a comfortable standard keyboard design that also includes a detachable palm rest. The Hot Keys allow you to browse the web, or check e-mail directly from your keyboard. The IntelliType Pro software also allows you to customize your hot keys - make the Internet Keyboard work the way you want it to!', '', 1),
+(25, 2, 'Microsoft Internet Tastatur PS/2', '<i>Microsoft Internet Keyboard,Windows-Tastatur mit 10 zusätzl. Tasten,2 selbst programmierbar, abnehmbareHandgelenkauflage. Treiber im Lieferumfang.</i><br><br>\r\nEin-Klick-Zugriff auf das Internet und vieles mehr! Das Internet Keyboard verfügt über 10 zusätzliche Abkürzungstasten auf einer benutzerfreundlichen Standardtastatur, die darüber hinaus eine abnehmbare Handballenauflage aufweist. Über die Abkürzungstasten können Sie durch das Internet surfen oder direkt von der Tastatur aus auf E-Mails zugreifen. Die IntelliType Pro-Software ermöglicht außerdem das individuelle Belegen der Tasten.', '', 0),
 (25, 3, 'Microsoft Internet Keyboard PS/2', 'The Internet Keyboard has 10 Hot Keys on a comfortable standard keyboard design that also includes a detachable palm rest. The Hot Keys allow you to browse the web, or check e-mail directly from your keyboard. The IntelliType Pro software also allows you to customize your hot keys - make the Internet Keyboard work the way you want it to!', '', 0),
+(26, 1, 'Microsoft IntelliMouse Explorer', 'Microsoft introduces its most advanced mouse, the IntelliMouse Explorer! IntelliMouse Explorer features a sleek design, an industrial-silver finish, a glowing red underside and taillight, creating a style and look unlike any other mouse. IntelliMouse Explorer combines the accuracy and reliability of Microsoft IntelliEye optical tracking technology, the convenience of two new customizable function buttons, the efficiency of the scrolling wheel and the comfort of expert ergonomic design. All these great features make this the best mouse for the PC!', 'www.microsoft.com/hardware/mouse/explorer.asp', 8),
+(26, 2, 'Microsof IntelliMouse Explorer', 'Die IntelliMouse Explorer überzeugt durch ihr modernes Design mit silberfarbenem Gehäuse, sowie rot schimmernder Unter- und Rückseite. Die neuartige IntelliEye-Technologie sorgt für eine noch nie dagewesene Präzision, da statt der beweglichen Teile (zum Abtasten der Bewegungsänderungen an der Unterseite der Maus) ein optischer Sensor die Bewegungen der Maus erfaßt. Das Herzstück der Microsoft IntelliEye-Technologie ist ein kleiner Chip, der einen optischen Sensor und einen digitalen Signalprozessor (DSP) enthält.<br><br>\r\nDa auf bewegliche Teile, die Staub, Schmutz und Fett aufnehmen können, verzichtet wurde, muß die IntelliMouse Explorer nicht mehr gereinigt werden. Darüber hinaus arbeitet die IntelliMouse Explorer auf nahezu jeder Arbeitsoberfläche, so daß kein Mauspad mehr erforderlich ist. Mit dem Rad und zwei neuen zusätzlichen Maustasten ermöglicht sie effizientes und komfortables Arbeiten am PC.<br><br>\r\n<b>Eigenschaften:</b>\r\n<ul>\r\n<li><b>ANSCHLUSS:</b> USB (PS/2-Adapter enthalten)</li>\r\n<li><b>FARBE:</b> metallic-grau</li>\r\n<li><b>TECHNIK:</b> Optisch (Akt.: ca. 1500 Bilder/s)</li>\r\n<li><b>TASTEN:</b> 5 (incl. Scrollrad)</li>\r\n<li><b>SCROLLRAD:</b> Ja</li>\r\n</ul>\r\n<i><b>BEMERKUNG:</b><br>Keine Reinigung bewegter Teile mehr notwendig, da statt der Mauskugel ein Fotoempfänger benutzt wird.</i>', '', 0),
 (26, 3, 'Microsoft IntelliMouse Explorer', 'Microsoft introduces its most advanced mouse, the IntelliMouse Explorer! IntelliMouse Explorer features a sleek design, an industrial-silver finish, a glowing red underside and taillight, creating a style and look unlike any other mouse. IntelliMouse Explorer combines the accuracy and reliability of Microsoft IntelliEye optical tracking technology, the convenience of two new customizable function buttons, the efficiency of the scrolling wheel and the comfort of expert ergonomic design. All these great features make this the best mouse for the PC!', 'www.microsoft.com/hardware/mouse/explorer.asp', 0),
+(27, 1, 'Hewlett Packard LaserJet 1100Xi', 'HP has always set the pace in laser printing technology. The new generation HP LaserJet 1100 series sets another impressive pace, delivering a stunning 8 pages per minute print speed. The 600 dpi print resolution with HP''s Resolution Enhancement technology (REt) makes every document more professional.<br><br>Enhanced print speed and laser quality results are just the beginning. With 2MB standard memory, HP LaserJet 1100xi users will be able to print increasingly complex pages. Memory can be increased to 18MB to tackle even more complex documents with ease. The HP LaserJet 1100xi supports key operating systems including Windows 3.1, 3.11, 95, 98, NT 4.0, OS/2 and DOS. Network compatibility available via the optional HP JetDirect External Print Servers.<br><br>HP LaserJet 1100xi also features The Document Builder for the Web Era from Trellix Corp. (featuring software to create Web documents).', 'www.pandi.hp.com/pandi-db/prodinfo.main?product=laserjet1100', 1),
+(27, 2, 'Hewlett-Packard LaserJet 1100Xi', '<b>HP LaserJet für mehr Produktivität und Flexibilität am Arbeitsplatz</b><br><br>\r\nDer HP LaserJet 1100Xi Drucker verbindet exzellente Laserdruckqualität mit hoher Geschwindigkeit für mehr Effizienz.<br><br>\r\n<b>Zielkunden</b>\r\n<ul><li>Einzelanwender, die Wert auf professionelle Ausdrucke in Laserqualität legen und schnelle Ergebnisse auch bei komplexen Dokumenten erwarten.</li>\r\n<li>Der HP LaserJet 1100 sorgt mit gestochen scharfen Texten und Grafiken für ein professionelles Erscheinungsbild Ihrer Arbeit und Ihres Unternehmens. Selbst bei komplexen Dokumenten liefert er schnelle Ergebnisse. Andere Medien - wie z.B. Transparentfolien und Briefumschläge, etc. - lassen sich problemlos bedrucken. Somit ist der HP LaserJet 1100 ein Multifunktionstalent im Büroalltag.</li>\r\n</ul>\r\n<b>Eigenschaften</b>\r\n<ul>\r\n<li><b>Druckqualität</b> Schwarzweiß: 600 x 600 dpi</li>\r\n<li><b>Monatliche Druckleistung</b> Bis zu 7000 Seiten</li>\r\n<li><b>Speicher</b> 2 MB Standardspeicher, erweiterbar auf 18 MB</li>\r\n<li><b>Schnittstelle/gemeinsame Nutzung</b> Parallel, IEEE 1284-kompatibel</li>\r\n<li><b>Softwarekompatibilität</b> DOS/Win 3.1x/9x/NT 4.0</li>\r\n<li><b>Papierzuführung</b> 125-Blatt-Papierzuführung</li>\r\n<li><b>Druckmedien</b> Normalpapier, Briefumschläge, Transparentfolien, kartoniertes Papier, Postkarten und Etiketten</li>\r\n<li><b>Netzwerkfähig</b> Über HP JetDirect PrintServer</li>\r\n<li><b>Lieferumfang</b> HP LaserJet 1100Xi Drucker (Lieferumfang: Drucker, Tonerkassette, 2 m Parallelkabel, Netzkabel, Kurzbedienungsanleitung, Benutzerhandbuch, CD-ROM, 3,5"-Disketten mit Windows® 3.1x, 9x, NT 4.0 Treibern und DOS-Dienstprogrammen)</li>\r\n<li><b>Gewährleistung</b> Ein Jahr</li>\r\n</ul>\r\n', 'www.hp.com', 0),
 (27, 3, 'Hewlett Packard LaserJet 1100Xi', 'HP has always set the pace in laser printing technology. The new generation HP LaserJet 1100 series sets another impressive pace, delivering a stunning 8 pages per minute print speed. The 600 dpi print resolution with HP''s Resolution Enhancement technology (REt) makes every document more professional.<br><br>Enhanced print speed and laser quality results are just the beginning. With 2MB standard memory, HP LaserJet 1100xi users will be able to print increasingly complex pages. Memory can be increased to 18MB to tackle even more complex documents with ease. The HP LaserJet 1100xi supports key operating systems including Windows 3.1, 3.11, 95, 98, NT 4.0, OS/2 and DOS. Network compatibility available via the optional HP JetDirect External Print Servers.<br><br>HP LaserJet 1100xi also features The Document Builder for the Web Era from Trellix Corp. (featuring software to create Web documents).', 'www.pandi.hp.com/pandi-db/prodinfo.main?product=laserjet1100', 0);
 
 -- --------------------------------------------------------
@@ -1728,20 +1992,20 @@ CREATE TABLE IF NOT EXISTS `products_options` (
 
 INSERT INTO `products_options` (`products_options_id`, `language_id`, `products_options_name`) VALUES
 (1, 1, 'Color'),
-(2, 1, 'Size'),
-(3, 1, 'Model'),
-(4, 1, 'Memory'),
 (1, 2, 'Farbe'),
-(2, 2, 'Größe'),
-(3, 2, 'Modell'),
-(4, 2, 'Speicher'),
 (1, 3, 'Color'),
+(2, 1, 'Size'),
+(2, 2, 'Größe'),
 (2, 3, 'Talla'),
+(3, 1, 'Model'),
+(3, 2, 'Modell'),
 (3, 3, 'Modelo'),
+(4, 1, 'Memory'),
+(4, 2, 'Speicher'),
 (4, 3, 'Memoria'),
-(5, 3, 'Version'),
+(5, 1, 'Version'),
 (5, 2, 'Version'),
-(5, 1, 'Version');
+(5, 3, 'Version');
 
 -- --------------------------------------------------------
 
@@ -1763,31 +2027,31 @@ CREATE TABLE IF NOT EXISTS `products_options_values` (
 
 INSERT INTO `products_options_values` (`products_options_values_id`, `language_id`, `products_options_values_name`) VALUES
 (1, 1, '4 mb'),
-(2, 1, '8 mb'),
-(3, 1, '16 mb'),
-(4, 1, '32 mb'),
-(5, 1, 'Value'),
-(6, 1, 'Premium'),
-(7, 1, 'Deluxe'),
-(8, 1, 'PS/2'),
-(9, 1, 'USB'),
 (1, 2, '4 MB'),
-(2, 2, '8 MB'),
-(3, 2, '16 MB'),
-(4, 2, '32 MB'),
-(5, 2, 'Value Ausgabe'),
-(6, 2, 'Premium Ausgabe'),
-(7, 2, 'Deluxe Ausgabe'),
-(8, 2, 'PS/2 Anschluss'),
-(9, 2, 'USB Anschluss'),
 (1, 3, '4 mb'),
+(2, 1, '8 mb'),
+(2, 2, '8 MB'),
 (2, 3, '8 mb'),
+(3, 1, '16 mb'),
+(3, 2, '16 MB'),
 (3, 3, '16 mb'),
+(4, 1, '32 mb'),
+(4, 2, '32 MB'),
 (4, 3, '32 mb'),
+(5, 1, 'Value'),
+(5, 2, 'Value Ausgabe'),
 (5, 3, 'Value'),
+(6, 1, 'Premium'),
+(6, 2, 'Premium Ausgabe'),
 (6, 3, 'Premium'),
+(7, 1, 'Deluxe'),
+(7, 2, 'Deluxe Ausgabe'),
 (7, 3, 'Deluxe'),
+(8, 1, 'PS/2'),
+(8, 2, 'PS/2 Anschluss'),
 (8, 3, 'PS/2'),
+(9, 1, 'USB'),
+(9, 2, 'USB Anschluss'),
 (9, 3, 'USB'),
 (10, 1, 'Download: Windows - English'),
 (10, 2, 'Download: Windows - Englisch'),
@@ -1948,9 +2212,9 @@ INSERT INTO `room` (`room_id`, `room_type`, `room_name`, `room_description`, `ro
 (1, 1, 'Deluxe ', ' Room of  35 square meter wooden floor. Overlooking the green mountain scenery. 21inch LCD/ shower/ bath tub/ complimentary wireless/ plug and play internet/ personal safe/ mini bar/ 24 hour room service/ coffee and tea making facilities. ', 79, '4m*4m', 'NoiThat1.jpg'),
 (2, 2, 'Primier Deluxe', 'Spacious room of  48 square meter wooden floor room overlooking greenery mountain view. 32 inch LCD TV shower/ bath tub/ DVD player/ complimentary wireless internet/ personal safe/ mini bar/ 24 hour room service/ coffee and tea making facilities and balcony. Includes BREAKFAST, LUNCH & DINNER.', 90, '3m*5m', 'Phong1.jpg'),
 (3, 3, 'Executive Deluxe', 'Room of  35 square meter wooden floor room overlooking the ocean view. 21 inch LCD/ shower/ bath tub/ complimentary wireless/ plug and play internet/ personal safe/ 24 hour room service/ coffee and tea making facilities and balcony. Includes BREAKFAST, LUNCH & DINNER.', 120, '3.5m*5m', 'phong7.jpg'),
-(6, 2, 'Primier Deluxe', NULL, 90, '', 'Phong2.jpg'),
 (4, 1, 'Deluxe ', NULL, 79, '', 'NoiThat2.jpg'),
 (5, 1, 'Deluxe', NULL, 79, '', 'NoiThat3.jpg'),
+(6, 2, 'Primier Deluxe', NULL, 90, '', 'Phong2.jpg'),
 (7, 2, 'Primier Deluxe', NULL, 90, '', 'Phong3.jpg'),
 (8, 3, 'Executive Deluxe', NULL, 120, '', 'phong5.jpg'),
 (9, 3, 'Executive Deluxe', NULL, 120, '', 'phong6.jpg');
@@ -1982,16 +2246,16 @@ CREATE TABLE IF NOT EXISTS `room_type` (
 --
 
 INSERT INTO `room_type` (`room_type_id`, `room_type_name`, `room_type_image`, `room_type_description`, `room_type_count`, `room_type_price`, `room_type_categories`, `image1`, `image2`, `image3`, `image4`) VALUES
-(1, 'Phòng Sang trọng hướng đồi', 'sangtrong1.jpg', 'Phòng rộng rãi của 30 mét vuông.Nhìn ra cảnh quan núi xanh. LCD 21inch / vòi sen / bồn tắm / miễn phí không dây / cắm và chơi internet / cá nhân an toàn / mini bar / dịch vụ 24 giờ / cà phê và các cơ sở pha trà. Bao gồm ăn sáng, trưa và bữa tối.', 20, 500, 1, 'sangtrong1.1.jpg', 'sangtrong1.2.jpg', 'sangtrong1.3.jpg', 'sangtrong1.4.jpg'),
-(2, 'Phòng Sang trọng hướng biền', 'sangtrong2.jpg', 'Phòng rộng rãi của 48 mét vuông, sàn gỗ phòng hướng ra đại dương. TV LCD 32 inch / vòi sen / bồn tắm / DVD / miễn phí internet không dây / cá nhân an toàn / mini bar / dịch vụ phòng 24 giờ / cà phê và trà các cơ sở lập và ban công. Bao gồm ăn sáng, trưa và bữa tối.', 25, 480, 1, 'sangtrong2.1.jpg', 'sangtrong2.2.jpg', 'sangtrong2.3.jpg', 'sangtrong2.4.jpg'),
-(3, 'Phòng Sang trọng hướng vườn', 'sangtrong3.jpg', 'Phòng 35 mét vuông với sàn gỗ. Nhìn tòa nhà điều hành và Dương. Cơ sở vật chất bao gồm màn hình LCD 21inch / vòi sen / bồn tắm / miễn phí không dây / cắm và chơi internet / cá nhân an toàn / mini bar / dịch vụ 24 giờ / cà phê và các cơ sở pha trà. Bao gồm ăn sáng, trưa & tối', 20, 550, 1, 'sangtrong3.1.jpg', 'sangtrong3.2.jpg', 'sangtrong3.3.jpg', 'sangtrong3.4.jpg'),
+(1, 'Phòng sang trọng hướng đồi', 'sangtrong1.jpg', 'Phòng rộng rãi của 30 mét vuông.Nhìn ra cảnh quan núi xanh. LCD 21inch / vòi sen / bồn tắm / miễn phí không dây / cắm và chơi internet / cá nhân an toàn / mini bar / dịch vụ 24 giờ / cà phê và các cơ sở pha trà. Bao gồm ăn sáng, trưa và bữa tối.', 20, 500, 1, 'sangtrong1.1.jpg', 'sangtrong1.2.jpg', 'sangtrong1.3.jpg', 'sangtrong1.4.jpg'),
+(2, 'Phòng sang trọng hướng biển', 'sangtrong2.jpg', 'Phòng rộng rãi của 48 mét vuông, sàn gỗ phòng hướng ra đại dương. TV LCD 32 inch / vòi sen / bồn tắm / DVD / miễn phí internet không dây / cá nhân an toàn / mini bar / dịch vụ phòng 24 giờ / cà phê và trà các cơ sở lập và ban công. Bao gồm ăn sáng, trưa và bữa tối.', 25, 480, 1, 'sangtrong2.1.jpg', 'sangtrong2.2.jpg', 'sangtrong2.3.jpg', 'sangtrong2.4.jpg'),
+(3, 'Phòng sang trọng hướng vườn', 'sangtrong3.jpg', 'Phòng 35 mét vuông với sàn gỗ. Nhìn tòa nhà điều hành và Dương. Cơ sở vật chất bao gồm màn hình LCD 21inch / vòi sen / bồn tắm / miễn phí không dây / cắm và chơi internet / cá nhân an toàn / mini bar / dịch vụ 24 giờ / cà phê và các cơ sở pha trà. Bao gồm ăn sáng, trưa & tối', 20, 550, 1, 'sangtrong3.1.jpg', 'sangtrong3.2.jpg', 'sangtrong3.3.jpg', 'sangtrong3.4.jpg'),
 (4, 'Grand Ballroom', 'phonghop1.jpg', 'Với sức chứa hơn 600 chỗ ngồi, có thể chia thành phòng Ballroom 1 rộng 441m2, phòng Ballroom 2 với diện tích 294m2, được trang bị đầy đủ các thiết bị nghe nhìn, phương tiện thông tin liên lạc hiện đại bậc nhất ở Việt Nam. Đây là nơi lý tưởng để tổ chức hội thảo, hội nghị, những bữa tiệc lớn hay triển lãm trưng bày. Hội trường được thiết kế riêng biệt bên cạnh khu vườn xinh đẹp với hành lang rộng và khu chuẩn bị tiệc cocktail. Grand Ballroom có thể phục vụ 360 suất tiệc ngồi, 250 suất tiệc Buffet và 600 suất tiệc Cocktail.', 3, 5000, 4, 'phonghop1.1.jpg', 'phonghop1.2.jpg', 'phonghop1.3.jpg', 'phonghop1.4.jpg'),
 (5, 'Phòng họp Diamond & Ruby', 'phonghop2.jpg', 'Hai phòng họp có đầy đủ trang thiết bị hiện đại và Internet không dây. Phòng rộng 150m2 thích hợp cho những cuộc họp có quy mô vừa và nhỏ của doanh nghiệp', 3, 5200, 4, 'phonghop2.1.jpg', 'phonghop2.2.jpg', 'phonghop2.3.jpg', 'phonghop2.4.jpg'),
 (6, 'Trung tâm Hội nghị & Biểu diễn đa năng', 'phonghop3.jpg', 'Với sức chứa 1350 người, được trang bị những phương tiện kỹ thuật âm thanh, ánh sáng tối tân với 240m2 diện tích sân khấu. Đây là nơi đã diễn ra nhiều sự kiện lớn....', 2, 10000, 4, 'phonghop3.1.jpg', 'phonghop3.2.jpg', 'phonghop3.3.jpg', 'phonghop3.4.jpg'),
 (7, 'Phòng cao cấp hướng biển', 'caocap1.jpg', 'Phòng rộng rãi của 48 mét vuông, sàn gỗ phòng hướng ra đại dương. TV LCD 32 inch / vòi sen / bồn tắm / DVD / miễn phí internet không dây / cá nhân an toàn / mini bar / dịch vụ phòng 24 giờ / cà phê và trà các cơ sở lập và ban công. Bao gồm ăn sáng, trưa và bữa tối.', 10, 650, 2, 'caocap1.1.jpg', 'caocap1.2.jpg', 'caocap1.3.jpg', 'caocap1.4.jpg'),
 (8, 'Phòng cao cấp hướng đồi', 'caocap2.jpg', 'Phòng rộng rãi của 48 phòng mét vuông sàn nhà bằng gỗ nhìn ra thấy núi xanh. TV LCD 32 inch tắm bồn / DVD / miễn phí internet không dây / an toàn mini cá nhân / bar / dịch vụ phòng 24 giờ / cà phê và trà các cơ sở xây dựng và ban công. Bao gồm ăn sáng, trưa và bữa tối.', 10, 650, 2, 'caocap2.1.jpg', 'caocap2.3.jpg', 'caocap2.3.jpg', 'caocap2.4.jpg'),
 (9, 'Phòng cao cấp hướng vườn', 'caocap3.jpg', 'Phòng 35 mét vuông với sàn gỗ. Nhìn tòa nhà điều hành và Dương. Cơ sở vật chất bao gồm màn hình LCD 21inch / vòi sen / bồn tắm / miễn phí không dây / cắm và chơi internet / cá nhân an toàn / mini bar / dịch vụ 24 giờ / cà phê và các cơ sở pha trà. Bao gồm ăn sáng, trưa và bữa tối.', 10, 580, 2, 'caocap3.1.jpg', 'caocap3.2.jpg', 'caocap3.3.jpg', 'caocap3.4.jpg'),
-(10, 'Phòng gia đình huống biền', 'giadinh1.jpg', 'Phòng gia đình hướng biển sang trọng và tiện nghi, giúp quý khách có một kỳ nghỉ thoải mái và hạnh phúc cùng những người thân yêu.Phòng 35 mét vuông với sàn gỗ. Nhìn tòa nhà điều hành và Dương. Cơ sở vật chất bao gồm màn hình LCD 21inch / vòi sen / bồn tắm / miễn phí không dây / cắm và chơi internet / cá nhân an toàn / mini bar / dịch vụ 24 giờ / cà phê và các cơ sở pha trà. Bao gồm ăn sáng, trưa và bữa tối.', 5, 800, 3, 'giadinh1.1.jpg', 'giadinh1.2.jpg', 'giadinh1.3.jpg', 'giadinh1.4.jpg'),
+(10, 'Phòng gia đình huống biển', 'giadinh1.jpg', 'Phòng gia đình hướng biển sang trọng và tiện nghi, giúp quý khách có một kỳ nghỉ thoải mái và hạnh phúc cùng những người thân yêu.Phòng 35 mét vuông với sàn gỗ. Nhìn tòa nhà điều hành và Dương. Cơ sở vật chất bao gồm màn hình LCD 21inch / vòi sen / bồn tắm / miễn phí không dây / cắm và chơi internet / cá nhân an toàn / mini bar / dịch vụ 24 giờ / cà phê và các cơ sở pha trà. Bao gồm ăn sáng, trưa và bữa tối.', 5, 800, 3, 'giadinh1.1.jpg', 'giadinh1.2.jpg', 'giadinh1.3.jpg', 'giadinh1.4.jpg'),
 (11, 'Phòng gia đình hướng vườn', 'giadinh2.jpg', 'Phòng gia đình hướng vườn sang trọng và tiện nghi, giúp quý khách có một kỳ nghỉ thoải mái và hạnh phúc cùng những người thân yêu.Phòng rộng rãi của 48 phòng mét vuông sàn nhà bằng gỗ nhìn ra thấy núi xanh. TV LCD 32 inch tắm bồn / DVD / miễn phí internet không dây / an toàn mini cá nhân / bar / dịch vụ phòng 24 giờ / cà phê và trà các cơ sở xây dựng và ban công. Bao gồm ăn sáng, trưa và bữa tối.', 5, 850, 3, 'giadinh2.1.jpg', 'giadinh2.2.jpg', 'giadinh2.3.jpg', 'giadinh2.4.jpg');
 
 -- --------------------------------------------------------
@@ -2013,9 +2277,10 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`sesskey`, `expiry`, `value`) VALUES
-('i05qk16c39ciq1em34vftt1ae0', 1295493869, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:16:"chitietphong.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:2:{s:12:"room_type_id";s:1:"8";s:6:"osCsid";s:26:"i05qk16c39ciq1em34vftt1ae0";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}'),
-('174q0qbfvn967fltfr1v3c1tk6', 1295975461, 'language|s:7:"english";languages_id|s:1:"1";selected_box|s:7:"catalog";manager|a:2:{s:2:"id";s:1:"3";s:8:"username";s:6:"kitaro";}owner|a:2:{s:2:"id";s:1:"2";s:8:"username";s:7:"quangha";}'),
-('kdqn5naqesdnqeotp31e598bv5', 1295975467, 'cart|O:12:"shoppingCart":4:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:0:{}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}');
+('viq425vihso1j4uk0d6k0e2t74', 1298784439, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:8:"cart.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:1:{s:6:"osCsid";s:26:"viq425vihso1j4uk0d6k0e2t74";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}cart_room|a:1:{i:0;a:5:{s:3:"qty";i:1;s:10:"roomtypeId";s:1:"1";s:8:"staydate";s:1:"1";s:5:"dayto";s:10:"2011-02-27";s:5:"daygo";s:10:"2011-02-28";}}temp|a:1:{i:0;a:5:{s:3:"qty";i:1;s:10:"roomtypeId";s:1:"1";s:8:"staydate";s:1:"1";s:5:"dayto";s:10:"2011-02-27";s:5:"daygo";s:10:"2011-02-28";}}'),
+('vr8n0nbvhfa6hs9mt32676v7q2', 1298801400, 'language|s:7:"english";languages_id|s:1:"1";selected_box|s:7:"catalog";owner|a:2:{s:2:"id";s:1:"2";s:8:"username";s:7:"quangha";}roomtypecat|a:11:{i:1;s:35:"Phòng sang tr?ng h??ng ??i";i:2;s:35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}cart_room_man|N;cart_room_man|N;'),
+('ll22ikevk1g9pdivaqbphf2gs3', 1298814958, 'cart|O:12:"shoppingCart":5:{s:8:"contents";a:0:{}s:5:"total";i:0;s:6:"weight";i:0;s:6:"cartID";N;s:12:"content_type";b:0;}language|s:7:"english";languages_id|s:1:"1";currency|s:3:"USD";navigation|O:17:"navigationHistory":2:{s:4:"path";a:1:{i:0;a:4:{s:4:"page";s:9:"index.php";s:4:"mode";s:6:"NONSSL";s:3:"get";a:4:{s:6:"osCsid";s:26:"ll22ikevk1g9pdivaqbphf2gs3";s:6:"option";s:11:"com_k2store";s:4:"view";s:6:"mycart";s:6:"format";s:8:"ajaxmini";}s:4:"post";a:0:{}}}s:8:"snapshot";a:0:{}}'),
+('rflrd6m0513klsosdokorpsmk2', 1298832335, 'language|s:7:"english";languages_id|s:1:"1";selected_box|s:7:"catalog";owner|a:2:{s:2:"id";s:1:"2";s:8:"username";s:7:"quangha";}roomtypecat|a:11:{i:1;s:35:"Phòng sang tr?ng h??ng ??i";i:2;s:35:"Phòng sang tr?ng h??ng bi?n";i:3;s:36:"Phòng sang tr?ng h??ng v??n";i:4;s:14:"Grand Ballroom";i:5;s:27:"Phòng h?p Diamond & Ruby";i:6;s:49:"Trung tâm H?i ngh? & Bi?u di?n ?a n?ng";i:7;s:32:"Phòng cao c?p h??ng bi?n";i:8;s:32:"Phòng cao c?p h??ng ??i";i:9;s:33:"Phòng cao c?p h??ng v??n";i:10;s:32:"Phòng gia ?ình hu?ng bi?n";i:11;s:34:"Phòng gia ?ình h??ng v??n";}');
 
 -- --------------------------------------------------------
 
@@ -2057,26 +2322,26 @@ DROP TABLE IF EXISTS `status_room`;
 CREATE TABLE IF NOT EXISTS `status_room` (
   `status_room_id_day` int(20) NOT NULL AUTO_INCREMENT,
   `status_room_dayofyear` date NOT NULL,
-  `1` int(2) NOT NULL,
-  `2` int(2) NOT NULL,
-  `3` int(2) NOT NULL,
-  `4` int(2) NOT NULL,
-  `5` int(2) NOT NULL,
-  `6` int(2) NOT NULL,
-  `7` int(2) NOT NULL,
-  `8` int(2) NOT NULL,
-  `9` int(2) NOT NULL,
-  `10` int(2) NOT NULL,
-  `11` int(2) NOT NULL,
+  `id_1` int(2) NOT NULL,
+  `id_2` int(2) NOT NULL,
+  `id_3` int(2) NOT NULL,
+  `id_4` int(2) NOT NULL,
+  `id_5` int(2) NOT NULL,
+  `id_6` int(2) NOT NULL,
+  `id_7` int(2) NOT NULL,
+  `id_8` int(2) NOT NULL,
+  `id_9` int(2) NOT NULL,
+  `id_10` int(2) NOT NULL,
+  `id_11` int(2) NOT NULL,
   PRIMARY KEY (`status_room_id_day`),
   UNIQUE KEY `status_room_current_day` (`status_room_id_day`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `status_room`
 --
 
-INSERT INTO `status_room` (`status_room_id_day`, `status_room_dayofyear`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`) VALUES
+INSERT INTO `status_room` (`status_room_id_day`, `status_room_dayofyear`, `id_1`, `id_2`, `id_3`, `id_4`, `id_5`, `id_6`, `id_7`, `id_8`, `id_9`, `id_10`, `id_11`) VALUES
 (1, '2011-01-04', 2, 2, 5, 3, 3, 4, 4, 2, 2, 3, 3),
 (3, '2011-01-05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (4, '2011-01-06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -2086,7 +2351,51 @@ INSERT INTO `status_room` (`status_room_id_day`, `status_room_dayofyear`, `1`, `
 (10, '2011-01-10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (11, '2011-01-11', 19, 22, 4, 2, 5, 4, 5, 5, 2, 2, 2),
 (12, '2011-01-12', 18, 20, 18, 2, 2, 2, 2, 2, 2, 2, 2),
-(13, '2011-01-13', 10, 20, 18, 2, 2, 2, 2, 2, 2, 2, 2);
+(13, '2011-01-13', 10, 20, 18, 2, 2, 2, 2, 2, 2, 2, 2),
+(14, '2011-02-14', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(15, '2011-02-15', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(16, '2011-02-16', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(17, '2011-02-17', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(18, '2011-02-18', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(19, '2011-02-19', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(20, '2011-02-20', 1, 2, 1, 0, 0, 1, 0, 3, 1, 6, 1),
+(21, '2011-02-21', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(22, '2011-02-22', 6, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0),
+(23, '2011-02-23', 6, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0),
+(24, '2011-02-24', 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(25, '2011-02-25', 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0),
+(26, '2011-02-26', 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0),
+(27, '2011-02-27', 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(28, '2011-02-28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(29, '2011-03-01', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(30, '2011-03-02', 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0),
+(31, '2011-03-03', 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0),
+(32, '2011-03-04', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(33, '2011-03-05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(34, '2011-03-09', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(35, '2011-03-10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(36, '2011-03-11', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(37, '2011-03-12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(38, '2011-03-13', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(39, '2011-03-14', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(40, '2011-03-15', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(41, '2011-03-16', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(42, '2011-03-17', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(43, '2011-03-18', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(44, '2011-03-19', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(45, '2011-03-20', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(46, '2011-03-21', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(47, '2011-03-22', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(48, '2011-03-23', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(49, '2011-03-24', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(50, '2011-03-25', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(51, '2011-03-26', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(52, '2011-03-27', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(53, '2011-03-28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(54, '2011-03-29', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(55, '2011-03-30', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(56, '2011-03-31', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(57, '2011-04-01', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2159,7 +2468,7 @@ CREATE TABLE IF NOT EXISTS `whos_online` (
 --
 
 INSERT INTO `whos_online` (`customer_id`, `full_name`, `session_id`, `ip_address`, `time_entry`, `time_last_click`, `last_page_url`) VALUES
-(0, 'Guest', 'kdqn5naqesdnqeotp31e598bv5', '127.0.0.1', '1295974027', '1295974027', '/hotelbooking/');
+(0, 'Guest', 'll22ikevk1g9pdivaqbphf2gs3', '127.0.0.1', '1298813516', '1298813518', '/hotelbooking/index.php?osCsid=ll22ikevk1g9pdivaqbphf2gs3&option=com_k2store&view=mycart&format=ajaxmini');
 
 -- --------------------------------------------------------
 

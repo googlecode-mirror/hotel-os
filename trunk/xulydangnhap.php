@@ -17,8 +17,9 @@
 // Check that password is good
       if (!tep_validate_password($password, $check_customer['customers_password'])) {
         $error = true;   
-        echo ENTRY_PASSWORD_NEW_TEXT ;  
-      } else {
+        echo "<script>alert('".ENTRY_PASSWORD_NEW_TEXT."');</script>" ;  
+      } 
+      else {
         if (SESSION_RECREATE == 'True') {
           tep_session_recreate();
         }
@@ -32,8 +33,9 @@
         #luu giu session hien tai osCsid
         unset($_SESSION['cart_room']);
         $_SESSION['cart_room'] = $arrays;
-               tep_redirect(tep_href_link(FILENAME_DEFAULT));          
+                       
                	
       }
+       tep_redirect(tep_href_link(FILENAME_DEFAULT)); 
     }
 ?>

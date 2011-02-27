@@ -14,7 +14,6 @@
   #checking owner role
 if(!tep_session_is_registered('owner'))
      tep_redirect(tep_href_link(FILENAME_LOGIN));
-     echo 'run hreer';
   $action = (isset($HTTP_GET_VARS['action']) ? $HTTP_GET_VARS['action'] : '');
 
   if (tep_not_null($action)) {
