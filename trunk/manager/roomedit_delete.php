@@ -11,68 +11,84 @@
 */
 
   require('includes/application_top.php');
-  #checking owner role
-if(!tep_session_is_registered('owner'))
-     tep_redirect(tep_href_link(FILENAME_LOGIN));
-     echo 'run hreer';
+  
+  
+function getroomofdate($day){			
+			//echo $datecurent; 			
+			$listing_sql2="select * from  status_room  where  status_room_dayofyear ='".$day."'";
+		    $listing_query2 = tep_db_query($listing_sql2);
+		    $listing2 = tep_db_fetch_array($listing_query2);
+		    return $listing2;
+		} 
+                                    
+  $display = 'none';
+  if(count($_SESSION['booking_form'])>0){
+            $display = 'block';
+  }
   $action = (isset($HTTP_GET_VARS['action']) ? $HTTP_GET_VARS['action'] : '');
 
   if (tep_not_null($action)) {
     switch ($action) {
-      case 'insert':
-        require('includes/functions/password_funcs.php');
-
-        $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
-        $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
-        $account = tep_db_prepare_input($HTTP_POST_VARS['account_number']);
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($username) . "' limit 1");
-
-        if (tep_db_num_rows($check_query) < 1) {
-          tep_db_query("insert into " . TABLE_MANAGERS . " (user_name, user_password,role) values ('" . tep_db_input($username) . "', '" . tep_db_input(tep_encrypt_password($password)) . "',0)");
-          tep_db_query("insert into " . TABLE_OWNERS . " (id, account_number) values ('" .tep_db_insert_id(). "', '" .$account . "')");
-        } else {
-          $messageStack->add_session(ERROR_ADMINISTRATOR_EXISTS, 'error');
-        }
-
-        tep_redirect(tep_href_link(FILENAME_ADMINISTRATORS));
-        break;
-      case 'save':
-        require('includes/functions/password_funcs.php');
-
-        $username = tep_db_prepare_input($HTTP_POST_VARS['username']);
-        $password = tep_db_prepare_input($HTTP_POST_VARS['password']);
-        $account = tep_db_prepare_input($HTTP_POST_VARS['account_number']);
+      case 'search':
+        $khachhang = tep_db_prepare_input($HTTP_POST_VARS['hoten']);
+        $ngaydat = tep_db_prepare_input($HTTP_POST_VARS['ngaydat']);
+        list($day,$month,$year)=split('[-]', $ngaydat);
+        $ngay=date($year."-".$month."-".$day);
         
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($owner['username']) . "'");
-        $check = tep_db_fetch_array($check_query);
-
-        if ($owner['id'] == $check['id']) {
-          $owner['username'] = $username;
+        $query = "SELECT `".TABLE_BOOKING_FORM."`.`booking_form_id`, `customers_firstname` , `booking_form_dateset` , `booking_form_total_price`, `prepay`
+                    FROM `".TABLE_BOOKING_FORM."` join `".TABLE_CUSTOMERS."`
+                         left join `".TABLE_PREPAID."` on (`".TABLE_PREPAID."`.`booking_form_id` = `".TABLE_BOOKING_FORM."`.`booking_form_id` )
+                    WHERE `booking_form_custommers_id` = `customers_id`
+                    AND `customers_firstname` = '$khachhang'";
+          if($ngay!='--')          
+                    $query .= " AND `booking_form_dateset` = '$ngay'";
+        $listing_query = tep_db_query($query);
+        $arrTemp = array();
+        
+        while ($listing = tep_db_fetch_array($listing_query)) {
+            array_push($arrTemp, $listing);  
+             
         }
-
-        tep_db_query("update " . TABLE_MANAGERS . " set user_name = '" . tep_db_input($username) . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");
-
-        if (tep_not_null($password)) {
-          tep_db_query("update " . TABLE_MANAGERS . " set user_password = '" . tep_db_input(tep_encrypt_password($password)) . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");
-        }
-//update account_number
-         tep_db_query("update " . TABLE_OWNERS . " set account_number = '" . $account . "' where id = '" . (int)$HTTP_GET_VARS['aID'] . "'");        
-        tep_redirect(tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . (int)$HTTP_GET_VARS['aID']));
+        
+        $_SESSION['booking_form'] = $arrTemp;
+        
+                break;  
+      case 'save':
+        
         break;
       case 'deleteconfirm':
-        $id = tep_db_prepare_input($HTTP_GET_VARS['aID']);
-
-        $check_query = tep_db_query("select id from " . TABLE_MANAGERS . " where user_name = '" . tep_db_input($owner['username']) . "'");
-        $check = tep_db_fetch_array($check_query);
-
-        if ($id == $check['id']) {
-          tep_session_unregister('owner');
+       $booking_form_id = tep_db_prepare_input($HTTP_GET_VARS['booking_form_id']);
+    #remove from detail booking
+        $detailquery = "select * from ".TABLE_DETAIL." where `detail_booking_form_id`='".(int)$booking_form_id ."'";
+        $listDetail = tep_db_query($detailquery);
+        #update status_room
+        while ($details = tep_db_fetch_array($listDetail)) {
+                list($year,$month,$day)=split('[-]', $details['detail_booking_form_dateto']);
+                              $n=$details['detail_booking_form_staydate'];                               
+                               for($i=0;$i<$n;$i++){  
+                                    $daytest=date($year."-".$month."-".$day); 
+            		                  $day +=1;                                     
+                                  	 $listing2=getroomofdate($daytest);                                                                          
+                                     $id_status_room="id_".$details['detail_booking_form_type_room_id']; 
+                                     list($name,$room_id)=split('[_]', $details['detail_booking_form_type_room_id']);                                     
+                                     $num_room= $listing2[$id_status_room] - $details['detail_booking_form_number_room'] ;         
+                                     tep_db_query("update status_room set ". $id_status_room." = '" . (int)$num_room . "' where status_room_dayofyear = '" . $daytest . "'");                    
+	                          }    
         }
-        
-        tep_db_query("delete from " . TABLE_OWNERS . " where id = '" . (int)$id . "'");
-        tep_db_query("delete from " . TABLE_MANAGERS . " where id = '" . (int)$id . "'");
+        #remove
+        tep_db_query("delete from " . TABLE_DETAIL. " where detail_booking_form_id  = '" . (int)$booking_form_id . "'");
+        #remove booking form
+        tep_db_query("delete from " . TABLE_BOOKING_FORM. " where booking_form_id = '" . (int)$booking_form_id . "'");
 
-        tep_redirect(tep_href_link(FILENAME_ADMINISTRATORS));
+$key = 0;
+        foreach($_SESSION['booking_form'] as $item){
+            if(array_search($booking_form_id,$item) !== false){
+                $key = array_search($item,$_SESSION['booking_form']);
+                break;
+            }
+        }
+        unset($_SESSION['booking_form'][$key]);
+        tep_redirect(tep_href_link(FILENAME_ROOMEDIT_DELETE));
         break;
     }
   }
@@ -84,13 +100,12 @@ if(!tep_session_is_registered('owner'))
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="includes/newstyle.css">
+<link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.8.2.custom.css">
 <script language="javascript" src="includes/general.js"></script>
-
 <script src="js/jquery-1.4.2.min.js"></script>
 <script src="js/jquery-ui-1.8.2.custom.min.js"></script>
 <script src="js/jquery.validate.js"></script>
 <script src="js/loopedslider.js"></script>
-
 <script src="js/MyScript.js"></script>
 
 </head>
@@ -113,174 +128,102 @@ if(!tep_session_is_registered('owner'))
            <div id="datphongForm" title="THÔNG TIN ĐẶT PHÒNG">
            <!--check chọn người đặt phòng-->
            <?php ?>
-               <form id="managerbookForm">
+               <form id="managerbookForm" action="roomedit_delete.php?action=search" method="post">
                 	<div id="managerBooking">
                             <div class="line">
                 			<label> Họ tên KH </label>
-                			<select name="s" size="1"	>
-                			<option value="1" selected="selected">Nguyễn Thu Hà</option>		
-                			<option value="2">Võ Thành Nhân</option> 
-              			    </select>
-                            </div>
-                            <div class="line"></div>                               
-                            <div class="line"></div>
-                            <div class="line">
-                                <label>Kết quả tìm kiếm</label>
+                            <input id="hoten" type="text" class="text" name="hoten" />
                             </div>
                             <div class="line">
-                            <label for="hoten"> Họ tên KH </label>
-                			<input id="hoten" type="text" class="text" name="hoten" />
-                			</div>
-                			<div class="line">
-                			<label for="email">&#272;&#7883;a ch&#7881; email </label>
-                			<input id="email" type="text" class="text" name="email"/>
-                			</div>
-                			<div class="line">
-                			<label for="diachi"> &#272;&#7883;a ch&#7881;  </label>
-                			<input id="diachi" type="text" class="text" name="diachi"/>
-                			</div>      
-                			<div class="line">
-                			<label for="dienthoai">&#272;i&#7879;n tho&#7841;i li&ecirc;n l&#7841;c </label>
-                			<input id="dienthoai" type="text" class="text" name="dienthoai"/>
-                			</div>
-                            
-                            <div class="line">
-                			<label for="ngayden"> Ngày đến  </label>
-                			<input id="ngayden" type="text" class="text" name="ngayden"/>
+                			<label for="ngaydat"> Ngày đặt  </label>
+                			<input id="ngaydat" type="text" class="text" name="ngaydat"/>
                 			</div> 
                             <div class="line">
-                			<label for="ngaydi"> Ngày đi  </label>
-                			<input id="ngaydi" type="text" class="text" name="ngaydi"/>
-                			</div>
-                            <div class="line">
-                			<label for="soluongphong"> Số lượng phòng  </label>
-                			<input id="soluongphong" type="text" class="text" name="soluongphong"/>
-                			</div>
-                            <div class="line">
-                            <p>Phương thức thanh toán</p>                			
-                			<input id="cash" type="radio" name="payment" class="payment" value="0"/>Tiền mặt
-                            <input id="card" type="radio" name="payment" class="payment" value="1"/>Thẻ tín dụng
-                			</div>
-                	</div>
-                	<div id="bookingthe" class="hidden">                		
-                			<div class="line">
-                			<label for="tenchuthe"> T&ecirc;n Ch&#7911; Th&#7867; </label>
-                			<input id="tenchuthe" type="text" class="text" name="tenchuthe"/>
-                			</div>
-                			
-                			<div class="line">
-                			<label> Lo&#7841;i th&#7867; </label>
-                			<select name="s" size="1"	>
-                			<option value="1" selected="selected">Mater Card</option>		
-                			<option value="2"> Visa Card</option>                			
-                			</select>
-                			</div>
-                			<div class="line">
-                			
-                			<label for="sothe">  S&#7889; th&#7867; </label>
-                			<input id="sothe" type="text" class="text" name="sothe"/>
-                			</div>
-                			<div> 			
-                			   <INPUT TYPE="checkbox" NAME="checkbox" VALUE="checkbox"> 
-                			   T&ocirc;i ch&#7845;p nh&#7853;n v&#7899;i c&aacute;c &#273;i&#7873;u kho&#7843;n tr&ecirc;n
-                			</div>
-                		
-                	</div>
-                		<input type="submit" value="Hủy" onclick="success.php">
-                        <input type="submit" value="Cập nhật" onclick="success.php">
+                                <input type="submit" value="Tìm kiếm" style="float: left;margin-left:160px;" />
+                            </div>
+                      </div>      
                 </form>
-        </tr>
-      <!--end dat phong -->
-  <!-- start comment 
-        </a>    <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
-              <tr class="dataTableHeadingRow">
-                <td class="dataTableHeadingContent"><?php echo 'Tên đăng nhập' ?></td>
-                <td class="dataTableHeadingContent"><?php echo 'Số tài khoản ngân hàng' ?></td>
-                <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION ?>&nbsp;</td>
-              </tr>
-#<?php
-#
-#  $admins_query = tep_db_query("select ".TABLE_OWNERS.".id, user_name,account_number from " .
-#                     TABLE_MANAGERS.",".TABLE_OWNERS . " where ".TABLE_MANAGERS.".id = ".TABLE_OWNERS.".id order by user_name");
-#  while ($admins = tep_db_fetch_array($admins_query)) {
-#    if ((!isset($HTTP_GET_VARS['aID']) || (isset($HTTP_GET_VARS['aID']) && ($HTTP_GET_VARS['aID'] == $admins['id']))) && !isset($aInfo) && (substr($action, 0, 3) != 'new')) {
-#      $aInfo = new objectInfo($admins);
-#    }
-#
-#    if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) {
-#      echo '                  <tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=edit') . '\'">' . "\n";
-#    } else {
-#      echo '                  <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '\'">' . "\n";
-#    }
-#?>
-#                <td class="dataTableContent"><?php echo $admins['user_name']; ?></td>
-#                <td class="dataTableContent"><?php echo $admins['account_number']; ?></td>
-#                <td class="dataTableContent" align="right"><?php if ( (isset($aInfo) && is_object($aInfo)) && ($admins['id'] == $aInfo->id) ) { echo tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $admins['id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
-#                
-#               </tr>
-#<?php
- # }
-#?>
-#              <tr>
-#                <td colspan="2" align="right"><?php echo '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'action=new') . '">' . tep_image_button('button_insert.gif', IMAGE_INSERT) . '</a>'; ?></td>
-#              </tr>
-#            </table></td>
-#<?php
-#  $heading = array();
-#  $contents = array();
-#
-#  switch ($action) {
-#    case 'new':
-#      $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_NEW_ADMINISTRATOR . '</b>');
-#
-#      $contents = array('form' => tep_draw_form('administrator', FILENAME_ADMINISTRATORS, 'action=insert'));
-#      $contents[] = array('text' => TEXT_INFO_INSERT_INTRO);
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_USERNAME . '<br>' . tep_draw_input_field('username'));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_PASSWORD . '<br>' . tep_draw_password_field('password'));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_ACCOUNT . '<br>' . tep_draw_input_field('account_number'));
-#      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_save.gif', IMAGE_SAVE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ADMINISTRATORS) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
-#      break;
-#    case 'edit':
-#      $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
-#
-#      $contents = array('form' => tep_draw_form('administrator', FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=save'));
-#      $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_USERNAME . '<br>' . tep_draw_input_field('username', $aInfo->user_name));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_NEW_PASSWORD . '<br>' . tep_draw_password_field('password'));
-#      $contents[] = array('text' => '<br>' . TEXT_INFO_ACCOUNT . '<br>' . tep_draw_input_field('account_number'));
-#      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_update.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
-#      break;
-#    case 'delete':
-#      $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
-#
-#      $contents = array('form' => tep_draw_form('administrator', FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=deleteconfirm'));
-#      $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
-#      $contents[] = array('text' => '<br><b>' . $aInfo->user_name . '</b>');
-#      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_delete.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
-#      break;
-#    default:
-#      if (isset($aInfo) && is_object($aInfo)) {
-#        $heading[] = array('text' => '<b>' . $aInfo->user_name . '</b>');
-#
-#        $contents[] = array('align' => 'center', 'text' => '<a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=edit') . '">' . tep_image_button('button_edit.gif', IMAGE_EDIT) . '</a> <a href="' . tep_href_link(FILENAME_ADMINISTRATORS, 'aID=' . $aInfo->id . '&action=delete') . '">' . tep_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
-#      }
-#      break;
-#  }
-#
-#  if ( (tep_not_null($heading)) && (tep_not_null($contents)) ) {
-#    echo '            <td width="25%" valign="top">' . "\n";
-#
-#    $box = new box;
-#    echo $box->infoBox($heading, $contents);
-#
-#    echo '            </td>' . "\n";
-#  }
-#?>
-          </tr>
-end comment-->
+                            <div class="line">
+                                <h2>Kết quả tìm kiếm</h2>
+                            </div>
+                <!-- show result -->
+                <div style="display: <?php echo $display?>;">
+                   <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td valign="top">
+                            <table border="0" width="100%" cellspacing="0" cellpadding="2">
+                              <tr class="dataTableHeadingRow">
+                                <td class="dataTableHeadingContent"><?php echo 'Tên khách hàng ' ?></td>
+                                <td class="dataTableHeadingContent"><?php echo 'Ngày đặt phòng' ?></td>
+                                <td class="dataTableHeadingContent"><?php echo 'Tổng tiền phải trả' ?></td>
+                                <td class="dataTableHeadingContent"><?php echo 'Trả trước' ?></td>
+                                <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION ?>&nbsp;</td>
+                              </tr>
+                              <?php
+                              $first = 0;
+                                 foreach($_SESSION['booking_form'] as $item){
+                                    if (((!isset($HTTP_GET_VARS['booking_form_id']) && $first==0) || (isset($HTTP_GET_VARS['booking_form_id']) && ($HTTP_GET_VARS['booking_form_id'] == $item['booking_form_id']) && !isset($aInfo) ))) {
+                                      $aInfo = new objectInfo($item);
+                                      $first++;
+                                    }
+                                    if ( (isset($aInfo) && is_object($aInfo)) && ($item['booking_form_id'] == $aInfo->booking_form_id) ) {
+                                      echo '<tr id="defaultSelected" class="dataTableRowSelected" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ROOMEDIT_DELETE, 'booking_form_id=' . $aInfo->booking_form_id . '&action=delete') . '\'">' . "\n";
+                                    } else {
+                                      echo '<tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)" onclick="document.location.href=\'' . tep_href_link(FILENAME_ROOMEDIT_DELETE, 'booking_form_id=' . $item['booking_form_id']) . '\'">' . "\n";
+                                    }
+                                    echo "<td class=\"dataTableContent\">".$item["customers_firstname"]."</td>";
+                                    echo "<td class=\"dataTableContent\">".$item["booking_form_dateset"]."</td>";
+                                    echo "<td class=\"dataTableContent\">".$item["booking_form_total_price"]."</td>";
+                                    echo "<td class=\"dataTableContent\">".$item["prepay"]."</td>";
+                                    $image='';
+                                    if ( (isset($aInfo) && is_object($aInfo)) && ($item['booking_form_id'] == $aInfo->booking_form_id) ) {
+                                        $image = tep_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); 
+                                    } else { 
+                                        $image = '<a href="' . tep_href_link(FILENAME_ROOMEDIT_DELETE, 'booking_form_id=' . $item['booking_form_id']) . '">' . tep_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; 
+                                    }
+                                    echo "<td class=\"dataTableContent\" align=\"right\">".$image."&nbsp;</td>";
+                                    echo "</tr>";  
+                                 }                              
+                              ?>
+                            </table>
+                        </td>
+<?php
+  $heading = array();
+  $contents = array();
+
+  switch ($action) {
+    case 'edit':
+       break;
+    case 'delete':
+      $heading[] = array('text' => '<b>' . $aInfo->customers_name . '</b>');
+
+      $contents = array('form' => tep_draw_form('del_booking_form', FILENAME_ROOMEDIT_DELETE, 'booking_form_id=' . $aInfo->booking_form_id . '&action=deleteconfirm'));
+      $contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
+      $contents[] = array('text' => '<br><b>' . $aInfo->customers_name . '</b>');
+      $contents[] = array('align' => 'center', 'text' => '<br>' . tep_image_submit('button_delete.gif', IMAGE_UPDATE) . '&nbsp;<a href="' . tep_href_link(FILENAME_ROOMEDIT_DELETE, 'booking_form_id=' . $aInfo->booking_form_id) . '">' . tep_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+      break;
+    default:
+      if (isset($aInfo) && is_object($aInfo)) {
+        $heading[] = array('text' => '<b>' . $aInfo->customers_name . '</b>');
+
+        $contents[] = array('align' => 'center', 'text' => '<a href="' . tep_href_link(FILENAME_ROOMEDIT_DELETE, 'booking_form_id=' . $aInfo->booking_form_id . '&action=delete') . '">' . tep_image_button('button_delete.gif', IMAGE_DELETE) . '</a>');
+      }
+      break;
+  }
+
+  if ( (tep_not_null($heading)) && (tep_not_null($contents)) ) {
+    echo '            <td width="25%" valign="top">' . "\n";
+
+    $box = new box;
+    echo $box->infoBox($heading, $contents);
+
+    echo '            </td>' . "\n";
+  }
+?>
+                      </tr>
+                   </table>
+                </div>
+           </div>
       </td>
 <!-- body_text_eof //-->
   </tr>

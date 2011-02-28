@@ -60,4 +60,7 @@
   define('TABLE_ROOM_TYPE','room_type');
   define('TABLE_STATUS_ROOM','status_room');
   define('TABLE_OWNERS','owners');
+   define('TABLE_BOOKING_FORM','booking_form');
+      define('TABLE_PREPAID','prepaid');
+           define('TABLE_DETAIL','detail_booking_form');
 ?>
