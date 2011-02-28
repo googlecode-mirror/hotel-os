@@ -10,7 +10,7 @@
 ?>
     <!-- Starting Header top -->
 <div id="gk-top" class="main">
-        <h1 class="logo"> <a href="/hotelbooking/index.php" title=""><span></span></a> </h1>        
+        <h1 class="logo"> <a href="<?php echo tep_href_link(FILENAME_DEFAULT); ?>" title=""><span></span></a> </h1>        
         	        <div class="gk-search">        	
 
 <script type="text/javascript">
