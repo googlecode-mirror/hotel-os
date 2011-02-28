@@ -33,10 +33,8 @@
 
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
 ?>
-
-
-<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta name="robots" content="index, follow" />
@@ -45,7 +43,9 @@
   <meta name="generator" content="Joomla! 1.5 - Open Source Content Management" />
     
  <title><?php echo TITLE;?> </title>   
+<!--
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
+-->
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link href="style.css" rel="stylesheet" type="text/css" >
 <link href="newstyle.css" rel="stylesheet" type="text/css" >
@@ -68,7 +68,7 @@
   <link rel="stylesheet" href="black_and_white_css/gk_stuff.css" type="text/css" />
   <link rel="stylesheet" href="black_and_white_css/typo.css" type="text/css" />
   <link rel="stylesheet" href="black_and_white_css/css3.css" type="text/css" />
-  <link rel="stylesheet" href="black_and_white_css/style1.css" type="text/css" >
+  <link rel="stylesheet" href="black_and_white_css/style1.css" type="text/css" />
   
 
   <script type="text/javascript" src="black_and_white_js/mootools.js"></script>
@@ -80,11 +80,6 @@
  <script type="text/javascript" src="black_and_white_js/engine-mootools-11.js"></script>
  <script type="text/javascript" src="black_and_white_js/k2store.js"></script>
  <script type="text/javascript" src="black_and_white_js/gk_image_show.js"></script>
- 
-
-
-<!--<script src="js/loopedslider.js"></script>
--->
 
  
  <script type="text/javascript">
@@ -97,40 +92,58 @@ window.addEvent("domready", function() {
  });
  });
 });
-var K2RatingURL = 'http://localhost/Khotel/';
+var K2RatingURL = '<?php echo HTTPS_SERVER.DIR_WS_HTTP_CATALOG ?>';
  </script>
 
-<!--[if IE 8.0]><link rel="stylesheet" href="http://localhost/Khotel/templates/gk_blackandwhite/css/ie8.css" type="text/css" /><![endif]-->
-<!--[if IE 7.0]><link rel="stylesheet" href="http://localhost/Khotel/templates/gk_blackandwhite/css/ie.css" type="text/css" /><![endif]-->
+<!--[if IE 8.0]><link rel="stylesheet" href="black_and_white_css/ie8.css" type="text/css" /><![endif]-->
+<!--[if IE 7.0]><link rel="stylesheet" href="black_and_white_css/ie.css" type="text/css" /><![endif]-->
+
 <!--[if IE 7.0]><style>.clearfix { display: inline-block; } /* IE7xhtml*/</style><![endif]-->
-
 <script type="text/javascript">
-var siteurl='http://localhost/hotelbooking/';
-var tmplurl='http://localhost/Khotel/templates/gk_blackandwhite';
+var siteurl='<?php echo HTTPS_SERVER.DIR_WS_HTTP_CATALOG ?>';
+var tmplurl='templates/gk_blackandwhite';
 </script>
-
-<script src="js/jquery-1.4.2.min.js"></script>
-<script src="js/jquery-ui-1.8.2.custom.min.js"></script>
-<script src="js/loopedslider.js"></script>
-<script src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/loopedslider.js"></script>
 <!--<script src="js/jquery.lightboxLib.js"></script>
 -->
-<script>
+<script type="text/javascript">
 jQuery.noConflict();
 </script>
-<script src="js/MyScript.js"></script>
-
-<link href="http://localhost/Khotel/templates/gk_blackandwhite/css/menu/mega.css" rel="stylesheet" type="text/css" /><script src="http://localhost/Khotel/templates/gk_blackandwhite/js/menu/mega.js" language="javascript" type="text/javascript"></script>
-
-<link href="http://localhost/Khotel/templates/gk_blackandwhite/fonts/DroidSans/stylesheet.css" rel="stylesheet" type="text/css" /><link href="http://localhost/Khotel/templates/gk_blackandwhite/fonts/League_Gothic/stylesheet.css" rel="stylesheet" type="text/css" />
+<script  type="text/javascript" src="js/MyScript.js"></script>
+<link href="black_and_white_css/mega.css" rel="stylesheet" type="text/css" /><script src="templates/gk_blackandwhite/js/menu/mega.js" language="javascript" type="text/javascript"></script>
+<link href="black_and_white_css/DroidSans/stylesheet.css" rel="stylesheet" type="text/css" /><link href="templates/gk_blackandwhite/fonts/League_Gothic/stylesheet.css" rel="stylesheet" type="text/css" />
 <style type="text/css">	
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+    .moduletable_menu h3,
+    .moduletable_text h3,
+    .moduletable h3,
+    #gk-popup h3,
+    #gk-mainnav .level0>li>a,
+	.itemRelated h3, 
+	.itemAuthorLatest h3
+	{
+		font-family: Arial,Helvetica,sans-serif,DroidSans;
+	}
+
+	.gk_is_text h4,
+	.moduletable.bigtitle h3 {
+		font-family: Arial,Helvetica,sans-serif,LeagueGothic;
+	}
 
 </style>
-
-<!-- ---------------------------- -->
-
+<!--Width of template -->
+<style type="text/css">
+.main { width: 1002px; margin: 0 auto; }
+</style>
+<!-- end head -->
 </head>
-<body id="bd" class="fs3 FF">
+<body id="bd" class="fs3 IE7">
 <?php require(DIR_WS_INCLUDES . 'popup.php'); ?>
 	
 <div id="bg-wrap">
