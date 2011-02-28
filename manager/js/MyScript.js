@@ -29,6 +29,9 @@ $(document).ready(function(){
             }
         });
 	}
+    if($("input[name=ngaydat]").html()!=null){
+        $("input[name=ngaydat]").datepicker({changeMonth:true,changeYear:true,dateFormat:'dd-mm-yy'});
+    }
     $("select#cb_dmphong").change(function(){
         var option = $("select#cb_dmphong option:selected");
         var url = "loadloaiphong.php?roomcat="+option.val();

@@ -222,7 +222,7 @@ function getroomofdate($day){
                 			</div>
                             <div class="line">
                 			<label for="prepaid"> Đặt cọc</label>
-                			<input id="prepaid" type="text" class="text" name="prepaid"/>
+                			<input id="prepaid" type="text" class="text" name="prepaid" value="0"/>
                 			</div>
                             <div class="line">
                 			<label for="remain"> Còn lại</label>
