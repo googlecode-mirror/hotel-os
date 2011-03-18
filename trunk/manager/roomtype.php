@@ -33,7 +33,6 @@
           tep_db_perform(TABLE_ROOM_TYPE, $sql_data_array);
 
           $room_type_id = tep_db_insert_id();
-            echo "success ".$room_type_id;
         } elseif ($action == 'save') {
             tep_db_perform(TABLE_ROOM_TYPE, $sql_data_array, 'update', "room_type_id = '" . (int)$room_type_id."'");
         }

@@ -139,7 +139,11 @@ function getroomofdate($day){
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="includes/newstyle.css">
+<<<<<<< .mine
+<link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.8.2.custom.css"/>
+=======
 <link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.8.2.custom.css">
+>>>>>>> .r64
 <script language="javascript" src="includes/general.js"></script>
 <script src="js/jquery-1.4.2.min.js"></script>
 <script src="js/jquery-ui-1.8.2.custom.min.js"></script>
@@ -212,6 +216,25 @@ function getroomofdate($day){
                 			<label for="soluongphong"> Số lượng phòng  </label>
                 			<input id="soluongphong" type="text" class="text" name="soluongphong"/>
                 			</div>
+                            <div class="line">
+                			<label> Danh mục phòng </label>
+                			<select name="s" size="1"	>
+                			<option value="1" selected="selected">Phòng sang trọng</option>		
+                			<option value="2">Phòng cao cấp</option>
+                            <option value="3"> Phòng gia đình</option>
+                            <option value="4">Phòng hội nghị</option>                			
+                			</select>
+                			</div>
+                            <div class="line">
+                			<label> Loại phòng </label>
+                			<select name="s" size="1"	>
+                			</select>
+                			</div>
+                            <div>
+                            <div class="line">
+                			<label for="tiencoc"> Số tiền đặt cọc  </label>
+                			<input id="tiencoc" type="text" class="text" name="tiencoc"/>
+                            </div>
                             <div class="line">
                             <p>Phương thức thanh toán</p>                			
                 			<input id="cash" type="radio" checked="true"  name="payment" class="payment" value="0"/>Tiền mặt

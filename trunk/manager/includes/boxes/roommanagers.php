@@ -22,7 +22,6 @@
 
   if ($selected_box == 'catalog') {
     $contents[] = array('text'  => '<a href="' . tep_href_link(FILENAME_ROOMTYPE, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_CATEGORIES_PRODUCTS . '</a><br>' .
-                                   '<a href="' . tep_href_link(FILENAME_EMPTY_PRODUCTS, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_DISPLAY_EMPTY_PRODUCTS . '</a><br>'.
                                    '<a href="' . tep_href_link(FILENAME_ROOMBOOKING, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_ROOM_BOOKING . '</a><br>' .
                                    '<a href="' . tep_href_link(FILENAME_ROOMEDIT_DELETE, '', 'NONSSL') . '" class="menuBoxContentLink">' . BOX_CATALOG_ROOM_EDIT_DELETE . '</a><br>'
 
